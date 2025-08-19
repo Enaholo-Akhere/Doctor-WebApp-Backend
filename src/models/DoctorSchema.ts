@@ -9,10 +9,12 @@ const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
   phone: { type: String },
   photo: { type: String },
   ticketPrice: { type: Number },
-  role: { type: String },
+  role: {
+    type: String,
+    enum: ["doctor", "admin"],
+    default: "doctor",
+  },
   id: { type: String },
-  token: { type: String },
-  refreshedToken: { type: String },
 
   // Fields for doctors only
   specialization: { type: String },
@@ -40,6 +42,6 @@ const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
     default: "pending",
   },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
-});
+}, { timestamps: true });
 
 export default mongoose.model("Doctor", DoctorSchema);

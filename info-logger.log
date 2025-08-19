@@ -1,10 +1,341 @@
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-05-22T00:53:37.877Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-05-22T00:54:22.724Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPatient with email already exits\u001b[39m","timestamp":"2025-05-22T00:56:40.901Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPatient with email already exits\u001b[39m","timestamp":"2025-05-22T10:49:53.223Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-05-22T10:50:47.453Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-05-22T13:36:38.998Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-05-22T19:15:37.681Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-05-22T19:19:07.650Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-05-24T15:11:02.819Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-05-24T15:11:14.877Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-03T23:59:58.229Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"{ _id: NaN }\" (type Object) at path \"_id\" for model \"User\"\u001b[39m","stackName":"CastError: Cast to ObjectId failed for value \"{ _id: NaN }\" (type Object) at path \"_id\" for model \"User\"\n    at SchemaObjectId.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schema\\objectId.js:251:11)\n    at SchemaObjectId.SchemaType.applySetters (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1255:12)\n    at SchemaObjectId.SchemaType.castForQuery (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1673:17)\n    at cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\cast.js:319:34)\n    at model.Query.Query.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:5055:12)\n    at model.Query.Query._castConditions (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2351:10)\n    at model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2674:8)\n    at model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-03T23:59:58.284Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:01:49.489Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"{ _id: NaN }\" (type Object) at path \"_id\" for model \"User\"\u001b[39m","stack":"CastError: Cast to ObjectId failed for value \"{ _id: NaN }\" (type Object) at path \"_id\" for model \"User\"\n    at SchemaObjectId.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schema\\objectId.js:251:11)\n    at SchemaObjectId.SchemaType.applySetters (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1255:12)\n    at SchemaObjectId.SchemaType.castForQuery (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1673:17)\n    at cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\cast.js:319:34)\n    at model.Query.Query.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:5055:12)\n    at model.Query.Query._castConditions (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2351:10)\n    at model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2674:8)\n    at model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-04T00:01:49.543Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:02:54.177Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"NaN\" (type number) at path \"_id\" for model \"User\"\u001b[39m","stack":"CastError: Cast to ObjectId failed for value \"NaN\" (type number) at path \"_id\" for model \"User\"\n    at SchemaObjectId.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schema\\objectId.js:251:11)\n    at SchemaObjectId.SchemaType.applySetters (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1255:12)\n    at SchemaObjectId.SchemaType.castForQuery (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1673:17)\n    at cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\cast.js:390:32)\n    at model.Query.Query.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:5055:12)\n    at model.Query.Query._castConditions (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2351:10)\n    at model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2674:8)\n    at model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-04T00:02:54.270Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:06:17.012Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"NaN\" (type number) at path \"_id\" for model \"User\"\u001b[39m","stack":"CastError: Cast to ObjectId failed for value \"NaN\" (type number) at path \"_id\" for model \"User\"\n    at SchemaObjectId.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schema\\objectId.js:251:11)\n    at SchemaObjectId.SchemaType.applySetters (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1255:12)\n    at SchemaObjectId.SchemaType.castForQuery (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1673:17)\n    at cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\cast.js:390:32)\n    at model.Query.Query.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:5055:12)\n    at model.Query.Query._castConditions (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2351:10)\n    at model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2674:8)\n    at model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-04T00:06:17.066Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:08:07.487Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:16:40.134Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:21:25.490Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:21:35.442Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:23:14.661Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:23:38.608Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:26:11.772Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:34:04.597Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:38:25.108Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:39:27.350Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:40:33.179Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T00:41:01.520Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:42:53.115Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:45:26.083Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:45:54.184Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:47:10.263Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:47:24.993Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:49:37.330Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T11:51:33.817Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T11:51:33.820Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2025-06-04T11:51:33.825Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:14:19.629Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:14:19.634Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:17:17.195Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:17:17.205Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:23:17.551Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:23:17.562Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:23:17.565Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:23:25.183Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:23:25.190Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:23:25.194Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:23:28.832Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:23:28.835Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:23:28.836Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:24:46.054Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:24:46.066Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:26:46.665Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:26:46.675Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:26:46.679Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:28:23.979Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:28:23.993Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:28:23.999Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:28:50.898Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:28:50.901Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:28:50.907Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:28:54.171Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:28:54.173Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:28:54.175Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:30:22.241Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:22.252Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:22.265Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:30:27.797Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:27.805Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:27.815Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:30:30.987Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:31.003Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:31.018Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:30:33.396Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:33.399Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:33.402Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:30:43.158Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:43.165Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:43.170Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:30:48.312Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:48.315Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:48.319Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:32:32.989Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:44:10.011Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:45:31.720Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:46:53.988Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:54:16.578Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:54:34.539Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:57:45.665Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T11:02:59.681Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T11:02:59.687Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2025-06-05T11:02:59.692Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:31:49.566Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:31:49.569Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2025-06-05T12:31:49.572Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:34:10.130Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:38:04.072Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:39:12.129Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:39:18.706Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:39:22.910Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:39:25.486Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:40:31.196Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:43:48.310Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-02.kcorv44.mongodb.net\u001b[39m","stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-pbrskwc-shard-00-02.kcorv44.mongodb.net\n    at Topology.selectServer (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\sdam\\topology.ts:628:30)\n    at async tryOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:201:16)\n    at async executeOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:115:12)\n    at async FindCursor._initialize (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\find_cursor.ts:92:22)\n    at async FindCursor.cursorInit (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:944:21)\n    at async FindCursor.fetchBatch (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:982:7)\n    at async FindCursor.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:612:9)\n    at async Collection.findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\collection.ts:525:17)\n    at async model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2687:15)\n    at async model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:63)","timestamp":"2025-06-05T12:44:18.373Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:44:50.934Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:47:39.754Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:46:41.911Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:48:56.625Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:49:48.670Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:51:34.093Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:52:23.653Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:53:16.691Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:55:34.227Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T14:01:41.011Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T14:03:41.323Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"a\" (type string) at path \"_id\" for model \"User\"\u001b[39m","timestamp":"2025-06-05T14:03:41.359Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T14:03:55.154Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T14:07:54.589Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"a\" (type string) at path \"_id\" for model \"User\"\u001b[39m","timestamp":"2025-06-05T14:07:54.687Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T14:08:08.476Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T14:28:50.840Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m{\u001b[39m\n\u001b[32m  _id: new ObjectId('683f2dc0a1c9914ec72f9d60'),\u001b[39m\n\u001b[32m  email: 'salomi@gmail.com',\u001b[39m\n\u001b[32m  password: '$2b$10$sMxrVFRXU5./kmvcIV.LeeLmbMWbCfsus1rMnKpwUPu5jow3vt9Bq',\u001b[39m\n\u001b[32m  name: 'Salomi Ono Iboboli',\u001b[39m\n\u001b[32m  photo: 'pexels/png.com',\u001b[39m\n\u001b[32m  role: 'patient',\u001b[39m\n\u001b[32m  gender: 'female',\u001b[39m\n\u001b[32m  appointments: [],\u001b[39m\n\u001b[32m  createdAt: 2025-06-03T17:15:44.833Z,\u001b[39m\n\u001b[32m  updatedAt: 2025-06-05T14:08:08.492Z,\u001b[39m\n\u001b[32m  __v: 0,\u001b[39m\n\u001b[32m  phone: '+2349023948592'\u001b[39m\n\u001b[32m}\u001b[39m","timestamp":"2025-06-05T14:28:51.128Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:29:40.125Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:29:47.952Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:31:59.282Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:35:04.826Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:35:07.614Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:36:20.917Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:38:16.809Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:38:19.673Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-06-05T14:38:29.072Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:38:38.169Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2025-06-05T14:39:13.216Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:39:22.535Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:39:28.603Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:41:18.559Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:41:25.331Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-06-05T14:42:15.105Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-06-05T14:42:26.983Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:42:47.799Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:43:14.423Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:43:30.899Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:43:31.153Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:44:48.619Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-06-05T14:47:24.949Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2025-06-05T14:47:49.682Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:48:07.895Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:58:27.633Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:58:28.198Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:58:33.012Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:58:33.166Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-06-05T14:58:51.191Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:59:11.087Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:59:16.366Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:59:19.513Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:59:26.939Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:59:27.757Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:59:32.721Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:00:28.742Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:00:39.385Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:00:52.534Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","stack":"Error: user not found\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:31:26\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:33:23)\n    at Object.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:14:53)\n    at fulfilled (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-05T15:00:52.723Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:01:02.154Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:01:21.389Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-06-05T15:02:02.870Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2025-06-05T15:06:00.373Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T15:17:36.275Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2025-06-05T15:17:48.864Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","stack":"Error: user not found\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:27:26\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:33:23)\n    at Object.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:14:53)\n    at fulfilled (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-05T15:26:33.507Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T15:31:55.944Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:32:24.132Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:39:49.396Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T15:39:56.620Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:40:25.991Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:40:39.819Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:41:01.524Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T16:10:32.825Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T16:11:53.024Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mdoctor not found\u001b[39m","stack":"Error: doctor not found\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\doctorService.ts:27:28\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\doctorService.ts:33:23)\n    at Object.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\doctorService.ts:14:53)\n    at fulfilled (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\doctorService.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-05T16:11:54.332Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T16:12:05.043Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T16:26:23.317Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T18:23:51.050Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to string failed for value \"{}\" (type Object) at path \"specialization\" for model \"Doctor\"\u001b[39m","timestamp":"2025-06-05T18:24:05.880Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:25:54.013Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to string failed for value \"{ name: '', specialization: '' }\" (type Object) at path \"specialization\" for model \"Doctor\"\u001b[39m","timestamp":"2025-06-05T18:25:54.023Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:27:52.399Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to string failed for value \"{ name: '', specialization: '' }\" (type Object) at path \"specialization\" for model \"Doctor\"\u001b[39m","timestamp":"2025-06-05T18:27:52.440Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:29:01.847Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to string failed for value \"{ name: '', specialization: '' }\" (type Object) at path \"specialization\" for model \"Doctor\"\u001b[39m","timestamp":"2025-06-05T18:29:01.878Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:29:16.199Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to string failed for value \"{}\" (type Object) at path \"specialization\" for model \"Doctor\"\u001b[39m","timestamp":"2025-06-05T18:29:16.206Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:35:47.640Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T18:35:47.869Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:37:27.332Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:38:58.128Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T18:39:59.218Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:41:23.817Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mquery.toObject is not a function\u001b[39m","timestamp":"2025-06-05T18:41:23.840Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:42:29.919Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mquery.toObject is not a function\u001b[39m","timestamp":"2025-06-05T18:42:29.935Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:43:43.033Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to string failed for value \"{}\" (type Object) at path \"specialization\" for model \"Doctor\"\u001b[39m","timestamp":"2025-06-05T18:43:43.061Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:47:39.678Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T18:47:39.936Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:49:24.997Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:52:03.462Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:58:50.158Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T18:58:50.477Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:05:06.355Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:07:45.885Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T19:07:46.120Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:08:59.005Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T19:08:59.224Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:11:43.478Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T19:11:43.735Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:12:35.539Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:13:40.892Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:17:32.678Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mcannot get doctors\u001b[39m","timestamp":"2025-06-05T19:17:32.947Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:17:53.612Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:18:17.591Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T19:18:17.788Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:18:24.320Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mcannot get doctors\u001b[39m","timestamp":"2025-06-05T19:18:24.486Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:18:42.655Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:19:54.139Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:20:02.147Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:23:17.528Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:25:09.041Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:29:35.312Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:34:32.963Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:37:39.459Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:41:00.431Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:43:46.737Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:46:58.387Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:48:43.432Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T21:13:43.606Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:14:34.488Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:14:48.662Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:15:38.842Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:17:28.631Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:17:53.863Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:18:01.620Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:18:44.156Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:32:44.284Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T08:58:27.571Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T08:59:39.501Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\u001b[39m","stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\n    at Topology.selectServer (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\sdam\\topology.ts:628:30)\n    at async tryOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:264:16)\n    at async executeOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:115:12)\n    at async FindCursor._initialize (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\find_cursor.ts:92:22)\n    at async FindCursor.cursorInit (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:944:21)\n    at async FindCursor.fetchBatch (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:982:7)\n    at async FindCursor.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:612:9)\n    at async Collection.findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\collection.ts:525:17)\n    at async model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2687:15)\n    at async model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:63)","timestamp":"2025-06-07T09:00:28.739Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T09:01:09.111Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","stack":"Error: user not found\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:35:26\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:33:23)\n    at Object.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:14:53)\n    at fulfilled (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-07T09:01:56.221Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","stack":"Error: user not found\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:35:26\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:33:23)\n    at Object.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:14:53)\n    at fulfilled (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-07T09:01:58.550Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","stack":"Error: user not found\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:35:26\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:33:23)\n    at Object.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:14:53)\n    at fulfilled (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-07T09:02:37.983Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T09:04:25.373Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T09:04:43.494Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\u001b[39m","stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\n    at Topology.selectServer (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\sdam\\topology.ts:628:30)\n    at async tryOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:201:16)\n    at async executeOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:115:12)\n    at async FindCursor._initialize (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\find_cursor.ts:92:22)\n    at async FindCursor.cursorInit (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:944:21)\n    at async FindCursor.fetchBatch (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:982:7)\n    at async FindCursor.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:612:9)\n    at async Collection.findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\collection.ts:525:17)\n    at async model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2687:15)\n    at async model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:63)","timestamp":"2025-06-07T09:04:55.394Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\u001b[39m","stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\n    at Topology.selectServer (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\sdam\\topology.ts:628:30)\n    at async tryOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:201:16)\n    at async executeOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:115:12)\n    at async FindCursor._initialize (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\find_cursor.ts:92:22)\n    at async FindCursor.cursorInit (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:944:21)\n    at async FindCursor.fetchBatch (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:982:7)\n    at async FindCursor.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:612:9)\n    at async Collection.findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\collection.ts:525:17)\n    at async model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2687:15)\n    at async model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:63)","timestamp":"2025-06-07T09:05:13.516Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T09:06:54.606Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T09:09:47.408Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T09:10:54.462Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T09:12:23.534Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T09:14:39.651Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T09:15:51.330Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\u001b[39m","timestamp":"2025-06-07T09:16:21.371Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T09:43:03.155Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\u001b[39m","timestamp":"2025-06-07T09:43:33.185Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T11:16:35.442Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T11:17:49.442Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\u001b[39m","stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\n    at Topology.selectServer (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\sdam\\topology.ts:628:30)\n    at async tryOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:264:16)\n    at async executeOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:115:12)\n    at async FindCursor._initialize (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\find_cursor.ts:92:22)\n    at async FindCursor.cursorInit (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:944:21)\n    at async FindCursor.fetchBatch (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:982:7)\n    at async FindCursor.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:612:9)\n    at async Collection.findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\collection.ts:525:17)\n    at async model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2687:15)\n    at async model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:63)","timestamp":"2025-06-07T11:18:38.307Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T11:20:27.170Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\u001b[39m","stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\n    at Topology.selectServer (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\sdam\\topology.ts:628:30)\n    at async tryOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:201:16)\n    at async executeOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:115:12)\n    at async FindCursor._initialize (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\find_cursor.ts:92:22)\n    at async FindCursor.cursorInit (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:944:21)\n    at async FindCursor.fetchBatch (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:982:7)\n    at async FindCursor.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:612:9)\n    at async Collection.findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\collection.ts:525:17)\n    at async model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2687:15)\n    at async model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:63)","timestamp":"2025-06-07T11:20:57.196Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T11:21:14.480Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\u001b[39m","timestamp":"2025-06-07T11:21:44.496Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T11:23:54.804Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:29:16.279Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:32:22.162Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:33:36.298Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:35:24.497Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:35:24.709Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:36:40.111Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:36:40.312Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:37:31.954Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:37:38.160Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:38:34.204Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:38:34.482Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:43:12.508Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:43:12.730Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:44:22.012Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:47:17.728Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:47:17.933Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:49:32.693Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:49:32.887Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:51:00.304Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:51:00.555Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:59:27.552Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:59:27.815Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:01:54.707Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:01:54.979Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:05:03.124Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:05:03.328Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:24:07.599Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:35:30.555Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:35:30.751Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:37:36.946Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:37:37.148Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:37:54.315Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:37:54.550Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:40:03.350Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:40:03.561Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:41:30.336Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:50:32.697Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:51:05.115Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:54:42.407Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:54:42.645Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:55:12.649Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:55:12.862Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:55:22.044Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:55:22.249Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:56:01.584Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:56:01.766Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:56:09.367Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:56:09.558Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:00:42.193Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:00:48.345Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:01:09.924Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:02:55.363Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:02:55.628Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:03:48.526Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:05:10.658Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:05:30.475Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:06:01.147Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:08:55.853Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:09:37.523Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"841b52535287902c2f75729\" (type string) at path \"_id\" for model \"User\"\u001b[39m","stack":"CastError: Cast to ObjectId failed for value \"841b52535287902c2f75729\" (type string) at path \"_id\" for model \"User\"\n    at SchemaObjectId.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schema\\objectId.js:251:11)\n    at SchemaObjectId.SchemaType.applySetters (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1255:12)\n    at SchemaObjectId.SchemaType.castForQuery (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1673:17)\n    at cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\cast.js:390:32)\n    at model.Query.Query.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:5055:12)\n    at model.Query.Query._castConditions (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2351:10)\n    at model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2674:8)\n    at model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-07T14:09:37.728Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T14:09:56.515Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"841b52535287902c2f75729\" (type string) at path \"_id\" for model \"User\"\u001b[39m","stack":"CastError: Cast to ObjectId failed for value \"841b52535287902c2f75729\" (type string) at path \"_id\" for model \"User\"\n    at SchemaObjectId.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schema\\objectId.js:251:11)\n    at SchemaObjectId.SchemaType.applySetters (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1255:12)\n    at SchemaObjectId.SchemaType.castForQuery (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1673:17)\n    at cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\cast.js:390:32)\n    at model.Query.Query.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:5055:12)\n    at model.Query.Query._castConditions (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2351:10)\n    at model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2674:8)\n    at model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-07T14:09:56.531Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T14:10:28.314Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:23:38.995Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:23:39.186Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:24:08.649Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:24:08.832Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:24:17.863Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-14T01:07:47.628Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-14T01:07:47.832Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-14T01:09:00.220Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-14T01:09:27.918Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-14T01:09:43.456Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-14T01:12:56.553Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-14T01:12:56.786Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-14T01:14:37.890Z"}

@@ -1,14 +1,16 @@
-import { log } from "@utils/logger";
-import { RegisterUserInput } from "DTO_Validations/zod_schemas";
 import { Request, Response } from "express";
-import { registerService } from "Services/authService";
+import { loginServices, registerService } from "Services/authService";
 import { UserSchemaInterface } from "types";
 
-interface RegisterInterface {
+
+interface UserAuthInterface {
     message: string,
     error: any,
-    data: UserSchemaInterface
+    data?: UserSchemaInterface
+    token: string
+    refreshedToken: string
 }
+
 
 export const register = async (req: Request<{}, {}, UserSchemaInterface>, res: Response) => {
 
@@ -18,11 +20,11 @@ export const register = async (req: Request<{}, {}, UserSchemaInterface>, res: R
     //     res.status(400).json({ message: "Please provide all fields", status: false, data: {} });
     // }
 
-    const result = await registerService(body) as RegisterInterface;
+    const result = await registerService(body) as Partial<UserAuthInterface>;
     if (!result) {
         res.status(500).json({ message: "Registration failed", status: false, data: {} });
     }
-    const { data, message, error } = result
+    const { data, message, error, token, refreshedToken } = result;
 
 
     if (error) {
@@ -30,16 +32,35 @@ export const register = async (req: Request<{}, {}, UserSchemaInterface>, res: R
     }
 
     if (data) {
-        res.status(200).json({ message, status: true, data });
+        const MAX_AGE = Number(process.env.MAX_AGE)
+        res.cookie('refreshedToken', refreshedToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'strict',
+            maxAge: MAX_AGE
+        })
+        res.status(200).json({ message, status: true, data, token });
     }
 
 }
 
 export const login = async (req: Request, res: Response) => {
+    const body: UserSchemaInterface = req.body
 
+    if (!body) res.status(400).json({ message: 'Please input all fields', status: false, data: {} })
 
-    try {
-        res.status(200).json({ message: "Login successful", status: true, data: {} });
-    }
-    catch (error: any) { }
+    const { data, error, message, token, refreshedToken } = await loginServices(body)
+
+    if (error) res.status(500).json({ message, status: false, data: {} })
+    const MAX_AGE = Number(process.env.MAX_AGE)
+
+    res.cookie('refreshedToken', refreshedToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'strict',
+        maxAge: MAX_AGE
+    })
+
+    res.status(200).json({ message, status: true, data, token })
+
 }

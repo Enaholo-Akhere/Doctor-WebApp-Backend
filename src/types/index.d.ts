@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 export interface UserSchemaInterface {
     email: string;
     password: string;
@@ -9,8 +10,6 @@ export interface UserSchemaInterface {
     bloodType: string;
     appointments: mongoose.ObjectId
     id: mongoose.ObjectId
-    token: string;
-    refreshedToken: string;
 }
 
 export interface ReviewSchemaInterface {
@@ -40,8 +39,6 @@ export interface DoctorSchemaInterface {
     totalRating: number;
     isApproved: "pending" | "approved" | "cancelled";
     appointments: mongoose.ObjectId[];
-    token: string;
-    refreshedToken: string;
 }
 
 export interface BookSchemaInterface {
@@ -54,3 +51,5 @@ export interface BookSchemaInterface {
     createdAt: Date;
     updatedAt: Date;
 }
+
+export interface ReviewBodyInterface { doctor: string, user: string }

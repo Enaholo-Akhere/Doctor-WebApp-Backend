@@ -12,4 +12,12 @@ const reviewSchema = new mongoose.Schema<ReviewSchemaInterface>(
   { timestamps: true }
 );
 
+reviewSchema.pre(/^find/, function (this: mongoose.Query<any, any>, next) {
+  this.populate({
+    path: "user",
+    select: 'name photo'
+  });
+  next();
+});
+
 export default mongoose.model("Review", reviewSchema);
