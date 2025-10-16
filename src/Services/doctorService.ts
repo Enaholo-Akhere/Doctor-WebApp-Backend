@@ -2,7 +2,7 @@ import { log, winston_logger } from "@utils/logger"
 import _ from "lodash"
 import Doctor from "models/DoctorSchema"
 import { DoctorSchemaInterface } from "types"
-
+import escapeStringRegexp from "escape-string-regexp"
 
 
 interface GetDoctorServiceResult {
@@ -22,10 +22,10 @@ export const getDoctorService = async ({ name, specialization }: { name: string,
             doctor = await Doctor.find({
                 isApproved: 'pending',
                 $or: [
-                    { name: { $regex: name, $options: 'i' } },
-                    { specialization: { $regex: specialization, $options: 'i' } },
+                    { name: { $regex: escapeStringRegexp(name), $options: 'i' } },
+                    { specialization: { $regex: escapeStringRegexp(specialization), $options: 'i' } },
                 ]
-            });
+            }).select(['-password', '-__v']);
         } else {
             doctor = await Doctor.find().select(['-password', '-__v']);
         }
@@ -83,6 +83,6 @@ export const deleteDoctorService = async (id: string): Promise<Partial<GetDoctor
     }
     catch (error: any) {
         winston_logger.error(error.message, error.stack)
-        return { error }
+        return { error, message: error.message }
     }
 }
