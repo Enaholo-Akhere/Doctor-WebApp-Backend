@@ -14,7 +14,7 @@ export const sanitizedUser = async (req: Request, res: Response, next: NextFunct
     const userRefreshedToken = req.cookies.refreshedToken
 
     try {
-        if (!userToken) throw new Error('token not found')
+        if (!userToken?.length) throw new Error('token not found')
         if (!userRefreshedToken) throw new Error('refreshed token not found')
 
         const { decoded, message, expired } = verifyToken(userToken as string)
@@ -53,5 +53,6 @@ export const sanitizedUser = async (req: Request, res: Response, next: NextFunct
     catch (error: any) {
         winston_logger.error(error.message, error.stack)
         res.status(400).json({ status: false, message: error.message });
+        return
     }
 }   

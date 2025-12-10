@@ -8,7 +8,7 @@ import { restrict } from 'Middleware/auth';
 const router = express.Router();
 
 router.get('/', [sanitizedUser, restrict(['admin'])], getAllDoctors)
-router.get('/:id', [sanitizedUser, restrict(['doctor'])], getDoctorById)
+router.get('/:id', [sanitizedUser, restrict(['doctor', 'patient'])], getDoctorById)
 router.put('/:id', [sanitizedUser, restrict(['doctor']), validate(updateUserSchema)], updateDoctor)
 router.delete('/:id', [sanitizedUser, restrict(['doctor'])], deleteDoctor)
 

@@ -339,3 +339,137 @@
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-14T01:12:56.553Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-14T01:12:56.786Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-14T01:14:37.890Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:15:00.578Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:15:57.566Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:16:03.147Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:20:35.144Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:20:35.183Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:24:27.009Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:24:27.021Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:24:37.039Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:24:37.054Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:24:45.066Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:24:45.080Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:30:29.838Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:30:29.899Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:31:52.908Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:31:52.985Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:34:25.849Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:34:25.863Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:34:40.009Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:34:40.023Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:37:49.825Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:37:49.868Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:37:53.657Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:37:53.667Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:53:07.372Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:53:07.433Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:58:28.140Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.47.147:27017\u001b[39m","timestamp":"2025-11-18T23:58:49.359Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:00:19.158Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:01:00.224Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:09:58.166Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:09:58.342Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:33:20.531Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:33:20.766Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:33:37.668Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:33:37.848Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:35:21.116Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:35:21.362Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:35:25.244Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:35:25.418Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:35:59.611Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:39:19.238Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:40:23.693Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:42:53.224Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:43:02.699Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:43:07.655Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:43:16.913Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:43:54.485Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:46:00.805Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:46:00.982Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:46:39.085Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:47:14.668Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:52:00.487Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:54:04.816Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:54:55.692Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:54:55.885Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:55:23.267Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:56:55.388Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:57:59.155Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:00:23.604Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:02:08.999Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:02:18.765Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:05:31.931Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:06:20.774Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T01:06:20.950Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:06:38.071Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T01:06:38.290Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:07:42.586Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T01:07:42.864Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:08:56.610Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:10:35.087Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:12:18.607Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:15:30.769Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-12-04T23:10:32.994Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:13:22.020Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:13:58.340Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:16:59.525Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:20:30.734Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:22:27.507Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:23:42.014Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-12-04T23:23:42.175Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:24:24.885Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-12-04T23:24:25.064Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:25:10.821Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-12-04T23:25:10.988Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:25:18.064Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-12-04T23:25:18.238Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:26:15.217Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-12-04T23:26:15.375Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:28:31.204Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:28:39.767Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:31:06.874Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:34:41.713Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:38:03.321Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:39:03.790Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:41:14.670Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:42:17.197Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:42:29.538Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:42:49.895Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:43:06.963Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:43:33.793Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:53:04.485Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:55:06.144Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:57:09.839Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:58:40.716Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T00:08:53.331Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T00:25:38.500Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T00:26:06.266Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T00:26:56.798Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T09:05:23.547Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T09:20:49.628Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:30:19.907Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permission\u001b[39m","timestamp":"2025-12-05T21:30:20.123Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mdoctor not found\u001b[39m","timestamp":"2025-12-05T21:30:20.133Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:32:53.440Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:33:16.459Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:36:25.463Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permission\u001b[39m","timestamp":"2025-12-05T21:36:25.648Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:36:44.967Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permission\u001b[39m","timestamp":"2025-12-05T21:36:45.273Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:14.572Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:24.349Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:31.771Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:37.594Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:39.410Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:41.449Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:43.166Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:44.883Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:54.267Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T22:25:56.566Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T22:28:03.375Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T22:28:24.280Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T22:31:33.018Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T22:34:27.207Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permission\u001b[39m","timestamp":"2025-12-05T22:40:08.508Z"}

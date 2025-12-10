@@ -16,7 +16,7 @@ export const restrict = (roles: string[]) => async (req: Request, res: Response,
 
         const role = data?.toObject().role;
         if (!role || !roles.includes(role)) {
-            throw new Error("Access denied: insufficient permissions");
+            throw new Error("Access denied: insufficient permission");
         }
 
         next()
