@@ -16,6 +16,8 @@ interface GetDoctorById { id: string, body: DoctorSchemaInterface }
 
 export const getDoctorService = async ({ name, specialization }: { name: string, specialization: string }): Promise<Partial<GetDoctorServiceResult>> => {
     log(`Queries, ${specialization} ${name}`)
+    const escapedName = name ? escapeStringRegexp(String(name)) : '';
+    const escapedSpec = specialization ? escapeStringRegexp(String(specialization)) : '';
     try {
         let doctor: DoctorSchemaInterface[];
 
@@ -23,8 +25,8 @@ export const getDoctorService = async ({ name, specialization }: { name: string,
             doctor = await Doctor.find({
                 isApproved: 'pending',
                 $or: [
-                    { name: { $regex: escapeStringRegexp(name), $options: 'i' } },
-                    { specialization: { $regex: escapeStringRegexp(specialization), $options: 'i' } },
+                    { name: { $regex: escapedName, $options: 'i' } },
+                    { specialization: { $regex: escapedSpec, $options: 'i' } },
                 ]
             }).select(['-password', '-__v']);
         } else {
