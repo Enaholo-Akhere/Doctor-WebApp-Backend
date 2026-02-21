@@ -1,6 +1,6 @@
 import { log } from "@utils/logger";
 import { Request, Response } from "express";
-import { deleteDoctorService, getDoctorByIdService, getDoctorService, updateDoctorService } from "Services/doctorService";
+import { deleteDoctorService, getDoctorByIdService, getDoctorProfileService, getDoctorService, updateDoctorService } from "Services/doctorService";
 import { DoctorSchemaInterface } from "types";
 
 
@@ -54,6 +54,17 @@ export const deleteDoctor = async (req: Request, res: Response) => {
     res.status(200).json({ message, status: true })
 
 }
+
+export const getDoctorProfile = async (req: Request, res: Response) => {
+    const doctorId = res.locals.auth.id
+    console.log('doctorId', doctorId)
+
+    const { data, message, error, appointments } = await getDoctorProfileService(doctorId)
+    if (error) res.status(500).json({ message, status: false, data: {} })
+
+    res.status(200).json({ message, status: true, data, appointments })
+}
+
 
 
 

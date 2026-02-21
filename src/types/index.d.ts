@@ -4,11 +4,12 @@ export interface UserSchemaInterface {
     password: string;
     name: string;
     phone: string;
-    photo: string;
+    photo?: { imageUrl: string | undefined, publicId: string | undefined };
     role: "patient" | "doctor";
     gender: "male" | "female" | "other";
     bloodType: string;
     appointments: mongoose.ObjectId
+    verified: boolean;
     id: mongoose.ObjectId
 }
 
@@ -25,7 +26,7 @@ export interface DoctorSchemaInterface {
     password: string;
     name: string;
     phone: string;
-    photo: string;
+    photo?: { imageUrl: string | undefined, publicId: string | undefined };
     ticketPrice: number;
     role: string;
     specialization: string;
@@ -39,6 +40,7 @@ export interface DoctorSchemaInterface {
     totalRating: number;
     isApproved: "pending" | "approved" | "cancelled";
     appointments: mongoose.ObjectId[];
+    verified: boolean;
 }
 
 export interface BookSchemaInterface {
@@ -53,3 +55,50 @@ export interface BookSchemaInterface {
 }
 
 export interface ReviewBodyInterface { doctor: string, user: string }
+
+export { createUserInputType, loginUserInputType, editUserInputType as editUser } from './../zod-schema/zod.user.schema';
+
+
+export interface decodedData {
+    name: string;
+    email: string;
+    _id: string;
+}
+
+export interface mailOptions {
+    from: string;
+    to: string;
+    subject: string;
+    html: string;
+};
+
+export interface emailUrlAndName {
+    name: string;
+    url: string;
+};
+
+export interface forgotPassword {
+    serial: number;
+    reset_token: string;
+    email: string;
+}
+
+
+export interface resetPasswordInterface {
+    decoded: decodedData;
+    message: string;
+    expired: boolean;
+}
+
+export interface messageMeInterface {
+    email: string;
+    name: string;
+    message: string;
+    subject: string;
+}
+
+export interface decodedDataInterface {
+    name: string;
+    email: string;
+    id: string;
+}

@@ -1,58 +1,38 @@
 import { verifyToken } from "@utils/generateTokens";
-import { log, winston_logger } from "@utils/logger";
+import { handleDbError } from "@utils/handledError";
+import { winston_logger } from "@utils/logger";
 import { NextFunction, Request, Response } from "express";
-import { generateAccessToken } from "@utils/generateTokens";
-import jwt from "jsonwebtoken";
+import { decodedDataInterface } from "types";
 
-interface decodedDataInterface {
-    name: string;
-    email: string;
-    id: string;
-}
-export const sanitizedUser = async (req: Request, res: Response, next: NextFunction) => {
-    const userToken = req.get('authorization')?.split(' ')[1];
-    const userRefreshedToken = req.cookies.refreshedToken
+
+
+export const sanitizedUser = (req: Request, res: Response, next: NextFunction) => {
 
     try {
-        if (!userToken?.length) throw new Error('token not found')
-        if (!userRefreshedToken) throw new Error('refreshed token not found')
+        const authHeader = req.get('authorization');
+        if (!authHeader) throw new Error('token not found');
 
-        const { decoded, message, expired } = verifyToken(userToken as string)
-        const { decoded: refDecoded, message: refMessage, expired: refExpired } = verifyToken(userRefreshedToken as string)
-
-
-        if (message === 'jwt expired' || message === 'jwt malformed' && !refExpired) {
-
-            const { name, email, id } = refDecoded as decodedDataInterface
-            const { token: newToken, error } = generateAccessToken({ user: { name, email, id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions })
-            const { token: newRefreshedToken, error: refError } = generateAccessToken({ user: { name, email, id }, options: { expiresIn: process.env.REFRESH_TOKEN_EXPIRY } as jwt.SignOptions })
-
-            res.locals.auth = { token: newToken, refreshedToken: newRefreshedToken, id }
-            next()
+        if (req.method === 'OPTIONS') {
+            return next();
         }
 
-        if (!expired && !refExpired) {
-            const { id } = decoded as decodedDataInterface
-            res.locals.auth = { token: userToken, refreshedToken: userRefreshedToken, id }
-            next()
+        const token = authHeader.split(' ')[1];
+        const { decoded, expired, message } = verifyToken(token);
+
+        if (!decoded || expired) {
+            console.log('Token verification failed:', message);
+            throw new Error(message ?? 'access token expired');
         }
 
-        if (expired && refExpired) {
-
-            res.locals.auth = { token: '', refreshedToken: '' }
-
-            throw new Error('session expired, please re-login')
-        }
-
-        if (message === 'jwt malformed' && refMessage === 'jwt expired') {
-
-            throw new Error(refMessage)
-        }
-
+        const { id } = decoded as decodedDataInterface;
+        res.locals.auth = { id };
+        next();
+    } catch (error: any) {
+        winston_logger.error(error.message, error.stack);
+        next(handleDbError(error))
+        // res.status(401).json({
+        //     status: false,
+        //     message: error.message,
+        // });
     }
-    catch (error: any) {
-        winston_logger.error(error.message, error.stack)
-        res.status(400).json({ status: false, message: error.message });
-        return
-    }
-}   
+};

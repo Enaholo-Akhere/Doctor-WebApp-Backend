@@ -2,6 +2,7 @@ import { log, winston_logger } from "@utils/logger"
 import _ from "lodash"
 import Doctor from "models/DoctorSchema"
 import { DoctorSchemaInterface } from "types"
+import Booking from "models/BookingSchema"
 import escapeStringRegexp from "escape-string-regexp"
 
 
@@ -80,6 +81,20 @@ export const deleteDoctorService = async (id: string): Promise<Partial<GetDoctor
         if (!deleteDoctor) throw new Error('doctor not found')
 
         return { message: 'doctor successfully deleted' }
+    }
+    catch (error: any) {
+        winston_logger.error(error.message, error.stack)
+        return { error, message: error.message }
+    }
+}
+
+export const getDoctorProfileService = async (doctorId: string) => {
+    try {
+        const doctor = await Doctor.findById(doctorId).select(['-password', '-__v'])
+        const appointments = await Booking.find({ doctor: doctorId })
+
+        if (!doctor) throw new Error('doctor not found')
+        return { data: doctor, message: 'successful', appointments }
     }
     catch (error: any) {
         winston_logger.error(error.message, error.stack)

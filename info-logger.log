@@ -1,475 +1,338 @@
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-03T23:59:58.229Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"{ _id: NaN }\" (type Object) at path \"_id\" for model \"User\"\u001b[39m","stackName":"CastError: Cast to ObjectId failed for value \"{ _id: NaN }\" (type Object) at path \"_id\" for model \"User\"\n    at SchemaObjectId.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schema\\objectId.js:251:11)\n    at SchemaObjectId.SchemaType.applySetters (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1255:12)\n    at SchemaObjectId.SchemaType.castForQuery (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1673:17)\n    at cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\cast.js:319:34)\n    at model.Query.Query.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:5055:12)\n    at model.Query.Query._castConditions (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2351:10)\n    at model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2674:8)\n    at model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-03T23:59:58.284Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:01:49.489Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"{ _id: NaN }\" (type Object) at path \"_id\" for model \"User\"\u001b[39m","stack":"CastError: Cast to ObjectId failed for value \"{ _id: NaN }\" (type Object) at path \"_id\" for model \"User\"\n    at SchemaObjectId.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schema\\objectId.js:251:11)\n    at SchemaObjectId.SchemaType.applySetters (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1255:12)\n    at SchemaObjectId.SchemaType.castForQuery (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1673:17)\n    at cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\cast.js:319:34)\n    at model.Query.Query.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:5055:12)\n    at model.Query.Query._castConditions (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2351:10)\n    at model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2674:8)\n    at model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-04T00:01:49.543Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:02:54.177Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"NaN\" (type number) at path \"_id\" for model \"User\"\u001b[39m","stack":"CastError: Cast to ObjectId failed for value \"NaN\" (type number) at path \"_id\" for model \"User\"\n    at SchemaObjectId.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schema\\objectId.js:251:11)\n    at SchemaObjectId.SchemaType.applySetters (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1255:12)\n    at SchemaObjectId.SchemaType.castForQuery (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1673:17)\n    at cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\cast.js:390:32)\n    at model.Query.Query.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:5055:12)\n    at model.Query.Query._castConditions (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2351:10)\n    at model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2674:8)\n    at model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-04T00:02:54.270Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:06:17.012Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"NaN\" (type number) at path \"_id\" for model \"User\"\u001b[39m","stack":"CastError: Cast to ObjectId failed for value \"NaN\" (type number) at path \"_id\" for model \"User\"\n    at SchemaObjectId.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schema\\objectId.js:251:11)\n    at SchemaObjectId.SchemaType.applySetters (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1255:12)\n    at SchemaObjectId.SchemaType.castForQuery (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1673:17)\n    at cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\cast.js:390:32)\n    at model.Query.Query.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:5055:12)\n    at model.Query.Query._castConditions (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2351:10)\n    at model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2674:8)\n    at model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-04T00:06:17.066Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:08:07.487Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:16:40.134Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:21:25.490Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:21:35.442Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:23:14.661Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:23:38.608Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:26:11.772Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:34:04.597Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:38:25.108Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:39:27.350Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:40:33.179Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T00:41:01.520Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:42:53.115Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:45:26.083Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:45:54.184Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:47:10.263Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:47:24.993Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T00:49:37.330Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T11:51:33.817Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T11:51:33.820Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2025-06-04T11:51:33.825Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:14:19.629Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:14:19.634Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:17:17.195Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:17:17.205Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:23:17.551Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:23:17.562Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:23:17.565Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:23:25.183Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:23:25.190Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:23:25.194Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:23:28.832Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:23:28.835Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:23:28.836Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:24:46.054Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:24:46.066Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:26:46.665Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:26:46.675Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:26:46.679Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:28:23.979Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:28:23.993Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:28:23.999Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:28:50.898Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:28:50.901Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:28:50.907Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:28:54.171Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:28:54.173Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:28:54.175Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:30:22.241Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:22.252Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:22.265Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:30:27.797Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:27.805Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:27.815Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:30:30.987Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:31.003Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:31.018Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:30:33.396Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:33.399Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:33.402Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:30:43.158Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:43.165Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:43.170Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-04T14:30:48.312Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:48.315Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:30:48.319Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:32:32.989Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:44:10.011Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:45:31.720Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:46:53.988Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:54:16.578Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:54:34.539Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-04T14:57:45.665Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T11:02:59.681Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T11:02:59.687Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2025-06-05T11:02:59.692Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:31:49.566Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:31:49.569Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2025-06-05T12:31:49.572Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:34:10.130Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:38:04.072Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:39:12.129Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:39:18.706Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:39:22.910Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:39:25.486Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:40:31.196Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:43:48.310Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-02.kcorv44.mongodb.net\u001b[39m","stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-pbrskwc-shard-00-02.kcorv44.mongodb.net\n    at Topology.selectServer (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\sdam\\topology.ts:628:30)\n    at async tryOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:201:16)\n    at async executeOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:115:12)\n    at async FindCursor._initialize (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\find_cursor.ts:92:22)\n    at async FindCursor.cursorInit (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:944:21)\n    at async FindCursor.fetchBatch (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:982:7)\n    at async FindCursor.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:612:9)\n    at async Collection.findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\collection.ts:525:17)\n    at async model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2687:15)\n    at async model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:63)","timestamp":"2025-06-05T12:44:18.373Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:44:50.934Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T12:47:39.754Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:46:41.911Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:48:56.625Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:49:48.670Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:51:34.093Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:52:23.653Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:53:16.691Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T13:55:34.227Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T14:01:41.011Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T14:03:41.323Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"a\" (type string) at path \"_id\" for model \"User\"\u001b[39m","timestamp":"2025-06-05T14:03:41.359Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T14:03:55.154Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T14:07:54.589Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"a\" (type string) at path \"_id\" for model \"User\"\u001b[39m","timestamp":"2025-06-05T14:07:54.687Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T14:08:08.476Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T14:28:50.840Z"}
-{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m{\u001b[39m\n\u001b[32m  _id: new ObjectId('683f2dc0a1c9914ec72f9d60'),\u001b[39m\n\u001b[32m  email: 'salomi@gmail.com',\u001b[39m\n\u001b[32m  password: '$2b$10$sMxrVFRXU5./kmvcIV.LeeLmbMWbCfsus1rMnKpwUPu5jow3vt9Bq',\u001b[39m\n\u001b[32m  name: 'Salomi Ono Iboboli',\u001b[39m\n\u001b[32m  photo: 'pexels/png.com',\u001b[39m\n\u001b[32m  role: 'patient',\u001b[39m\n\u001b[32m  gender: 'female',\u001b[39m\n\u001b[32m  appointments: [],\u001b[39m\n\u001b[32m  createdAt: 2025-06-03T17:15:44.833Z,\u001b[39m\n\u001b[32m  updatedAt: 2025-06-05T14:08:08.492Z,\u001b[39m\n\u001b[32m  __v: 0,\u001b[39m\n\u001b[32m  phone: '+2349023948592'\u001b[39m\n\u001b[32m}\u001b[39m","timestamp":"2025-06-05T14:28:51.128Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:29:40.125Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:29:47.952Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:31:59.282Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:35:04.826Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:35:07.614Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:36:20.917Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:38:16.809Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:38:19.673Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-06-05T14:38:29.072Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:38:38.169Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2025-06-05T14:39:13.216Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:39:22.535Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:39:28.603Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:41:18.559Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:41:25.331Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-06-05T14:42:15.105Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-06-05T14:42:26.983Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T14:42:47.799Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:43:14.423Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:43:30.899Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:43:31.153Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:44:48.619Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-06-05T14:47:24.949Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2025-06-05T14:47:49.682Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:48:07.895Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:58:27.633Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:58:28.198Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:58:33.012Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:58:33.166Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-06-05T14:58:51.191Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:59:11.087Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:59:16.366Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:59:19.513Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:59:26.939Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T14:59:27.757Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T14:59:32.721Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:00:28.742Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:00:39.385Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:00:52.534Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","stack":"Error: user not found\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:31:26\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:33:23)\n    at Object.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:14:53)\n    at fulfilled (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-05T15:00:52.723Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:01:02.154Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:01:21.389Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUser with email already exits\u001b[39m","timestamp":"2025-06-05T15:02:02.870Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2025-06-05T15:06:00.373Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-06-05T15:17:36.275Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2025-06-05T15:17:48.864Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","stack":"Error: user not found\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:27:26\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:33:23)\n    at Object.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:14:53)\n    at fulfilled (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-05T15:26:33.507Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T15:31:55.944Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:32:24.132Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:39:49.396Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2025-06-05T15:39:56.620Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:40:25.991Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:40:39.819Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T15:41:01.524Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T16:10:32.825Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T16:11:53.024Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mdoctor not found\u001b[39m","stack":"Error: doctor not found\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\doctorService.ts:27:28\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\doctorService.ts:33:23)\n    at Object.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\doctorService.ts:14:53)\n    at fulfilled (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\doctorService.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-05T16:11:54.332Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T16:12:05.043Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T16:26:23.317Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T18:23:51.050Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to string failed for value \"{}\" (type Object) at path \"specialization\" for model \"Doctor\"\u001b[39m","timestamp":"2025-06-05T18:24:05.880Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:25:54.013Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to string failed for value \"{ name: '', specialization: '' }\" (type Object) at path \"specialization\" for model \"Doctor\"\u001b[39m","timestamp":"2025-06-05T18:25:54.023Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:27:52.399Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to string failed for value \"{ name: '', specialization: '' }\" (type Object) at path \"specialization\" for model \"Doctor\"\u001b[39m","timestamp":"2025-06-05T18:27:52.440Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:29:01.847Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to string failed for value \"{ name: '', specialization: '' }\" (type Object) at path \"specialization\" for model \"Doctor\"\u001b[39m","timestamp":"2025-06-05T18:29:01.878Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:29:16.199Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to string failed for value \"{}\" (type Object) at path \"specialization\" for model \"Doctor\"\u001b[39m","timestamp":"2025-06-05T18:29:16.206Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:35:47.640Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T18:35:47.869Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:37:27.332Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:38:58.128Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T18:39:59.218Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:41:23.817Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mquery.toObject is not a function\u001b[39m","timestamp":"2025-06-05T18:41:23.840Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:42:29.919Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mquery.toObject is not a function\u001b[39m","timestamp":"2025-06-05T18:42:29.935Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:43:43.033Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to string failed for value \"{}\" (type Object) at path \"specialization\" for model \"Doctor\"\u001b[39m","timestamp":"2025-06-05T18:43:43.061Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:47:39.678Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T18:47:39.936Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:49:24.997Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:52:03.462Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T18:58:50.158Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T18:58:50.477Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:05:06.355Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:07:45.885Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T19:07:46.120Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:08:59.005Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T19:08:59.224Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:11:43.478Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T19:11:43.735Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:12:35.539Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:13:40.892Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:17:32.678Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mcannot get doctors\u001b[39m","timestamp":"2025-06-05T19:17:32.947Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:17:53.612Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:18:17.591Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m$regex has to be a string\u001b[39m","timestamp":"2025-06-05T19:18:17.788Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:18:24.320Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mcannot get doctors\u001b[39m","timestamp":"2025-06-05T19:18:24.486Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:18:42.655Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:19:54.139Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:20:02.147Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:23:17.528Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:25:09.041Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:29:35.312Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:34:32.963Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:37:39.459Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:41:00.431Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:43:46.737Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:46:58.387Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T19:48:43.432Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-05T21:13:43.606Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:14:34.488Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:14:48.662Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:15:38.842Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:17:28.631Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:17:53.863Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:18:01.620Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:18:44.156Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-05T21:32:44.284Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T08:58:27.571Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T08:59:39.501Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\u001b[39m","stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\n    at Topology.selectServer (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\sdam\\topology.ts:628:30)\n    at async tryOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:264:16)\n    at async executeOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:115:12)\n    at async FindCursor._initialize (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\find_cursor.ts:92:22)\n    at async FindCursor.cursorInit (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:944:21)\n    at async FindCursor.fetchBatch (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:982:7)\n    at async FindCursor.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:612:9)\n    at async Collection.findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\collection.ts:525:17)\n    at async model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2687:15)\n    at async model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:63)","timestamp":"2025-06-07T09:00:28.739Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T09:01:09.111Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","stack":"Error: user not found\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:35:26\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:33:23)\n    at Object.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:14:53)\n    at fulfilled (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-07T09:01:56.221Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","stack":"Error: user not found\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:35:26\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:33:23)\n    at Object.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:14:53)\n    at fulfilled (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-07T09:01:58.550Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","stack":"Error: user not found\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:35:26\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:33:23)\n    at Object.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:14:53)\n    at fulfilled (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Services\\userService.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-07T09:02:37.983Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T09:04:25.373Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T09:04:43.494Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\u001b[39m","stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\n    at Topology.selectServer (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\sdam\\topology.ts:628:30)\n    at async tryOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:201:16)\n    at async executeOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:115:12)\n    at async FindCursor._initialize (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\find_cursor.ts:92:22)\n    at async FindCursor.cursorInit (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:944:21)\n    at async FindCursor.fetchBatch (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:982:7)\n    at async FindCursor.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:612:9)\n    at async Collection.findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\collection.ts:525:17)\n    at async model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2687:15)\n    at async model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:63)","timestamp":"2025-06-07T09:04:55.394Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\u001b[39m","stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\n    at Topology.selectServer (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\sdam\\topology.ts:628:30)\n    at async tryOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:201:16)\n    at async executeOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:115:12)\n    at async FindCursor._initialize (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\find_cursor.ts:92:22)\n    at async FindCursor.cursorInit (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:944:21)\n    at async FindCursor.fetchBatch (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:982:7)\n    at async FindCursor.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:612:9)\n    at async Collection.findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\collection.ts:525:17)\n    at async model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2687:15)\n    at async model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:63)","timestamp":"2025-06-07T09:05:13.516Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T09:06:54.606Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T09:09:47.408Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T09:10:54.462Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T09:12:23.534Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T09:14:39.651Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T09:15:51.330Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\u001b[39m","timestamp":"2025-06-07T09:16:21.371Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T09:43:03.155Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\u001b[39m","timestamp":"2025-06-07T09:43:33.185Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T11:16:35.442Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T11:17:49.442Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\u001b[39m","stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\n    at Topology.selectServer (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\sdam\\topology.ts:628:30)\n    at async tryOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:264:16)\n    at async executeOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:115:12)\n    at async FindCursor._initialize (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\find_cursor.ts:92:22)\n    at async FindCursor.cursorInit (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:944:21)\n    at async FindCursor.fetchBatch (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:982:7)\n    at async FindCursor.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:612:9)\n    at async Collection.findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\collection.ts:525:17)\n    at async model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2687:15)\n    at async model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:63)","timestamp":"2025-06-07T11:18:38.307Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T11:20:27.170Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\u001b[39m","stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\n    at Topology.selectServer (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\sdam\\topology.ts:628:30)\n    at async tryOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:201:16)\n    at async executeOperation (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\operations\\execute_operation.ts:115:12)\n    at async FindCursor._initialize (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\find_cursor.ts:92:22)\n    at async FindCursor.cursorInit (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:944:21)\n    at async FindCursor.fetchBatch (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:982:7)\n    at async FindCursor.next (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\cursor\\abstract_cursor.ts:612:9)\n    at async Collection.findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongodb\\src\\collection.ts:525:17)\n    at async model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2687:15)\n    at async model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:63)","timestamp":"2025-06-07T11:20:57.196Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T11:21:14.480Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\u001b[39m","timestamp":"2025-06-07T11:21:44.496Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T11:23:54.804Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:29:16.279Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:32:22.162Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:33:36.298Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:35:24.497Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:35:24.709Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:36:40.111Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:36:40.312Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:37:31.954Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:37:38.160Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:38:34.204Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:38:34.482Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:43:12.508Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:43:12.730Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:44:22.012Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:47:17.728Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:47:17.933Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:49:32.693Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:49:32.887Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:51:00.304Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:51:00.555Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T12:59:27.552Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T12:59:27.815Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:01:54.707Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:01:54.979Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:05:03.124Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:05:03.328Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:24:07.599Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:35:30.555Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:35:30.751Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:37:36.946Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:37:37.148Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:37:54.315Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:37:54.550Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:40:03.350Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:40:03.561Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:41:30.336Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:50:32.697Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:51:05.115Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:54:42.407Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:54:42.645Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:55:12.649Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:55:12.862Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:55:22.044Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:55:22.249Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:56:01.584Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:56:01.766Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T13:56:09.367Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T13:56:09.558Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:00:42.193Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:00:48.345Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:01:09.924Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:02:55.363Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:02:55.628Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:03:48.526Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:05:10.658Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:05:30.475Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:06:01.147Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:08:55.853Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:09:37.523Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"841b52535287902c2f75729\" (type string) at path \"_id\" for model \"User\"\u001b[39m","stack":"CastError: Cast to ObjectId failed for value \"841b52535287902c2f75729\" (type string) at path \"_id\" for model \"User\"\n    at SchemaObjectId.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schema\\objectId.js:251:11)\n    at SchemaObjectId.SchemaType.applySetters (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1255:12)\n    at SchemaObjectId.SchemaType.castForQuery (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1673:17)\n    at cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\cast.js:390:32)\n    at model.Query.Query.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:5055:12)\n    at model.Query.Query._castConditions (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2351:10)\n    at model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2674:8)\n    at model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-07T14:09:37.728Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T14:09:56.515Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mCast to ObjectId failed for value \"841b52535287902c2f75729\" (type string) at path \"_id\" for model \"User\"\u001b[39m","stack":"CastError: Cast to ObjectId failed for value \"841b52535287902c2f75729\" (type string) at path \"_id\" for model \"User\"\n    at SchemaObjectId.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schema\\objectId.js:251:11)\n    at SchemaObjectId.SchemaType.applySetters (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1255:12)\n    at SchemaObjectId.SchemaType.castForQuery (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1673:17)\n    at cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\cast.js:390:32)\n    at model.Query.Query.cast (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:5055:12)\n    at model.Query.Query._castConditions (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2351:10)\n    at model.Query._findOne (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:2674:8)\n    at model.Query.exec (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\node_modules\\mongoose\\lib\\query.js:4604:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-07T14:09:56.531Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-07T14:10:28.314Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:23:38.995Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:23:39.186Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:24:08.649Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-07T14:24:08.832Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-07T14:24:17.863Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-06-14T01:07:47.628Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-14T01:07:47.832Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-14T01:09:00.220Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-14T01:09:27.918Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-14T01:09:43.456Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-14T01:12:56.553Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-06-14T01:12:56.786Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2025-06-14T01:14:37.890Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:15:00.578Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:15:57.566Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:16:03.147Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:20:35.144Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:20:35.183Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:24:27.009Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:24:27.021Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:24:37.039Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:24:37.054Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:24:45.066Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:24:45.080Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:30:29.838Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:30:29.899Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:31:52.908Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:31:52.985Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:34:25.849Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:34:25.863Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:34:40.009Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:34:40.023Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:37:49.825Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:37:49.868Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:37:53.657Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:37:53.667Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:53:07.372Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mReview validation failed: doctor: Cast to ObjectId failed for value \"jgjgj\" (type string) at path \"doctor\" because of \"BSONError\"\u001b[39m","timestamp":"2025-11-18T23:53:07.433Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-18T23:58:28.140Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.47.147:27017\u001b[39m","timestamp":"2025-11-18T23:58:49.359Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:00:19.158Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:01:00.224Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:09:58.166Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:09:58.342Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:33:20.531Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:33:20.766Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:33:37.668Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:33:37.848Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:35:21.116Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:35:21.362Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:35:25.244Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:35:25.418Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:35:59.611Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:39:19.238Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:40:23.693Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:42:53.224Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:43:02.699Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:43:07.655Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:43:16.913Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:43:54.485Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:46:00.805Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:46:00.982Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:46:39.085Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:47:14.668Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:52:00.487Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:54:04.816Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:54:55.692Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T00:54:55.885Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:55:23.267Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:56:55.388Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T00:57:59.155Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:00:23.604Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:02:08.999Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:02:18.765Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:05:31.931Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:06:20.774Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T01:06:20.950Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:06:38.071Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T01:06:38.290Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:07:42.586Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-11-19T01:07:42.864Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:08:56.610Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:10:35.087Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:12:18.607Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-11-19T01:15:30.769Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2025-12-04T23:10:32.994Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:13:22.020Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:13:58.340Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:16:59.525Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:20:30.734Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:22:27.507Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:23:42.014Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-12-04T23:23:42.175Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:24:24.885Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-12-04T23:24:25.064Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:25:10.821Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-12-04T23:25:10.988Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:25:18.064Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-12-04T23:25:18.238Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:26:15.217Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permissions\u001b[39m","timestamp":"2025-12-04T23:26:15.375Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:28:31.204Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:28:39.767Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:31:06.874Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:34:41.713Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:38:03.321Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:39:03.790Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:41:14.670Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:42:17.197Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:42:29.538Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:42:49.895Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:43:06.963Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:43:33.793Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:53:04.485Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:55:06.144Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:57:09.839Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-04T23:58:40.716Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T00:08:53.331Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T00:25:38.500Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T00:26:06.266Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T00:26:56.798Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T09:05:23.547Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T09:20:49.628Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:30:19.907Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permission\u001b[39m","timestamp":"2025-12-05T21:30:20.123Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mdoctor not found\u001b[39m","timestamp":"2025-12-05T21:30:20.133Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:32:53.440Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:33:16.459Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:36:25.463Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permission\u001b[39m","timestamp":"2025-12-05T21:36:25.648Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:36:44.967Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permission\u001b[39m","timestamp":"2025-12-05T21:36:45.273Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:14.572Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:24.349Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:31.771Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:37.594Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:39.410Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:41.449Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:43.166Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:44.883Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T21:37:54.267Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T22:25:56.566Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T22:28:03.375Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T22:28:24.280Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T22:31:33.018Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2025-12-05T22:34:27.207Z"}
-{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permission\u001b[39m","timestamp":"2025-12-05T22:40:08.508Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-01-29T17:14:22.175Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-01-30T10:18:41.566Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-01-30T10:18:53.019Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-01-30T10:18:57.019Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-01-30T10:18:59.055Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-01-30T10:19:00.429Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-01-30T10:19:04.879Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-01-30T10:19:08.365Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-01-30T10:19:11.479Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUnexpected socket close\u001b[39m","timestamp":"2026-01-30T11:09:45.163Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-01-30T11:43:44.505Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPlease verify your email to login\u001b[39m","timestamp":"2026-01-30T11:43:50.808Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPlease verify your email to login\u001b[39m","timestamp":"2026-01-30T11:43:59.483Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPlease verify your email to login\u001b[39m","timestamp":"2026-01-30T11:44:08.051Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:51:28.638Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:51:28.725Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mverification link expired\u001b[39m","timestamp":"2026-01-30T14:51:29.069Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mverification link expired\u001b[39m","timestamp":"2026-01-30T14:51:30.003Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:54:50.084Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:55:16.229Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:55:16.257Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:55:47.241Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:55:47.261Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-01-30T14:56:22.176Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-01-30T14:56:27.746Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:57:29.132Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:57:29.211Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:57:34.901Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:57:34.928Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:59:47.664Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:59:47.716Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:59:54.113Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T14:59:54.145Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T15:03:37.317Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T15:03:37.384Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T15:06:15.554Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31minvalid token\u001b[39m","timestamp":"2026-01-30T15:06:15.565Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T15:06:15.639Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31minvalid token\u001b[39m","timestamp":"2026-01-30T15:06:15.650Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T15:06:27.216Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31minvalid token\u001b[39m","timestamp":"2026-01-30T15:06:27.233Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T15:06:27.255Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31minvalid token\u001b[39m","timestamp":"2026-01-30T15:06:27.257Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T15:10:53.662Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-01-30T15:10:53.731Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-12T09:20:46.113Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-12T09:20:46.217Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mSocket 'secureConnect' timed out after 32917ms (connectTimeoutMS: 30000)\u001b[39m","timestamp":"2026-02-12T09:21:16.201Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mSocket 'secureConnect' timed out after 32917ms (connectTimeoutMS: 30000)\u001b[39m","timestamp":"2026-02-12T09:21:16.244Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-13T08:21:08.109Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-13T08:21:08.174Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-02-13T08:24:04.116Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-02-13T08:24:14.398Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-02-13T08:53:35.667Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPlease verify your email to login\u001b[39m","timestamp":"2026-02-13T08:57:15.859Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPlease verify your email to login\u001b[39m","timestamp":"2026-02-13T08:57:22.708Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPlease verify your email to login\u001b[39m","timestamp":"2026-02-13T08:58:11.826Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-13T10:11:49.640Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-13T10:11:49.714Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-02.kcorv44.mongodb.net\u001b[39m","timestamp":"2026-02-13T10:12:19.685Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-02.kcorv44.mongodb.net\u001b[39m","timestamp":"2026-02-13T10:12:19.730Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-13T10:15:24.489Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-13T10:15:24.534Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mverification link expired\u001b[39m","timestamp":"2026-02-13T10:15:24.694Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mverification link expired\u001b[39m","timestamp":"2026-02-13T10:15:25.617Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-02-13T10:18:22.264Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPlease verify your email to login\u001b[39m","timestamp":"2026-02-13T10:20:09.702Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mdoctor not found\u001b[39m","timestamp":"2026-02-13T10:44:20.794Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mdoctor not found\u001b[39m","timestamp":"2026-02-13T10:44:21.746Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-13T11:20:47.255Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-13T11:20:47.353Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mverification link expired\u001b[39m","timestamp":"2026-02-13T11:20:47.517Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mverification link expired\u001b[39m","timestamp":"2026-02-13T11:20:48.308Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-02-13T11:27:29.363Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPlease verify your email to login\u001b[39m","timestamp":"2026-02-13T11:40:04.826Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPlease verify your email to login\u001b[39m","timestamp":"2026-02-13T12:29:58.815Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-02-16T17:51:13.124Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mSocket 'secureConnect' timed out after 30184ms (connectTimeoutMS: 30000)\u001b[39m","timestamp":"2026-02-16T18:09:21.719Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mSocket 'secureConnect' timed out after 30263ms (connectTimeoutMS: 30000)\u001b[39m","timestamp":"2026-02-16T18:11:24.861Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T18:38:19.234Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T18:38:46.076Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T18:39:21.714Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T18:39:35.418Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T18:41:35.981Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T18:46:43.157Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T18:47:14.964Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T19:16:30.601Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T19:17:10.389Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T19:18:25.243Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T19:21:02.731Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T19:21:16.631Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T19:21:39.549Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T19:27:06.696Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T19:27:19.485Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-16T19:29:41.497Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T19:32:32.480Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T19:46:26.266Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T19:46:35.430Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T19:49:14.879Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T19:49:28.712Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T19:51:05.782Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T20:02:12.665Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T20:02:43.460Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T20:02:54.183Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T20:03:09.637Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T20:06:45.800Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T20:23:13.647Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T20:23:35.977Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:24:54.235Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:24:54.462Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:27:04.676Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:27:04.855Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:28:03.743Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:28:03.930Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:28:25.916Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:28:26.108Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:33:19.445Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:33:19.631Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:34:11.441Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:34:11.625Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:39:26.747Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:39:27.051Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:39:36.999Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:39:37.202Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:40:51.928Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:40:52.114Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:42:35.395Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:42:59.398Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:43:15.523Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:43:15.719Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:44:30.706Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:44:30.878Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:47:59.289Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:47:59.477Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:48:44.811Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:48:44.987Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt malformed\u001b[39m","timestamp":"2026-02-16T20:52:07.067Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31muser not found\u001b[39m","timestamp":"2026-02-16T20:52:07.435Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-16T20:52:16.801Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T08:47:21.900Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T08:56:00.333Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T09:41:07.383Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T09:42:29.771Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T09:43:13.905Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T09:43:48.868Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T09:49:38.824Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T10:03:19.413Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T15:22:14.360Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T15:25:10.974Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T15:33:51.931Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-19T15:37:37.261Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T15:38:26.567Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T15:40:58.367Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-02-19T15:42:20.354Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mread ECONNRESET\u001b[39m","timestamp":"2026-02-19T15:43:32.880Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T15:43:40.527Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mrefreshed token not found\u001b[39m","timestamp":"2026-02-19T15:45:33.829Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:08:14.726Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:10:18.078Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:11:27.015Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:11:27.019Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2026-02-19T16:11:27.039Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permission\u001b[39m","timestamp":"2026-02-19T16:11:27.216Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:12:15.140Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:12:15.204Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2026-02-19T16:12:15.259Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permission\u001b[39m","timestamp":"2026-02-19T16:12:15.432Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:12:27.626Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:12:27.629Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2026-02-19T16:12:27.644Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mread ECONNRESET\u001b[39m","timestamp":"2026-02-19T16:12:49.306Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:12:58.997Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:12:59.000Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2026-02-19T16:12:59.012Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\u001b[39m","timestamp":"2026-02-19T16:13:29.041Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:15:46.927Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:15:46.930Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2026-02-19T16:15:46.944Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-01.kcorv44.mongodb.net\u001b[39m","timestamp":"2026-02-19T16:16:16.959Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:16:27.939Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:16:27.943Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2026-02-19T16:16:27.963Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permission\u001b[39m","timestamp":"2026-02-19T16:16:30.119Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:35:40.473Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:35:40.478Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2026-02-19T16:35:40.521Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mAccess denied: insufficient permission\u001b[39m","timestamp":"2026-02-19T16:35:40.697Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:37:49.446Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T16:37:49.449Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31msession expired, please re-login\u001b[39m","timestamp":"2026-02-19T16:37:49.464Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mread ECONNRESET\u001b[39m","timestamp":"2026-02-19T16:38:19.481Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T17:31:38.116Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T17:31:38.124Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T19:24:17.116Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T19:24:17.122Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T19:40:05.864Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T19:40:05.867Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:00:06.658Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:00:06.670Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:00:06.703Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:00:06.706Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:04:09.166Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:04:09.174Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:04:09.205Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:04:09.209Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:05:32.368Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:05:32.473Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:05:32.720Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:05:32.924Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:08:29.885Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:14:22.168Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:14:58.677Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:17:11.611Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-19T20:18:39.732Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:26:59.036Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:28:30.408Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:33:03.910Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T20:41:47.780Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:00:05.645Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:00:05.688Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-19T21:00:05.747Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:06:49.703Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:06:49.741Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-19T21:06:49.809Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:13:50.847Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:13:50.963Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-19T21:13:51.094Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-02-19T21:25:22.161Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:29:10.168Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:29:10.216Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-19T21:29:10.250Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:36:41.270Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:36:41.289Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-19T21:36:41.347Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:50:40.592Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:50:40.599Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-19T21:50:40.813Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:56:11.891Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T21:56:11.907Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-19T21:56:12.025Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T22:04:44.971Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T22:04:44.975Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-19T22:04:45.239Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T22:22:04.345Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T22:22:04.438Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-19T22:22:04.580Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T22:34:36.445Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-19T22:34:36.456Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-19T22:34:36.576Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T09:48:50.824Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T09:48:50.840Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T09:48:50.882Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T09:48:50.891Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T09:57:41.285Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T09:57:41.291Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T09:57:41.340Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T09:57:41.342Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:01:17.972Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:01:17.982Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:01:18.085Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:01:18.088Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:29:22.899Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:29:22.902Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:29:22.943Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:29:22.952Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-02-20T10:37:34.583Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:43:02.234Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:43:02.236Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:43:02.295Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:43:02.305Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:47:54.702Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:47:54.710Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:47:54.760Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T10:47:54.763Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:03:49.272Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:03:49.277Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:08:03.781Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:08:03.786Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:12:55.692Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:12:55.696Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:15:16.338Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:15:16.342Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:24:33.929Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:24:33.931Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:28:11.268Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:28:11.282Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:29:46.395Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:29:46.399Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:29:46.459Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T11:29:46.489Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T13:10:56.015Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T13:10:56.046Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mSocket 'secureConnect' timed out after 4746296ms (connectTimeoutMS: 30000)\u001b[39m","timestamp":"2026-02-20T13:11:26.361Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-20T13:37:12.059Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUnhandled Rejection found:  DB Connection Failed\u001b[39m","stack":"Error: DB Connection Failed\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Starters\\DatabaseConnect.ts:18:15\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Starters\\DatabaseConnect.ts:33:23)\n    at Object.throw (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Starters\\DatabaseConnect.ts:14:53)\n    at rejected (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Starters\\DatabaseConnect.ts:6:65)","timestamp":"2026-02-20T13:48:39.874Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-20T13:49:25.443Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUnhandled Rejection found:  DB Connection Failed\u001b[39m","stack":"Error: DB Connection Failed\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Starters\\DatabaseConnect.ts:18:15\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Starters\\DatabaseConnect.ts:33:23)\n    at Object.throw (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Starters\\DatabaseConnect.ts:14:53)\n    at rejected (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Starters\\DatabaseConnect.ts:6:65)","timestamp":"2026-02-20T13:49:48.491Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mUnhandled Rejection found:  DB Connection Failed\u001b[39m","stack":"Error: DB Connection Failed\n    at C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Starters\\DatabaseConnect.ts:18:15\n    at step (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Starters\\DatabaseConnect.ts:33:23)\n    at Object.throw (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Starters\\DatabaseConnect.ts:14:53)\n    at rejected (C:\\Users\\MY PC\\Documents\\dr-booking-webapp\\backend\\src\\Starters\\DatabaseConnect.ts:6:65)","timestamp":"2026-02-20T13:50:33.001Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mSocket 'secureConnect' timed out after 30237ms (connectTimeoutMS: 30000)\u001b[39m","timestamp":"2026-02-20T19:35:20.533Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mSocket 'secureConnect' timed out after 30213ms (connectTimeoutMS: 30000)\u001b[39m","timestamp":"2026-02-20T19:39:21.845Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mSocket 'secureConnect' timed out after 38262ms (connectTimeoutMS: 30000)\u001b[39m","timestamp":"2026-02-20T19:44:08.830Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.202:27017\u001b[39m","timestamp":"2026-02-20T20:04:05.942Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-20T20:10:30.532Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.202:27017\u001b[39m","timestamp":"2026-02-20T20:19:00.363Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T20:24:18.905Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-20T20:24:18.943Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.202:27017\u001b[39m","timestamp":"2026-02-20T20:26:58.446Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.202:27017\u001b[39m","timestamp":"2026-02-20T20:27:36.948Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-20T20:51:58.436Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-20T20:52:18.387Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-20T21:01:44.042Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-20T21:02:23.065Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-21T10:34:15.820Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-21T10:34:15.823Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-21T10:34:15.833Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-21T10:34:15.836Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-02.kcorv44.mongodb.net\u001b[39m","timestamp":"2026-02-21T10:34:45.955Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mSocket 'secureConnect' timed out after 35652ms (connectTimeoutMS: 30000)\u001b[39m","timestamp":"2026-02-21T10:35:01.492Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-21T10:35:26.466Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-21T10:39:14.374Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-21T10:41:48.298Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-21T10:42:18.323Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-21T10:46:33.766Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-21T10:48:16.953Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-21T10:51:41.096Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-21T10:58:07.704Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-21T10:58:37.737Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.188:27017\u001b[39m","timestamp":"2026-02-21T11:10:59.213Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-21T11:38:18.041Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-21T11:38:18.076Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-21T11:40:22.968Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-02-21T11:40:22.977Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-02.kcorv44.mongodb.net\u001b[39m","timestamp":"2026-02-21T11:40:53.189Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mconnect ETIMEDOUT 65.62.2.195:27017\u001b[39m","timestamp":"2026-02-21T11:41:23.277Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-21T12:16:08.667Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-21T12:19:08.641Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-21T12:20:19.088Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mtoken not found\u001b[39m","timestamp":"2026-02-21T12:23:15.432Z"}

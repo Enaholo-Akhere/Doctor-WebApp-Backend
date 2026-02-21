@@ -1,10 +1,18 @@
 import { log, winston_logger } from "@utils/logger"
 import _ from "lodash"
+import { UserSchemaInterface, DoctorSchemaInterface } from "types"
 import Users from "models/UserSchema"
-import { UserSchemaInterface } from "types"
+import BookingSchema from "models/BookingSchema"
+import Doctors from "models/DoctorSchema"
 
 interface GetUserServiceResult {
     data: UserSchemaInterface[] | UserSchemaInterface;
+    message: string;
+    error?: any;
+}
+
+interface GetDoctorServiceResult {
+    data: DoctorSchemaInterface[];
     message: string;
     error?: any;
 }
@@ -69,5 +77,35 @@ export const deleteUserService = async (id: string): Promise<Partial<GetUserServ
     catch (error: any) {
         winston_logger.error(error.message, error.stack)
         return { error }
+    }
+}
+
+export const getUserProfileService = async (id: string) => {
+    try {
+        const user = await Users.findById(id).select(['-password', '-__v'])
+
+        if (!user) throw new Error('user not found')
+        return { data: user, message: 'successful' }
+    }
+    catch (error: any) {
+        winston_logger.error(error.message, error.stack)
+        return { error, message: error.message }
+    }
+}
+
+export const getMyAppointmentsService = async (id: string): Promise<Partial<GetDoctorServiceResult>> => {
+    try {
+        const bookings = await BookingSchema.find({ user: id });
+
+        const doctorIds = bookings.map(booking => booking.doctor.id);
+
+        const doctors = await Doctors.find({ _id: { $in: doctorIds } }).select(['-password', '-__v']);
+
+        return { data: doctors, message: 'successful' }
+    }
+    catch (error: any) {
+        console.log('hello world')
+        winston_logger.error(error.message, error.stack)
+        return { error, message: error.message }
     }
 }
