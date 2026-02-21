@@ -6,13 +6,25 @@ const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   name: { type: String, required: true },
+  verified: { type: Boolean, default: false },
   phone: { type: String },
-  photo: { type: String },
+  photo: {
+    imageUrl: {
+      type: String,
+      required: true,
+    },
+    publicId: {
+      type: String,
+      required: true,
+    },
+  },
   ticketPrice: { type: Number },
-  role: { type: String },
+  role: {
+    type: String,
+    enum: ["doctor", "admin"],
+    default: "doctor",
+  },
   id: { type: String },
-  token: { type: String },
-  refreshedToken: { type: String },
 
   // Fields for doctors only
   specialization: { type: String },
@@ -40,6 +52,6 @@ const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
     default: "pending",
   },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
-});
+}, { timestamps: true });
 
 export default mongoose.model("Doctor", DoctorSchema);
