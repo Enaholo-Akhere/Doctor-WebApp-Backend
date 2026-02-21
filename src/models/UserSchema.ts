@@ -1,8 +1,5 @@
-
 import mongoose from "mongoose";
 import { UserSchemaInterface } from "types";
-
-
 
 
 const UserSchema = new mongoose.Schema<UserSchemaInterface>({
@@ -11,17 +8,26 @@ const UserSchema = new mongoose.Schema<UserSchemaInterface>({
   password: { type: String, required: true },
   name: { type: String, required: true },
   phone: { type: String },
-  photo: { type: String },
-  token: { type: String },
-  refreshedToken: { type: String },
+  verified: { type: Boolean, default: false },
+  photo: {
+    imageUrl: {
+      type: String,
+      required: true,
+    },
+    publicId: {
+      type: String,
+      required: true,
+    },
+  },
   role: {
     type: String,
-    enum: ["patient", "admin"],
+    enum: ["patient", "admin", "doctor"],
     default: "patient",
   },
   gender: { type: String, enum: ["male", "female", "other"] },
   bloodType: { type: String },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
-});
+},
+  { timestamps: true });
 
 export default mongoose.model("User", UserSchema);
