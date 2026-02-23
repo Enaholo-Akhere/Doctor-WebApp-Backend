@@ -1,3 +1,4 @@
+import { appError } from "@utils/appError";
 import { Response, Request, NextFunction } from "express";
 import { AnyZodObject } from "zod";
 
@@ -11,7 +12,10 @@ const validate = (schema: AnyZodObject) => (req: Request, res: Response, next: N
         next();
     }
     catch (error: any) {
-        res.status(400).json({ message: error.errors[0].message, status: false, data: {} });
+        next(appError({
+            message: error.errors?.[0]?.message || "Validation failed",
+            statusCode: 400,
+        }))
     }
 }
 export default validate;

@@ -57,7 +57,6 @@ export const deleteDoctor = async (req: Request, res: Response) => {
 
 export const getDoctorProfile = async (req: Request, res: Response) => {
     const doctorId = res.locals.auth.id
-    console.log('doctorId', doctorId)
 
     const { data, message, error, appointments } = await getDoctorProfileService(doctorId)
     if (error) res.status(500).json({ message, status: false, data: {} })

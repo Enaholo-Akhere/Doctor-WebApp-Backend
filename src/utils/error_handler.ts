@@ -7,9 +7,9 @@ const uncaughtException = () => {
         process.exit(1);
     });
 
-    process.on('unhandledRejection', (error: Error) => {
-        winston_logger.error('Unhandled Rejection found: ', error);
-        winston_exceptions.error(error.message, error.stack);
+    process.on('unhandledRejection', (reason: Error, promise) => {
+        winston_logger.error('Unhandled Rejection found: ', reason);
+        winston_exceptions.error(reason.message, reason.stack);
         process.exit(1);
     });
 }

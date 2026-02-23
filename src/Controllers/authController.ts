@@ -1,8 +1,9 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { loginServices, refreshedTokenService, registerService } from "Services/authService";
 import { decodedData, UserSchemaInterface } from "types";
 import { sendVerificationEmail } from "@utils/message/nodemailer";
 import { verifyEmailService } from "Services/authService";
+import { handleError } from "@utils/handledError";
 
 
 interface UserAuthInterface {
@@ -34,7 +35,7 @@ export const register = async (req: Request<{}, {}, UserSchemaInterface>, res: R
         res.status(500).json({ message: "Registration failed", status: false, data: {} });
     }
 
-    const { data, message, error, token, refreshedToken } = result as unknown as { data: decodedData, message: string, error: any, token: string, refreshedToken: string };
+    const { data, message, error, token } = result as unknown as { data: decodedData, message: string, error: any, token: string, refreshedToken: string };
 
     if (error) {
         res.status(500).json({ message, status: false, data: {} });
@@ -45,14 +46,16 @@ export const register = async (req: Request<{}, {}, UserSchemaInterface>, res: R
     res.status(200).json({ message, status: true, data: {} });
 }
 
-export const login = async (req: Request, res: Response) => {
+export const login = async (req: Request, res: Response, next: NextFunction) => {
     const body: UserSchemaInterface = req.body
 
     if (!body) res.status(400).json({ message: 'Please input all fields', status: false, data: {} })
 
     const { data, error, message, token, refreshedToken } = await loginServices(body)
 
-    if (error) res.status(500).json({ message, status: false, data: {} })
+    if (error) {
+        next(handleError(error))
+    }
     const MAX_AGE = Number(process.env.MAX_AGE)
 
     res.cookie('refreshedToken', refreshedToken, {
@@ -66,18 +69,17 @@ export const login = async (req: Request, res: Response) => {
 
 }
 
-export const verifyEmail = async (req: Request, res: Response) => {
+export const verifyEmail = async (req: Request, res: Response, next: NextFunction) => {
     const { id, token } = req.query;
     const { message, error } = await verifyEmailService(id, token)
-    console.log('Verification result:', message);
 
     if (error) {
-        res.status(500).json({ message: error.message })
+        next(handleError(error))
     }
     res.status(200).json({ message })
 }
 
-export const refreshToken = async (req: Request, res: Response) => {
+export const refreshToken = async (req: Request, res: Response, next: NextFunction) => {
     const refreshedToken = req.cookies?.refreshedToken;
 
     if (!refreshedToken) {
@@ -91,13 +93,8 @@ export const refreshToken = async (req: Request, res: Response) => {
     const { token, error, message } = await refreshedTokenService(refreshedToken);
 
     if (error) {
-        res.status(401).json({
-            status: false,
-            message,
-            token: null
-        });
+        next(handleError(error))
     }
-
     res.status(200).json({
         status: true,
         token,
