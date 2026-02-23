@@ -14,14 +14,6 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-// testing the transporter
-transporter.verify((err, success: Boolean) => {
-    if (err) {
-        console.log('error from nodemailer', err.message);
-    } else {
-        console.log('nodemailer', success);
-    }
-});
 
 const sendVerificationEmail = async (data: decodedData, token: string) => {
     const mailOptions = <mailOptions>{

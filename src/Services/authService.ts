@@ -14,7 +14,7 @@ import Users from "models/UserSchema"
 
 export const registerService = async (body: UserSchemaInterface) => {
 
-    const { email, password, photo, name, role, gender } = body
+    const { email, password, photo, name, role, gender, phone, bloodType } = body
 
     try {
 
@@ -40,6 +40,8 @@ export const registerService = async (body: UserSchemaInterface) => {
                 role,
                 gender,
                 verified: false,
+                phone,
+                bloodType
             })
             await newUser.save()
 
@@ -62,7 +64,9 @@ export const registerService = async (body: UserSchemaInterface) => {
                 name,
                 role,
                 gender,
-                verified: false
+                verified: false,
+                phone,
+                bloodType
             })
             await newDoctor.save()
 

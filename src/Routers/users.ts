@@ -4,12 +4,16 @@ import { sanitizedUser } from 'Middleware/sanitizedUser';
 import validate from 'DTO_Validations/zod_validate';
 import { updateUserSchema } from 'DTO_Validations/zod_schemas';
 import { restrict } from 'Middleware/auth';
+import { upload } from 'config/cloudStorageMulter';
+import { validateImage } from 'Middleware/validateImage';
+import { asyncHandler } from '@utils/asyncHandler';
+import { multerErrorHandler } from 'Middleware/multerErrorHandler';
 
 const router = express.Router();
 
 router.get('/', [sanitizedUser, restrict(['admin'])], getAllUsers)
 router.get('/:id', [sanitizedUser, restrict(['patient'])], getUserById)
-router.put('/:id', [sanitizedUser, restrict(['patient']), validate(updateUserSchema)], updateUser)
+router.put('/:id', [upload.single('photo'), multerErrorHandler, validateImage, validate(updateUserSchema)], asyncHandler(updateUser))
 router.delete('/:id', [sanitizedUser, restrict(['patient'])], deleteUser)
 router.get('/appointments/my-appointments', [sanitizedUser, restrict(['patient'])], getMyAppointments)
 router.get('/profile/me', [sanitizedUser, restrict(['patient'])], getMyProfile)
