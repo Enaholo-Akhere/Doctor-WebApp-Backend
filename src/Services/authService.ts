@@ -1,6 +1,5 @@
-import { refreshStore } from './../utils/generateTokens';
 import jwt from 'jsonwebtoken';
-import { log, winston_logger } from "@utils/logger"
+import { winston_logger } from "@utils/logger"
 import Doctor from "models/DoctorSchema";
 import User from "models/UserSchema";
 import { decodedDataInterface, UserSchemaInterface } from "types"
@@ -8,7 +7,6 @@ import bcrypt from "bcryptjs"
 import { generateAccessToken } from "@utils/generateTokens";
 import _ from 'lodash'
 import QueryString from "qs"
-import { updateDoctor } from 'Controllers/doctorController';
 import { verifyToken } from "@utils/generateTokens"
 import Users from "models/UserSchema"
 
@@ -203,4 +201,3 @@ export const refreshedTokenService = async (refreshedToken: string) => {
         };
     }
 };
-
