@@ -24,7 +24,6 @@ export const registerService = async (body: UserSchemaInterface) => {
         }
         if (user) throw new Error('User with email already exits')
 
-        // Hash the password
         const salt = await bcrypt.genSalt(10);
 
         const hashedPassword = await bcrypt.hash(password, salt)
