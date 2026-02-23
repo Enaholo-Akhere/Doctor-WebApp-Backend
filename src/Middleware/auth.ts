@@ -2,7 +2,7 @@ import Users from "models/UserSchema";
 import Doctors from "models/DoctorSchema";
 import { NextFunction, Request, Response } from "express";
 import { winston_logger } from "@utils/logger";
-import { handleDbError } from "@utils/handledError";
+import { handleError } from "@utils/handledError";
 
 export const restrict = (roles: string[]) => async (req: Request, res: Response, next: NextFunction) => {
     const { id } = res.locals.auth;
@@ -24,7 +24,7 @@ export const restrict = (roles: string[]) => async (req: Request, res: Response,
     }
     catch (error: any) {
         winston_logger.error(error.message, error.stack)
-        next(handleDbError(error))
+        next(handleError(error))
         // res.status(403).json({ message: error.message, status: false })
     }
 }
