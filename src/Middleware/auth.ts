@@ -25,6 +25,5 @@ export const restrict = (roles: string[]) => async (req: Request, res: Response,
     catch (error: any) {
         winston_logger.error(error.message, error.stack)
         next(handleError(error))
-        // res.status(403).json({ message: error.message, status: false })
     }
 }
