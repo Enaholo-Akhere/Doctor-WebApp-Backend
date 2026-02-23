@@ -52,15 +52,7 @@ export const getUserByIdService = async (id: string): Promise<Partial<GetUserSer
 
 export const updateUserService = async ({ id, body }: UpdateUser): Promise<Partial<GetUserServiceResult>> => {
 
-    const allowedFields = [
-        "name",
-        "phone",
-        "photo",
-        "bloodType",
-        "gender"
-    ];
-
-    const userData = _.pick(body, allowedFields);
+    const userData = { ...body, photo: body?.photo }
 
     try {
 
