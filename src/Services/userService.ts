@@ -52,10 +52,11 @@ export const getUserByIdService = async (id: string): Promise<Partial<GetUserSer
 
 export const updateUserService = async ({ id, body }: UpdateUser): Promise<Partial<GetUserServiceResult>> => {
 
+    const userData = { ...body, photo: body?.photo }
+
     try {
 
-        const updatedUser = await Users.findByIdAndUpdate(id, body, { new: true, runValidators: true }).select(['-password', '-__v'])
-
+        const updatedUser = await Users.findByIdAndUpdate(id, userData, { new: true, runValidators: true }).select(['-password', '-__v'])
         if (!updatedUser) throw new Error("user not found")
 
         return { data: updatedUser, message: 'user updated successfully' }
@@ -104,7 +105,6 @@ export const getMyAppointmentsService = async (id: string): Promise<Partial<GetD
         return { data: doctors, message: 'successful' }
     }
     catch (error: any) {
-        console.log('hello world')
         winston_logger.error(error.message, error.stack)
         return { error, message: error.message }
     }

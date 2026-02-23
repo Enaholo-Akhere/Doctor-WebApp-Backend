@@ -44,9 +44,9 @@ export const updateUserSchema = z.object({
             }, {
                 message: "Invalid phone number"
             }).optional(),
-        photo: z.string().optional(),
         role: z.enum(['patient', 'doctor']).optional(),
-        gender: z.enum(['male', 'female', 'other']).optional()
+        gender: z.enum(['male', 'female', 'other']).optional(),
+        bloodType: z.string().max(3, 'Invalid blood type').min(2, 'Invalid blood type').optional()
     })
 })
 

@@ -1,8 +1,6 @@
-// utils/handleDbError.ts
 import { appError } from "./appError";
 
-export const handleDbError = (err: any) => {
-    console.log('error from HandledError', err)
+export const handleError = (err: any) => {
     if (
         err.name === "MongoNetworkError" ||
         err.name === "MongoServerSelectionError" ||
@@ -11,15 +9,22 @@ export const handleDbError = (err: any) => {
         err.message?.includes("ENOTFOUND")
     ) {
         return appError({
-            message: "Network error, Please try again shortly.",
+            message: "Network error, please try again shortly.",
             statusCode: 503,
-            extras: { originalError: err } // optional, for logs
+            extras: { originalError: err }
         });
     } else if (err.message === 'token not found') {
         return appError({
             message: "Unauthorized. Token not found.",
             statusCode: 403
         });
+    } else if (err.message === 'jwt expired') {
+        return appError({
+            message: "Unauthorized. Access token expired.",
+            statusCode: 401
+        });
     }
-    return appError({ message: "Something went wrong. Please try again.", statusCode: 500 });
+
+
+    return appError({ message: err.message, statusCode: 500 });
 };
