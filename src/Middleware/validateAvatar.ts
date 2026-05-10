@@ -1,4 +1,3 @@
-// middlewares/validateAvatar.ts
 import { validateAvatarFile } from "@utils/validateAvatarFile";
 import { Request, Response, NextFunction } from "express";
 
@@ -11,6 +10,6 @@ export const validateAvatar = (
         validateAvatarFile(req.file);
         next();
     } catch (err) {
-        next(err); // ✅ forward ONLY
+        next(err);
     }
 };

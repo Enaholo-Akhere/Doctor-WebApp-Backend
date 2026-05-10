@@ -12,6 +12,7 @@ const validate = (schema: AnyZodObject) => (req: Request, res: Response, next: N
         next();
     }
     catch (error: any) {
+        console.error("Validation error:", error.errors);
         next(appError({
             message: error.errors?.[0]?.message || "Validation failed",
             statusCode: 400,

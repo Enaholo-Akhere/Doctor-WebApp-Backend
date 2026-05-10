@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.forgotPasswordTemplate = void 0;
+var url_dev = 'http://localhost:5173/';
+var url_prod = 'https://e-folio-enaholo-akhere.netlify.app';
+var forgotPasswordTemplate = function (data) {
+    var baseUrl = process.env.NODE_ENV === 'production' ? url_prod : url_dev;
+    var resetPassword = "<!DOCTYPE html>\n<html>\n<head>\n    <title>Password Reset Email</title>\n</head>\n<body style=\"font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;\">\n    <table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" style=\"background-color: #f4f4f4;\">\n        <tr>\n            <td align=\"center\" style=\"padding: 20px 0;\">\n                <table width=\"600\" style=\"background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\">\n                    <tr>\n                        <td align=\"center\">\n                            <h1>Password Reset</h1>\n                        </td>\n                    </tr>\n                    <tr>\n                        <td>\n                            <p>Hello,</p>\n                            <p>You have requested a password reset for your account. To reset your password, click the button below:</p>\n                            <p style=\"text-align: center;\">\n                                <a href=\"".concat(baseUrl, "/?token=").concat(data.reset_token, "&tm=Xbgs1Q\" style=\"display: inline-block; padding: 10px 20px; background-color: #007BFF; color: #fff; text-decoration: none; border-radius: 3px;\">Reset Password</a>\n                            </p>\n                            <p>If you didn't request this reset, please ignore this email; your password won't be changed.</p>\n                          \n                            <p>This link will expire in exactly <b>30 minutes</b> from now.</p>\n                          <p>Thank you,</p>\n                        </td>\n                    </tr>\n                     <tr>\n                         <td  style=\"text-align: center; padding: 10px; background-color: #f4f4f4;\">\n                            <p>&copy; 2023 Enaholo Akhere. All rights reserved.</p>\n                     </td>\n                    </tr>\n                </table>\n            </td>\n        </tr>\n    </table>\n</body>\n</html>\n");
+    return resetPassword;
+};
+exports.forgotPasswordTemplate = forgotPasswordTemplate;
+//# sourceMappingURL=forgotPasswordTemplate.js.map

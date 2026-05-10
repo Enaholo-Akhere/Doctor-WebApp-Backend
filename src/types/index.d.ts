@@ -19,28 +19,48 @@ export interface ReviewSchemaInterface {
     reviewText: string;
     rating: number
 }
+interface qualifications {
+    degree: string;
+    university: string;
+    startDate: string;
+    endDate: string;
+}
+export interface experiences {
+    hospital: string;
+    position: string;
+    startDate: string;
+    endDate: string;
+}
 
+export interface timeSlots {
+    startingTime: string;
+    endingTime: string;
+    day: string;
+}
 export interface DoctorSchemaInterface {
     id: mongoose.ObjectId
     email: string;
     password: string;
     name: string;
     phone: string;
+    gender: "male" | "female";
     photo?: { imageUrl: string | undefined, publicId: string | undefined };
     ticketPrice: number;
     role: string;
     specialization: string;
-    qualifications: string[];
-    experiences: string[];
+    qualifications: qualifications[];
     bio: string;
     about: string;
-    timeSlots: string[];
+    timeSlots: timeSlots[];
+    experiences: experiences[];
     reviews: mongoose.ObjectId[]
     averageRating: number;
     totalRating: number;
     isApproved: "pending" | "approved" | "cancelled";
     appointments: mongoose.ObjectId[];
     verified: boolean;
+    photo?: { imageUrl: string | undefined, publicId: string | undefined };
+
 }
 
 export interface BookSchemaInterface {

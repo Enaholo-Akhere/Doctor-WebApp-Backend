@@ -5,7 +5,6 @@ import { DoctorSchemaInterface } from "types"
 import Booking from "models/BookingSchema"
 import escapeStringRegexp from "escape-string-regexp"
 
-
 interface GetDoctorServiceResult {
     data: DoctorSchemaInterface[] | DoctorSchemaInterface;
     message: string;
@@ -14,14 +13,15 @@ interface GetDoctorServiceResult {
 
 interface GetDoctorById { id: string, body: DoctorSchemaInterface }
 
-export const getDoctorService = async ({ name, specialization }: { name: string, specialization: string }): Promise<Partial<GetDoctorServiceResult>> => {
-    log(`Queries, ${specialization} ${name}`)
-    const escapedName = name ? escapeStringRegexp(String(name)) : '';
-    const escapedSpec = specialization ? escapeStringRegexp(String(specialization)) : '';
+export const getDoctorService = async (search?: string): Promise<Partial<GetDoctorServiceResult>> => {
+    const escapedName = search ? escapeStringRegexp(String(search)) : '';
+    const escapedSpec = search ? escapeStringRegexp(String(search)) : '';
+
+
     try {
         let doctor: DoctorSchemaInterface[];
 
-        if (name || specialization) {
+        if (search) {
             doctor = await Doctor.find({
                 isApproved: 'pending',
                 $or: [
@@ -33,12 +33,13 @@ export const getDoctorService = async ({ name, specialization }: { name: string,
             doctor = await Doctor.find().select(['-password', '-__v']);
         }
 
-        if (!doctor.length) throw new Error('cannot get doctors');
+        if (!doctor.length) throw new Error('doctor not found');
 
         return { data: doctor, message: 'successful' };
     }
     catch (error: any) {
         winston_logger.error(error.message, error.stack);
+        console.log('error message', error.message);
         return { error, message: error.message, data: [] };
     }
 }
@@ -59,12 +60,20 @@ export const getDoctorByIdService = async (id: string): Promise<Partial<GetDocto
     }
 }
 
-export const updateDoctorService = async ({ id, body }: GetDoctorById): Promise<Partial<GetDoctorServiceResult>> => {
+export const updateDoctorService = async ({ id, userData }: { id: string, userData: Partial<DoctorSchemaInterface> }): Promise<Partial<GetDoctorServiceResult>> => {
+
+
+    const allowedFields = {
+        ...userData,
+        qualifications: JSON.parse(userData.qualifications as any || '[]'),
+        experiences: JSON.parse(userData.experiences as any || '[]'),
+        timeSlots: JSON.parse(userData.timeSlots as any || '[]'),
+    }
+
 
     try {
 
-
-        const updatedDoctor = await Doctor.findByIdAndUpdate(id, body, { new: true, runValidators: true }).select(['-password', '-__v'])
+        const updatedDoctor = await Doctor.findByIdAndUpdate(id, allowedFields, { new: true, runValidators: true }).select(['-password', '-__v'])
 
         if (!updatedDoctor) throw new Error("doctor not found")
 
@@ -92,7 +101,7 @@ export const deleteDoctorService = async (id: string): Promise<Partial<GetDoctor
 
 export const getDoctorProfileService = async (doctorId: string) => {
     try {
-        const doctor = await Doctor.findById(doctorId).select(['-password', '-__v'])
+        const doctor = await Doctor.findById(doctorId).select(['-password', '-__v']);
         const appointments = await Booking.find({ doctor: doctorId })
 
         if (!doctor) throw new Error('doctor not found')

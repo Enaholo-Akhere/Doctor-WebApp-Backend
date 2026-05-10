@@ -18,13 +18,13 @@ export const handleError = (err: any) => {
             message: "Unauthorized. Token not found.",
             statusCode: 403
         });
-    } else if (err.message === 'jwt expired') {
+    } else if (err.message === 'jwt expired' || err.message === 'jwt malformed') {
         return appError({
             message: "Unauthorized. Access token expired.",
             statusCode: 401
         });
     }
-
+    console.error('Unhandled error:', err.message);
 
     return appError({ message: err.message, statusCode: 500 });
 };

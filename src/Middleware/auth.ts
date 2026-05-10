@@ -5,7 +5,7 @@ import { winston_logger } from "@utils/logger";
 import { handleError } from "@utils/handledError";
 
 export const restrict = (roles: string[]) => async (req: Request, res: Response, next: NextFunction) => {
-    const { id } = res.locals.auth;
+    const { audience, id } = res.locals.auth;
 
     try {
         const [userData, doctorData] = await Promise.all([

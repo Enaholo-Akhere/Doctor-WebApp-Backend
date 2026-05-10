@@ -33,12 +33,14 @@ export const register = async (req: Request<{}, {}, UserSchemaInterface>, res: R
     const result = await registerService(bodyWithImage) as Partial<UserAuthInterface>;
     if (!result) {
         res.status(500).json({ message: "Registration failed", status: false, data: {} });
+        return;
     }
 
     const { data, message, error, token } = result as unknown as { data: decodedData, message: string, error: any, token: string, refreshedToken: string };
 
     if (error) {
         res.status(500).json({ message, status: false, data: {} });
+        return;
     }
 
     await sendVerificationEmail(data, token);
@@ -49,12 +51,16 @@ export const register = async (req: Request<{}, {}, UserSchemaInterface>, res: R
 export const login = async (req: Request, res: Response, next: NextFunction) => {
     const body: UserSchemaInterface = req.body
 
-    if (!body) res.status(400).json({ message: 'Please input all fields', status: false, data: {} })
+    if (!body) {
+        res.status(400).json({ message: 'Please input all fields', status: false, data: {} })
+        return;
+    }
 
     const { data, error, message, token, refreshedToken } = await loginServices(body)
 
     if (error) {
-        next(handleError(error))
+        next(handleError(error));
+        return;
     }
     const MAX_AGE = Number(process.env.MAX_AGE)
 
@@ -71,16 +77,19 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 
 export const verifyEmail = async (req: Request, res: Response, next: NextFunction) => {
     const { id, token } = req.query;
-    const { message, error } = await verifyEmailService(id, token)
+
+    const { message, error } = await verifyEmailService(id, token);
 
     if (error) {
         next(handleError(error))
+        return;
     }
     res.status(200).json({ message })
 }
 
 export const refreshToken = async (req: Request, res: Response, next: NextFunction) => {
     const refreshedToken = req.cookies?.refreshedToken;
+    const { id } = req.params
 
     if (!refreshedToken) {
         res.status(401).json({
@@ -88,12 +97,14 @@ export const refreshToken = async (req: Request, res: Response, next: NextFuncti
             message: 'Refresh token not found',
             token: null
         });
+        return;
     }
 
-    const { token, error, message } = await refreshedTokenService(refreshedToken);
+    const { token, error, message } = await refreshedTokenService(refreshedToken, id);
 
     if (error) {
         next(handleError(error))
+        return;
     }
     res.status(200).json({
         status: true,

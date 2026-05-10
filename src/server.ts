@@ -4,8 +4,6 @@ import "tsconfig-paths/register";
 import express, { Request, Response, NextFunction } from 'express';
 import cookieParser from 'cookie-parser'
 import cors from 'cors';
-import { connectDB } from "Starters/DatabaseConnect";
-import { log } from "utils/logger";
 import uncaughtException from 'utils/error_handler';
 import routersS from 'Routers';
 import "config/cloudinaryConfig";
@@ -49,11 +47,7 @@ app.get('/', (req: Request, res: Response) => {
     res.status(200).json({ message: "Welcome to the API" })
 })
 
-// connectDB()
 
-// app.listen(PORT, () => {
-//     log(`Server running on PORT ${PORT}`)
-// });
 startServer(app);
 
 app.use(errorHandler);

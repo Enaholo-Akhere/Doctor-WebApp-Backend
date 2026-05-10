@@ -8,6 +8,7 @@ export const validateImage = (
     next: NextFunction
 ) => {
     try {
+
         const photo =
             typeof req.body.photo === "string"
                 ? JSON.parse(req.body.photo)
@@ -26,6 +27,6 @@ export const validateImage = (
 
         next();
     } catch (err) {
-        next(err); //
+        next(err);
     }
 };

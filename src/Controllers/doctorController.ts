@@ -1,65 +1,83 @@
-import { log } from "@utils/logger";
-import { Request, Response } from "express";
+import { handleError } from "@utils/handledError";
+import { NextFunction, Request, Response } from "express";
 import { deleteDoctorService, getDoctorByIdService, getDoctorProfileService, getDoctorService, updateDoctorService } from "Services/doctorService";
 import { DoctorSchemaInterface } from "types";
+// import { UpdateDoctorInput } from "DTO_Validations/zod_schemas";
 
 
-export const getAllDoctors = async (req: Request, res: Response) => {
+export const getAllDoctors = async (req: Request, res: Response, next: NextFunction) => {
 
-    const query = req.query;
-    const { name, specialization } = query as { name: string, specialization: string }
+    const { search }: { search?: string } = req.query;
 
-    const { error, data, message } = await getDoctorService({ name, specialization })
+    const { error, data, message } = await getDoctorService(search)
 
-    if (error) res.status(404).json({ status: false, data: {}, message })
-
+    if (error) {
+        return next(handleError(error))
+    }
 
     res.status(200).json({ status: true, message, data })
-
-
 }
 
-export const getDoctorById = async (req: Request, res: Response) => {
+export const getDoctorById = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params
-
-    const { token, refreshedToken } = res.locals.auth
 
     const { data, message, error } = await getDoctorByIdService(id)
 
-    if (error) res.status(500).json({ message, status: false, data: {} })
+    if (error) {
+        return next(handleError(error))
+    }
 
     res.status(200).json({ message, status: true, data })
 }
 
-export const updateDoctor = async (req: Request, res: Response) => {
+export const updateDoctor = async (req: Request, res: Response, next: NextFunction) => {
     const body: DoctorSchemaInterface = req.body
     const { id } = req.params;
+    const { photo } = res.locals;
 
-    const { data, message, error } = await updateDoctorService({ id, body })
 
-    if (error) res.status(500).json({ data: {}, message, status: false })
+    let userData: Partial<DoctorSchemaInterface> = {}
+
+    if (req.file) {
+        userData = { ...body, photo: { imageUrl: req.file?.path, publicId: req?.file?.filename } }
+
+    }
+
+    if (!req.file) {
+        userData = { ...body, photo }
+    }
+
+    const { data, message, error } = await updateDoctorService({ id, userData })
+
+    if (error) {
+        return next(handleError(error))
+    }
 
     res.status(200).json({ message, status: true, data })
 }
 
-export const deleteDoctor = async (req: Request, res: Response) => {
+export const deleteDoctor = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params
 
     if (!id) res.status(404).json({ message: 'user ID not found', status: false })
     const { message, error } = await deleteDoctorService(id)
 
-    if (error) res.status(500).json({ message, status: false })
-
+    if (error) {
+        return next(handleError(error))
+    }
 
     res.status(200).json({ message, status: true })
 
 }
 
-export const getDoctorProfile = async (req: Request, res: Response) => {
+export const getDoctorProfile = async (req: Request, res: Response, next: NextFunction) => {
     const doctorId = res.locals.auth.id
 
     const { data, message, error, appointments } = await getDoctorProfileService(doctorId)
-    if (error) res.status(500).json({ message, status: false, data: {} })
+    if (error) {
+        console.log('error', error)
+        return next(handleError(error))
+    }
 
     res.status(200).json({ message, status: true, data, appointments })
 }
