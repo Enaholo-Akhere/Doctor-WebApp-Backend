@@ -4,8 +4,6 @@ import Doctor from "models/DoctorSchema"
 import { DoctorSchemaInterface } from "types"
 import Booking from "models/BookingSchema"
 import escapeStringRegexp from "escape-string-regexp"
-import path from "path"
-
 
 interface GetDoctorServiceResult {
     data: DoctorSchemaInterface[] | DoctorSchemaInterface;
