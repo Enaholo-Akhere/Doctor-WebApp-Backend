@@ -1,6 +1,6 @@
 import express from 'express';
 import { deleteUser, getAllUsers, getMyAppointments, getMyProfile, getUserById, updateUser } from 'Controllers/userController';
-import { sanitizedUser } from 'Middleware/sanitizedUser';
+import { sanitizedUser } from 'Middleware/sanitized';
 import validate from 'DTO_Validations/zod_validate';
 import { updateUserSchema } from 'DTO_Validations/zod_schemas';
 import { restrict } from 'Middleware/auth';
@@ -16,7 +16,7 @@ router.get('/:id', [sanitizedUser, restrict(['patient'])], getUserById)
 router.put('/:id', [upload.single('photo'), multerErrorHandler, validateImage, validate(updateUserSchema)], asyncHandler(updateUser))
 router.delete('/:id', [sanitizedUser, restrict(['patient'])], deleteUser)
 router.get('/appointments/my-appointments', [sanitizedUser, restrict(['patient'])], getMyAppointments)
-router.get('/profile/me', [sanitizedUser, restrict(['patient'])], getMyProfile)
+router.get('/profile/me/:id', [sanitizedUser, restrict(['patient'])], getMyProfile)
 
 
 export default router;

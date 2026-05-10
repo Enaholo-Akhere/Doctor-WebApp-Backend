@@ -16,6 +16,7 @@ const transporter = nodemailer.createTransport({
 
 
 const sendVerificationEmail = async (data: decodedData, token: string) => {
+
     const mailOptions = <mailOptions>{
         from: process.env.AUTH_EMAIL,
         to: data.email,
@@ -23,9 +24,13 @@ const sendVerificationEmail = async (data: decodedData, token: string) => {
         html: verifyEmailTemplate(data, token),
     };
     try {
-        await transporter.sendMail(mailOptions);
+        const resp = await transporter.sendMail(mailOptions);
+        console.log('Email sent: ' + resp);
+        return resp;
+
     }
     catch (error: any) {
+        console.log('email error', error);
         winston_logger.error(error.message, error.stack)
     }
 }
@@ -33,7 +38,8 @@ const sendVerificationEmail = async (data: decodedData, token: string) => {
 
 const sendForgotPasswordEmail = async (respData: forgotPassword) => {
     const mailOptions = <mailOptions>{
-        from: process.env.AUTH_EMAIL,
+        // from: process.env.AUTH_EMAIL,
+        from: `CareConnect <${process.env.AUTH_EMAIL}>`,
         to: respData.email,
         subject: 'Reset Your Password',
         html: forgotPasswordTemplate(respData),

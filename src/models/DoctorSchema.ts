@@ -28,15 +28,16 @@ const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
 
   // Fields for doctors only
   specialization: { type: String },
-  qualifications: { type: [String] },
+  qualifications: { type: [{ degree: String, university: String, startDate: String, endDate: String }], default: [] },
 
   experiences: {
-    type: [String],
+    type: [{ hospital: String, position: String, startDate: String, endDate: String }],
+    default: []
   },
 
   bio: { type: String, maxLength: 50 },
   about: { type: String },
-  timeSlots: { type: [String], default: [] },
+  timeSlots: { type: [{ startingTime: String, endingTime: String, day: String }], default: [] },
   reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }],
   averageRating: {
     type: Number,
@@ -51,6 +52,7 @@ const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
     enum: ["pending", "approved", "cancelled"],
     default: "pending",
   },
+  gender: { type: String, enum: ['male', 'female'] },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
 }, { timestamps: true });
 

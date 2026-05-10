@@ -22,14 +22,24 @@ export const createReviewServices = async (body: ReviewBodyInterface) => {
     try {
         const newReviews = new Review(body)
 
-        const savedReview = await newReviews.save()
+        const savedReview = await newReviews.save();
+
+        console.log('saved review:', savedReview);
 
         await Doctor.findByIdAndUpdate(body.doctor, {
             $push: { reviews: savedReview._id }
         })
 
-        if (!savedReview) throw new Error('could not create review')
-        return { data: savedReview, message: 'review created successfully' }
+        if (!savedReview) throw new Error('could not create review');
+
+        const populatedReview = await savedReview.populate({
+            path: 'user',
+            select: 'name photo'
+        });
+
+        console.log('populated review:', populatedReview);
+
+        return { data: populatedReview, message: 'review created successfully' }
 
     }
     catch (error: any) {
