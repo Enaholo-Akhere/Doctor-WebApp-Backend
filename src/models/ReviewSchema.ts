@@ -1,4 +1,3 @@
-import { log } from "console";
 import mongoose from "mongoose";
 import { ReviewSchemaInterface } from "types";
 import Doctor from "./DoctorSchema";
@@ -31,6 +30,13 @@ reviewSchema.statics.calculateAverageRating = async function (doctorId: string) 
         _id: '$doctor',
         avgRating: { $avg: '$rating' },
         numOfRating: { $sum: 1 }
+      }
+    },
+    {
+      $project: {
+        _id: 1,
+        avgRating: { $round: ['$avgRating', 1] },
+        numOfRating: 1
       }
     }
   ]);

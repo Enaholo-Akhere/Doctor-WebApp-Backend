@@ -9,6 +9,7 @@ import _ from 'lodash'
 import QueryString from "qs"
 import { verifyToken } from "@utils/generateTokens"
 import Users from "models/UserSchema"
+import { AUDIENCE } from 'config/constant';
 
 export const registerService = async (body: UserSchemaInterface) => {
 
@@ -42,15 +43,7 @@ export const registerService = async (body: UserSchemaInterface) => {
             })
             await newUser.save()
 
-            const { token, error } = generateAccessToken({ user: { name: newUser.toObject().name, email: newUser.toObject().email, id: newUser.toObject()._id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions })
-            const { token: refreshedToken, error: RefTokenError } = generateAccessToken({ user: { name: newUser.toObject().name, email: newUser.toObject().email, id: newUser.toObject()._id }, options: { expiresIn: process.env.REFRESH_TOKEN_EXPIRY } as jwt.SignOptions })
-
-            const tokenError = error || RefTokenError
-
-            if (error || RefTokenError) throw new Error(tokenError);
-
-            const data = _.omit(newUser.toObject(), ['password'])
-            return { data, message: 'User created successfully', token, refreshedToken }
+            return { data: newUser, message: 'User created successfully', }
         }
 
         if (role === 'doctor') {
@@ -67,16 +60,7 @@ export const registerService = async (body: UserSchemaInterface) => {
             })
             await newDoctor.save()
 
-            const { token, error } = generateAccessToken({ user: { name: newDoctor.toObject().name, email: newDoctor.toObject().email, id: newDoctor.toObject()._id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions })
-            const { token: refreshedToken, error: RefTokenError } = generateAccessToken({ user: { name: newDoctor.toObject().name, email: newDoctor.toObject().email, id: newDoctor.toObject()._id }, options: { expiresIn: process.env.REFRESH_TOKEN_EXPIRY } as jwt.SignOptions })
-
-            const tokenError = error || RefTokenError
-
-            if (error || RefTokenError) throw new Error(tokenError);
-
-            const data = _.omit(newDoctor.toObject(), ['password'])
-
-            return { data, message: 'Doctor created successfully', token, refreshedToken }
+            return { data: newDoctor, message: 'Doctor created successfully' }
         }
 
     }
@@ -89,21 +73,32 @@ export const registerService = async (body: UserSchemaInterface) => {
 export const loginServices = async ({ email, password }: { email: string, password: string }) => {
 
     try {
+
         const [userPatient, userDoctor] = await Promise.all([
             User.findOne({ email }),
             Doctor.findOne({ email }),
         ])
 
-        const userExist = userPatient || userDoctor
+        const userExist = userPatient || userDoctor;
 
-        const { token, error } = generateAccessToken({ user: { name: userExist?.toObject().name, email: userExist?.toObject().email, id: userExist?.toObject()._id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions });
-        const { token: refreshedToken, error: RefTokenError } = generateAccessToken({ user: { name: userExist?.toObject().name, email: userExist?.toObject().email, id: userExist?.toObject()._id }, options: { expiresIn: process.env.REFRESH_TOKEN_EXPIRY } as jwt.SignOptions })
+        if (!userExist) throw new Error('Invalid email or password');
+
+        let audience: string | undefined;
+
+        if (userPatient) audience = AUDIENCE.PATIENT;
+        if (userDoctor) audience = AUDIENCE.DOCTOR;
+
+        console.log('Audience:', audience);
+
+
+        const { token, error } = generateAccessToken({ user: { id: userExist?.toObject()._id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions, audience });
+        const { token: refreshedToken, error: RefTokenError } = generateAccessToken({ user: { id: userExist?.toObject()._id }, options: { expiresIn: process.env.REFRESH_TOKEN_EXPIRY } as jwt.SignOptions, audience })
 
         const tokenError = error || RefTokenError
 
         if (error || RefTokenError) throw new Error(tokenError);
 
-        if (!userExist) throw new Error('Invalid email or password');
+
 
         const comPass = await bcrypt.compare(password, userExist.password);
 
@@ -129,16 +124,6 @@ export const verifyEmailService = async (id: string | QueryString.ParsedQs | (st
         let user: any;
         let doctor: any;
 
-        const { decoded, expired, message } = verifyToken(token as string)
-        if (message === 'jwt expired') {
-            await Promise.all([
-                Users.findByIdAndDelete(id),
-                Doctor.findByIdAndDelete(id)
-            ]);
-            throw new Error('verification link expired')
-        }
-
-
         [user, doctor] = await Promise.all([
             Users.findById(id),
             Doctor.findById(id)
@@ -147,6 +132,22 @@ export const verifyEmailService = async (id: string | QueryString.ParsedQs | (st
         if (!user && !doctor) {
             throw new Error('user not found')
         }
+
+        let audience;
+
+        if (user) audience = AUDIENCE.PATIENT;
+        if (doctor) audience = AUDIENCE.DOCTOR;
+
+        const { decoded, expired, message } = verifyToken(token as string, audience);
+
+        if (message === 'jwt expired') {
+            await Promise.all([
+                Users.findByIdAndDelete(id),
+                Doctor.findByIdAndDelete(id)
+            ]);
+            throw new Error('verification link expired')
+        }
+
         else {
 
             if (message === 'jwt expired') {
@@ -170,20 +171,30 @@ export const verifyEmailService = async (id: string | QueryString.ParsedQs | (st
     }
 }
 
-export const refreshedTokenService = async (refreshedToken: string) => {
+export const refreshedTokenService = async (refreshedToken: string, id: string) => {
+
     try {
-        const { decoded, expired, message } = verifyToken(refreshedToken);
+
+        const [user, doctor] = await Promise.all([
+            User.findById(id),
+            Doctor.findById(id)
+        ]);
+
+        let audience: string | undefined;
+
+        if (user?._id.toString() === id) audience = AUDIENCE.PATIENT;
+        if (doctor?._id.toString() === id) audience = AUDIENCE.DOCTOR;
+
+        const { decoded, expired, message } = verifyToken(refreshedToken, audience);
 
         if (!decoded || expired) {
             throw new Error(message ?? 'refresh token expired');
         }
 
-        const { name, email, id } = decoded as decodedDataInterface;
-
-        const { token, error } = generateAccessToken({ user: { name, email, id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions });
+        const { token, error } = generateAccessToken({ user: { id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions, audience });
 
 
-        if (error) throw error;
+        if (error) throw new Error(error);
 
         return {
             token,

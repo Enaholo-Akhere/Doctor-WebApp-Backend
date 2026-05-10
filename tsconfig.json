@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "ignoreDeprecations": "6.0", // Suppress baseUrl deprecation warning
     "target": "es5", // Compile to ES5 for broader compatibility
     "module": "commonjs", // Use CommonJS modules (Node.js default)
     "sourceMap": true, // Generate source maps for debugging

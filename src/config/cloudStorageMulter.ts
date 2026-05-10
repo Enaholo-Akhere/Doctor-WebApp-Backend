@@ -5,7 +5,7 @@ import cloudinary from "./cloudinaryConfig";
 const storage = new CloudinaryStorage({
     cloudinary,
     params: async () => ({
-        folder: "MedicarePhoto",
+        folder: "CareConnectPhoto",
         transformation: [
             { width: 500, height: 500, crop: "limit" },
             { quality: 'auto', fetch_format: 'auto' }],
