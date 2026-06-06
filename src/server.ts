@@ -43,6 +43,7 @@ app.use((req: Request, res: Response, next: NextFunction): void => {
 app.post('/api/v1/webhook', express.raw({ type: 'application/json' }), stripeWebhook);
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
