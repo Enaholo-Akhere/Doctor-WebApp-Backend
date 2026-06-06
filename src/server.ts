@@ -23,18 +23,38 @@ const corsOptions = {
     allowedHeaders: ['Content-Type', 'Authorization']
 };
 
-uncaughtException()
+uncaughtException();
+
 
 app.post('/api/v1/webhook', express.raw({ type: 'application/json' }), stripeWebhook);
 
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+
+const allowedOrigins = ['http://localhost:5173', 'https://care-connect-ena.netlify.app'];
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+    const origin = req.headers.origin;
+
+    if (origin && allowedOrigins.includes(origin)) {
+        res.header('Access-Control-Allow-Origin', origin);
+    }
+
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', 'true');
+
+    if (req.method === 'OPTIONS') {
+        res.sendStatus(200);
+        return;
+    }
+    next();
+});
 app.use(express.json());
 app.use(cookieParser());
 
 app.use('/api/v1', routers)
 app.get('/', (req: Request, res: Response) => {
-    res.status(200).json({ message: "Welcome to the API" })
+    res.status(200).json({ message: "Welcome to CareConnect API" })
 })
 
 

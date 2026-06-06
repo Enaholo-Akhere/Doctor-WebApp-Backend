@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon",
     "build": "tsc && tsc-alias",
+    "dev": "nodemon",
+    "clean": "rm -rf dist",
+    "prestart": "npm run build",
     "start": "ts-node --project ./tsconfig.json -r tsconfig-paths/register dist/server.js"
   },
   "keywords": [],
