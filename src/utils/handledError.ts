@@ -23,6 +23,11 @@ export const handleError = (err: any) => {
             message: "Unauthorized. Access token expired.",
             statusCode: 401
         });
+    } else if (err.message === 'Invalid email or password') {
+        return appError({
+            message: "Invalid email or password.",
+            statusCode: 400
+        });
     }
     console.error('Unhandled error:', err.message);
 
