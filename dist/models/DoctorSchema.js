@@ -27,6 +27,7 @@ var DoctorSchema = new mongoose_1.default.Schema({
         default: "doctor",
     },
     id: { type: String },
+    refreshedToken: { type: String },
     // Fields for doctors only
     specialization: { type: String },
     qualifications: { type: [{ degree: String, university: String, startDate: String, endDate: String }], default: [] },
@@ -52,7 +53,7 @@ var DoctorSchema = new mongoose_1.default.Schema({
         default: "pending",
     },
     gender: { type: String, enum: ['male', 'female'] },
-    appointments: [{ type: mongoose_1.default.Types.ObjectId, ref: "Appointment" }],
+    appointments: [{ type: mongoose_1.default.Types.ObjectId, ref: "Booking" }],
 }, { timestamps: true });
 exports.default = mongoose_1.default.model("Doctor", DoctorSchema);
 //# sourceMappingURL=DoctorSchema.js.map

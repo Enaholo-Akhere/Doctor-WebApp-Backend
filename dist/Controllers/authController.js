@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.refreshToken = exports.verifyEmail = exports.login = exports.register = void 0;
+exports.refreshToken = exports.logout = exports.verifyEmail = exports.login = exports.register = void 0;
 var authService_1 = require("Services/authService");
 var nodemailer_1 = require("@utils/message/nodemailer");
 var authService_2 = require("Services/authService");
@@ -137,6 +137,34 @@ var verifyEmail = function (req, res, next) { return __awaiter(void 0, void 0, v
     });
 }); };
 exports.verifyEmail = verifyEmail;
+var logout = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var id, _a, error, message;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                id = res.locals.auth.id;
+                if (!id) {
+                    res.status(400).json({ message: 'User ID not found', status: false });
+                    return [2 /*return*/];
+                }
+                return [4 /*yield*/, (0, authService_1.logoutService)(id)];
+            case 1:
+                _a = _b.sent(), error = _a.error, message = _a.message;
+                if (error) {
+                    next((0, handledError_1.handleError)(error));
+                    return [2 /*return*/];
+                }
+                res.clearCookie('refreshedToken', {
+                    httpOnly: true,
+                    secure: true,
+                    sameSite: 'strict',
+                });
+                res.status(200).json({ message: message, status: true });
+                return [2 /*return*/];
+        }
+    });
+}); };
+exports.logout = logout;
 var refreshToken = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
     var refreshedToken, id, _a, token, error, message;
     var _b;

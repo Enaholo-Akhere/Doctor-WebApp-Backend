@@ -39,12 +39,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendForgotPasswordEmail = exports.sendVerificationEmail = void 0;
+exports.sendDoctorBookingEmail = exports.sendPatientBookingEmail = exports.sendForgotPasswordEmail = exports.sendVerificationEmail = void 0;
 var nodemailer_1 = __importDefault(require("nodemailer"));
 var emailTemplate_1 = require("./emailTemplate");
 var forgotPasswordTemplate_1 = require("./forgotPasswordTemplate");
 var dotenv_1 = __importDefault(require("dotenv"));
 var logger_1 = require("@utils/logger");
+var doctorBookingTemplate_1 = require("./doctorBookingTemplate");
+var patientBookingTemplate_1 = require("./patientBookingTemplate");
 dotenv_1.default.config();
 var transporter = nodemailer_1.default.createTransport({
     service: process.env.E_SERVICE,
@@ -112,4 +114,63 @@ var sendForgotPasswordEmail = function (respData) { return __awaiter(void 0, voi
     });
 }); };
 exports.sendForgotPasswordEmail = sendForgotPasswordEmail;
+var sendPatientBookingEmail = function (respData) { return __awaiter(void 0, void 0, void 0, function () {
+    var mailOptions, error_3;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                mailOptions = {
+                    from: "CareConnect <".concat(process.env.AUTH_EMAIL, ">"),
+                    to: respData.patientEmail,
+                    subject: 'Your Booking Confirmation',
+                    html: (0, patientBookingTemplate_1.patientBookingTemplate)(respData),
+                };
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, transporter.sendMail(mailOptions)];
+            case 2:
+                _a.sent();
+                return [3 /*break*/, 4];
+            case 3:
+                error_3 = _a.sent();
+                logger_1.winston_logger.error(error_3.message, error_3.stack);
+                return [3 /*break*/, 4];
+            case 4:
+                ;
+                return [2 /*return*/];
+        }
+    });
+}); };
+exports.sendPatientBookingEmail = sendPatientBookingEmail;
+var sendDoctorBookingEmail = function (respData) { return __awaiter(void 0, void 0, void 0, function () {
+    var mailOptions, error_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                mailOptions = {
+                    // from: process.env.AUTH_EMAIL,
+                    from: "CareConnect <".concat(process.env.AUTH_EMAIL, ">"),
+                    to: respData.doctorEmail,
+                    subject: 'New Booking Alert',
+                    html: (0, doctorBookingTemplate_1.doctorBookingTemplate)(respData),
+                };
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, transporter.sendMail(mailOptions)];
+            case 2:
+                _a.sent();
+                return [3 /*break*/, 4];
+            case 3:
+                error_4 = _a.sent();
+                logger_1.winston_logger.error(error_4.message, error_4.stack);
+                return [3 /*break*/, 4];
+            case 4:
+                ;
+                return [2 /*return*/];
+        }
+    });
+}); };
+exports.sendDoctorBookingEmail = sendDoctorBookingEmail;
 //# sourceMappingURL=nodemailer.js.map

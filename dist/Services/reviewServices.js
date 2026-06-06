@@ -74,7 +74,6 @@ var createReviewServices = function (body) { return __awaiter(void 0, void 0, vo
                 return [4 /*yield*/, newReviews.save()];
             case 1:
                 savedReview = _a.sent();
-                console.log('saved review:', savedReview);
                 return [4 /*yield*/, DoctorSchema_1.default.findByIdAndUpdate(body.doctor, {
                         $push: { reviews: savedReview._id }
                     })];
@@ -88,7 +87,6 @@ var createReviewServices = function (body) { return __awaiter(void 0, void 0, vo
                     })];
             case 3:
                 populatedReview = _a.sent();
-                console.log('populated review:', populatedReview);
                 return [2 /*return*/, { data: populatedReview, message: 'review created successfully' }];
             case 4:
                 error_2 = _a.sent();

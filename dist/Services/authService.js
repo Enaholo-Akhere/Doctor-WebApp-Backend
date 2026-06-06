@@ -39,13 +39,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.refreshedTokenService = exports.verifyEmailService = exports.loginServices = exports.registerService = void 0;
+exports.logoutService = exports.refreshedTokenService = exports.verifyEmailService = exports.loginServices = exports.registerService = void 0;
 var logger_1 = require("@utils/logger");
 var DoctorSchema_1 = __importDefault(require("models/DoctorSchema"));
 var UserSchema_1 = __importDefault(require("models/UserSchema"));
 var bcryptjs_1 = __importDefault(require("bcryptjs"));
 var generateTokens_1 = require("@utils/generateTokens");
-var lodash_1 = __importDefault(require("lodash"));
 var generateTokens_2 = require("@utils/generateTokens");
 var UserSchema_2 = __importDefault(require("models/UserSchema"));
 var constant_1 = require("config/constant");
@@ -122,18 +121,18 @@ var registerService = function (body) { return __awaiter(void 0, void 0, void 0,
 }); };
 exports.registerService = registerService;
 var loginServices = function (_a) { return __awaiter(void 0, [_a], void 0, function (_b) {
-    var _c, userPatient, userDoctor, userExist, audience, _d, token, error, _e, refreshedToken, RefTokenError, tokenError, comPass, data, error_2;
+    var _c, userPatient, userDoctor, userExist, audience, _d, token, error, _e, refreshedToken, RefTokenError, _f, updatedUser, updatedDoctor, updatedUserDoctor, tokenError, comPass, error_2;
     var email = _b.email, password = _b.password;
-    return __generator(this, function (_f) {
-        switch (_f.label) {
+    return __generator(this, function (_g) {
+        switch (_g.label) {
             case 0:
-                _f.trys.push([0, 3, , 4]);
+                _g.trys.push([0, 4, , 5]);
                 return [4 /*yield*/, Promise.all([
                         UserSchema_1.default.findOne({ email: email }),
                         DoctorSchema_1.default.findOne({ email: email }),
                     ])];
             case 1:
-                _c = _f.sent(), userPatient = _c[0], userDoctor = _c[1];
+                _c = _g.sent(), userPatient = _c[0], userDoctor = _c[1];
                 userExist = userPatient || userDoctor;
                 if (!userExist)
                     throw new Error('Invalid email or password');
@@ -142,27 +141,33 @@ var loginServices = function (_a) { return __awaiter(void 0, [_a], void 0, funct
                     audience = constant_1.AUDIENCE.PATIENT;
                 if (userDoctor)
                     audience = constant_1.AUDIENCE.DOCTOR;
-                console.log('Audience:', audience);
                 _d = (0, generateTokens_1.generateAccessToken)({ user: { id: userExist === null || userExist === void 0 ? void 0 : userExist.toObject()._id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY }, audience: audience }), token = _d.token, error = _d.error;
                 _e = (0, generateTokens_1.generateAccessToken)({ user: { id: userExist === null || userExist === void 0 ? void 0 : userExist.toObject()._id }, options: { expiresIn: process.env.REFRESH_TOKEN_EXPIRY }, audience: audience }), refreshedToken = _e.token, RefTokenError = _e.error;
+                return [4 /*yield*/, Promise.all([
+                        UserSchema_1.default.findByIdAndUpdate(userExist._id, { refreshedToken: refreshedToken }, { new: true }).select('-password -__v -refreshedToken'),
+                        DoctorSchema_1.default.findByIdAndUpdate(userExist._id, { refreshedToken: refreshedToken }, { new: true }).select('-password -__v -refreshedToken')
+                    ])];
+            case 2:
+                _f = _g.sent(), updatedUser = _f[0], updatedDoctor = _f[1];
+                updatedUserDoctor = updatedUser || updatedDoctor;
+                console.log('updated user doctor', updatedUserDoctor);
                 tokenError = error || RefTokenError;
                 if (error || RefTokenError)
                     throw new Error(tokenError);
                 return [4 /*yield*/, bcryptjs_1.default.compare(password, userExist.password)];
-            case 2:
-                comPass = _f.sent();
+            case 3:
+                comPass = _g.sent();
                 if (!comPass)
                     throw new Error('Invalid email or password');
-                data = lodash_1.default.omit(userExist.toObject(), ['password']);
-                if (!data.verified) {
+                if (!updatedUserDoctor || !(updatedUserDoctor === null || updatedUserDoctor === void 0 ? void 0 : updatedUserDoctor.verified)) {
                     throw new Error('Please verify your email to login');
                 }
-                return [2 /*return*/, { data: data, message: 'Login Successful', token: token, refreshedToken: refreshedToken }];
-            case 3:
-                error_2 = _f.sent();
+                return [2 /*return*/, { data: updatedUserDoctor, message: 'Login Successful', token: token, refreshedToken: refreshedToken }];
+            case 4:
+                error_2 = _g.sent();
                 logger_1.winston_logger.error(error_2.message, error_2.stack);
                 return [2 /*return*/, { error: error_2, message: error_2.message, data: {} }];
-            case 4: return [2 /*return*/];
+            case 5: return [2 /*return*/];
         }
     });
 }); };
@@ -269,4 +274,29 @@ var refreshedTokenService = function (refreshedToken, id) { return __awaiter(voi
     });
 }); };
 exports.refreshedTokenService = refreshedTokenService;
+var logoutService = function (id) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, updatedUser, updatedDoctor, updatedUserDoctor, error_5;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                _b.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, Promise.all([
+                        UserSchema_1.default.findByIdAndUpdate(id, { $unset: { refreshedToken: 1 } }, { new: true }).select('-password -__v '),
+                        DoctorSchema_1.default.findByIdAndUpdate(id, { $unset: { refreshedToken: 1 } }, { new: true }).select('-password -__v ')
+                    ])];
+            case 1:
+                _a = _b.sent(), updatedUser = _a[0], updatedDoctor = _a[1];
+                updatedUserDoctor = updatedUser || updatedDoctor;
+                if (!updatedUserDoctor)
+                    throw new Error('user not found');
+                return [2 /*return*/, { message: 'Logged out successfully' }];
+            case 2:
+                error_5 = _b.sent();
+                logger_1.winston_logger.error(error_5.message, error_5.stack);
+                return [2 /*return*/, { error: error_5, message: error_5.message }];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.logoutService = logoutService;
 //# sourceMappingURL=authService.js.map

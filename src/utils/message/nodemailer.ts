@@ -1,9 +1,11 @@
 import nodemailer from 'nodemailer';
-import { mailOptions, decodedData, forgotPassword } from 'types';
+import { mailOptions, decodedData, forgotPassword, BookingCompleteInterface, } from 'types';
 import { verifyEmailTemplate } from './emailTemplate';
 import { forgotPasswordTemplate } from './forgotPasswordTemplate';
 import dotenv from 'dotenv';
 import { winston_logger } from '@utils/logger';
+import { doctorBookingTemplate } from './doctorBookingTemplate';
+import { patientBookingTemplate } from './patientBookingTemplate';
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
@@ -52,5 +54,36 @@ const sendForgotPasswordEmail = async (respData: forgotPassword) => {
     };
 };
 
+const sendPatientBookingEmail = async (respData: BookingCompleteInterface) => {
+    const mailOptions = <mailOptions>{
+        from: `CareConnect <${process.env.AUTH_EMAIL}>`,
+        to: respData.patientEmail,
+        subject: 'Your Booking Confirmation',
+        html: patientBookingTemplate(respData),
+    };
+    try {
+        await transporter.sendMail(mailOptions);
+    }
+    catch (error: any) {
+        winston_logger.error(error.message, error.stack)
+    };
+}
 
-export { sendVerificationEmail, sendForgotPasswordEmail }
+const sendDoctorBookingEmail = async (respData: BookingCompleteInterface) => {
+    const mailOptions = <mailOptions>{
+        // from: process.env.AUTH_EMAIL,
+        from: `CareConnect <${process.env.AUTH_EMAIL}>`,
+        to: respData.doctorEmail,
+        subject: 'New Booking Alert',
+        html: doctorBookingTemplate(respData),
+    };
+    try {
+        await transporter.sendMail(mailOptions);
+    }
+    catch (error: any) {
+        winston_logger.error(error.message, error.stack)
+    };
+}
+
+
+export { sendVerificationEmail, sendForgotPasswordEmail, sendPatientBookingEmail, sendDoctorBookingEmail }

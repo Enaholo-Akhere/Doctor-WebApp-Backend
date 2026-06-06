@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { loginServices, refreshedTokenService, registerService } from "Services/authService";
+import { loginServices, logoutService, refreshedTokenService, registerService } from "Services/authService";
 import { decodedData, UserSchemaInterface } from "types";
 import { sendVerificationEmail } from "@utils/message/nodemailer";
 import { verifyEmailService } from "Services/authService";
@@ -85,6 +85,29 @@ export const verifyEmail = async (req: Request, res: Response, next: NextFunctio
         return;
     }
     res.status(200).json({ message })
+}
+
+export const logout = async (req: Request, res: Response, next: NextFunction) => {
+    const { id } = res.locals.auth;
+
+    if (!id) {
+        res.status(400).json({ message: 'User ID not found', status: false });
+        return;
+    }
+
+    const { error, message, } = await logoutService(id);
+
+    if (error) {
+        next(handleError(error));
+        return;
+    }
+    res.clearCookie('refreshedToken', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'strict',
+    });
+
+    res.status(200).json({ message, status: true });
 }
 
 export const refreshToken = async (req: Request, res: Response, next: NextFunction) => {

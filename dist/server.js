@@ -14,6 +14,7 @@ var Routers_1 = __importDefault(require("Routers"));
 require("config/cloudinaryConfig");
 var StartServer_1 = require("Starters/StartServer");
 var errorHandler_1 = require("Middleware/errorHandler");
+var bookingController_1 = require("Controllers/bookingController");
 var app = (0, express_1.default)();
 var PORT = Number(process.env.PORT) || 3000;
 var corsOptions = {
@@ -35,6 +36,7 @@ app.use(function (req, res, next) {
     }
     next();
 });
+app.post('/api/v1/webhook', express_1.default.raw({ type: 'application/json' }), bookingController_1.stripeWebhook);
 app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());

@@ -77,12 +77,11 @@ var createReview = function (req, res) { return __awaiter(void 0, void 0, void 0
             case 0:
                 doctorId = req.params.doctorId;
                 id = res.locals.auth.id;
-                // if (id === doctorId) {
-                //     res.status(403).json({ message: 'Doctors cannot review themselves', status: false })
-                //     return;
-                // };
-                console.log({ 'type of doctorId': typeof doctorId });
-                console.log({ 'type of id': typeof id });
+                if (id === doctorId) {
+                    res.status(403).json({ message: 'Doctors cannot review themselves', status: false });
+                    return [2 /*return*/];
+                }
+                ;
                 body = __assign({ doctor: new mongoose_1.default.Types.ObjectId(doctorId), user: new mongoose_1.default.Types.ObjectId(id) }, req.body);
                 return [4 /*yield*/, (0, reviewServices_1.createReviewServices)(body)];
             case 1:

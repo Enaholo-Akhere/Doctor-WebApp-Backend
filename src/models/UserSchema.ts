@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema<UserSchemaInterface>({
   name: { type: String, required: true },
   phone: { type: String },
   verified: { type: Boolean, default: false },
+  refreshedToken: { type: String },
   photo: {
     imageUrl: {
       type: String,
@@ -26,7 +27,7 @@ const UserSchema = new mongoose.Schema<UserSchemaInterface>({
   },
   gender: { type: String, enum: ["male", "female", "other"] },
   bloodType: { type: String },
-  appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
+  appointments: [{ type: mongoose.Types.ObjectId, ref: "Booking" }],
 },
   { timestamps: true });
 

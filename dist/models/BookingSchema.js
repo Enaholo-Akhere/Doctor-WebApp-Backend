@@ -16,10 +16,7 @@ var bookingSchema = new mongoose_1.default.Schema({
         required: true,
     },
     ticketPrice: { type: String, required: true },
-    appointmentDate: {
-        type: Date,
-        required: true,
-    },
+    stripeSessionId: { type: String, required: true }, // ✅ add this
     status: {
         type: String,
         enum: ["pending", "approved", "cancelled"],
@@ -28,7 +25,7 @@ var bookingSchema = new mongoose_1.default.Schema({
     },
     isPaid: {
         type: Boolean,
-        default: true,
+        default: false,
     },
 }, { timestamps: true });
 exports.default = mongoose_1.default.model("Booking", bookingSchema);

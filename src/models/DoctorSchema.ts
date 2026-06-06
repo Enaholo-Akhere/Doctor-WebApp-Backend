@@ -25,7 +25,7 @@ const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
     default: "doctor",
   },
   id: { type: String },
-
+  refreshedToken: { type: String },
   // Fields for doctors only
   specialization: { type: String },
   qualifications: { type: [{ degree: String, university: String, startDate: String, endDate: String }], default: [] },
@@ -53,7 +53,7 @@ const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
     default: "pending",
   },
   gender: { type: String, enum: ['male', 'female'] },
-  appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
+  appointments: [{ type: mongoose.Types.ObjectId, ref: "Booking" }],
 }, { timestamps: true });
 
 export default mongoose.model("Doctor", DoctorSchema);

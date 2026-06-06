@@ -9,6 +9,7 @@ import routersS from 'Routers';
 import "config/cloudinaryConfig";
 import { startServer } from 'Starters/StartServer';
 import { errorHandler } from 'Middleware/errorHandler';
+import { stripeWebhook } from 'Controllers/bookingController';
 
 
 const app = express()
@@ -37,6 +38,9 @@ app.use((req: Request, res: Response, next: NextFunction): void => {
     }
     next();
 });
+
+
+app.post('/api/v1/webhook', express.raw({ type: 'application/json' }), stripeWebhook);
 
 app.use(cors(corsOptions));
 app.use(express.json());

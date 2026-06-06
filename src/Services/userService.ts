@@ -92,7 +92,13 @@ export const deleteUserService = async (id: string): Promise<Partial<GetUserServ
 
 export const getUserProfileService = async (id: string) => {
     try {
-        const user = await Users.findById(id).select(['-password', '-__v'])
+        const user = await Users.findById(id).select(['-password', '-__v']).populate({
+            path: 'appointments',
+            populate: [
+                { path: 'doctor', select: 'name photo specialization averageRating status timeSlots' },
+                { path: 'user', select: 'name email photo' },
+            ]
+        });
 
         if (!user) throw new Error('user not found')
         return { data: user, message: 'successful' }
