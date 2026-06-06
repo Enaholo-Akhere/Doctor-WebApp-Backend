@@ -67,7 +67,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     res.cookie('refreshedToken', refreshedToken, {
         httpOnly: true,
         secure: true,
-        sameSite: 'strict',
+        sameSite: 'none',
         maxAge: MAX_AGE
     })
 
