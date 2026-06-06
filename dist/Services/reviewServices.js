@@ -40,9 +40,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createReviewServices = exports.getAllReviewServices = void 0;
-var ReviewSchema_1 = __importDefault(require("models/ReviewSchema"));
-var DoctorSchema_1 = __importDefault(require("models/DoctorSchema"));
-var logger_1 = require("@utils/logger");
+var ReviewSchema_1 = __importDefault(require("../models/ReviewSchema"));
+var DoctorSchema_1 = __importDefault(require("../models/DoctorSchema"));
+var logger_1 = require("../utils/logger");
 var getAllReviewServices = function () { return __awaiter(void 0, void 0, void 0, function () {
     var reviews, error_1;
     return __generator(this, function (_a) {

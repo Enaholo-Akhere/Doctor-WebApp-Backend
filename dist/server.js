@@ -9,12 +9,12 @@ require("tsconfig-paths/register");
 var express_1 = __importDefault(require("express"));
 var cookie_parser_1 = __importDefault(require("cookie-parser"));
 var cors_1 = __importDefault(require("cors"));
-var error_handler_1 = __importDefault(require("utils/error_handler"));
-var Routers_1 = __importDefault(require("Routers"));
-require("config/cloudinaryConfig");
-var StartServer_1 = require("Starters/StartServer");
-var errorHandler_1 = require("Middleware/errorHandler");
-var bookingController_1 = require("Controllers/bookingController");
+var error_handler_1 = __importDefault(require("./utils/error_handler"));
+var Routers_1 = __importDefault(require("./Routers"));
+require("./config/cloudinaryConfig");
+var StartServer_1 = require("./Starters/StartServer");
+var errorHandler_1 = require("./Middleware/errorHandler");
+var bookingController_1 = require("./Controllers/bookingController");
 var app = (0, express_1.default)();
 var PORT = Number(process.env.PORT) || 3000;
 var corsOptions = {

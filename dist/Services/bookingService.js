@@ -40,11 +40,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.bookingSessionService = void 0;
-var UserSchema_1 = __importDefault(require("models/UserSchema"));
-var BookingSchema_1 = __importDefault(require("models/BookingSchema"));
-var DoctorSchema_1 = __importDefault(require("models/DoctorSchema"));
+var UserSchema_1 = __importDefault(require("../models/UserSchema"));
+var BookingSchema_1 = __importDefault(require("../models/BookingSchema"));
+var DoctorSchema_1 = __importDefault(require("../models/DoctorSchema"));
 var stripe_1 = __importDefault(require("stripe"));
-var logger_1 = require("@utils/logger");
+var logger_1 = require("../utils/logger");
 var bookingSessionService = function (_a) { return __awaiter(void 0, [_a], void 0, function (_b) {
     var stripeKey, clientUrl, cancelUrl, _c, doctor, user, stripe, session, booking, error_1;
     var _d;

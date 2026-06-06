@@ -48,10 +48,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.refreshToken = exports.logout = exports.verifyEmail = exports.login = exports.register = void 0;
-var authService_1 = require("Services/authService");
-var nodemailer_1 = require("@utils/message/nodemailer");
-var authService_2 = require("Services/authService");
-var handledError_1 = require("@utils/handledError");
+var authService_1 = require("../Services/authService");
+var nodemailer_1 = require("../utils/message/nodemailer");
+var authService_2 = require("../Services/authService");
+var handledError_1 = require("../utils/handledError");
 var register = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var body, imageUrl, publicId, bodyWithImage, result, _a, data, message, error, token;
     var _b, _c;

@@ -40,14 +40,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.logoutService = exports.refreshedTokenService = exports.verifyEmailService = exports.loginServices = exports.registerService = void 0;
-var logger_1 = require("@utils/logger");
-var DoctorSchema_1 = __importDefault(require("models/DoctorSchema"));
-var UserSchema_1 = __importDefault(require("models/UserSchema"));
+var logger_1 = require("../utils/logger");
+var DoctorSchema_1 = __importDefault(require("../models/DoctorSchema"));
+var UserSchema_1 = __importDefault(require("../models/UserSchema"));
 var bcryptjs_1 = __importDefault(require("bcryptjs"));
-var generateTokens_1 = require("@utils/generateTokens");
-var generateTokens_2 = require("@utils/generateTokens");
-var UserSchema_2 = __importDefault(require("models/UserSchema"));
-var constant_1 = require("config/constant");
+var generateTokens_1 = require("../utils/generateTokens");
+var generateTokens_2 = require("../utils/generateTokens");
+var UserSchema_2 = __importDefault(require("../models/UserSchema"));
+var constant_1 = require("../config/constant");
 var registerService = function (body) { return __awaiter(void 0, void 0, void 0, function () {
     var email, password, photo, name, role, gender, phone, bloodType, user, salt, hashedPassword, newUser, newDoctor, error_1;
     return __generator(this, function (_a) {

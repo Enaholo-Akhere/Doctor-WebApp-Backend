@@ -40,11 +40,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getMyAppointmentsService = exports.getUserProfileService = exports.deleteUserService = exports.updateUserService = exports.getUserByIdService = exports.getUserService = void 0;
-var logger_1 = require("@utils/logger");
+var logger_1 = require("../utils/logger");
 var lodash_1 = __importDefault(require("lodash"));
-var UserSchema_1 = __importDefault(require("models/UserSchema"));
-var BookingSchema_1 = __importDefault(require("models/BookingSchema"));
-var DoctorSchema_1 = __importDefault(require("models/DoctorSchema"));
+var UserSchema_1 = __importDefault(require("../models/UserSchema"));
+var BookingSchema_1 = __importDefault(require("../models/BookingSchema"));
+var DoctorSchema_1 = __importDefault(require("../models/DoctorSchema"));
 var getUserService = function () { return __awaiter(void 0, void 0, void 0, function () {
     var users, error_1;
     return __generator(this, function (_a) {

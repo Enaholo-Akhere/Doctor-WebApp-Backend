@@ -51,8 +51,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getDoctorProfileService = exports.deleteDoctorService = exports.updateDoctorService = exports.getDoctorByIdService = exports.getDoctorService = void 0;
-var logger_1 = require("@utils/logger");
-var DoctorSchema_1 = __importDefault(require("models/DoctorSchema"));
+var logger_1 = require("../utils/logger");
+var DoctorSchema_1 = __importDefault(require("../models/DoctorSchema"));
 var escape_string_regexp_1 = __importDefault(require("escape-string-regexp"));
 var getDoctorService = function (search) { return __awaiter(void 0, void 0, void 0, function () {
     var escapedName, escapedSpec, doctor, error_1;

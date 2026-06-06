@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var appError_1 = require("@utils/appError");
+var appError_1 = require("../utils/appError");
 var validate = function (schema) { return function (req, res, next) {
     var _a, _b;
     try {
