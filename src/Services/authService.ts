@@ -98,7 +98,6 @@ export const loginServices = async ({ email, password }: { email: string, passwo
         ])
 
         const updatedUserDoctor = updatedUser || updatedDoctor;
-        console.log('updated user doctor', updatedUserDoctor)
         const tokenError = error || RefTokenError
 
         if (error || RefTokenError) throw new Error(tokenError);

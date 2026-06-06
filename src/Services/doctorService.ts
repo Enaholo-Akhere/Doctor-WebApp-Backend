@@ -34,7 +34,6 @@ export const getDoctorService = async (search?: string): Promise<Partial<GetDoct
         }
 
         if (!doctor.length) throw new Error('doctor not found');
-        console.log('doctor', doctor);
 
         return { data: doctor, message: 'successful' };
     }
