@@ -37,8 +37,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.restrict = void 0;
-var logger_1 = require("@utils/logger");
-var handledError_1 = require("@utils/handledError");
+var logger_1 = require("../utils/logger");
+var handledError_1 = require("../utils/handledError");
 var restrict = function (roles) { return function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
     var role;
     return __generator(this, function (_a) {

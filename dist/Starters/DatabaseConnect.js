@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.connectDB = void 0;
-var logger_1 = require("utils/logger");
+var logger_1 = require("../utils/logger");
 var mongoose_1 = __importDefault(require("mongoose"));
 var connectDB = function () { return __awaiter(void 0, void 0, void 0, function () {
     var error_1;
