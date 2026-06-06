@@ -44,7 +44,7 @@ var nodemailer_1 = __importDefault(require("nodemailer"));
 var emailTemplate_1 = require("./emailTemplate");
 var forgotPasswordTemplate_1 = require("./forgotPasswordTemplate");
 var dotenv_1 = __importDefault(require("dotenv"));
-var logger_1 = require("@utils/logger");
+var logger_1 = require("../logger");
 var doctorBookingTemplate_1 = require("./doctorBookingTemplate");
 var patientBookingTemplate_1 = require("./patientBookingTemplate");
 dotenv_1.default.config();

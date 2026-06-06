@@ -51,8 +51,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getDoctorProfileService = exports.deleteDoctorService = exports.updateDoctorService = exports.getDoctorByIdService = exports.getDoctorService = void 0;
-var logger_1 = require("@utils/logger");
-var DoctorSchema_1 = __importDefault(require("models/DoctorSchema"));
+var logger_1 = require("../utils/logger");
+var DoctorSchema_1 = __importDefault(require("../models/DoctorSchema"));
 var escape_string_regexp_1 = __importDefault(require("escape-string-regexp"));
 var getDoctorService = function (search) { return __awaiter(void 0, void 0, void 0, function () {
     var escapedName, escapedSpec, doctor, error_1;
@@ -72,11 +72,11 @@ var getDoctorService = function (search) { return __awaiter(void 0, void 0, void
                             { name: { $regex: escapedName, $options: 'i' } },
                             { specialization: { $regex: escapedSpec, $options: 'i' } },
                         ]
-                    }).select(['-password', '-__v'])];
+                    }).select(['-password', '-__v', '-refreshedToken'])];
             case 2:
                 doctor = _a.sent();
                 return [3 /*break*/, 5];
-            case 3: return [4 /*yield*/, DoctorSchema_1.default.find().select(['-password', '-__v'])];
+            case 3: return [4 /*yield*/, DoctorSchema_1.default.find().select(['-password', '-__v', '-refreshedToken'])];
             case 4:
                 doctor = _a.sent();
                 _a.label = 5;
@@ -100,7 +100,7 @@ var getDoctorByIdService = function (id) { return __awaiter(void 0, void 0, void
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, DoctorSchema_1.default.findById(id).populate('reviews').select(['-password', '-__v'])];
+                return [4 /*yield*/, DoctorSchema_1.default.findById(id).populate('reviews').select(['-password', '-__v', '-refreshedToken'])];
             case 1:
                 doctor = _a.sent();
                 if (!doctor)
@@ -125,7 +125,7 @@ var updateDoctorService = function (_a) { return __awaiter(void 0, [_a], void 0,
                 _c.label = 1;
             case 1:
                 _c.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, DoctorSchema_1.default.findByIdAndUpdate(id, allowedFields, { new: true, runValidators: true }).select(['-password', '-__v'])];
+                return [4 /*yield*/, DoctorSchema_1.default.findByIdAndUpdate(id, allowedFields, { new: true, runValidators: true }).select(['-password', '-__v', '-refreshedToken'])];
             case 2:
                 updatedDoctor = _c.sent();
                 if (!updatedDoctor)
@@ -167,7 +167,7 @@ var getDoctorProfileService = function (doctorId) { return __awaiter(void 0, voi
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, DoctorSchema_1.default.findById(doctorId).select(['-password', '-__v']).populate({
+                return [4 /*yield*/, DoctorSchema_1.default.findById(doctorId).select(['-password', '-__v', '-refreshedToken']).populate({
                         path: 'appointments',
                         populate: [
                             { path: 'doctor', select: 'name photo specialization averageRating status timeSlots' },

@@ -40,12 +40,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sanitizedUser = void 0;
-var generateTokens_1 = require("@utils/generateTokens");
-var handledError_1 = require("@utils/handledError");
-var logger_1 = require("@utils/logger");
-var constant_1 = require("config/constant");
-var UserSchema_1 = __importDefault(require("models/UserSchema"));
-var DoctorSchema_1 = __importDefault(require("models/DoctorSchema"));
+var generateTokens_1 = require("../utils/generateTokens");
+var handledError_1 = require("../utils/handledError");
+var logger_1 = require("../utils/logger");
+var constant_1 = require("../config/constant");
+var UserSchema_1 = __importDefault(require("../models/UserSchema"));
+var DoctorSchema_1 = __importDefault(require("../models/DoctorSchema"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var sanitizedUser = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
     var authHeader, refreshedTokenCookie, token, unVerified, _a, sub, aud, _b, user, doctor, user_doctor, validAudiences, _c, decoded, expired, message, error_1;

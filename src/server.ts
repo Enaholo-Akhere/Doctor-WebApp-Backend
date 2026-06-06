@@ -5,7 +5,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import cookieParser from 'cookie-parser'
 import cors from 'cors';
 import uncaughtException from 'utils/error_handler';
-import routersS from 'Routers';
+import routers from 'Routers';
 import "config/cloudinaryConfig";
 import { startServer } from 'Starters/StartServer';
 import { errorHandler } from 'Middleware/errorHandler';
@@ -47,7 +47,7 @@ app.options('*', cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use('/api/v1', routersS)
+app.use('/api/v1', routers)
 app.get('/', (req: Request, res: Response) => {
     res.status(200).json({ message: "Welcome to the API" })
 })

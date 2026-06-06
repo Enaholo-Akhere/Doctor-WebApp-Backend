@@ -48,8 +48,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getMyProfile = exports.getMyAppointments = exports.deleteUser = exports.updateUser = exports.getUserById = exports.getAllUsers = void 0;
-var userService_1 = require("Services/userService");
-var handledError_1 = require("@utils/handledError");
+var userService_1 = require("../Services/userService");
+var handledError_1 = require("../utils/handledError");
 var getAllUsers = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, error, data, message;
     return __generator(this, function (_b) {

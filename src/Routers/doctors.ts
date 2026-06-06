@@ -13,9 +13,7 @@ const router = express.Router();
 
 router.get('/', getAllDoctors);
 router.get('/:id', getDoctorById);
-// router.get('/:id', [sanitizedUser, restrict(['doctor', 'patient', 'admin'])], getDoctorById);
 router.put('/:id', [upload.single('photo'), multerErrorHandler, validateImage, sanitizedUser, restrict(['doctor']), validate(updateDoctorSchema)], asyncHandler(updateDoctor))
-
 router.delete('/:id', [sanitizedUser, restrict(['doctor'])], deleteDoctor)
 router.get('/profile/me/:id', [sanitizedUser, restrict(['doctor'])], getDoctorProfile)
 

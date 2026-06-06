@@ -15,7 +15,8 @@ const router = express.Router();
 router.post('/register', [upload.single('photo'), multerErrorHandler, validateImage, validate(registerUserSchema)], asyncHandler(register));
 router.post('/login', validate(loginUserSchema), login)
 router.post('/verify-email', validate(verifyEmailSchema), verifyEmail);
-router.post('/refresh-token/:id', refreshToken);
 router.put('/logout', sanitizedUser, logout);
+router.post('/refresh-token/:id', refreshToken);
+
 
 export default router;

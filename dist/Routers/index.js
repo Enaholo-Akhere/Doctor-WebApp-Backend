@@ -3,9 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var auth_1 = __importDefault(require("Routers/auth"));
-var users_1 = __importDefault(require("Routers/users"));
-var doctors_1 = __importDefault(require("Routers/doctors"));
+var auth_1 = __importDefault(require("../Routers/auth"));
+var users_1 = __importDefault(require("../Routers/users"));
+var doctors_1 = __importDefault(require("../Routers/doctors"));
 var review_1 = __importDefault(require("./review"));
 var booking_1 = __importDefault(require("./booking"));
 var express_1 = __importDefault(require("express"));

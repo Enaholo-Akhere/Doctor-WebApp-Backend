@@ -40,14 +40,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getBookingBySession = exports.stripeWebhook = exports.bookingSessionController = void 0;
-var handledError_1 = require("@utils/handledError");
-var bookingService_1 = require("Services/bookingService");
-var BookingSchema_1 = __importDefault(require("models/BookingSchema"));
-var DoctorSchema_1 = __importDefault(require("models/DoctorSchema"));
-var UserSchema_1 = __importDefault(require("models/UserSchema"));
-var logger_1 = require("@utils/logger");
+var handledError_1 = require("../utils/handledError");
+var bookingService_1 = require("../Services/bookingService");
+var BookingSchema_1 = __importDefault(require("../models/BookingSchema"));
+var DoctorSchema_1 = __importDefault(require("../models/DoctorSchema"));
+var UserSchema_1 = __importDefault(require("../models/UserSchema"));
+var logger_1 = require("../utils/logger");
 var stripe_1 = __importDefault(require("stripe"));
-var nodemailer_1 = require("@utils/message/nodemailer");
+var nodemailer_1 = require("../utils/message/nodemailer");
 var stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY, {
     apiVersion: '2026-04-22.dahlia',
 });

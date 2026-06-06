@@ -15,7 +15,6 @@ router.get('/', [sanitizedUser, restrict(['admin'])], getAllUsers)
 router.get('/:id', [sanitizedUser, restrict(['patient'])], getUserById)
 router.put('/:id', [upload.single('photo'), multerErrorHandler, validateImage, validate(updateUserSchema)], asyncHandler(updateUser))
 router.delete('/:id', [sanitizedUser, restrict(['patient'])], deleteUser)
-router.get('/appointments/my-appointments', [sanitizedUser, restrict(['patient'])], getMyAppointments)
 router.get('/profile/me/:id', [sanitizedUser, restrict(['patient'])], getMyProfile)
 
 

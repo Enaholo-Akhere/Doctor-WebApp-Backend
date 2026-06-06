@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateImage = void 0;
-var validateAvatarFile_1 = require("@utils/validateAvatarFile");
+var validateAvatarFile_1 = require("../utils/validateAvatarFile");
 var validateImage = function (req, res, next) {
     try {
         var photo = typeof req.body.photo === "string"

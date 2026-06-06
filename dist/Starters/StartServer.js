@@ -38,7 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.startServer = void 0;
 var DatabaseConnect_1 = require("./DatabaseConnect");
-var logger_1 = require("@utils/logger");
+var logger_1 = require("../utils/logger");
 var PORT = Number(process.env.PORT) || 3000;
 var startServer = function (app) { return __awaiter(void 0, void 0, void 0, function () {
     var error_1;

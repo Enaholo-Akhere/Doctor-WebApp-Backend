@@ -65,25 +65,30 @@ var __generator =
         return step([n, v]);
       };
     }
-    function step(op) {
-      if (f) throw new TypeError('Generator is already executing.');
-      while ((g && ((g = 0), op[0] && (_ = 0)), _))
-        try {
-          if (
-            ((f = 1),
-            y &&
-              (t =
-                op[0] & 2
-                  ? y['return']
-                  : op[0]
-                    ? y['throw'] || ((t = y['return']) && t.call(y), 0)
-                    : y.next) &&
-              !(t = t.call(y, op[1])).done)
-          )
-            return t;
-          if (((y = 0), t)) op = [op[0] & 2, t.value];
-          switch (op[0]) {
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.bookingSessionService = void 0;
+var UserSchema_1 = __importDefault(require("../models/UserSchema"));
+var BookingSchema_1 = __importDefault(require("../models/BookingSchema"));
+var DoctorSchema_1 = __importDefault(require("../models/DoctorSchema"));
+var stripe_1 = __importDefault(require("stripe"));
+var logger_1 = require("../utils/logger");
+var bookingSessionService = function (_a) { return __awaiter(void 0, [_a], void 0, function (_b) {
+    var stripeKey, devUrl, prodUrl, clientUrl, cancelUrl, _c, doctor, user, stripe, session, booking, error_1;
+    var _d;
+    var doctorId = _b.doctorId, userId = _b.userId;
+    return __generator(this, function (_e) {
+        switch (_e.label) {
             case 0:
+                stripeKey = process.env.STRIPE_SECRET_KEY || "";
+                devUrl = process.env.DEV_CLIENT_URL || "";
+                prodUrl = process.env.PROD_CLIENT_URL || "";
+                clientUrl = process.env.NODE_ENV === 'production' ? prodUrl : devUrl;
+                cancelUrl = "".concat(clientUrl, "/doctor/").concat(doctorId);
+                _e.label = 1;
             case 1:
               t = op;
               break;
