@@ -1,16 +1,19 @@
 import { BookingCompleteInterface } from "types";
 
 export const patientBookingTemplate = ({
-    patientName,
-    doctorName,
-    ticketPrice,
-    bookingRef,
-    bookedOn,
+  patientName,
+  doctorName,
+  ticketPrice,
+  bookingRef,
+  bookedOn,
 }: BookingCompleteInterface) => {
-    const profileUrl = `${process.env.CLIENT_URL}/users/profile/me`;
-    const year = new Date().getFullYear();
+  const devUrl: string = process.env.DEV_CLIENT_URL || "";
+  const prodUrl: string = process.env.PROD_CLIENT_URL || "";
+  const clientUrl = process.env.NODE_ENV === 'production' ? prodUrl : devUrl;
+  const profileUrl = `${clientUrl}/users/profile/me`;
+  const year = new Date().getFullYear();
 
-    return `
+  return `
 <!DOCTYPE html>
 <html lang="en">
 <head>

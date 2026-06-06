@@ -11,7 +11,9 @@ interface BookingInterface {
 
 export const bookingSessionService = async ({ doctorId, userId }: BookingInterface) => {
     const stripeKey: string = process.env.STRIPE_SECRET_KEY || "";
-    const clientUrl: string = process.env.CLIENT_URL || "";
+    const devUrl: string = process.env.DEV_CLIENT_URL || "";
+    const prodUrl: string = process.env.PROD_CLIENT_URL || "";
+    const clientUrl = process.env.NODE_ENV === 'production' ? prodUrl : devUrl;
     const cancelUrl = `${clientUrl}/doctor/${doctorId}`;
 
     try {

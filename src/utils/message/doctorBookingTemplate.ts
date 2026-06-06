@@ -9,7 +9,12 @@ export const doctorBookingTemplate = ({
   bookingRef,
   bookedOn,
 }: BookingCompleteInterface) => {
-  const dashboardUrl = `${process.env.CLIENT_URL}/doctors/profile/me`;
+
+  const devUrl: string = process.env.DEV_CLIENT_URL || "";
+  const prodUrl: string = process.env.PROD_CLIENT_URL || "";
+  const clientUrl = process.env.NODE_ENV === 'production' ? prodUrl : devUrl;
+
+  const dashboardUrl = `${clientUrl}/doctors/profile/me`;
   const year = new Date().getFullYear();
 
   return `
