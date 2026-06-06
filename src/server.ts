@@ -10,7 +10,6 @@ import "config/cloudinaryConfig";
 import { startServer } from 'Starters/StartServer';
 import { errorHandler } from 'Middleware/errorHandler';
 import { stripeWebhook } from 'Controllers/bookingController';
-import { pathToRegexp } from 'path-to-regexp';
 
 
 const app = express()

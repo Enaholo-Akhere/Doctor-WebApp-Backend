@@ -18,5 +18,4 @@ router.post('/verify-email', validate(verifyEmailSchema), verifyEmail);
 router.put('/logout', sanitizedUser, logout);
 router.post('/refresh-token/:id', refreshToken);
 
-
 export default router;
