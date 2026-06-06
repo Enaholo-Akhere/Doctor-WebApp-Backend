@@ -10,7 +10,9 @@ export interface UserSchemaInterface {
     bloodType: string;
     appointments: mongoose.ObjectId
     verified: boolean;
-    id: mongoose.ObjectId
+    id: mongoose.ObjectId;
+    refreshedToken: string;
+
 }
 
 export interface ReviewSchemaInterface {
@@ -60,6 +62,7 @@ export interface DoctorSchemaInterface {
     appointments: mongoose.ObjectId[];
     verified: boolean;
     photo?: { imageUrl: string | undefined, publicId: string | undefined };
+    refreshedToken: string;
 
 }
 
@@ -71,6 +74,7 @@ export interface BookSchemaInterface {
     status: string;
     isPaid: boolean;
     createdAt: Date;
+    stripeSessionId: string;
     updatedAt: Date;
 }
 
@@ -121,4 +125,14 @@ export interface decodedDataInterface {
     name: string;
     email: string;
     id: string;
+}
+
+export interface BookingCompleteInterface {
+    doctorName: string;
+    patientName: string;
+    patientEmail: string;
+    doctorEmail: string;
+    ticketPrice: string | number;
+    bookingRef: string;
+    bookedOn: string;
 }

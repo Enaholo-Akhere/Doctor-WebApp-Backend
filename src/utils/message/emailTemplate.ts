@@ -1,11 +1,11 @@
 import { decodedData, emailUrlAndName } from "types";
 const url_dev = 'http://localhost:5173/verify-email';
-const url_prod = 'https://e-folio-enaholo-akhere.netlify.app';
+const url_prod = '';
 
 export const verifyEmailTemplate = ({ name, _id }: decodedData, token: string) => {
   const baseUrl = process.env.NODE_ENV === 'production' ? url_prod : url_dev;
 
-  const email_temp = `
+  return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,7 +87,5 @@ export const verifyEmailTemplate = ({ name, _id }: decodedData, token: string) =
 </body>
 </html>
 `;
-
-  return email_temp;
 
 };

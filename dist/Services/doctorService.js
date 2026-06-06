@@ -53,7 +53,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getDoctorProfileService = exports.deleteDoctorService = exports.updateDoctorService = exports.getDoctorByIdService = exports.getDoctorService = void 0;
 var logger_1 = require("@utils/logger");
 var DoctorSchema_1 = __importDefault(require("models/DoctorSchema"));
-var BookingSchema_1 = __importDefault(require("models/BookingSchema"));
 var escape_string_regexp_1 = __importDefault(require("escape-string-regexp"));
 var getDoctorService = function (search) { return __awaiter(void 0, void 0, void 0, function () {
     var escapedName, escapedSpec, doctor, error_1;
@@ -163,25 +162,29 @@ var deleteDoctorService = function (id) { return __awaiter(void 0, void 0, void 
 }); };
 exports.deleteDoctorService = deleteDoctorService;
 var getDoctorProfileService = function (doctorId) { return __awaiter(void 0, void 0, void 0, function () {
-    var doctor, appointments, error_5;
+    var doctor, error_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 3, , 4]);
-                return [4 /*yield*/, DoctorSchema_1.default.findById(doctorId).select(['-password', '-__v'])];
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, DoctorSchema_1.default.findById(doctorId).select(['-password', '-__v']).populate({
+                        path: 'appointments',
+                        populate: [
+                            { path: 'doctor', select: 'name photo specialization averageRating status timeSlots' },
+                            { path: 'user', select: 'name email photo' },
+                        ]
+                    })];
             case 1:
                 doctor = _a.sent();
-                return [4 /*yield*/, BookingSchema_1.default.find({ doctor: doctorId })];
-            case 2:
-                appointments = _a.sent();
+                ;
                 if (!doctor)
                     throw new Error('doctor not found');
-                return [2 /*return*/, { data: doctor, message: 'successful', appointments: appointments }];
-            case 3:
+                return [2 /*return*/, { data: doctor, message: 'successful' }];
+            case 2:
                 error_5 = _a.sent();
                 logger_1.winston_logger.error(error_5.message, error_5.stack);
                 return [2 /*return*/, { error: error_5, message: error_5.message }];
-            case 4: return [2 /*return*/];
+            case 3: return [2 /*return*/];
         }
     });
 }); };

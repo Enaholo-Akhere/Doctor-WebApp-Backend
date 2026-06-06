@@ -5,17 +5,10 @@ import { winston_logger } from "@utils/logger";
 import { handleError } from "@utils/handledError";
 
 export const restrict = (roles: string[]) => async (req: Request, res: Response, next: NextFunction) => {
-    const { audience, id } = res.locals.auth;
+    const { role } = res.locals.auth;
 
     try {
-        const [userData, doctorData] = await Promise.all([
-            Users.findById(id),
-            Doctors.findById(id)
-        ])
 
-        const data = userData || doctorData;
-
-        const role = data?.toObject().role;
         if (!role || !roles.includes(role)) {
             throw new Error("Access denied: insufficient permission");
         }

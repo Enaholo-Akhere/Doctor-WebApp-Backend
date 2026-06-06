@@ -35,44 +35,25 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.restrict = void 0;
-var UserSchema_1 = __importDefault(require("models/UserSchema"));
-var DoctorSchema_1 = __importDefault(require("models/DoctorSchema"));
 var logger_1 = require("@utils/logger");
 var handledError_1 = require("@utils/handledError");
 var restrict = function (roles) { return function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, audience, id, _b, userData, doctorData, data, role, error_1;
-    return __generator(this, function (_c) {
-        switch (_c.label) {
-            case 0:
-                _a = res.locals.auth, audience = _a.audience, id = _a.id;
-                _c.label = 1;
-            case 1:
-                _c.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, Promise.all([
-                        UserSchema_1.default.findById(id),
-                        DoctorSchema_1.default.findById(id)
-                    ])];
-            case 2:
-                _b = _c.sent(), userData = _b[0], doctorData = _b[1];
-                data = userData || doctorData;
-                role = data === null || data === void 0 ? void 0 : data.toObject().role;
-                if (!role || !roles.includes(role)) {
-                    throw new Error("Access denied: insufficient permission");
-                }
-                next();
-                return [3 /*break*/, 4];
-            case 3:
-                error_1 = _c.sent();
-                logger_1.winston_logger.error(error_1.message, error_1.stack);
-                next((0, handledError_1.handleError)(error_1));
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
+    var role;
+    return __generator(this, function (_a) {
+        role = res.locals.auth.role;
+        try {
+            if (!role || !roles.includes(role)) {
+                throw new Error("Access denied: insufficient permission");
+            }
+            next();
         }
+        catch (error) {
+            logger_1.winston_logger.error(error.message, error.stack);
+            next((0, handledError_1.handleError)(error));
+        }
+        return [2 /*return*/];
     });
 }); }; };
 exports.restrict = restrict;

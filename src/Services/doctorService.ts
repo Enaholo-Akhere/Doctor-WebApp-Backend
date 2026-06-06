@@ -101,11 +101,16 @@ export const deleteDoctorService = async (id: string): Promise<Partial<GetDoctor
 
 export const getDoctorProfileService = async (doctorId: string) => {
     try {
-        const doctor = await Doctor.findById(doctorId).select(['-password', '-__v']);
-        const appointments = await Booking.find({ doctor: doctorId })
+        const doctor = await Doctor.findById(doctorId).select(['-password', '-__v']).populate({
+            path: 'appointments',
+            populate: [
+                { path: 'doctor', select: 'name photo specialization averageRating status timeSlots' },
+                { path: 'user', select: 'name email photo' },
+            ]
+        });;
 
         if (!doctor) throw new Error('doctor not found')
-        return { data: doctor, message: 'successful', appointments }
+        return { data: doctor, message: 'successful' }
     }
     catch (error: any) {
         winston_logger.error(error.message, error.stack)

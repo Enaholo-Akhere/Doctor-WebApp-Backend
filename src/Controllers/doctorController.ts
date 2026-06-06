@@ -73,13 +73,12 @@ export const deleteDoctor = async (req: Request, res: Response, next: NextFuncti
 export const getDoctorProfile = async (req: Request, res: Response, next: NextFunction) => {
     const doctorId = res.locals.auth.id
 
-    const { data, message, error, appointments } = await getDoctorProfileService(doctorId)
+    const { data, message, error } = await getDoctorProfileService(doctorId)
     if (error) {
-        console.log('error', error)
         return next(handleError(error))
     }
 
-    res.status(200).json({ message, status: true, data, appointments })
+    res.status(200).json({ message, status: true, data })
 }
 
 

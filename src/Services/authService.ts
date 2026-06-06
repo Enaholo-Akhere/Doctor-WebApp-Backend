@@ -10,6 +10,7 @@ import QueryString from "qs"
 import { verifyToken } from "@utils/generateTokens"
 import Users from "models/UserSchema"
 import { AUDIENCE } from 'config/constant';
+import { shuffleString } from "@utils/shuffler"
 
 export const registerService = async (body: UserSchemaInterface) => {
 
@@ -88,29 +89,29 @@ export const loginServices = async ({ email, password }: { email: string, passwo
         if (userPatient) audience = AUDIENCE.PATIENT;
         if (userDoctor) audience = AUDIENCE.DOCTOR;
 
-        console.log('Audience:', audience);
-
-
         const { token, error } = generateAccessToken({ user: { id: userExist?.toObject()._id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions, audience });
         const { token: refreshedToken, error: RefTokenError } = generateAccessToken({ user: { id: userExist?.toObject()._id }, options: { expiresIn: process.env.REFRESH_TOKEN_EXPIRY } as jwt.SignOptions, audience })
 
+        const [updatedUser, updatedDoctor] = await Promise.all([
+            User.findByIdAndUpdate(userExist._id, { refreshedToken }, { new: true }).select('-password -__v -refreshedToken'),
+            Doctor.findByIdAndUpdate(userExist._id, { refreshedToken }, { new: true }).select('-password -__v -refreshedToken')
+        ])
+
+        const updatedUserDoctor = updatedUser || updatedDoctor;
+        console.log('updated user doctor', updatedUserDoctor)
         const tokenError = error || RefTokenError
 
         if (error || RefTokenError) throw new Error(tokenError);
-
-
 
         const comPass = await bcrypt.compare(password, userExist.password);
 
         if (!comPass) throw new Error('Invalid email or password');
 
-        const data = _.omit(userExist.toObject(), ['password']);
-
-        if (!data.verified) {
+        if (!updatedUserDoctor || !updatedUserDoctor?.verified) {
             throw new Error('Please verify your email to login');
         }
 
-        return { data, message: 'Login Successful', token, refreshedToken }
+        return { data: updatedUserDoctor, message: 'Login Successful', token, refreshedToken }
     }
     catch (error: any) {
         winston_logger.error(error.message, error.stack);
@@ -211,3 +212,24 @@ export const refreshedTokenService = async (refreshedToken: string, id: string) 
         };
     }
 };
+
+export const logoutService = async (id: string) => {
+
+    try {
+        const [updatedUser, updatedDoctor] = await Promise.all([
+            User.findByIdAndUpdate(id, { $unset: { refreshedToken: 1 } }, { new: true }).select('-password -__v '),
+            Doctor.findByIdAndUpdate(id, { $unset: { refreshedToken: 1 } }, { new: true }).select('-password -__v ')
+        ]);
+
+        const updatedUserDoctor = updatedUser || updatedDoctor;
+
+        if (!updatedUserDoctor) throw new Error('user not found');
+
+        return { message: 'Logged out successfully' };
+
+    }
+    catch (error: any) {
+        winston_logger.error(error.message, error.stack);
+        return { error, message: error.message }
+    }
+}

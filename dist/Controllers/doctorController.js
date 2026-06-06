@@ -136,19 +136,18 @@ var deleteDoctor = function (req, res, next) { return __awaiter(void 0, void 0, 
 }); };
 exports.deleteDoctor = deleteDoctor;
 var getDoctorProfile = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var doctorId, _a, data, message, error, appointments;
+    var doctorId, _a, data, message, error;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 doctorId = res.locals.auth.id;
                 return [4 /*yield*/, (0, doctorService_1.getDoctorProfileService)(doctorId)];
             case 1:
-                _a = _b.sent(), data = _a.data, message = _a.message, error = _a.error, appointments = _a.appointments;
+                _a = _b.sent(), data = _a.data, message = _a.message, error = _a.error;
                 if (error) {
-                    console.log('error', error);
                     return [2 /*return*/, next((0, handledError_1.handleError)(error))];
                 }
-                res.status(200).json({ message: message, status: true, data: data, appointments: appointments });
+                res.status(200).json({ message: message, status: true, data: data });
                 return [2 /*return*/];
         }
     });

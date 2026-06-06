@@ -147,7 +147,13 @@ var getUserProfileService = function (id) { return __awaiter(void 0, void 0, voi
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, UserSchema_1.default.findById(id).select(['-password', '-__v'])];
+                return [4 /*yield*/, UserSchema_1.default.findById(id).select(['-password', '-__v']).populate({
+                        path: 'appointments',
+                        populate: [
+                            { path: 'doctor', select: 'name photo specialization averageRating status timeSlots' },
+                            { path: 'user', select: 'name email photo' },
+                        ]
+                    })];
             case 1:
                 user = _a.sent();
                 if (!user)

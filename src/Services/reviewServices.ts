@@ -24,7 +24,6 @@ export const createReviewServices = async (body: ReviewBodyInterface) => {
 
         const savedReview = await newReviews.save();
 
-        console.log('saved review:', savedReview);
 
         await Doctor.findByIdAndUpdate(body.doctor, {
             $push: { reviews: savedReview._id }
@@ -36,8 +35,6 @@ export const createReviewServices = async (body: ReviewBodyInterface) => {
             path: 'user',
             select: 'name photo'
         });
-
-        console.log('populated review:', populatedReview);
 
         return { data: populatedReview, message: 'review created successfully' }
 

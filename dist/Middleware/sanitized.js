@@ -44,42 +44,60 @@ var generateTokens_1 = require("@utils/generateTokens");
 var handledError_1 = require("@utils/handledError");
 var logger_1 = require("@utils/logger");
 var constant_1 = require("config/constant");
+var UserSchema_1 = __importDefault(require("models/UserSchema"));
+var DoctorSchema_1 = __importDefault(require("models/DoctorSchema"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var sanitizedUser = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var authHeader, token, unVerified, _a, sub, aud, validAudiences, _b, decoded, expired, message;
-    return __generator(this, function (_c) {
-        try {
-            authHeader = req.get('authorization');
-            if (!authHeader)
-                throw new Error('token not found');
-            if (req.method === 'OPTIONS') {
-                return [2 /*return*/, next()];
-            }
-            token = authHeader.split(' ')[1];
-            unVerified = jsonwebtoken_1.default.decode(token, { complete: true });
-            if (!unVerified) {
-                throw new Error('Invalid token');
-            }
-            _a = unVerified.payload, sub = _a.sub, aud = _a.aud;
-            validAudiences = Object.values(constant_1.AUDIENCE);
-            if (!validAudiences.includes(aud)) {
-                throw new Error('Invalid token audience');
-            }
-            _b = (0, generateTokens_1.verifyToken)(token, aud), decoded = _b.decoded, expired = _b.expired, message = _b.message;
-            if (message.includes('jwt audience invalid')) {
-                throw new Error('Invalid token');
-            }
-            if (!decoded || expired) {
-                throw new Error(message !== null && message !== void 0 ? message : 'access token expired');
-            }
-            res.locals.auth = { id: sub, audience: aud };
-            next();
+    var authHeader, refreshedTokenCookie, token, unVerified, _a, sub, aud, _b, user, doctor, user_doctor, validAudiences, _c, decoded, expired, message, error_1;
+    var _d;
+    return __generator(this, function (_e) {
+        switch (_e.label) {
+            case 0:
+                _e.trys.push([0, 2, , 3]);
+                authHeader = req.get('authorization');
+                refreshedTokenCookie = (_d = req.cookies) === null || _d === void 0 ? void 0 : _d.refreshedToken;
+                if (!authHeader)
+                    throw new Error('token not found');
+                if (req.method === 'OPTIONS') {
+                    return [2 /*return*/, next()];
+                }
+                token = authHeader.split(' ')[1];
+                unVerified = jsonwebtoken_1.default.decode(token, { complete: true });
+                if (!unVerified) {
+                    throw new Error('Invalid token');
+                }
+                _a = unVerified.payload, sub = _a.sub, aud = _a.aud;
+                return [4 /*yield*/, Promise.all([
+                        UserSchema_1.default.findById(sub),
+                        DoctorSchema_1.default.findById(sub)
+                    ])];
+            case 1:
+                _b = _e.sent(), user = _b[0], doctor = _b[1];
+                user_doctor = user || doctor;
+                if ((user_doctor === null || user_doctor === void 0 ? void 0 : user_doctor.refreshedToken) !== refreshedTokenCookie) {
+                    throw new Error('Invalid user token');
+                }
+                validAudiences = Object.values(constant_1.AUDIENCE);
+                if (!validAudiences.includes(aud)) {
+                    throw new Error('Invalid token');
+                }
+                _c = (0, generateTokens_1.verifyToken)(token, aud), decoded = _c.decoded, expired = _c.expired, message = _c.message;
+                if (message.includes('jwt audience invalid')) {
+                    throw new Error('Invalid token');
+                }
+                if (!decoded || expired) {
+                    throw new Error(message !== null && message !== void 0 ? message : 'access token expired');
+                }
+                res.locals.auth = { id: sub, audience: aud, role: user_doctor === null || user_doctor === void 0 ? void 0 : user_doctor.role };
+                next();
+                return [3 /*break*/, 3];
+            case 2:
+                error_1 = _e.sent();
+                logger_1.winston_logger.error(error_1.message, error_1.stack);
+                next((0, handledError_1.handleError)(error_1));
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
-        catch (error) {
-            logger_1.winston_logger.error(error.message, error.stack);
-            next((0, handledError_1.handleError)(error));
-        }
-        return [2 /*return*/];
     });
 }); };
 exports.sanitizedUser = sanitizedUser;

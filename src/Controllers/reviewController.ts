@@ -20,13 +20,10 @@ export const createReview = async (req: Request, res: Response) => {
     const doctorId = req.params.doctorId;
     const { id } = res.locals.auth
 
-    // if (id === doctorId) {
-    //     res.status(403).json({ message: 'Doctors cannot review themselves', status: false })
-    //     return;
-    // };
-
-    console.log({ 'type of doctorId': typeof doctorId });
-    console.log({ 'type of id': typeof id });
+    if (id === doctorId) {
+        res.status(403).json({ message: 'Doctors cannot review themselves', status: false })
+        return;
+    };
 
 
     const body: ReviewBodyInterface = {

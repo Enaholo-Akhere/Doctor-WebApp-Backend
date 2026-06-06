@@ -11,6 +11,7 @@ var UserSchema = new mongoose_1.default.Schema({
     name: { type: String, required: true },
     phone: { type: String },
     verified: { type: Boolean, default: false },
+    refreshedToken: { type: String },
     photo: {
         imageUrl: {
             type: String,
@@ -28,7 +29,7 @@ var UserSchema = new mongoose_1.default.Schema({
     },
     gender: { type: String, enum: ["male", "female", "other"] },
     bloodType: { type: String },
-    appointments: [{ type: mongoose_1.default.Types.ObjectId, ref: "Appointment" }],
+    appointments: [{ type: mongoose_1.default.Types.ObjectId, ref: "Booking" }],
 }, { timestamps: true });
 exports.default = mongoose_1.default.model("User", UserSchema);
 //# sourceMappingURL=UserSchema.js.map

@@ -1,7 +1,6 @@
+
 import mongoose from "mongoose";
 import { BookSchemaInterface } from "types";
-
-
 
 const bookingSchema = new mongoose.Schema<BookSchemaInterface>(
   {
@@ -16,10 +15,7 @@ const bookingSchema = new mongoose.Schema<BookSchemaInterface>(
       required: true,
     },
     ticketPrice: { type: String, required: true },
-    appointmentDate: {
-      type: Date,
-      required: true,
-    },
+    stripeSessionId: { type: String, required: true }, // ✅ add this
     status: {
       type: String,
       enum: ["pending", "approved", "cancelled"],
@@ -28,7 +24,7 @@ const bookingSchema = new mongoose.Schema<BookSchemaInterface>(
     },
     isPaid: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
   { timestamps: true }

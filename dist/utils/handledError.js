@@ -21,7 +21,7 @@ var handleError = function (err) {
             statusCode: 403
         });
     }
-    else if (err.message === 'jwt expired' || err.message === 'jwt malformed') {
+    else if (err.message === 'jwt expired' || err.message === 'jwt malformed' || err.message === 'Invalid user token') {
         return (0, appError_1.appError)({
             message: "Unauthorized. Access token expired.",
             statusCode: 401
