@@ -11,9 +11,8 @@ interface GenerateTokenInterface {
     audience?: string;
 }
 
-//get the RSA keys using File System fs
-const privateKey = fs.readFileSync(path.join(__dirname, '../keys/private.pem'), 'utf8'); // this will returns Buffer
-const publicKey = fs.readFileSync(path.join(__dirname, '../keys/public.pem'), 'utf8'); // this will returns Buffer
+const privateKey = process.env.PRIVATE_KEY?.replace(/\\n/g, '\n')!;
+const publicKey = process.env.PUBLIC_KEY?.replace(/\\n/g, '\n')!;
 
 export const generateAccessToken = ({ user, options, audience }: GenerateTokenInterface) => {
     // Only include serializable user properties in the payload
