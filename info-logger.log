@@ -157,3 +157,4 @@
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-05T23:21:49.003Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-06T08:42:10.827Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-06T08:42:10.830Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mgetaddrinfo ENOTFOUND ac-pbrskwc-shard-00-00.kcorv44.mongodb.net\u001b[39m","timestamp":"2026-06-06T12:18:36.294Z"}

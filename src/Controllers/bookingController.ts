@@ -94,7 +94,7 @@ export const stripeWebhook = async (req: Request, res: Response) => {
                 };
 
                 if (docAppointment && userAppointment) {
-                    //EMAIL NOTIFICATIONS CAN BE SENT here
+
                     const bookedOn = booking.createdAt.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
                     const bookingDetail = {
                         patientName: booking.user.name,

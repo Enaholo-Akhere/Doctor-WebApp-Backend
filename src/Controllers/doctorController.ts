@@ -2,7 +2,6 @@ import { handleError } from "@utils/handledError";
 import { NextFunction, Request, Response } from "express";
 import { deleteDoctorService, getDoctorByIdService, getDoctorProfileService, getDoctorService, updateDoctorService } from "Services/doctorService";
 import { DoctorSchemaInterface } from "types";
-// import { UpdateDoctorInput } from "DTO_Validations/zod_schemas";
 
 
 export const getAllDoctors = async (req: Request, res: Response, next: NextFunction) => {

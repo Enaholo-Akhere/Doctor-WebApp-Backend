@@ -24,7 +24,7 @@ export const register = async (req: Request<{}, {}, UserSchemaInterface>, res: R
             message: 'Profile image is required',
         });
     }
-    const imageUrl = req.file?.path;       // Cloudinary URL
+    const imageUrl = req.file?.path;
     const publicId = req?.file?.filename;
 
     const bodyWithImage = { ...body, photo: { imageUrl, publicId } };
