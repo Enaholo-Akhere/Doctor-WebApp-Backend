@@ -28,9 +28,9 @@ export const getDoctorService = async (search?: string): Promise<Partial<GetDoct
                     { name: { $regex: escapedName, $options: 'i' } },
                     { specialization: { $regex: escapedSpec, $options: 'i' } },
                 ]
-            }).select(['-password', '-__v']);
+            }).select(['-password', '-__v refreshedToken']);
         } else {
-            doctor = await Doctor.find().select(['-password', '-__v']);
+            doctor = await Doctor.find().select(['-password', '-__v refreshedToken']);
         }
 
         if (!doctor.length) throw new Error('doctor not found');
@@ -48,7 +48,7 @@ export const getDoctorByIdService = async (id: string): Promise<Partial<GetDocto
 
     try {
 
-        const doctor = await Doctor.findById(id).populate('reviews').select(['-password', '-__v'])
+        const doctor = await Doctor.findById(id).populate('reviews').select(['-password', '-__v refreshedToken'])
 
         if (!doctor) throw new Error('doctor not found')
 
@@ -101,7 +101,7 @@ export const deleteDoctorService = async (id: string): Promise<Partial<GetDoctor
 
 export const getDoctorProfileService = async (doctorId: string) => {
     try {
-        const doctor = await Doctor.findById(doctorId).select(['-password', '-__v']).populate({
+        const doctor = await Doctor.findById(doctorId).select(['-password', '-__v refreshedToken']).populate({
             path: 'appointments',
             populate: [
                 { path: 'doctor', select: 'name photo specialization averageRating status timeSlots' },
