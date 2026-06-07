@@ -16,7 +16,7 @@ export const handleError = (err: any) => {
     } else if (err.message === 'token not found') {
         return appError({
             message: "Unauthorized. Token not found.",
-            statusCode: 403
+            statusCode: 401
         });
     } else if (err.message === 'jwt expired' || err.message === 'jwt malformed' || err.message === 'Invalid user token') {
         return appError({
