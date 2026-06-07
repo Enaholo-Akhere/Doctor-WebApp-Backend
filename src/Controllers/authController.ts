@@ -113,9 +113,6 @@ export const logout = async (req: Request, res: Response, next: NextFunction) =>
 export const refreshToken = async (req: Request, res: Response, next: NextFunction) => {
     const refreshedToken = req.cookies?.refreshedToken;
 
-    console.log('All cookies:', req.cookies);
-    console.log('Headers:', req.headers);
-
     const { id } = req.params
 
     if (!refreshedToken) {
