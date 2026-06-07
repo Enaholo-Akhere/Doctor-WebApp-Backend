@@ -14,7 +14,6 @@ export const sanitizedUser = async (req: Request, res: Response, next: NextFunct
     try {
 
         const authHeader = req.get('authorization');
-        const refreshedTokenCookie = req.cookies?.refreshedToken;
 
         if (!authHeader) throw new Error('token not found');
 
@@ -38,7 +37,8 @@ export const sanitizedUser = async (req: Request, res: Response, next: NextFunct
         ])
 
         const user_doctor = user || doctor;
-        if (user_doctor?.refreshedToken !== refreshedTokenCookie) {
+
+        if (!user_doctor?.refreshedToken) {
 
             throw new Error('Invalid user token');
         }
