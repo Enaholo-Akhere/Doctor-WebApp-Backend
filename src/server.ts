@@ -32,23 +32,23 @@ app.use(cors(corsOptions));
 
 const allowedOrigins = ['http://localhost:5173', 'https://care-connect-ena.netlify.app'];
 
-app.use((req: Request, res: Response, next: NextFunction) => {
-    const origin = req.headers.origin;
+// app.use((req: Request, res: Response, next: NextFunction) => {
+//     const origin = req.headers.origin;
 
-    if (origin && allowedOrigins.includes(origin)) {
-        res.header('Access-Control-Allow-Origin', origin);
-    }
+//     if (origin && allowedOrigins.includes(origin)) {
+//         res.header('Access-Control-Allow-Origin', origin);
+//     }
 
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', 'true');
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//     res.header('Access-Control-Allow-Credentials', 'true');
 
-    if (req.method === 'OPTIONS') {
-        res.sendStatus(200);
-        return;
-    }
-    next();
-});
+//     if (req.method === 'OPTIONS') {
+//         res.sendStatus(200);
+//         return;
+//     }
+//     next();
+// });
 app.use(express.json());
 app.use(cookieParser());
 

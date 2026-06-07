@@ -11,3 +11,7 @@
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid user token\u001b[39m","timestamp":"2026-06-07T12:16:53.582Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-07T14:21:15.459Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-07T14:21:15.466Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid user token\u001b[39m","timestamp":"2026-06-07T17:49:01.918Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid user token\u001b[39m","timestamp":"2026-06-07T17:49:05.434Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid user token\u001b[39m","timestamp":"2026-06-07T17:49:19.205Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid user token\u001b[39m","timestamp":"2026-06-07T17:49:20.334Z"}
