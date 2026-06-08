@@ -1,9 +1,7 @@
-// utils/appError.ts
-
 interface AppError {
     message: string;
     statusCode: number;
-    extras?: Record<string, any>; // optional, for logs
+    extras?: Record<string, any>;
 }
 export const appError = (
     { message,
@@ -17,7 +15,6 @@ export const appError = (
     if (extras) {
         Object.assign(error, extras);
     }
-
     Error.captureStackTrace(error, appError);
 
     return error;

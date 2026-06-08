@@ -1,9 +1,10 @@
-import { decodedData, emailUrlAndName } from "types";
-const url_dev = 'http://localhost:5173/verify-email';
-const url_prod = '';
+import { decodedData } from "types";
 
 export const verifyEmailTemplate = ({ name, _id }: decodedData, token: string) => {
-  const baseUrl = process.env.NODE_ENV === 'production' ? url_prod : url_dev;
+
+  const devUrl = process.env.DEV_CLIENT_URL;
+  const prodUrl = process.env.PROD_CLIENT_URL;
+  const baseUrl = process.env.NODE_ENV === 'production' ? prodUrl : devUrl;
 
   return `
 <!DOCTYPE html>

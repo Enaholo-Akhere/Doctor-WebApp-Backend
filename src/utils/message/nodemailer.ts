@@ -6,6 +6,8 @@ import dotenv from 'dotenv';
 import { winston_logger } from '@utils/logger';
 import { doctorBookingTemplate } from './doctorBookingTemplate';
 import { patientBookingTemplate } from './patientBookingTemplate';
+import { passwordResetTemplate } from './passwordResetEmail';
+import { passwordChangeSuccessTemplate } from './passwordSuccessfulTemplate';
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
@@ -20,31 +22,43 @@ const transporter = nodemailer.createTransport({
 const sendVerificationEmail = async (data: decodedData, token: string) => {
 
     const mailOptions = <mailOptions>{
-        from: process.env.AUTH_EMAIL,
+        from: `CareConnect <${process.env.AUTH_EMAIL}>`,
         to: data.email,
         subject: 'Verify Your Email',
         html: verifyEmailTemplate(data, token),
     };
     try {
         const resp = await transporter.sendMail(mailOptions);
-        console.log('Email sent: ' + resp);
         return resp;
 
     }
     catch (error: any) {
-        console.log('email error', error);
         winston_logger.error(error.message, error.stack)
     }
-}
+};
 
 
-const sendForgotPasswordEmail = async (respData: forgotPassword) => {
+const sendResetPasswordEmail = async (respData: { email: string; token: string; id: string }) => {
     const mailOptions = <mailOptions>{
-        // from: process.env.AUTH_EMAIL,
         from: `CareConnect <${process.env.AUTH_EMAIL}>`,
         to: respData.email,
         subject: 'Reset Your Password',
-        html: forgotPasswordTemplate(respData),
+        html: passwordResetTemplate(respData.token, respData.id),
+    };
+    try {
+        await transporter.sendMail(mailOptions);
+    }
+    catch (error: any) {
+        winston_logger.error(error.message, error.stack)
+    };
+};
+
+const sendResetPasswordSuccessfulEmail = async (respData: { name: string, email: string }) => {
+    const mailOptions = <mailOptions>{
+        from: `CareConnect <${process.env.AUTH_EMAIL}>`,
+        to: respData.email,
+        subject: 'Your CareConnect Password Has Been Changed',
+        html: passwordChangeSuccessTemplate(respData.name),
     };
     try {
         await transporter.sendMail(mailOptions);
@@ -71,7 +85,6 @@ const sendPatientBookingEmail = async (respData: BookingCompleteInterface) => {
 
 const sendDoctorBookingEmail = async (respData: BookingCompleteInterface) => {
     const mailOptions = <mailOptions>{
-        // from: process.env.AUTH_EMAIL,
         from: `CareConnect <${process.env.AUTH_EMAIL}>`,
         to: respData.doctorEmail,
         subject: 'New Booking Alert',
@@ -86,4 +99,4 @@ const sendDoctorBookingEmail = async (respData: BookingCompleteInterface) => {
 }
 
 
-export { sendVerificationEmail, sendForgotPasswordEmail, sendPatientBookingEmail, sendDoctorBookingEmail }
+export { sendVerificationEmail, sendResetPasswordEmail, sendPatientBookingEmail, sendDoctorBookingEmail, sendResetPasswordSuccessfulEmail }

@@ -1,4 +1,3 @@
-// utils/validateAvatarFile.ts
 import { appError } from "@utils/appError";
 
 export const validateAvatarFile = (file?: Express.Multer.File) => {

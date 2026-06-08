@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { loginServices, logoutService, refreshedTokenService, registerService } from "Services/authService";
+import { forgotPasswordService, loginServices, logoutService, refreshedTokenService, registerService, setPasswordService } from "Services/authService";
 import { decodedData, UserSchemaInterface } from "types";
-import { sendVerificationEmail } from "@utils/message/nodemailer";
+import { sendResetPasswordEmail, sendResetPasswordSuccessfulEmail, sendVerificationEmail } from "@utils/message/nodemailer";
 import { verifyEmailService } from "Services/authService";
 import { handleError } from "@utils/handledError";
 
@@ -136,3 +136,36 @@ export const refreshToken = async (req: Request, res: Response, next: NextFuncti
         message
     });
 };
+
+export const forgotPassword = async (req: Request, res: Response, next: NextFunction) => {
+    const { email } = req.body;
+    const { message, error, token, id } = await forgotPasswordService(email) as unknown as { message: string, error: any, token: string, id: string };
+
+    if (error) {
+        next(handleError(error))
+        return;
+    };
+
+    await sendResetPasswordEmail({ email, token, id });
+
+    res.status(200).json({ message, status: true });
+
+}
+
+export const setPassword = async (req: Request, res: Response, next: NextFunction) => {
+    const { password } = req.body;
+    const { token, id } = req.query as { token: string, id: string };
+    const { message, error, data } = await setPasswordService(password, id, token);
+
+    if (error) {
+        next(handleError(error))
+        return;
+    };
+
+    if (data) {
+        await sendResetPasswordSuccessfulEmail({ email: data.email, name: data?.toObject().name });
+
+    }
+    res.status(200).json({ message, status: true });
+
+}

@@ -20,7 +20,7 @@ export const generateAccessToken = ({ user, options, audience }: GenerateTokenIn
     try {
         const token = jwt.sign({ sub: user.id, }, privateKey, {
             algorithm: 'RS256',
-            audience,
+            audience: audience || "",
             issuer: ISSUER,
             ...(options && options),
 
@@ -35,9 +35,9 @@ export const generateAccessToken = ({ user, options, audience }: GenerateTokenIn
 
 };
 
-export const verifyToken = (token: string, audience: string | undefined) => {
+export const verifyToken = (token: string, audience?: string | undefined) => {
     try {
-        const decoded = jwt.verify(token, publicKey, { algorithms: ['RS256'], audience, issuer: ISSUER });
+        const decoded = jwt.verify(token, publicKey, { algorithms: ['RS256'], audience: audience || "", issuer: ISSUER });
         return {
             decoded,
             message: 'token active',

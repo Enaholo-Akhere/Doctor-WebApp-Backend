@@ -61,7 +61,6 @@ export const updateUserService = async ({ id, body }: UpdateUser): Promise<Parti
     ];
 
     const userData = _.pick(body, allowedFields);
-    console.log('userData', userData)
 
     try {
 
