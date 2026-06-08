@@ -70,7 +70,6 @@ export const updateDoctorService = async ({ id, userData }: { id: string, userDa
         timeSlots: JSON.parse(userData.timeSlots as any || '[]'),
     }
 
-
     try {
 
         const updatedDoctor = await Doctor.findByIdAndUpdate(id, allowedFields, { new: true, runValidators: true }).select(['-password', '-__v', '-refreshedToken'])

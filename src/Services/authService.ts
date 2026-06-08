@@ -1,16 +1,17 @@
 import jwt from 'jsonwebtoken';
-import { winston_logger } from "@utils/logger"
+import { log, winston_logger } from "@utils/logger"
 import Doctor from "models/DoctorSchema";
 import User from "models/UserSchema";
-import { decodedDataInterface, UserSchemaInterface } from "types"
+import { UserSchemaInterface } from "types"
 import bcrypt from "bcryptjs"
 import { generateAccessToken } from "@utils/generateTokens";
-import _ from 'lodash'
+import _, { truncate } from 'lodash'
 import QueryString from "qs"
 import { verifyToken } from "@utils/generateTokens"
 import Users from "models/UserSchema"
 import { AUDIENCE } from 'config/constant';
-import { shuffleString } from "@utils/shuffler"
+import PasswordSchema from "models/ResetPasswordSchema";
+
 
 export const registerService = async (body: UserSchemaInterface) => {
 
@@ -211,6 +212,86 @@ export const refreshedTokenService = async (refreshedToken: string, id: string) 
         };
     }
 };
+
+export const forgotPasswordService = async (email: string) => {
+
+    try {
+        const [user, doctor] = await Promise.all([
+            User.findOne({ email }),
+            Doctor.findOne({ email })
+        ]);
+
+        const userExist = user || doctor;
+
+        if (!userExist) {
+            throw new Error('User not found');
+        }
+
+        const { token, error } = generateAccessToken({ user: { id: userExist?.toObject()._id }, options: { expiresIn: "30m" } as jwt.SignOptions });
+
+        if (error) throw new Error(error);
+
+        const resetPassword = new PasswordSchema({
+            token,
+            userId: userExist?.toObject()._id
+        })
+
+        const savedRestPassword = await resetPassword.save()
+
+        return { message: 'Password reset link sent successfully', token: savedRestPassword?.toObject().token, id: savedRestPassword?.toObject()._id };
+
+    } catch (error: any) {
+        winston_logger.error(error.message, error.stack);
+        return { error, message: error.message };
+    }
+};
+
+export const setPasswordService = async (newPassword: string, id: string, token: string) => {
+    try {
+        const requestedPassChange = await PasswordSchema.findById(id);
+        const { decoded, expired, message } = verifyToken(token as string);
+
+        if (!decoded || expired) {
+            await PasswordSchema.findByIdAndDelete(id);
+            throw new Error(message ?? 'Invalid or expired token');
+        }
+
+        const { sub } = decoded as jwt.JwtPayload
+        const userId = requestedPassChange?.toObject()?.userId.toString();
+        console.log('id', userId);
+        console.log('sub', sub);
+
+
+        if (sub !== requestedPassChange?.toObject()?.userId.toString()) {
+            throw new Error('token compromise')
+        }
+
+        const salt = await bcrypt.genSalt(10);
+
+        const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+        const [doctor, user] = await Promise.all([
+            Doctor.findByIdAndUpdate({ _id: requestedPassChange?.userId }, { password: hashedPassword }, { new: true }).select('-password -refreshedToken'),
+            Users.findByIdAndUpdate({ _id: requestedPassChange?.userId }, { password: hashedPassword }, { new: true }).select('-password -refreshedToken'),
+
+        ])
+
+        const changedPass = doctor || user;
+
+        if (changedPass) {
+            await PasswordSchema.findByIdAndDelete(id);
+
+        }
+
+        if (!changedPass) throw new Error('could not change password');
+
+        return { message: 'password changed successfully', data: changedPass }
+    }
+    catch (error: any) {
+        winston_logger.error(error.message, error.stack);
+        return { error, message: error.message }
+    }
+}
 
 export const logoutService = async (id: string) => {
 

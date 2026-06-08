@@ -30,7 +30,20 @@ export const loginUserSchema = z.object({
         email: z.string({ required_error: "Email is required" }).email("Invalid email format"),
         password: z.string({ required_error: "Password is required" }).min(8, "Password must be at least 8 characters"),
     })
+});
+
+export const forgotPasswordSchema = z.object({
+    body: z.object({
+        email: z.string({ required_error: "Email is required" }).email("Invalid email format"),
+    })
 })
+
+export const setPasswordSchema = z.object({
+    body: z.object({
+        password: z.string({ required_error: "Password is required" }).min(8, "Password must be at least 8 characters"),
+    })
+})
+
 
 export const updateUserSchema = z.object({
     body: z.object({
@@ -49,6 +62,7 @@ export const updateUserSchema = z.object({
         bloodType: z.string().max(3, 'Invalid blood type').min(2, 'Invalid blood type').optional()
     })
 })
+
 
 export const reviewSchema = z.object({
     body: z.object({

@@ -38,7 +38,6 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
 
     if (req.file) {
         userData = { ...body, photo: { imageUrl: req.file?.path, publicId: req?.file?.filename } }
-
     }
 
     if (!req.file) {
