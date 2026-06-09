@@ -29,16 +29,6 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-// const transporter = nodemailer.createTransport({
-//     service: process.env.E_SERVICE,
-//     auth: {
-//         user: process.env.AUTH_EMAIL,
-//         pass: process.env.AUTH_PASSWORD,
-//     },
-//     connectionTimeout: 5000,  // fail after 5 seconds
-//     greetingTimeout: 5000,
-//     socketTimeout: 5000,
-// });
 
 const sendVerificationEmail = async (data: decodedData, token: string) => {
 
