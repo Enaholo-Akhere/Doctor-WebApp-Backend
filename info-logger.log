@@ -18,3 +18,7 @@
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPlease click the reset link sent to your email\u001b[39m","timestamp":"2026-06-09T21:11:18.051Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPlease click the reset link sent to your email\u001b[39m","timestamp":"2026-06-09T21:15:30.725Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPlease click the reset link sent to your email\u001b[39m","timestamp":"2026-06-09T21:39:33.464Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mMissing credentials for \"PLAIN\"\u001b[39m","timestamp":"2026-06-09T23:36:27.523Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mMissing credentials for \"PLAIN\"\u001b[39m","timestamp":"2026-06-09T23:40:27.113Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPlease click the reset link sent to your email\u001b[39m","timestamp":"2026-06-09T23:41:01.674Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mMessage failed: 550 The gmail.com domain is not verified. Please, add and verify your domain on https://resend.com/domains\u001b[39m","timestamp":"2026-06-09T23:45:15.239Z"}
