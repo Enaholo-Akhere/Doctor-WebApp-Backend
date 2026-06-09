@@ -1,6 +1,6 @@
 export const passwordResetTemplate = (resetToken: string, id: string) => {
-  const devUrl: string = process.env.DEV_CLIENT_URL || "";
-  const prodUrl: string = process.env.PROD_CLIENT_URL || "";
+  const devUrl = process.env.DEV_CLIENT_URL;
+  const prodUrl = process.env.PROD_CLIENT_URL;
   const clientUrl = process.env.NODE_ENV === "production" ? prodUrl : devUrl;
   const resetUrl = `${clientUrl}/reset-password?token=${resetToken}&id=${id}`;
   const supportUrl = `${clientUrl}/support`;
