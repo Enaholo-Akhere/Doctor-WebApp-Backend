@@ -214,11 +214,10 @@ export const refreshedTokenService = async (refreshedToken: string, id: string) 
 };
 
 export const forgotPasswordService = async (email: string) => {
-
     try {
         const [user, doctor] = await Promise.all([
             User.findOne({ email }),
-            Doctor.findOne({ email })
+            Doctor.findOne({ email }),
         ]);
 
         const userExist = user || doctor;
@@ -226,14 +225,26 @@ export const forgotPasswordService = async (email: string) => {
         if (!userExist) {
             throw new Error('User not found');
         }
+        const passReqAlready = await PasswordSchema.findOne({ userId: userExist._id });
+
+        if (passReqAlready) {
+            const { expired } = verifyToken(passReqAlready.token);
+
+            if (!expired) throw new Error('Please click the reset link sent to your email');
+
+            if (expired) {
+                await PasswordSchema.findOneAndDelete({ userId: userExist._id });
+            }
+        };
 
         const { token, error } = generateAccessToken({ user: { id: userExist?.toObject()._id }, options: { expiresIn: "30m" } as jwt.SignOptions });
+
 
         if (error) throw new Error(error);
 
         const resetPassword = new PasswordSchema({
             token,
-            userId: userExist?.toObject()._id
+            userId: userExist?.toObject()._id,
         })
 
         const savedRestPassword = await resetPassword.save()
@@ -257,10 +268,6 @@ export const setPasswordService = async (newPassword: string, id: string, token:
         }
 
         const { sub } = decoded as jwt.JwtPayload
-        const userId = requestedPassChange?.toObject()?.userId.toString();
-        console.log('id', userId);
-        console.log('sub', sub);
-
 
         if (sub !== requestedPassChange?.toObject()?.userId.toString()) {
             throw new Error('token compromise')

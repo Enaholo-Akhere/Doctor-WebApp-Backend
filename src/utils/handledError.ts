@@ -28,6 +28,11 @@ export const handleError = (err: any) => {
             message: "Invalid email or password.",
             statusCode: 400
         });
+    } else if (err.message === "Please click the reset link sent to your email") {
+        return appError({
+            message: err.message,
+            statusCode: 200,
+        });
     }
     console.error('Unhandled error:', err.message);
 
