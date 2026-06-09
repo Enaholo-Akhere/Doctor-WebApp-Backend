@@ -247,7 +247,7 @@ export const forgotPasswordService = async (email: string) => {
             userId: userExist?.toObject()._id,
         })
 
-        const savedRestPassword = await resetPassword.save()
+        const savedRestPassword = await resetPassword.save();
 
         return { message: 'Password reset link sent successfully', token: savedRestPassword?.toObject().token, id: savedRestPassword?.toObject()._id };
 

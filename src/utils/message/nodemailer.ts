@@ -1,7 +1,6 @@
 import nodemailer from 'nodemailer';
 import { mailOptions, decodedData, forgotPassword, BookingCompleteInterface, } from 'types';
 import { verifyEmailTemplate } from './emailTemplate';
-import { forgotPasswordTemplate } from './forgotPasswordTemplate';
 import dotenv from 'dotenv';
 import { winston_logger } from '@utils/logger';
 import { doctorBookingTemplate } from './doctorBookingTemplate';
@@ -10,14 +9,24 @@ import { passwordResetTemplate } from './passwordResetEmail';
 import { passwordChangeSuccessTemplate } from './passwordSuccessfulTemplate';
 dotenv.config();
 
+// const transporter = nodemailer.createTransport({
+//     service: process.env.E_SERVICE,
+//     auth: {
+//         user: process.env.AUTH_EMAIL,
+//         pass: process.env.AUTH_PASSWORD,
+//     },
+// });
+
 const transporter = nodemailer.createTransport({
     service: process.env.E_SERVICE,
     auth: {
         user: process.env.AUTH_EMAIL,
         pass: process.env.AUTH_PASSWORD,
     },
+    connectionTimeout: 5000,  // fail after 5 seconds
+    greetingTimeout: 5000,
+    socketTimeout: 5000,
 });
-
 
 const sendVerificationEmail = async (data: decodedData, token: string) => {
 
@@ -28,12 +37,16 @@ const sendVerificationEmail = async (data: decodedData, token: string) => {
         html: verifyEmailTemplate(data, token),
     };
     try {
-        const resp = await transporter.sendMail(mailOptions);
-        return resp;
+        const sent = await transporter.sendMail(mailOptions);
+
+        if (!sent.messageId.length) throw new Error('message not sent');
+
+        return { sent }
 
     }
     catch (error: any) {
         winston_logger.error(error.message, error.stack)
+        return { error }
     }
 };
 
@@ -46,10 +59,15 @@ const sendResetPasswordEmail = async (respData: { email: string; token: string; 
         html: passwordResetTemplate(respData.token, respData.id),
     };
     try {
-        await transporter.sendMail(mailOptions);
+        const sent = await transporter.sendMail(mailOptions);
+        if (!sent.messageId.length) throw new Error('message not sent');
+
+        console.log('reset password messenger', sent)
+        return { sent }
     }
     catch (error: any) {
-        winston_logger.error(error.message, error.stack)
+        winston_logger.error(error.message, error.stack);
+        return { error }
     };
 };
 
@@ -61,10 +79,14 @@ const sendResetPasswordSuccessfulEmail = async (respData: { name: string, email:
         html: passwordChangeSuccessTemplate(respData.name),
     };
     try {
-        await transporter.sendMail(mailOptions);
+        const sent = await transporter.sendMail(mailOptions);
+        if (!sent.messageId.length) throw new Error('message not sent');
+
+        return { sent }
     }
     catch (error: any) {
         winston_logger.error(error.message, error.stack)
+        return { error }
     };
 };
 
@@ -76,10 +98,14 @@ const sendPatientBookingEmail = async (respData: BookingCompleteInterface) => {
         html: patientBookingTemplate(respData),
     };
     try {
-        await transporter.sendMail(mailOptions);
+        const sent = await transporter.sendMail(mailOptions);
+        if (!sent.messageId.length) throw new Error('message not sent');
+
+        return { sent }
     }
     catch (error: any) {
-        winston_logger.error(error.message, error.stack)
+        winston_logger.error(error.message, error.stack);
+        return { error }
     };
 }
 
@@ -91,10 +117,14 @@ const sendDoctorBookingEmail = async (respData: BookingCompleteInterface) => {
         html: doctorBookingTemplate(respData),
     };
     try {
-        await transporter.sendMail(mailOptions);
+        const sent = await transporter.sendMail(mailOptions);
+        if (!sent.messageId.length) throw new Error('message not sent');
+
+        return { sent };
     }
     catch (error: any) {
-        winston_logger.error(error.message, error.stack)
+        winston_logger.error(error.message, error.stack);
+        return { error }
     };
 }
 

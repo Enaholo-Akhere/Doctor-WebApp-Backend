@@ -149,6 +149,7 @@ export const forgotPassword = async (req: Request, res: Response, next: NextFunc
     await sendResetPasswordEmail({ email, token, id });
 
     res.status(200).json({ message, status: true });
+    return;
 
 }
 
@@ -164,8 +165,8 @@ export const setPassword = async (req: Request, res: Response, next: NextFunctio
 
     if (data) {
         await sendResetPasswordSuccessfulEmail({ email: data.email, name: data?.toObject().name });
-
+        res.status(200).json({ message, status: true });
+        return;
     }
-    res.status(200).json({ message, status: true });
 
 }
