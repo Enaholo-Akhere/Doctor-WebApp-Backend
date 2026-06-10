@@ -18,10 +18,12 @@ dotenv.config();
 // });
 
 const transporter = nodemailer.createTransport({
-    service: process.env.E_SERVICE,
+    host: 'smtp.resend.com',
+    port: 465,
+    secure: true,
     auth: {
-        user: process.env.AUTH_EMAIL,
-        pass: process.env.AUTH_PASSWORD,
+        user: 'resend',
+        pass: process.env.RESEND_API_KEY
     },
     connectionTimeout: 5000,  // fail after 5 seconds
     greetingTimeout: 5000,
