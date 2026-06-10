@@ -7,7 +7,6 @@ import { doctorBookingTemplate } from './doctorBookingTemplate';
 import { patientBookingTemplate } from './patientBookingTemplate';
 import { passwordResetTemplate } from './passwordResetEmail';
 import { passwordChangeSuccessTemplate } from './passwordSuccessfulTemplate';
-import { Resend } from 'resend';
 dotenv.config();
 
 // const transporter = nodemailer.createTransport({
@@ -18,7 +17,6 @@ dotenv.config();
 //     },
 // });
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const transporter = nodemailer.createTransport({
     host: 'smtp.resend.com',
     port: 465,
