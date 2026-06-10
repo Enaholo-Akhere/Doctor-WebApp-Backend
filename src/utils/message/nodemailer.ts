@@ -7,6 +7,7 @@ import { doctorBookingTemplate } from './doctorBookingTemplate';
 import { patientBookingTemplate } from './patientBookingTemplate';
 import { passwordResetTemplate } from './passwordResetEmail';
 import { passwordChangeSuccessTemplate } from './passwordSuccessfulTemplate';
+import Brevo from 'nodemailer-brevo-transport'
 dotenv.config();
 
 // const transporter = nodemailer.createTransport({
@@ -17,16 +18,21 @@ dotenv.config();
 //     },
 // });
 
-const transporter = nodemailer.createTransport({
-    host: 'smtp.resend.com',
-    port: 587,
-    secure: true,
-    auth: {
-        user: 'resend',
-        pass: process.env.RESEND_API_KEY
-    },
-});
+// const transporter = nodemailer.createTransport({
+//     host: 'smtp.resend.com',
+//     port: 587,
+//     secure: true,
+//     auth: {
+//         user: 'resend',
+//         pass: process.env.RESEND_API_KEY
+//     },
+// });
 
+const transporter = nodemailer.createTransport(
+    new Brevo({
+        apiKey: process.env.BREVO_API_KEY || ''
+    })
+)
 
 const sendVerificationEmail = async (data: decodedData, token: string) => {
 
