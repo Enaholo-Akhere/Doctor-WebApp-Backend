@@ -25,8 +25,10 @@ const transporter = nodemailer.createTransport({
         user: 'resend',
         pass: process.env.RESEND_API_KEY
     },
+    connectionTimeout: 5000,  // fail after 5 seconds
+    greetingTimeout: 5000,
+    socketTimeout: 5000,
 });
-
 
 const sendVerificationEmail = async (data: decodedData, token: string) => {
 
