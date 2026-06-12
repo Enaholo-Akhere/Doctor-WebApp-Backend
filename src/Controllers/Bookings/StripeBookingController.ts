@@ -7,7 +7,6 @@ import User from "models/UserSchema";
 import { winston_logger } from "@utils/logger";
 import Stripe from "stripe";
 import { sendDoctorBookingEmail, sendPatientBookingEmail } from "@utils/message/nodemailer";
-import { rest } from "lodash";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: '2026-04-22.dahlia',

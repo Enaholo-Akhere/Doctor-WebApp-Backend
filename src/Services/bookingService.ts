@@ -31,7 +31,7 @@ export const bookingSessionService = async ({ doctorId, userId }: BookingInterfa
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             mode: 'payment',
-            success_url: `${clientUrl}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
+            success_url: `${clientUrl}/payment-success-st?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: cancelUrl,
             customer_email: user.email,
             client_reference_id: doctorId,

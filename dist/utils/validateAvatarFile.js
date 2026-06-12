@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateAvatarFile = void 0;
-// utils/validateAvatarFile.ts
 var appError_1 = require("./appError");
 var validateAvatarFile = function (file) {
     if (!file) {

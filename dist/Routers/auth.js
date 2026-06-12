@@ -15,6 +15,8 @@ var sanitized_1 = require("../Middleware/sanitized");
 var router = express_1.default.Router();
 router.post('/register', [cloudStorageMulter_1.upload.single('photo'), multerErrorHandler_1.multerErrorHandler, validateImage_1.validateImage, (0, zod_validate_1.default)(zod_schemas_1.registerUserSchema)], (0, asyncHandler_1.asyncHandler)(authController_1.register));
 router.post('/login', (0, zod_validate_1.default)(zod_schemas_1.loginUserSchema), authController_1.login);
+router.post('/forgot-password', (0, zod_validate_1.default)(zod_schemas_1.forgotPasswordSchema), authController_1.forgotPassword);
+router.post('/set-password', (0, zod_validate_1.default)(zod_schemas_1.setPasswordSchema), authController_1.setPassword);
 router.post('/verify-email', (0, zod_validate_1.default)(zod_schemas_1.verifyEmailSchema), authController_1.verifyEmail);
 router.put('/logout', sanitized_1.sanitizedUser, authController_1.logout);
 router.post('/refresh-token/:id', authController_1.refreshToken);

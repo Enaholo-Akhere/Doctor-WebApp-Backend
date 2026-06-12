@@ -48,14 +48,12 @@ var UserSchema_1 = __importDefault(require("../models/UserSchema"));
 var DoctorSchema_1 = __importDefault(require("../models/DoctorSchema"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var sanitizedUser = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var authHeader, refreshedTokenCookie, token, unVerified, _a, sub, aud, _b, user, doctor, user_doctor, validAudiences, _c, decoded, expired, message, error_1;
-    var _d;
-    return __generator(this, function (_e) {
-        switch (_e.label) {
+    var authHeader, token, unVerified, _a, sub, aud, _b, user, doctor, user_doctor, validAudiences, _c, decoded, expired, message, error_1;
+    return __generator(this, function (_d) {
+        switch (_d.label) {
             case 0:
-                _e.trys.push([0, 2, , 3]);
+                _d.trys.push([0, 2, , 3]);
                 authHeader = req.get('authorization');
-                refreshedTokenCookie = (_d = req.cookies) === null || _d === void 0 ? void 0 : _d.refreshedToken;
                 if (!authHeader)
                     throw new Error('token not found');
                 if (req.method === 'OPTIONS') {
@@ -72,9 +70,9 @@ var sanitizedUser = function (req, res, next) { return __awaiter(void 0, void 0,
                         DoctorSchema_1.default.findById(sub)
                     ])];
             case 1:
-                _b = _e.sent(), user = _b[0], doctor = _b[1];
+                _b = _d.sent(), user = _b[0], doctor = _b[1];
                 user_doctor = user || doctor;
-                if ((user_doctor === null || user_doctor === void 0 ? void 0 : user_doctor.refreshedToken) !== refreshedTokenCookie) {
+                if (!(user_doctor === null || user_doctor === void 0 ? void 0 : user_doctor.refreshedToken)) {
                     throw new Error('Invalid user token');
                 }
                 validAudiences = Object.values(constant_1.AUDIENCE);
@@ -92,7 +90,7 @@ var sanitizedUser = function (req, res, next) { return __awaiter(void 0, void 0,
                 next();
                 return [3 /*break*/, 3];
             case 2:
-                error_1 = _e.sent();
+                error_1 = _d.sent();
                 logger_1.winston_logger.error(error_1.message, error_1.stack);
                 next((0, handledError_1.handleError)(error_1));
                 return [3 /*break*/, 3];

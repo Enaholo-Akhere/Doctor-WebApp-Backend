@@ -26,7 +26,7 @@ var generateAccessToken = function (_a) {
     // Only include serializable user properties in the payload
     var aud = String(user.id);
     try {
-        var token = jsonwebtoken_1.default.sign({ sub: user.id, }, privateKey, __assign({ algorithm: 'RS256', audience: audience, issuer: constant_1.ISSUER }, (options && options)));
+        var token = jsonwebtoken_1.default.sign({ sub: user.id, }, privateKey, __assign({ algorithm: 'RS256', audience: audience || "", issuer: constant_1.ISSUER }, (options && options)));
         return { token: token };
     }
     catch (error) {
@@ -37,7 +37,7 @@ var generateAccessToken = function (_a) {
 exports.generateAccessToken = generateAccessToken;
 var verifyToken = function (token, audience) {
     try {
-        var decoded = jsonwebtoken_1.default.verify(token, publicKey, { algorithms: ['RS256'], audience: audience, issuer: constant_1.ISSUER });
+        var decoded = jsonwebtoken_1.default.verify(token, publicKey, { algorithms: ['RS256'], audience: audience || "", issuer: constant_1.ISSUER });
         return {
             decoded: decoded,
             message: 'token active',

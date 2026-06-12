@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.logoutService = exports.refreshedTokenService = exports.verifyEmailService = exports.loginServices = exports.registerService = void 0;
+exports.logoutService = exports.setPasswordService = exports.forgotPasswordService = exports.refreshedTokenService = exports.verifyEmailService = exports.loginServices = exports.registerService = void 0;
 var logger_1 = require("../utils/logger");
 var DoctorSchema_1 = __importDefault(require("../models/DoctorSchema"));
 var UserSchema_1 = __importDefault(require("../models/UserSchema"));
@@ -48,6 +48,7 @@ var generateTokens_1 = require("../utils/generateTokens");
 var generateTokens_2 = require("../utils/generateTokens");
 var UserSchema_2 = __importDefault(require("../models/UserSchema"));
 var constant_1 = require("../config/constant");
+var ResetPasswordSchema_1 = __importDefault(require("../models/ResetPasswordSchema"));
 var registerService = function (body) { return __awaiter(void 0, void 0, void 0, function () {
     var email, password, photo, name, role, gender, phone, bloodType, user, salt, hashedPassword, newUser, newDoctor, error_1;
     return __generator(this, function (_a) {
@@ -273,8 +274,110 @@ var refreshedTokenService = function (refreshedToken, id) { return __awaiter(voi
     });
 }); };
 exports.refreshedTokenService = refreshedTokenService;
+var forgotPasswordService = function (email) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, user, doctor, userExist, passReqAlready, expired, _b, token, error, resetPassword, savedRestPassword, error_5;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
+            case 0:
+                _c.trys.push([0, 6, , 7]);
+                return [4 /*yield*/, Promise.all([
+                        UserSchema_1.default.findOne({ email: email }),
+                        DoctorSchema_1.default.findOne({ email: email }),
+                    ])];
+            case 1:
+                _a = _c.sent(), user = _a[0], doctor = _a[1];
+                userExist = user || doctor;
+                if (!userExist) {
+                    throw new Error('User not found');
+                }
+                return [4 /*yield*/, ResetPasswordSchema_1.default.findOne({ userId: userExist._id })];
+            case 2:
+                passReqAlready = _c.sent();
+                if (!passReqAlready) return [3 /*break*/, 4];
+                expired = (0, generateTokens_2.verifyToken)(passReqAlready.token).expired;
+                if (!expired)
+                    throw new Error('Please click the reset link sent to your email');
+                if (!expired) return [3 /*break*/, 4];
+                return [4 /*yield*/, ResetPasswordSchema_1.default.findOneAndDelete({ userId: userExist._id })];
+            case 3:
+                _c.sent();
+                _c.label = 4;
+            case 4:
+                ;
+                _b = (0, generateTokens_1.generateAccessToken)({ user: { id: userExist === null || userExist === void 0 ? void 0 : userExist.toObject()._id }, options: { expiresIn: "30m" } }), token = _b.token, error = _b.error;
+                if (error)
+                    throw new Error(error);
+                resetPassword = new ResetPasswordSchema_1.default({
+                    token: token,
+                    userId: userExist === null || userExist === void 0 ? void 0 : userExist.toObject()._id,
+                });
+                return [4 /*yield*/, resetPassword.save()];
+            case 5:
+                savedRestPassword = _c.sent();
+                return [2 /*return*/, { message: 'Password reset link sent successfully', token: savedRestPassword === null || savedRestPassword === void 0 ? void 0 : savedRestPassword.toObject().token, id: savedRestPassword === null || savedRestPassword === void 0 ? void 0 : savedRestPassword.toObject()._id }];
+            case 6:
+                error_5 = _c.sent();
+                logger_1.winston_logger.error(error_5.message, error_5.stack);
+                return [2 /*return*/, { error: error_5, message: error_5.message }];
+            case 7: return [2 /*return*/];
+        }
+    });
+}); };
+exports.forgotPasswordService = forgotPasswordService;
+var setPasswordService = function (newPassword, id, token) { return __awaiter(void 0, void 0, void 0, function () {
+    var requestedPassChange, _a, decoded, expired, message, sub, salt, hashedPassword, _b, doctor, user, changedPass, error_6;
+    var _c;
+    return __generator(this, function (_d) {
+        switch (_d.label) {
+            case 0:
+                _d.trys.push([0, 9, , 10]);
+                return [4 /*yield*/, ResetPasswordSchema_1.default.findById(id)];
+            case 1:
+                requestedPassChange = _d.sent();
+                _a = (0, generateTokens_2.verifyToken)(token), decoded = _a.decoded, expired = _a.expired, message = _a.message;
+                if (!(!decoded || expired)) return [3 /*break*/, 3];
+                return [4 /*yield*/, ResetPasswordSchema_1.default.findByIdAndDelete(id)];
+            case 2:
+                _d.sent();
+                throw new Error(message !== null && message !== void 0 ? message : 'Invalid or expired token');
+            case 3:
+                sub = decoded.sub;
+                if (sub !== ((_c = requestedPassChange === null || requestedPassChange === void 0 ? void 0 : requestedPassChange.toObject()) === null || _c === void 0 ? void 0 : _c.userId.toString())) {
+                    throw new Error('token compromise');
+                }
+                return [4 /*yield*/, bcryptjs_1.default.genSalt(10)];
+            case 4:
+                salt = _d.sent();
+                return [4 /*yield*/, bcryptjs_1.default.hash(newPassword, salt)];
+            case 5:
+                hashedPassword = _d.sent();
+                return [4 /*yield*/, Promise.all([
+                        DoctorSchema_1.default.findByIdAndUpdate({ _id: requestedPassChange === null || requestedPassChange === void 0 ? void 0 : requestedPassChange.userId }, { password: hashedPassword }, { new: true }).select('-password -refreshedToken'),
+                        UserSchema_2.default.findByIdAndUpdate({ _id: requestedPassChange === null || requestedPassChange === void 0 ? void 0 : requestedPassChange.userId }, { password: hashedPassword }, { new: true }).select('-password -refreshedToken'),
+                    ])];
+            case 6:
+                _b = _d.sent(), doctor = _b[0], user = _b[1];
+                changedPass = doctor || user;
+                if (!changedPass) return [3 /*break*/, 8];
+                return [4 /*yield*/, ResetPasswordSchema_1.default.findByIdAndDelete(id)];
+            case 7:
+                _d.sent();
+                _d.label = 8;
+            case 8:
+                if (!changedPass)
+                    throw new Error('could not change password');
+                return [2 /*return*/, { message: 'password changed successfully', data: changedPass }];
+            case 9:
+                error_6 = _d.sent();
+                logger_1.winston_logger.error(error_6.message, error_6.stack);
+                return [2 /*return*/, { error: error_6, message: error_6.message }];
+            case 10: return [2 /*return*/];
+        }
+    });
+}); };
+exports.setPasswordService = setPasswordService;
 var logoutService = function (id) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, updatedUser, updatedDoctor, updatedUserDoctor, error_5;
+    var _a, updatedUser, updatedDoctor, updatedUserDoctor, error_7;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -290,9 +393,9 @@ var logoutService = function (id) { return __awaiter(void 0, void 0, void 0, fun
                     throw new Error('user not found');
                 return [2 /*return*/, { message: 'Logged out successfully' }];
             case 2:
-                error_5 = _b.sent();
-                logger_1.winston_logger.error(error_5.message, error_5.stack);
-                return [2 /*return*/, { error: error_5, message: error_5.message }];
+                error_7 = _b.sent();
+                logger_1.winston_logger.error(error_7.message, error_7.stack);
+                return [2 /*return*/, { error: error_7, message: error_7.message }];
             case 3: return [2 /*return*/];
         }
     });

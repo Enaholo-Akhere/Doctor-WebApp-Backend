@@ -9,7 +9,7 @@ import routers from 'Routers';
 import "config/cloudinaryConfig";
 import { startServer } from 'Starters/StartServer';
 import { errorHandler } from 'Middleware/errorHandler';
-import { stripeWebhook } from 'Controllers/bookingController';
+import { stripeWebhook } from 'Controllers/Bookings/StripeBookingController';
 
 
 const app = express()
@@ -30,29 +30,11 @@ app.post('/api/v1/webhook', express.raw({ type: 'application/json' }), stripeWeb
 
 app.use(cors(corsOptions));
 
-const allowedOrigins = ['http://localhost:5173', 'https://care-connect-ena.netlify.app'];
-
-// app.use((req: Request, res: Response, next: NextFunction) => {
-//     const origin = req.headers.origin;
-
-//     if (origin && allowedOrigins.includes(origin)) {
-//         res.header('Access-Control-Allow-Origin', origin);
-//     }
-
-//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-//     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//     res.header('Access-Control-Allow-Credentials', 'true');
-
-//     if (req.method === 'OPTIONS') {
-//         res.sendStatus(200);
-//         return;
-//     }
-//     next();
-// });
 app.use(express.json());
 app.use(cookieParser());
 
-app.use('/api/v1', routers)
+app.use('/api/v1', routers);
+
 app.get('/', (req: Request, res: Response) => {
     res.status(200).json({ message: "Welcome to CareConnect API" })
 })

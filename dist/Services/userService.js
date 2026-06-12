@@ -101,7 +101,6 @@ var updateUserService = function (_a) { return __awaiter(void 0, [_a], void 0, f
                     "gender"
                 ];
                 userData = lodash_1.default.pick(body, allowedFields);
-                console.log('userData', userData);
                 _c.label = 1;
             case 1:
                 _c.trys.push([1, 3, , 4]);
