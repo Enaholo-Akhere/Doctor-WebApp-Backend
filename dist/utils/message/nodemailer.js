@@ -39,29 +39,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendDoctorBookingEmail = exports.sendPatientBookingEmail = exports.sendForgotPasswordEmail = exports.sendVerificationEmail = void 0;
+exports.sendResetPasswordSuccessfulEmail = exports.sendDoctorBookingEmail = exports.sendPatientBookingEmail = exports.sendResetPasswordEmail = exports.sendVerificationEmail = void 0;
 var nodemailer_1 = __importDefault(require("nodemailer"));
 var emailTemplate_1 = require("./emailTemplate");
-var forgotPasswordTemplate_1 = require("./forgotPasswordTemplate");
 var dotenv_1 = __importDefault(require("dotenv"));
 var logger_1 = require("../logger");
 var doctorBookingTemplate_1 = require("./doctorBookingTemplate");
 var patientBookingTemplate_1 = require("./patientBookingTemplate");
+var passwordResetEmail_1 = require("./passwordResetEmail");
+var passwordSuccessfulTemplate_1 = require("./passwordSuccessfulTemplate");
+var nodemailer_brevo_transport_1 = __importDefault(require("nodemailer-brevo-transport"));
 dotenv_1.default.config();
-var transporter = nodemailer_1.default.createTransport({
-    service: process.env.E_SERVICE,
-    auth: {
-        user: process.env.AUTH_EMAIL,
-        pass: process.env.AUTH_PASSWORD,
-    },
-});
+// const transporter = nodemailer.createTransport({
+//     service: process.env.E_SERVICE,
+//     auth: {
+//         user: process.env.AUTH_EMAIL,
+//         pass: process.env.AUTH_PASSWORD,
+//     },
+// });
+var transporter = nodemailer_1.default.createTransport(new nodemailer_brevo_transport_1.default({
+    apiKey: process.env.BREVO_API_KEY || ''
+}));
 var sendVerificationEmail = function (data, token) { return __awaiter(void 0, void 0, void 0, function () {
-    var mailOptions, resp, error_1;
+    var mailOptions, sent, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 mailOptions = {
-                    from: process.env.AUTH_EMAIL,
+                    from: "CareConnect <".concat(process.env.AUTH_EMAIL, ">"),
                     to: data.email,
                     subject: 'Verify Your Email',
                     html: (0, emailTemplate_1.verifyEmailTemplate)(data, token),
@@ -71,51 +76,84 @@ var sendVerificationEmail = function (data, token) { return __awaiter(void 0, vo
                 _a.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, transporter.sendMail(mailOptions)];
             case 2:
-                resp = _a.sent();
-                console.log('Email sent: ' + resp);
-                return [2 /*return*/, resp];
+                sent = _a.sent();
+                if (!sent.messageId.length)
+                    throw new Error('message not sent');
+                return [2 /*return*/, { sent: sent }];
             case 3:
                 error_1 = _a.sent();
-                console.log('email error', error_1);
                 logger_1.winston_logger.error(error_1.message, error_1.stack);
-                return [3 /*break*/, 4];
+                return [2 /*return*/, { error: error_1 }];
             case 4: return [2 /*return*/];
         }
     });
 }); };
 exports.sendVerificationEmail = sendVerificationEmail;
-var sendForgotPasswordEmail = function (respData) { return __awaiter(void 0, void 0, void 0, function () {
-    var mailOptions, error_2;
+var sendResetPasswordEmail = function (respData) { return __awaiter(void 0, void 0, void 0, function () {
+    var mailOptions, sent, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 mailOptions = {
-                    // from: process.env.AUTH_EMAIL,
                     from: "CareConnect <".concat(process.env.AUTH_EMAIL, ">"),
                     to: respData.email,
                     subject: 'Reset Your Password',
-                    html: (0, forgotPasswordTemplate_1.forgotPasswordTemplate)(respData),
+                    html: (0, passwordResetEmail_1.passwordResetTemplate)(respData.token, respData.id),
                 };
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, transporter.sendMail(mailOptions)];
             case 2:
-                _a.sent();
-                return [3 /*break*/, 4];
+                sent = _a.sent();
+                if (!sent.messageId.length)
+                    throw new Error('message not sent');
+                console.log('reset password messenger', sent);
+                return [2 /*return*/, { sent: sent }];
             case 3:
                 error_2 = _a.sent();
                 logger_1.winston_logger.error(error_2.message, error_2.stack);
-                return [3 /*break*/, 4];
+                return [2 /*return*/, { error: error_2 }];
             case 4:
                 ;
                 return [2 /*return*/];
         }
     });
 }); };
-exports.sendForgotPasswordEmail = sendForgotPasswordEmail;
+exports.sendResetPasswordEmail = sendResetPasswordEmail;
+var sendResetPasswordSuccessfulEmail = function (respData) { return __awaiter(void 0, void 0, void 0, function () {
+    var mailOptions, sent, error_3;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                mailOptions = {
+                    from: "CareConnect <".concat(process.env.AUTH_EMAIL, ">"),
+                    to: respData.email,
+                    subject: 'Your CareConnect Password Has Been Changed',
+                    html: (0, passwordSuccessfulTemplate_1.passwordChangeSuccessTemplate)(respData.name),
+                };
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, transporter.sendMail(mailOptions)];
+            case 2:
+                sent = _a.sent();
+                if (!sent.messageId.length)
+                    throw new Error('message not sent');
+                return [2 /*return*/, { sent: sent }];
+            case 3:
+                error_3 = _a.sent();
+                logger_1.winston_logger.error(error_3.message, error_3.stack);
+                return [2 /*return*/, { error: error_3 }];
+            case 4:
+                ;
+                return [2 /*return*/];
+        }
+    });
+}); };
+exports.sendResetPasswordSuccessfulEmail = sendResetPasswordSuccessfulEmail;
 var sendPatientBookingEmail = function (respData) { return __awaiter(void 0, void 0, void 0, function () {
-    var mailOptions, error_3;
+    var mailOptions, sent, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -130,12 +168,14 @@ var sendPatientBookingEmail = function (respData) { return __awaiter(void 0, voi
                 _a.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, transporter.sendMail(mailOptions)];
             case 2:
-                _a.sent();
-                return [3 /*break*/, 4];
+                sent = _a.sent();
+                if (!sent.messageId.length)
+                    throw new Error('message not sent');
+                return [2 /*return*/, { sent: sent }];
             case 3:
-                error_3 = _a.sent();
-                logger_1.winston_logger.error(error_3.message, error_3.stack);
-                return [3 /*break*/, 4];
+                error_4 = _a.sent();
+                logger_1.winston_logger.error(error_4.message, error_4.stack);
+                return [2 /*return*/, { error: error_4 }];
             case 4:
                 ;
                 return [2 /*return*/];
@@ -144,12 +184,11 @@ var sendPatientBookingEmail = function (respData) { return __awaiter(void 0, voi
 }); };
 exports.sendPatientBookingEmail = sendPatientBookingEmail;
 var sendDoctorBookingEmail = function (respData) { return __awaiter(void 0, void 0, void 0, function () {
-    var mailOptions, error_4;
+    var mailOptions, sent, error_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 mailOptions = {
-                    // from: process.env.AUTH_EMAIL,
                     from: "CareConnect <".concat(process.env.AUTH_EMAIL, ">"),
                     to: respData.doctorEmail,
                     subject: 'New Booking Alert',
@@ -160,12 +199,14 @@ var sendDoctorBookingEmail = function (respData) { return __awaiter(void 0, void
                 _a.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, transporter.sendMail(mailOptions)];
             case 2:
-                _a.sent();
-                return [3 /*break*/, 4];
+                sent = _a.sent();
+                if (!sent.messageId.length)
+                    throw new Error('message not sent');
+                return [2 /*return*/, { sent: sent }];
             case 3:
-                error_4 = _a.sent();
-                logger_1.winston_logger.error(error_4.message, error_4.stack);
-                return [3 /*break*/, 4];
+                error_5 = _a.sent();
+                logger_1.winston_logger.error(error_5.message, error_5.stack);
+                return [2 /*return*/, { error: error_5 }];
             case 4:
                 ;
                 return [2 /*return*/];

@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.refreshToken = exports.logout = exports.verifyEmail = exports.login = exports.register = void 0;
+exports.setPassword = exports.forgotPassword = exports.refreshToken = exports.logout = exports.verifyEmail = exports.login = exports.register = void 0;
 var authService_1 = require("../Services/authService");
 var nodemailer_1 = require("../utils/message/nodemailer");
 var authService_2 = require("../Services/authService");
@@ -109,7 +109,7 @@ var login = function (req, res, next) { return __awaiter(void 0, void 0, void 0,
                 res.cookie('refreshedToken', refreshedToken, {
                     httpOnly: true,
                     secure: true,
-                    sameSite: 'strict',
+                    sameSite: 'none',
                     maxAge: MAX_AGE
                 });
                 res.status(200).json({ message: message, status: true, data: data, token: token });
@@ -198,4 +198,53 @@ var refreshToken = function (req, res, next) { return __awaiter(void 0, void 0, 
     });
 }); };
 exports.refreshToken = refreshToken;
+var forgotPassword = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var email, _a, message, error, token, id;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                email = req.body.email;
+                return [4 /*yield*/, (0, authService_1.forgotPasswordService)(email)];
+            case 1:
+                _a = _b.sent(), message = _a.message, error = _a.error, token = _a.token, id = _a.id;
+                if (error) {
+                    next((0, handledError_1.handleError)(error));
+                    return [2 /*return*/];
+                }
+                ;
+                return [4 /*yield*/, (0, nodemailer_1.sendResetPasswordEmail)({ email: email, token: token, id: id })];
+            case 2:
+                _b.sent();
+                res.status(200).json({ message: message, status: true });
+                return [2 /*return*/];
+        }
+    });
+}); };
+exports.forgotPassword = forgotPassword;
+var setPassword = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var password, _a, token, id, _b, message, error, data;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
+            case 0:
+                password = req.body.password;
+                _a = req.query, token = _a.token, id = _a.id;
+                return [4 /*yield*/, (0, authService_1.setPasswordService)(password, id, token)];
+            case 1:
+                _b = _c.sent(), message = _b.message, error = _b.error, data = _b.data;
+                if (error) {
+                    next((0, handledError_1.handleError)(error));
+                    return [2 /*return*/];
+                }
+                ;
+                if (!data) return [3 /*break*/, 3];
+                return [4 /*yield*/, (0, nodemailer_1.sendResetPasswordSuccessfulEmail)({ email: data.email, name: data === null || data === void 0 ? void 0 : data.toObject().name })];
+            case 2:
+                _c.sent();
+                res.status(200).json({ message: message, status: true });
+                return [2 /*return*/];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.setPassword = setPassword;
 //# sourceMappingURL=authController.js.map

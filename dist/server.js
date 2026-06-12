@@ -14,7 +14,7 @@ var Routers_1 = __importDefault(require("./Routers"));
 require("./config/cloudinaryConfig");
 var StartServer_1 = require("./Starters/StartServer");
 var errorHandler_1 = require("./Middleware/errorHandler");
-var bookingController_1 = require("./Controllers/bookingController");
+var StripeBookingController_1 = require("./Controllers/Bookings/StripeBookingController");
 var app = (0, express_1.default)();
 var PORT = Number(process.env.PORT) || 3000;
 var corsOptions = {
@@ -24,26 +24,13 @@ var corsOptions = {
     allowedHeaders: ['Content-Type', 'Authorization']
 };
 (0, error_handler_1.default)();
-// app.options('*', cors(corsOptions)) // Enable CORS pre-flight for all routes
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", ["http://localhost:5173", "https://care-connect-ena.netlify.app"]);
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.header("Access-Control-Allow-Credentials", "true");
-    if (req.method === 'OPTIONS') {
-        res.sendStatus(200);
-        return;
-    }
-    next();
-});
-app.post('/api/v1/webhook', express_1.default.raw({ type: 'application/json' }), bookingController_1.stripeWebhook);
+app.post('/api/v1/webhook', express_1.default.raw({ type: 'application/json' }), StripeBookingController_1.stripeWebhook);
 app.use((0, cors_1.default)(corsOptions));
-app.options('*', (0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
 app.use('/api/v1', Routers_1.default);
 app.get('/', function (req, res) {
-    res.status(200).json({ message: "Welcome to the API" });
+    res.status(200).json({ message: "Welcome to CareConnect API" });
 });
 (0, StartServer_1.startServer)(app);
 app.use(errorHandler_1.errorHandler);
