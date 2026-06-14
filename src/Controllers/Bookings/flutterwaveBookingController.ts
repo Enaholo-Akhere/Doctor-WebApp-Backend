@@ -1,66 +1,51 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 // import Flutterwave from 'flutterwave-node-v3';
 import axios from 'axios';
+import { bookingFlutterwaveService, initialBookingService } from 'Services/bookingFlutterwaveService';
+import { handleError } from '@utils/handledError';
 
-export const flutterInitialPayment = async (req: Request, res: Response) => {
+export const flutterInitialPayment = async (req: Request, res: Response, next: NextFunction) => {
     const { amount, email, name } = req.body;
-    const secK = process.env.FLUTTER_SECRETE_KEY;
-    const DEV_CLIENT_URL = process.env.DEV_CLIENT_URL
-    const PROD_CLIENT_URL = process.env.PROD_CLIENT_URL
-    const baseUrl = process.env.NODE_ENV === 'production' ? PROD_CLIENT_URL : DEV_CLIENT_URL
-    const redirectUrl = `${baseUrl}/payment-success-fl`
+    const { id } = res.locals.auth;
+    console.log('id', id);
 
-    try {
-        const response = await axios.post(
-            'https://api.flutterwave.com/v3/payments',
-            {
-                tx_ref: `tx-${Date.now()}`,
-                amount,
-                currency: 'NGN',
-                redirect_url: redirectUrl,
-                customer: { email, name },
-                customizations: {
-                    title: 'CareConnect Payment',
-                    description: 'Appointment booking payment',
-                },
-            },
-            {
-                headers: {
-                    Authorization: `Bearer ${secK}`,
-                },
-            }
-        );
+    const { data, message, error } = await initialBookingService({ amount, email, name, id });
 
-        res.json(response.data); // contains data.link
-    } catch (error: any) {
-        console.error(error.response?.data || error.message);
-        res.status(500).json({ error: 'Payment initiation failed' });
+    if (error) {
+        next(handleError(error))
     }
+
+    res.status(200).json({ data, message });
+    return;
+
 };
 
+export const verifyFlutterwavePayment = async (req: Request, res: Response, next: NextFunction) => {
+    const transactionId = req.query.transactionId as string;
+    const { id: userId } = res.locals.auth;
+
+    const { data, message, error } = await bookingFlutterwaveService({ transactionId, userId });
+
+    if (error) {
+        next(handleError(error));
+        return;
+
+    }
+
+    res.status(200).json({
+        data: {
+            amount: data.amount,
+            currency: data.currency,
+            tx_ref: data.tx_ref,
+            transaction_id: data.id,
+            status: data.status,
+            created_at: data.created_at,
+        }
+    });
+    return
+};
 // const pbk = process.env.FLUTTER_PUBLIC_KEY;
 // const secK = process.env.FLUTTER_SECRETE_KEY;
 
 
 // const flw = new Flutterwave(pbk, secK);
-// console.log('flw2 keys:', Object.keys(flw));
-// console.log('flw2 proto:', Object.getOwnPropertyNames(Object.getPrototypeOf(flw)));
-// export const flutterInitialPayment = async (req: Request, res: Response) => {
-//     const payload = {
-//         tx_ref: `tx-${Date.now()}`,
-//         amount: req.body.amount,
-//         redirect_url: '',
-//         customer: {
-//             email: req.body.email,
-//             name: req.body.name,
-//         },
-//         customizations: {
-//             title: 'CareConnect Payment',
-//             description: 'Appointment booking payment'
-//         },
-//     };
-//     const response = await flw.Payment.initiate(payload);
-//     console.log('response', response)
-//     res.status(200).json({ data: response });
-//     return
-// }

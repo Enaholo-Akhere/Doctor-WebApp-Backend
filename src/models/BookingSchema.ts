@@ -9,13 +9,14 @@ const bookingSchema = new mongoose.Schema<BookSchemaInterface>(
       ref: "Doctor",
       required: true,
     },
+    paymentPlatform: { type: String },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
     ticketPrice: { type: String, required: true },
-    stripeSessionId: { type: String, required: true }, // ✅ add this
+    sessionId: { type: String, required: true, default: '' },
     status: {
       type: String,
       enum: ["pending", "approved", "cancelled"],
