@@ -44,3 +44,36 @@
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-06-12T20:14:06.398Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-12T21:49:02.338Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-12T21:49:02.348Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-13T09:48:58.052Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-13T09:48:58.090Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-13T09:48:59.336Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-13T09:48:59.338Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-06-13T09:52:57.492Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:42:07.550Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:42:09.029Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:45:40.373Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:45:41.816Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:48:29.531Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:48:31.020Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:51:03.798Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:51:05.237Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-13T10:52:29.662Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-13T10:52:29.664Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:52:30.967Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:52:32.353Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:53:55.390Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:53:56.857Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:59:25.260Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T10:59:26.674Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T11:02:27.777Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T11:02:29.261Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T11:03:24.839Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 401\u001b[39m","timestamp":"2026-06-13T11:03:26.233Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-13T15:27:58.477Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-13T15:27:58.965Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-13T17:42:21.340Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-13T17:42:21.344Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 400\u001b[39m","timestamp":"2026-06-13T18:26:50.062Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mRequest failed with status code 400\u001b[39m","timestamp":"2026-06-13T18:26:52.534Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-13T18:43:21.614Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-13T18:43:21.617Z"}

@@ -75,8 +75,9 @@ export interface BookSchemaInterface {
     status: string;
     isPaid: boolean;
     createdAt: Date;
-    stripeSessionId: string;
+    sessionId: string;
     updatedAt: Date;
+    paymentPlatform: string
 }
 
 export interface ReviewBodyInterface { doctor: string, user: string }

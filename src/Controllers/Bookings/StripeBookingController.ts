@@ -131,7 +131,7 @@ export const getBookingBySession = async (req: Request, res: Response, next: Nex
     try {
         const { sessionId } = req.params;
 
-        const booking = await Booking.findOne({ stripeSessionId: sessionId })
+        const booking = await Booking.findOne({ sessionId })
             .populate({ path: 'doctor', select: 'name photo specialization' })
             .populate({ path: 'user', select: 'name email photo' });
 
