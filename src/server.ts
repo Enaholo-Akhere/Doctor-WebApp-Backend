@@ -10,6 +10,7 @@ import "config/cloudinaryConfig";
 import { startServer } from 'Starters/StartServer';
 import { errorHandler } from 'Middleware/errorHandler';
 import { stripeWebhook } from 'Controllers/Bookings/StripeBookingController';
+import { flutterwaveWebhook } from 'Controllers/Bookings/flutterwaveBookingController';
 
 
 const app = express()
@@ -27,6 +28,7 @@ uncaughtException();
 
 
 app.post('/api/v1/webhook', express.raw({ type: 'application/json' }), stripeWebhook);
+app.post('/api/v1/flutterwave-webhook', flutterwaveWebhook);
 
 app.use(cors(corsOptions));
 

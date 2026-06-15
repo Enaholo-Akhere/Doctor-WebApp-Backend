@@ -60,7 +60,7 @@ export const stripeWebhook = async (req: Request, res: Response) => {
             try {
                 // ✅ Mark booking as paid
                 const booking = await Booking.findOneAndUpdate(
-                    { stripeSessionId: session.id },
+                    { sessionId: session.id },
                     { isPaid: true, status: 'approved' },
                     { new: true }
                 ).populate([
@@ -126,7 +126,7 @@ export const stripeWebhook = async (req: Request, res: Response) => {
     res.json({ received: true });
 };
 
-// ─── Get Booking by Stripe Session ID ────────────────────────────────────────
+// ─── Get Booking by ID ────────────────────────────────────────
 export const getBookingBySession = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { sessionId } = req.params;
