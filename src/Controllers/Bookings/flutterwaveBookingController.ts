@@ -46,21 +46,17 @@ export const verifyFlutterwavePayment = async (req: Request, res: Response, next
     });
     return
 };
-console.log('webhook key', process.env.FLUTTER_SECRET_WEBHOOK_KEY);
 export const flutterwaveWebhook = async (req: Request, res: Response) => {
+
     try {
         const signature = req.headers['verif-hash'];
 
         if (!signature || signature !== process.env.FLUTTER_SECRET_WEBHOOK_KEY) {
-            console.log("❌ Invalid signature");
             res.status(401).end();
             return;
         }
 
         const payload = req.body;
-
-        console.log(" WEBHOOK RECEIVED:", JSON.stringify(payload, null, 2));
-
         const data = payload.data;
 
         if (data?.status === 'successful') {
@@ -75,7 +71,9 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
 
         }
 
-        return res.status(200).end();
+        res.status(200).end();
+        return;
+
     } catch (err) {
         console.error("Webhook error:", err);
         res.status(500).end();
