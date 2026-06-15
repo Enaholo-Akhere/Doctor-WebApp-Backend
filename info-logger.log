@@ -1,0 +1,43 @@
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T10:27:05.077Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T10:27:05.079Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-06-15T10:28:04.758Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T11:59:53.372Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T11:59:53.375Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mCast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"Doctor\"\u001b[39m","timestamp":"2026-06-15T12:33:22.868Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mCast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"Doctor\"\u001b[39m","timestamp":"2026-06-15T12:33:24.456Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mCast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"Doctor\"\u001b[39m","timestamp":"2026-06-15T12:33:27.146Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mread ECONNRESET\u001b[39m","timestamp":"2026-06-15T12:43:38.176Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mCast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"Doctor\"\u001b[39m","timestamp":"2026-06-15T12:48:51.997Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mCast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"Doctor\"\u001b[39m","timestamp":"2026-06-15T12:48:53.618Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mCast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"Doctor\"\u001b[39m","timestamp":"2026-06-15T12:48:56.323Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mCast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"Doctor\"\u001b[39m","timestamp":"2026-06-15T12:49:57.425Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mCast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"Doctor\"\u001b[39m","timestamp":"2026-06-15T12:49:59.656Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mCast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"Doctor\"\u001b[39m","timestamp":"2026-06-15T12:50:02.642Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mCast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"Doctor\"\u001b[39m","timestamp":"2026-06-15T12:51:03.226Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mBooking validation failed: sessionId: Path `sessionId` is required.\u001b[39m","timestamp":"2026-06-15T12:51:05.059Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mBooking validation failed: sessionId: Path `sessionId` is required.\u001b[39m","timestamp":"2026-06-15T12:51:07.876Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mBooking validation failed: sessionId: Path `sessionId` is required.\u001b[39m","timestamp":"2026-06-15T12:52:40.619Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mBooking validation failed: sessionId: Path `sessionId` is required.\u001b[39m","timestamp":"2026-06-15T12:52:42.451Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mBooking validation failed: sessionId: Path `sessionId` is required.\u001b[39m","timestamp":"2026-06-15T12:52:46.520Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mBooking validation failed: sessionId: Path `sessionId` is required.\u001b[39m","timestamp":"2026-06-15T12:55:11.668Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mBooking validation failed: sessionId: Path `sessionId` is required.\u001b[39m","timestamp":"2026-06-15T12:55:13.536Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mBooking validation failed: sessionId: Path `sessionId` is required.\u001b[39m","timestamp":"2026-06-15T12:55:16.348Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mBooking validation failed: sessionId: Path `sessionId` is required.\u001b[39m","timestamp":"2026-06-15T12:55:48.087Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mBooking validation failed: sessionId: Path `sessionId` is required.\u001b[39m","timestamp":"2026-06-15T12:55:49.876Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mBooking validation failed: sessionId: Path `sessionId` is required.\u001b[39m","timestamp":"2026-06-15T12:55:52.622Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T13:06:44.383Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T13:06:44.387Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T14:11:31.904Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T14:11:31.932Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T15:33:24.149Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T15:33:24.151Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T16:39:04.384Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T16:39:04.397Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T18:02:27.653Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T18:02:27.659Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mEither one of to or bcc is required (code: missing_parameter, statusCode: 400)\u001b[39m","timestamp":"2026-06-15T18:17:22.380Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mEither one of to or bcc is required (code: missing_parameter, statusCode: 400)\u001b[39m","timestamp":"2026-06-15T18:17:22.630Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mEither one of to or bcc is required (code: missing_parameter, statusCode: 400)\u001b[39m","timestamp":"2026-06-15T18:36:36.665Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mEither one of to or bcc is required (code: missing_parameter, statusCode: 400)\u001b[39m","timestamp":"2026-06-15T18:36:36.936Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T19:02:26.273Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-15T19:02:26.277Z"}

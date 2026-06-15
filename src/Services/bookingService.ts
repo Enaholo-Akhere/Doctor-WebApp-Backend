@@ -22,6 +22,11 @@ export const bookingSessionService = async ({ doctorId, userId }: BookingInterfa
             User.findById(userId)
         ]);
 
+        const userAppointments = new Set(user?.appointments?.map(String));
+        const hasBooked = doctor?.appointments?.some((appt) => userAppointments.has(String(appt)));
+
+        if (hasBooked) throw new Error('You have booked this doctor already');
+
         if (!doctor || !user) {
             throw new Error('Doctor or user not found');
         }
@@ -55,19 +60,18 @@ export const bookingSessionService = async ({ doctorId, userId }: BookingInterfa
             ],
         });
 
-        // ✅ Save booking as UNPAID — webhook marks it paid
         const booking = new Booking({
             doctor: doctor._id,
             user: user._id,
             ticketPrice: doctor.ticketPrice,
-            stripeSessionId: session.id,
+            sessionId: session.id,
             isPaid: false,
             status: 'pending',
+            paymentPlatform: 'stp'
         });
 
         await booking.save();
 
-        // ✅ Only return url and id — not the full session object
         return {
             message: 'Checkout session created',
             url: session.url,
