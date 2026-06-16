@@ -9,3 +9,5 @@
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mYou have booked this doctor already\u001b[39m","timestamp":"2026-06-16T14:10:45.323Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-16T15:17:54.580Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-16T15:17:54.583Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-16T16:51:09.855Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-16T16:51:09.861Z"}

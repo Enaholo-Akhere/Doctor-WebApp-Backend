@@ -1,14 +1,17 @@
 import geoip from 'geoip-lite';
 import { flutterwaveCountries, stripeCountries } from 'config/countriesLists';
 import { getExchangeRates } from './getExchangeRate';
+interface detectPaymentInterface {
+    provider: string;
+    currency: string;
+    countryCode: string;
+    exchangeRate: number;
+}
 
-export const detectPaymentProvider = async (ip: string) => {
+export const detectPaymentProvider = async (ip: string): Promise<detectPaymentInterface> => {
     const geo = geoip.lookup(ip);
+
     const rates = await getExchangeRates();
-
-
-    if (!geo) return { provider: 'stripe', currency: 'USD', countryCode: 'US' };
-    const countryCode = geo.country;
 
     if (!geo) return {
         provider: 'stripe',
@@ -17,15 +20,19 @@ export const detectPaymentProvider = async (ip: string) => {
         exchangeRate: 1
     };
 
+    const countryCode = geo.country;
 
     // check flutterwave first
     if (flutterwaveCountries[countryCode]) {
-        const currency = flutterwaveCountries[countryCode]
+        const currency = flutterwaveCountries[countryCode];
+
+        console.log('currency', currency)
+        console.log('rate', rates[countryCode])
         return {
             provider: 'flutterwave',
             currency,
             countryCode,
-            exchangeRate: rates[countryCode] ?? 1
+            exchangeRate: rates[currency] ?? 1
         };
     }
 
@@ -37,11 +44,11 @@ export const detectPaymentProvider = async (ip: string) => {
             provider: 'stripe',
             currency,
             countryCode,
-            exchangeRate: rates[countryCode] ?? 1
+            exchangeRate: rates[currency] ?? 1
         };
     }
 
     // unsupported country — default to stripe USD
-    return { provider: 'stripe', currency: 'USD', countryCode };
+    return { provider: 'stripe', currency: 'USD', countryCode, exchangeRate: 1 };
 
 }
