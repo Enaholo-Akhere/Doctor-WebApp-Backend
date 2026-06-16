@@ -1,27 +1,35 @@
+
 import { winston_logger } from "@utils/logger";
 import axios from "axios";
 import Doctor from "models/DoctorSchema";
 import User from "models/UserSchema";
 import Booking from 'models/BookingSchema';
+import { detectPaymentProvider } from "@utils/paymentProvider";
 
-export const initialBookingService = async ({ amount, email, name, userId, doctorId }: { doctorId: string, userId: string, amount: string, name: string, email: string }) => {
+
+
+export const initialBookingService = async ({ amount, userId, ip, doctorId }: { ip: string, doctorId: string, userId: string, amount: string, name: string, email: string }) => {
     const secK = process.env.FLUTTER_SECRET_KEY;
     const DEV_CLIENT_URL = process.env.DEV_CLIENT_URL
     const PROD_CLIENT_URL = process.env.PROD_CLIENT_URL
     const baseUrl = process.env.NODE_ENV === 'production' ? PROD_CLIENT_URL : DEV_CLIENT_URL
     const redirectUrl = `${baseUrl}/payment-success-fl?doctorId=${doctorId}`
 
+
     try {
+        const { currency, exchangeRate, countryCode, provider } = await detectPaymentProvider(ip);
+        console.log('ip address', ip)
+        console.log('currency', currency, 'exchRate', exchangeRate, 'countryCode', countryCode, 'provider', provider)
 
         const [user, doctor] = await Promise.all([
             User.findById(userId),
             Doctor.findById(doctorId)
         ]);
 
-        const userAppointments = new Set(user?.appointments?.map(String));
-        const hasBooked = doctor?.appointments?.some((appt) => userAppointments.has(String(appt)));
+        // const userAppointments = new Set(user?.appointments?.map(String));
+        // const hasBooked = doctor?.appointments?.some((appt) => userAppointments.has(String(appt)));
 
-        if (hasBooked) throw new Error('You have booked this doctor already')
+        // if (hasBooked) throw new Error('You have booked this doctor already')
 
         const userExist = user && doctor;
 
@@ -90,7 +98,6 @@ export const verifyBookingFlutterwaveService = async ({ transactionId, userId, d
 
         const data = response.data.data;
 
-        // console.log('flutter verify data line 76', data);
 
         const [user, doctor] = await Promise.all([
             User.findById(userId),
@@ -114,39 +121,6 @@ export const verifyBookingFlutterwaveService = async ({ transactionId, userId, d
         });
 
         await booking.save();
-
-        const [docAppointment, userAppointment] = await Promise.all([
-            Doctor.findByIdAndUpdate(doctor._id, {
-                $push: { appointments: booking._id }
-            }),
-
-            User.findByIdAndUpdate(user._id, {
-                $push: { appointments: booking._id }
-            })
-
-        ])
-
-        if (!docAppointment || !userAppointment) {
-            throw new Error('Failed to update appointments');
-        };
-
-        if (docAppointment && userAppointment) {
-
-            const bookedOn = booking.createdAt.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
-            const bookingDetail = {
-                patientName: user.name,
-                doctorName: doctor.name,
-                ticketPrice: doctor.ticketPrice,
-                patientEmail: user.email,
-                doctorEmail: doctor.email,
-                bookingRef: booking._id.toString().slice(8).toUpperCase(),
-                bookedOn,
-            }
-
-            await sendPatientBookingEmail(bookingDetail);
-
-            await sendDoctorBookingEmail(bookingDetail);
-        }
 
         return { data }
     }

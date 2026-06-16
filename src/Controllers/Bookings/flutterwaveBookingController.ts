@@ -5,13 +5,18 @@ import Booking from 'models/BookingSchema';
 import User from 'models/UserSchema';
 import Doctor from 'models/DoctorSchema';
 import { sendDoctorBookingEmail, sendPatientBookingEmail } from '@utils/message/nodemailer';
+import { localIPUtils } from '@utils/localIp';
 
 export const flutterInitialPayment = async (req: Request, res: Response, next: NextFunction) => {
     const { amount, email, name } = req.body;
     const { doctorId } = req.params;
     const { id: userId } = res.locals.auth;
+    const ip = (req.headers['x-forwarded-for'] as string)?.split(',')[0].trim() ||
+        req.socket.remoteAddress ||
+        req.ip ||
+        "";
 
-    const { message, error, data } = await initialBookingService({ amount, email, name, userId, doctorId });
+    const { message, error, data } = await initialBookingService({ amount, email, name, userId, doctorId, ip });
 
     if (error) {
         next(handleError(error))
@@ -50,11 +55,8 @@ export const verifyFlutterwavePayment = async (req: Request, res: Response, next
     return
 };
 
-        const payload = req.body;
-        const data = payload.data;
 
 export const flutterwaveWebhook = async (req: Request, res: Response) => {
-    console.log('i got here, flutterwave webhook line 50')
     try {
         const signature = req.headers['verif-hash'];
 
@@ -65,8 +67,6 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
 
         const payload = req.body;
 
-
-        // Also search without the sessionId filter to see all recent bookings
 
         if (payload?.status === 'successful') {
             const booking = await Booking.findOneAndUpdate(
