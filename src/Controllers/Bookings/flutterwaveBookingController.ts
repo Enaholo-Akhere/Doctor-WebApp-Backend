@@ -50,6 +50,8 @@ export const verifyFlutterwavePayment = async (req: Request, res: Response, next
     return
 };
 
+        const payload = req.body;
+        const data = payload.data;
 
 export const flutterwaveWebhook = async (req: Request, res: Response) => {
     console.log('i got here, flutterwave webhook line 50')

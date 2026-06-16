@@ -101,6 +101,52 @@ export const verifyBookingFlutterwaveService = async ({ transactionId, userId, d
 
         if (!userExist) throw new Error('User not found!');
 
+        if (!userExist) throw new Error('User not found!');
+
+        const booking = new Booking({
+            doctor: doctor?._id,
+            user: user?._id,
+            ticketPrice: doctor?.ticketPrice,
+            isPaid: true,
+            status: 'approved',
+            paymentPlatform: 'flw',
+            sessionId: data.tx_ref,
+        });
+
+        await booking.save();
+
+        const [docAppointment, userAppointment] = await Promise.all([
+            Doctor.findByIdAndUpdate(doctor._id, {
+                $push: { appointments: booking._id }
+            }),
+
+            User.findByIdAndUpdate(user._id, {
+                $push: { appointments: booking._id }
+            })
+
+        ])
+
+        if (!docAppointment || !userAppointment) {
+            throw new Error('Failed to update appointments');
+        };
+
+        if (docAppointment && userAppointment) {
+
+            const bookedOn = booking.createdAt.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+            const bookingDetail = {
+                patientName: user.name,
+                doctorName: doctor.name,
+                ticketPrice: doctor.ticketPrice,
+                patientEmail: user.email,
+                doctorEmail: doctor.email,
+                bookingRef: booking._id.toString().slice(8).toUpperCase(),
+                bookedOn,
+            }
+
+            await sendPatientBookingEmail(bookingDetail);
+
+            await sendDoctorBookingEmail(bookingDetail);
+        }
 
         return { data }
     }
