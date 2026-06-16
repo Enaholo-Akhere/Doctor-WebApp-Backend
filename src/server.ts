@@ -11,9 +11,10 @@ import { startServer } from 'Starters/StartServer';
 import { errorHandler } from 'Middleware/errorHandler';
 import { stripeWebhook } from 'Controllers/Bookings/StripeBookingController';
 import { flutterwaveWebhook } from 'Controllers/Bookings/flutterwaveBookingController';
+import helmet from 'helmet';
 
-
-const app = express()
+const app = express();
+app.set('trust proxy', 1);
 
 const PORT: number = Number(process.env.PORT) || 3000
 
@@ -26,13 +27,14 @@ const corsOptions = {
 
 uncaughtException();
 
-app.use(express.json());
+app.use(helmet());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 
 app.post('/api/v1/webhook', express.raw({ type: 'application/json' }), stripeWebhook);
 app.post('/api/v1/flutterwave-webhook', flutterwaveWebhook);
 
-app.use(cors(corsOptions));
+app.use(express.json());
 
 app.use('/api/v1', routers);
 
