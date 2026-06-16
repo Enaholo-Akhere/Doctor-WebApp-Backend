@@ -2,6 +2,9 @@ import { NextFunction, Request, Response } from 'express';
 import { initialBookingService, verifyBookingFlutterwaveService } from 'Services/bookingFlutterwaveService';
 import { handleError } from '@utils/handledError';
 import Booking from 'models/BookingSchema';
+import User from 'models/UserSchema';
+import Doctor from 'models/DoctorSchema';
+import { sendDoctorBookingEmail, sendPatientBookingEmail } from '@utils/message/nodemailer';
 
 export const flutterInitialPayment = async (req: Request, res: Response, next: NextFunction) => {
     const { amount, email, name } = req.body;
@@ -46,8 +49,10 @@ export const verifyFlutterwavePayment = async (req: Request, res: Response, next
     });
     return
 };
-export const flutterwaveWebhook = async (req: Request, res: Response) => {
 
+
+export const flutterwaveWebhook = async (req: Request, res: Response) => {
+    console.log('i got here, flutterwave webhook line 50')
     try {
         const signature = req.headers['verif-hash'];
 
@@ -57,25 +62,66 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
         }
 
         const payload = req.body;
-        const data = payload.data;
 
-        if (data?.status === 'successful') {
-            await Booking.findOneAndUpdate(
-                { sessionId: data.tx_ref },
+
+        // Also search without the sessionId filter to see all recent bookings
+
+        if (payload?.status === 'successful') {
+            const booking = await Booking.findOneAndUpdate(
+                { sessionId: payload.txRef },
                 {
                     isPaid: true,
                     status: 'approved',
                 },
                 { new: true }
-            );
+            ).populate([
+                { path: 'doctor', select: 'name _id email' },
+                { path: 'user', select: 'name email _id' },
+            ]);
 
+            if (!booking) throw new Error('booking not found');
+
+            const [docAppointment, userAppointment] = await Promise.all([
+                Doctor.findByIdAndUpdate(booking.doctor._id, {
+                    $push: { appointments: booking._id }
+                }),
+
+                User.findByIdAndUpdate(booking.user._id, {
+                    $push: { appointments: booking._id }
+                })
+
+            ])
+
+            if (!docAppointment || !userAppointment) {
+                throw new Error('Failed to update appointments');
+            };
+
+            if (docAppointment && userAppointment) {
+
+                const bookedOn = booking.createdAt.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+                const bookingDetail = {
+                    patientName: booking.user.name,
+                    doctorName: booking.doctor.name,
+                    ticketPrice: booking.doctor.ticketPrice,
+                    patientEmail: booking.user.email,
+                    doctorEmail: booking.doctor.email,
+                    bookingRef: booking._id.toString().slice(8).toUpperCase(),
+                    bookedOn,
+                }
+
+                await sendPatientBookingEmail(bookingDetail);
+
+                await sendDoctorBookingEmail(bookingDetail);
+            }
+
+            console.log('new booking', booking)
         }
-
+        // tx - 1781563509356
         res.status(200).end();
         return;
 
-    } catch (err) {
-        console.error("Webhook error:", err);
+    } catch (err: any) {
+        console.error("Webhook error:", err.message);
         res.status(500).end();
         return;
     }

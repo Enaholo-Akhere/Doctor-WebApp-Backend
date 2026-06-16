@@ -26,14 +26,13 @@ const corsOptions = {
 
 uncaughtException();
 
+app.use(express.json());
+app.use(cookieParser());
 
 app.post('/api/v1/webhook', express.raw({ type: 'application/json' }), stripeWebhook);
 app.post('/api/v1/flutterwave-webhook', flutterwaveWebhook);
 
 app.use(cors(corsOptions));
-
-app.use(express.json());
-app.use(cookieParser());
 
 app.use('/api/v1', routers);
 
