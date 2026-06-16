@@ -3,8 +3,6 @@ import axios from "axios";
 import Doctor from "models/DoctorSchema";
 import User from "models/UserSchema";
 import Booking from 'models/BookingSchema';
-import { sendDoctorBookingEmail, sendPatientBookingEmail } from "@utils/message/nodemailer";
-
 
 export const initialBookingService = async ({ amount, email, name, userId, doctorId }: { doctorId: string, userId: string, amount: string, name: string, email: string }) => {
     const secK = process.env.FLUTTER_SECRET_KEY;
@@ -29,14 +27,16 @@ export const initialBookingService = async ({ amount, email, name, userId, docto
 
         if (!userExist) throw new Error('User not found!');
 
+        const tx_ref = `tx-${Date.now()}`;
+
         const response = await axios.post(
             'https://api.flutterwave.com/v3/payments',
             {
-                tx_ref: `tx-${Date.now()}`,
+                tx_ref,
                 amount,
                 currency: 'NGN',
                 redirect_url: redirectUrl,
-                customer: { email, name },
+                customer: { email: user.email, name: user.name, phone: user.phone },
                 customizations: {
                     title: 'CareConnect Payment',
                     description: 'Appointment booking payment',
@@ -53,10 +53,21 @@ export const initialBookingService = async ({ amount, email, name, userId, docto
                 },
             }
         );
+        const booking = new Booking({
+            doctor: doctor?._id,
+            user: user?._id,
+            ticketPrice: doctor?.ticketPrice,
+            isPaid: false,
+            status: 'pending',
+            paymentPlatform: 'flw',
+            sessionId: tx_ref,
+        });
 
+        await booking.save();
 
         return { data: response.data }
     } catch (error: any) {
+        winston_logger.error(error.message, error.stack);
         return { error, message: error.message };
     }
 };
@@ -87,6 +98,8 @@ export const verifyBookingFlutterwaveService = async ({ transactionId, userId, d
         ])
 
         const userExist = user && doctor;
+
+        if (!userExist) throw new Error('User not found!');
 
         if (!userExist) throw new Error('User not found!');
 
