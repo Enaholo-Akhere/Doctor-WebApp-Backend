@@ -103,7 +103,7 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
             if (docAppointment && userAppointment) {
 
                 const bookedOn = booking.createdAt.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
-                const bookingDetail = {
+                const bookingDetail: BookingCompleteInterface = {
                     patientName: booking.user.name,
                     doctorName: booking.doctor.name,
                     ticketPrice: booking.doctor.ticketPrice,
