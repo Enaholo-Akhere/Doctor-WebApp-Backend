@@ -33,10 +33,12 @@ app.use(helmet());
 app.use(cors(corsOptions));
 app.use(cookieParser());
 
+
 app.post('/api/v1/webhook', express.raw({ type: 'application/json' }), stripeWebhook);
+app.use(express.json());
 app.post('/api/v1/flutterwave-webhook', flutterwaveWebhook);
 
-app.use(express.json());
+
 
 app.use('/api/v1', routers);
 
