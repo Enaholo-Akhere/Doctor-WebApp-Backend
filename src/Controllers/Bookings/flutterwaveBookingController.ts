@@ -59,14 +59,8 @@ export const verifyFlutterwavePayment = async (req: Request, res: Response, next
 
 export const flutterwaveWebhook = async (req: Request, res: Response) => {
 
-    console.log('raw body:', req.body);
-    console.log('headers:', req.headers);
     try {
         const signature = req.headers['verif-hash'];
-
-        console.log('signature:', signature);
-        console.log('expected:', process.env.FLUTTER_SECRET_WEBHOOK_KEY);
-        console.log('match:', signature === process.env.FLUTTER_SECRET_WEBHOOK_KEY);
 
         if (!signature || signature !== process.env.FLUTTER_SECRET_WEBHOOK_KEY) {
             res.status(401).end();
@@ -74,8 +68,6 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
         }
 
         const payload = req.body;
-        console.error("Webhook payload:", payload);
-
 
         if (payload?.status === 'successful') {
             const booking = await Booking.findOneAndUpdate(
@@ -120,7 +112,6 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
                     bookedOn,
                 }
 
-                console.log('booking detail')
 
                 await sendPatientBookingEmail(bookingDetail);
 
