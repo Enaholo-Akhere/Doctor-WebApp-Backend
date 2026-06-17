@@ -8,6 +8,7 @@ import { validateImage } from 'Middleware/validateImage';
 import { asyncHandler } from '@utils/asyncHandler';
 import { multerErrorHandler } from 'Middleware/multerErrorHandler';
 import { sanitizedUser } from 'Middleware/sanitized';
+import { geolocation } from 'Controllers/geolocationController';
 
 
 const router = express.Router();
@@ -18,6 +19,7 @@ router.post('/forgot-password', validate(forgotPasswordSchema), forgotPassword);
 router.post('/set-password', validate(setPasswordSchema), setPassword);
 router.post('/verify-email', validate(verifyEmailSchema), verifyEmail);
 router.put('/logout', sanitizedUser, logout);
+router.get('/geolocation', geolocation);
 router.post('/refresh-token/:id', refreshToken);
 
 export default router;
