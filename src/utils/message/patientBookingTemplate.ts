@@ -106,14 +106,14 @@ export const patientBookingTemplate = ({
               <table cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                   <td style="font-size:13px; color:#64748b; padding-bottom:8px;">Consultation Fee</td>
-                  <td align="right" style="font-size:13px; color:#64748b; padding-bottom:8px;">${paymentDetail.amountPaid} ${paymentDetail.customerCurrency}</td>
+                  <td align="right" style="font-size:13px; color:#64748b; padding-bottom:8px;">${paymentDetail?.amountPaid} ${paymentDetail?.customerCurrency}</td>
                 </tr>
                 <tr>
                   <td colspan="2" style="border-top:1px solid #e2e8f0; padding-top:10px;">
                     <table cellpadding="0" cellspacing="0" width="100%">
                       <tr>
                         <td style="font-size:15px; font-weight:700; color:#1e293b;">Total Paid</td>
-                        <td align="right" style="font-size:15px; font-weight:700; color:#0d9488;">${paymentDetail.amountPaid} ${paymentDetail.customerCurrency}</td>
+                        // <td align="right" style="font-size:15px; font-weight:700; color:#0d9488;">${paymentDetail?.amountPaid} ${paymentDetail?.customerCurrency}</td>
                       </tr>
                     </table>
                   </td>
