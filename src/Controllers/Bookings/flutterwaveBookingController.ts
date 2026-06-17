@@ -5,9 +5,8 @@ import Booking from 'models/BookingSchema';
 import User from 'models/UserSchema';
 import Doctor from 'models/DoctorSchema';
 import { sendDoctorBookingEmail, sendPatientBookingEmail } from '@utils/message/nodemailer';
-import { localIPUtils } from '@utils/localIp';
 import { winston_logger } from '@utils/logger';
-import { BookingCompleteInterface, BookSchemaInterface } from 'types';
+import { BookingCompleteInterface } from 'types';
 
 export const flutterInitialPayment = async (req: Request, res: Response, next: NextFunction) => {
     const { amount, email, name } = req.body;
@@ -120,7 +119,6 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
                     }
                 }
 
-                console.log('booking detail')
 
                 await sendPatientBookingEmail(bookingDetail);
 
@@ -128,7 +126,6 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
             }
 
         }
-        // tx - 1781563509356
         res.status(200).end();
         return;
 
