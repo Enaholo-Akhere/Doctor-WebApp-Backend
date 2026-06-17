@@ -146,5 +146,5 @@ export interface BookingCompleteInterface {
     ticketPrice: string | number;
     bookingRef: string;
     bookedOn: string;
-    paymentDetail: Partial<paymentDetailInterface>;
+    paymentDetail?: Partial<paymentDetailInterface>;
 }
