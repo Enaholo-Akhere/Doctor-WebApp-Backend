@@ -46,26 +46,30 @@ var DoctorSchema_1 = __importDefault(require("../models/DoctorSchema"));
 var stripe_1 = __importDefault(require("stripe"));
 var logger_1 = require("../utils/logger");
 var bookingSessionService = function (_a) { return __awaiter(void 0, [_a], void 0, function (_b) {
-    var stripeKey, devUrl, prodUrl, clientUrl, cancelUrl, _c, doctor, user, stripe, session, booking, error_1;
-    var _d;
+    var stripeKey, devUrl, prodUrl, clientUrl, cancelUrl, _c, doctor, user, userAppointments_1, hasBooked, stripe, session, booking, error_1;
+    var _d, _e, _f;
     var doctorId = _b.doctorId, userId = _b.userId;
-    return __generator(this, function (_e) {
-        switch (_e.label) {
+    return __generator(this, function (_g) {
+        switch (_g.label) {
             case 0:
                 stripeKey = process.env.STRIPE_SECRET_KEY || "";
                 devUrl = process.env.DEV_CLIENT_URL || "";
                 prodUrl = process.env.PROD_CLIENT_URL || "";
                 clientUrl = process.env.NODE_ENV === 'production' ? prodUrl : devUrl;
                 cancelUrl = "".concat(clientUrl, "/doctor/").concat(doctorId);
-                _e.label = 1;
+                _g.label = 1;
             case 1:
-                _e.trys.push([1, 5, , 6]);
+                _g.trys.push([1, 5, , 6]);
                 return [4 /*yield*/, Promise.all([
                         DoctorSchema_1.default.findById(doctorId),
                         UserSchema_1.default.findById(userId)
                     ])];
             case 2:
-                _c = _e.sent(), doctor = _c[0], user = _c[1];
+                _c = _g.sent(), doctor = _c[0], user = _c[1];
+                userAppointments_1 = new Set((_d = user === null || user === void 0 ? void 0 : user.appointments) === null || _d === void 0 ? void 0 : _d.map(String));
+                hasBooked = (_e = doctor === null || doctor === void 0 ? void 0 : doctor.appointments) === null || _e === void 0 ? void 0 : _e.some(function (appt) { return userAppointments_1.has(String(appt)); });
+                if (hasBooked)
+                    throw new Error('You have booked this doctor already');
                 if (!doctor || !user) {
                     throw new Error('Doctor or user not found');
                 }
@@ -73,7 +77,7 @@ var bookingSessionService = function (_a) { return __awaiter(void 0, [_a], void 
                 return [4 /*yield*/, stripe.checkout.sessions.create({
                         payment_method_types: ['card'],
                         mode: 'payment',
-                        success_url: "".concat(clientUrl, "/payment-success?session_id={CHECKOUT_SESSION_ID}"),
+                        success_url: "".concat(clientUrl, "/payment-success-st?session_id={CHECKOUT_SESSION_ID}"),
                         cancel_url: cancelUrl,
                         customer_email: user.email,
                         client_reference_id: doctorId,
@@ -89,7 +93,7 @@ var bookingSessionService = function (_a) { return __awaiter(void 0, [_a], void 
                                     product_data: {
                                         name: "Appointment with Dr. ".concat(doctor.name),
                                         description: doctor.bio || 'Medical consultation',
-                                        images: ((_d = doctor.photo) === null || _d === void 0 ? void 0 : _d.imageUrl) ? [doctor.photo.imageUrl] : [],
+                                        images: ((_f = doctor.photo) === null || _f === void 0 ? void 0 : _f.imageUrl) ? [doctor.photo.imageUrl] : [],
                                     },
                                 },
                                 quantity: 1,
@@ -97,26 +101,26 @@ var bookingSessionService = function (_a) { return __awaiter(void 0, [_a], void 
                         ],
                     })];
             case 3:
-                session = _e.sent();
+                session = _g.sent();
                 booking = new BookingSchema_1.default({
                     doctor: doctor._id,
                     user: user._id,
                     ticketPrice: doctor.ticketPrice,
-                    stripeSessionId: session.id,
+                    sessionId: session.id,
                     isPaid: false,
                     status: 'pending',
+                    paymentPlatform: 'stp'
                 });
                 return [4 /*yield*/, booking.save()];
             case 4:
-                _e.sent();
-                // ✅ Only return url and id — not the full session object
+                _g.sent();
                 return [2 /*return*/, {
                         message: 'Checkout session created',
                         url: session.url,
                         sessionId: session.id,
                     }];
             case 5:
-                error_1 = _e.sent();
+                error_1 = _g.sent();
                 logger_1.winston_logger.error(error_1.message, error_1.stack);
                 return [2 /*return*/, { message: error_1.message, error: error_1, url: null }];
             case 6: return [2 /*return*/];
