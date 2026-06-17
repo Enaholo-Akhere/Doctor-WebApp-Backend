@@ -1,4 +1,5 @@
 import { BookingCompleteInterface } from "types";
+import { formatCurrency } from "./formartCurrency";
 
 export const patientBookingTemplate = ({
   patientName,
@@ -12,6 +13,12 @@ export const patientBookingTemplate = ({
   const clientUrl = process.env.NODE_ENV === 'production' ? prodUrl : devUrl;
   const profileUrl = `${clientUrl}/users/profile/me`;
   const year = new Date().getFullYear();
+
+  let amountPaid;
+  if (paymentDetail?.amountPaid && paymentDetail.customerCurrency) {
+    amountPaid = formatCurrency(paymentDetail.amountPaid, paymentDetail.customerCurrency)
+  }
+
 
   return `
 <!DOCTYPE html>
@@ -106,14 +113,14 @@ export const patientBookingTemplate = ({
               <table cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                   <td style="font-size:13px; color:#64748b; padding-bottom:8px;">Consultation Fee</td>
-                  <td align="right" style="font-size:13px; color:#64748b; padding-bottom:8px;">${paymentDetail?.amountPaid} ${paymentDetail?.customerCurrency}</td>
+                  <td align="right" style="font-size:13px; color:#64748b; padding-bottom:8px;">${amountPaid}</td>
                 </tr>
                 <tr>
                   <td colspan="2" style="border-top:1px solid #e2e8f0; padding-top:10px;">
                     <table cellpadding="0" cellspacing="0" width="100%">
                       <tr>
                         <td style="font-size:15px; font-weight:700; color:#1e293b;">Total Paid</td>
-                        // <td align="right" style="font-size:15px; font-weight:700; color:#0d9488;">${paymentDetail?.amountPaid} ${paymentDetail?.customerCurrency}</td>
+                        // <td align="right" style="font-size:15px; font-weight:700; color:#0d9488;">${amountPaid}</td>
                       </tr>
                     </table>
                   </td>
