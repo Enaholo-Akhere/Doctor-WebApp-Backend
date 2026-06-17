@@ -6,6 +6,7 @@ import User from 'models/UserSchema';
 import Doctor from 'models/DoctorSchema';
 import { sendDoctorBookingEmail, sendPatientBookingEmail } from '@utils/message/nodemailer';
 import { localIPUtils } from '@utils/localIp';
+import { winston_logger } from '@utils/logger';
 
 export const flutterInitialPayment = async (req: Request, res: Response, next: NextFunction) => {
     const { amount, email, name } = req.body;
@@ -57,6 +58,7 @@ export const verifyFlutterwavePayment = async (req: Request, res: Response, next
 
 
 export const flutterwaveWebhook = async (req: Request, res: Response) => {
+
     try {
         const signature = req.headers['verif-hash'];
 
@@ -66,7 +68,6 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
         }
 
         const payload = req.body;
-
 
         if (payload?.status === 'successful') {
             const booking = await Booking.findOneAndUpdate(
@@ -111,6 +112,7 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
                     bookedOn,
                 }
 
+
                 await sendPatientBookingEmail(bookingDetail);
 
                 await sendDoctorBookingEmail(bookingDetail);
@@ -122,8 +124,8 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
         res.status(200).end();
         return;
 
-    } catch (err: any) {
-        console.error("Webhook error:", err.message);
+    } catch (error: any) {
+        winston_logger.error(error.message, error.stack)
         res.status(500).end();
         return;
     }
