@@ -7,6 +7,7 @@ import Doctor from 'models/DoctorSchema';
 import { sendDoctorBookingEmail, sendPatientBookingEmail } from '@utils/message/nodemailer';
 import { localIPUtils } from '@utils/localIp';
 import { winston_logger } from '@utils/logger';
+import { BookingCompleteInterface, BookSchemaInterface } from 'types';
 
 export const flutterInitialPayment = async (req: Request, res: Response, next: NextFunction) => {
     const { amount, email, name } = req.body;
@@ -69,6 +70,7 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
 
         const payload = req.body;
 
+
         if (payload?.status === 'successful') {
             const booking = await Booking.findOneAndUpdate(
                 { sessionId: payload.txRef },
@@ -78,7 +80,7 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
                 },
                 { new: true }
             ).populate([
-                { path: 'doctor', select: 'name _id email' },
+                { path: 'doctor', select: 'name _id email ticketPrice' },
                 { path: 'user', select: 'name email _id' },
             ]);
 
@@ -102,7 +104,7 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
             if (docAppointment && userAppointment) {
 
                 const bookedOn = booking.createdAt.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
-                const bookingDetail = {
+                const bookingDetail: BookingCompleteInterface = {
                     patientName: booking.user.name,
                     doctorName: booking.doctor.name,
                     ticketPrice: booking.doctor.ticketPrice,
@@ -110,15 +112,21 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
                     doctorEmail: booking.doctor.email,
                     bookingRef: booking._id.toString().slice(8).toUpperCase(),
                     bookedOn,
+                    paymentDetail: {
+                        customerCurrency: booking.paymentDetail.customerCurrency,
+                        baseCurrency: booking.paymentDetail.baseCurrency,
+                        amountPaid: booking.paymentDetail.amountPaid,
+                        baseAmount: booking.paymentDetail.baseAmount
+                    }
                 }
 
+                console.log('booking detail')
 
                 await sendPatientBookingEmail(bookingDetail);
 
                 await sendDoctorBookingEmail(bookingDetail);
             }
 
-            console.log('new booking', booking)
         }
         // tx - 1781563509356
         res.status(200).end();

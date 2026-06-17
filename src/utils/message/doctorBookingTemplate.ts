@@ -5,8 +5,8 @@ export const doctorBookingTemplate = ({
   doctorName,
   patientName,
   patientEmail,
-  ticketPrice,
   bookingRef,
+  paymentDetail,
   bookedOn,
 }: BookingCompleteInterface) => {
 
@@ -14,7 +14,7 @@ export const doctorBookingTemplate = ({
   const prodUrl: string = process.env.PROD_CLIENT_URL || "";
   const clientUrl = process.env.NODE_ENV === 'production' ? prodUrl : devUrl;
 
-  const dashboardUrl = `${clientUrl}/doctors/profile/me`;
+  const dashboardUrl = `${clientUrl}/dashboard/profile/me`;
   const year = new Date().getFullYear();
 
   return `
@@ -98,7 +98,7 @@ export const doctorBookingTemplate = ({
           <tr>
             <td style="padding:20px 24px;">
               <p style="margin:0 0 4px; font-size:11px; text-transform:uppercase; letter-spacing:0.1em; font-weight:700; color:rgba(255,255,255,0.7);">Consultation Fee Received</p>
-              <p style="margin:0; font-size:30px; font-weight:700; color:#ffffff; letter-spacing:-0.02em;">$${ticketPrice} USD</p>
+              <p style="margin:0; font-size:30px; font-weight:700; color:#ffffff; letter-spacing:-0.02em;">$${paymentDetail.baseAmount} ${paymentDetail.baseCurrency}</p>
             </td>
           </tr>
         </table>

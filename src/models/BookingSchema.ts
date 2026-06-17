@@ -9,6 +9,9 @@ const bookingSchema = new mongoose.Schema<BookSchemaInterface>(
       ref: "Doctor",
       required: true,
     },
+    paymentDetail: {
+      type: mongoose.Schema.Types.Mixed,
+    },
     paymentPlatform: { type: String },
     user: {
       type: mongoose.Schema.Types.ObjectId,

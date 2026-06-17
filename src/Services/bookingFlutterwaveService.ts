@@ -18,7 +18,6 @@ export const initialBookingService = async ({ amount, userId, ip, doctorId }: { 
 
     try {
         const { currency, exchangeRate, countryCode, provider } = await detectPaymentProvider(ip);
-        console.log('ip address', ip)
         console.log('currency', currency, 'exchRate', exchangeRate, 'countryCode', countryCode, 'provider', provider)
 
         const [user, doctor] = await Promise.all([
@@ -26,10 +25,23 @@ export const initialBookingService = async ({ amount, userId, ip, doctorId }: { 
             Doctor.findById(doctorId)
         ]);
 
+
         // const userAppointments = new Set(user?.appointments?.map(String));
         // const hasBooked = doctor?.appointments?.some((appt) => userAppointments.has(String(appt)));
 
         // if (hasBooked) throw new Error('You have booked this doctor already')
+
+        const price = exchangeRate * Number(doctor?.ticketPrice);
+        console.log('price:', price, 'amount:', amount);
+
+        const paymentDetail = {
+            baseAmount: Number(doctor?.ticketPrice),
+            baseCurrency: 'USD',
+            customerCurrency: currency,
+            exchangeRate,
+            ipAddress: ip,
+            amountPaid: price
+        }
 
         const userExist = user && doctor;
 
@@ -41,8 +53,8 @@ export const initialBookingService = async ({ amount, userId, ip, doctorId }: { 
             'https://api.flutterwave.com/v3/payments',
             {
                 tx_ref,
-                amount,
-                currency: 'NGN',
+                amount: price,
+                currency: currency,
                 redirect_url: redirectUrl,
                 customer: { email: user.email, name: user.name, phone: user.phone },
                 customizations: {
@@ -69,6 +81,7 @@ export const initialBookingService = async ({ amount, userId, ip, doctorId }: { 
             status: 'pending',
             paymentPlatform: 'flw',
             sessionId: tx_ref,
+            paymentDetail
         });
 
         await booking.save();

@@ -1,3 +1,4 @@
+
 import { ReactNode } from 'react';
 
 export interface UserSchemaInterface {
@@ -66,7 +67,14 @@ export interface DoctorSchemaInterface {
     refreshedToken: string;
 
 }
-
+export interface paymentDetailInterface {
+    baseAmount: number;
+    baseCurrency: string;
+    customerCurrency: string;
+    exchangeRate: number;
+    ipAddress: string;
+    amountPaid: number
+}
 export interface BookSchemaInterface {
     doctor: mongoose.ObjectId;
     user: mongoose.ObjectId;
@@ -77,7 +85,8 @@ export interface BookSchemaInterface {
     createdAt: Date;
     sessionId: string;
     updatedAt: Date;
-    paymentPlatform: string
+    paymentPlatform: string;
+    paymentDetail: paymentDetailInterface;
 }
 
 export interface ReviewBodyInterface { doctor: string, user: string }
@@ -137,4 +146,5 @@ export interface BookingCompleteInterface {
     ticketPrice: string | number;
     bookingRef: string;
     bookedOn: string;
+    paymentDetail: Partial<paymentDetailInterface>;
 }
