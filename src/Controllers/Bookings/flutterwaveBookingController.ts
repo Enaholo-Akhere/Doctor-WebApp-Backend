@@ -100,7 +100,7 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
                 throw new Error('Failed to update appointments');
             };
 
-            if (docAppointment && userAppointment) {
+            if (docAppointment && userAppointment && booking) {
 
                 const bookedOn = booking.createdAt.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
                 const bookingDetail: BookingCompleteInterface = {
