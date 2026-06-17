@@ -68,7 +68,6 @@ export const flutterwaveWebhook = async (req: Request, res: Response) => {
         }
 
         const payload = req.body;
-        console.error("Webhook payload:", payload);
 
 
         if (payload?.status === 'successful') {
