@@ -14,7 +14,7 @@ export const detectPaymentProvider = async (ip: string): Promise<detectPaymentIn
     const rates = await getExchangeRates();
 
     if (!geo) return {
-        provider: 'stripe',
+        provider: 'stp',
         currency: 'USD',
         countryCode: 'US',
         exchangeRate: 1
@@ -29,7 +29,7 @@ export const detectPaymentProvider = async (ip: string): Promise<detectPaymentIn
         console.log('currency', currency)
         console.log('rate', rates[countryCode])
         return {
-            provider: 'flutterwave',
+            provider: 'flw',
             currency,
             countryCode,
             exchangeRate: rates[currency] ?? 1
@@ -41,7 +41,7 @@ export const detectPaymentProvider = async (ip: string): Promise<detectPaymentIn
         const currency = stripeCountries[countryCode];
 
         return {
-            provider: 'stripe',
+            provider: 'stp',
             currency,
             countryCode,
             exchangeRate: rates[currency] ?? 1
@@ -49,6 +49,6 @@ export const detectPaymentProvider = async (ip: string): Promise<detectPaymentIn
     }
 
     // unsupported country — default to stripe USD
-    return { provider: 'stripe', currency: 'USD', countryCode, exchangeRate: 1 };
+    return { provider: 'stp', currency: 'USD', countryCode, exchangeRate: 1 };
 
 }
