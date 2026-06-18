@@ -18,7 +18,7 @@ export const handleError = (err: any) => {
             message: "Unauthorized. Token not found.",
             statusCode: 401
         });
-    } else if (err.message === 'jwt expired' || err.message === 'jwt malformed' || err.message === 'Invalid user token') {
+    } else if (err.message === 'jwt expired' || err.message === 'jwt malformed') {
         return appError({
             message: "Unauthorized. Access token expired.",
             statusCode: 401
@@ -33,8 +33,13 @@ export const handleError = (err: any) => {
             message: err.message,
             statusCode: 200,
         });
+    } else if (err.message === 'Refreshed token not found') {
+        return appError({
+            message: "Cannot verify user",
+            statusCode: 403,
+        });
     }
-    console.error('Unhandled error:', err.message);
+    console.error('Handled error:', err.message, 'error stack', err.stack);
 
     return appError({ message: err.message, statusCode: 500 });
 };
