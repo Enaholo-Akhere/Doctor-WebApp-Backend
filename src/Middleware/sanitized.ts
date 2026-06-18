@@ -38,9 +38,9 @@ export const sanitizedUser = async (req: Request, res: Response, next: NextFunct
 
         const user_doctor = user || doctor;
 
-        if (!user_doctor?.refreshedToken) {
+        if (user_doctor?.refreshedToken) {
 
-            throw new Error('Invalid user token');
+            throw new Error('Refreshed token not found');
         }
 
         const validAudiences = Object.values(AUDIENCE);
