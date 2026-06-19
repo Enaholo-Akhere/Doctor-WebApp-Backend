@@ -4,6 +4,7 @@ import { decodedData, UserSchemaInterface } from "types";
 import { sendResetPasswordEmail, sendResetPasswordSuccessfulEmail, sendVerificationEmail } from "@utils/message/nodemailer";
 import { verifyEmailService } from "Services/authService";
 import { handleError } from "@utils/handledError";
+import jwt from 'jsonwebtoken';
 
 
 interface UserAuthInterface {
@@ -113,10 +114,8 @@ export const logout = async (req: Request, res: Response, next: NextFunction) =>
 export const refreshToken = async (req: Request, res: Response, next: NextFunction) => {
     const refreshedToken = req.cookies?.refreshedToken;
 
-    const { id } = req.params
-
     if (!refreshedToken) {
-        res.status(401).json({
+        res.status(403).json({
             status: false,
             message: 'Refresh token not found',
             token: null
@@ -124,7 +123,21 @@ export const refreshToken = async (req: Request, res: Response, next: NextFuncti
         return;
     }
 
-    const { token, error, message } = await refreshedTokenService(refreshedToken, id);
+    const unVerified = jwt.decode(refreshedToken, { complete: true });
+
+    if (!unVerified) {
+        res.status(403).json({ status: false, message: 'Invalid token', token: null });
+        return;
+    }
+
+    const { sub } = unVerified.payload as jwt.JwtPayload;
+
+    if (!sub || typeof sub !== 'string') {
+        res.status(403).json({ status: false, message: 'Invalid token subject', token: null });
+        return;
+    }
+
+    const { token, error, message } = await refreshedTokenService(refreshedToken, sub);
 
     if (error) {
         next(handleError(error))
@@ -135,6 +148,7 @@ export const refreshToken = async (req: Request, res: Response, next: NextFuncti
         token,
         message
     });
+    return;
 };
 
 export const forgotPassword = async (req: Request, res: Response, next: NextFunction) => {

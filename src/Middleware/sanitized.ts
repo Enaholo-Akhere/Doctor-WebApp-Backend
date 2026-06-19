@@ -54,15 +54,20 @@ export const sanitizedUser = async (req: Request, res: Response, next: NextFunct
 
         if (message.includes('jwt audience invalid')) {
             throw new Error('Invalid token')
-        }
+        };
+
+
 
         if (!decoded || expired) {
             throw new Error(message ?? 'access token expired');
         }
 
         res.locals.auth = { id: sub, audience: aud as string, role: user_doctor?.role };
+
+
         next();
     } catch (error: any) {
+
         winston_logger.error(error.message, error.stack);
         next(handleError(error));
     }
