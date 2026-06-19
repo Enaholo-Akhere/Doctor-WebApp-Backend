@@ -58,7 +58,6 @@ const sendResetPasswordEmail = async (respData: { email: string; token: string; 
         const sent = await transporter.sendMail(mailOptions);
         if (!sent.messageId.length) throw new Error('message not sent');
 
-        console.log('reset password messenger', sent)
         return { sent }
     }
     catch (error: any) {

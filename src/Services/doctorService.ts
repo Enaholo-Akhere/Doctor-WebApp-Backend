@@ -39,7 +39,6 @@ export const getDoctorService = async (search?: string): Promise<Partial<GetDoct
     }
     catch (error: any) {
         winston_logger.error(error.message, error.stack);
-        console.log('error message', error.message);
         return { error, message: error.message, data: [] };
     }
 }

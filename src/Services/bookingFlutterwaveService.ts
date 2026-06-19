@@ -18,7 +18,6 @@ export const initialBookingService = async ({ amount, userId, ip, doctorId }: { 
 
     try {
         const { currency, exchangeRate, countryCode, provider } = await detectPaymentProvider(ip);
-        console.log('currency', currency, 'exchRate', exchangeRate, 'countryCode', countryCode, 'provider', provider)
 
         const [user, doctor] = await Promise.all([
             User.findById(userId),
@@ -32,7 +31,6 @@ export const initialBookingService = async ({ amount, userId, ip, doctorId }: { 
         // if (hasBooked) throw new Error('You have booked this doctor already')
 
         const price = exchangeRate * Number(doctor?.ticketPrice);
-        console.log('price:', price, 'amount:', amount);
 
         const paymentDetail = {
             baseAmount: Number(doctor?.ticketPrice),

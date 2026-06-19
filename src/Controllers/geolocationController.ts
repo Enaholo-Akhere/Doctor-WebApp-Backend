@@ -10,8 +10,7 @@ export const geolocation = async (req: Request, res: Response) => {
 
     try {
         const { currency, exchangeRate, countryCode, provider } = await detectPaymentProvider(ip);
-        console.log('ip address', ip)
-        console.log('currency', currency, 'exchRate', exchangeRate, 'countryCode', countryCode, 'provider', provider)
+
         res.status(200).json({ message: "Welcome to CareConnect API", ip, currency, exchangeRate, countryCode, provider })
     }
     catch (error: any) {
