@@ -5,3 +5,6 @@
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mInvalid email or password\u001b[39m","timestamp":"2026-06-19T14:28:16.170Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-19T14:33:16.904Z"}
 {"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-19T14:33:16.908Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mread ECONNRESET\u001b[39m","timestamp":"2026-06-19T15:27:24.159Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-19T16:12:49.855Z"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mjwt expired\u001b[39m","timestamp":"2026-06-19T16:12:49.862Z"}
