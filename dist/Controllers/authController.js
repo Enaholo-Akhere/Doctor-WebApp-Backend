@@ -110,13 +110,16 @@ var login = function (req, res, next) { return __awaiter(void 0, void 0, void 0,
                     return [2 /*return*/];
                 }
                 MAX_AGE = Number(process.env.MAX_AGE);
-                res.cookie('refreshedToken', refreshedToken, {
-                    httpOnly: true,
-                    secure: true,
-                    sameSite: 'none',
-                    maxAge: MAX_AGE
-                });
-                res.status(200).json({ message: message, status: true, data: data, token: token });
+                if (data) {
+                    res.cookie('refreshedToken', refreshedToken, {
+                        httpOnly: true,
+                        secure: true,
+                        sameSite: 'none',
+                        maxAge: MAX_AGE
+                    });
+                    res.status(200).json({ message: message, status: true, data: data, token: token });
+                    return [2 /*return*/];
+                }
                 return [2 /*return*/];
         }
     });
