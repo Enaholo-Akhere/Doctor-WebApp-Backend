@@ -12,8 +12,6 @@ import { errorHandler } from 'Middleware/errorHandler';
 import { stripeWebhook } from 'Controllers/Bookings/StripeBookingController';
 import { flutterwaveWebhook } from 'Controllers/Bookings/flutterwaveBookingController';
 import helmet from 'helmet';
-import { detectPaymentProvider } from '@utils/paymentProvider';
-import { winston_logger } from '@utils/logger';
 
 const app = express();
 app.set('trust proxy', 1);
@@ -29,7 +27,7 @@ const corsOptions = {
 
 uncaughtException();
 
-app.use(helmet());
+// app.use(helmet());
 app.use(cors(corsOptions));
 app.use(cookieParser());
 
