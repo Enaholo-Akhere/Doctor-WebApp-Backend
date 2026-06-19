@@ -17,12 +17,16 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 export const bookingSessionController = async (req: Request, res: Response, next: NextFunction) => {
     const doctorId = req.params.doctorId;
     const { id: userId, role } = res.locals.auth;
+    const ip = (req.headers['x-forwarded-for'] as string)?.split(',')[0].trim() ||
+        req.socket.remoteAddress ||
+        req.ip ||
+        "";
 
     if (role !== 'patient') {
         res.status(400).json({ status: 'failed', message: 'Only patients can book appointments' });
         return;
     }
-    const { message, error, url, sessionId } = await bookingSessionService({ doctorId, userId });
+    const { message, error, url, sessionId } = await bookingSessionService({ doctorId, userId, ip });
 
     if (error) return next(handleError(error));
 

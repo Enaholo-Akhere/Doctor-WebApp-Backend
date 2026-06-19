@@ -3,13 +3,15 @@ import Booking from "models/BookingSchema";
 import Doctor from "models/DoctorSchema";
 import Stripe from "stripe";
 import { winston_logger } from "@utils/logger";
+import { detectPaymentProvider } from "@utils/paymentProvider";
 
 interface BookingInterface {
     doctorId: string;
     userId: string;
+    ip: string;
 }
 
-export const bookingSessionService = async ({ doctorId, userId }: BookingInterface) => {
+export const bookingSessionService = async ({ doctorId, userId, ip }: BookingInterface) => {
     const stripeKey: string = process.env.STRIPE_SECRET_KEY || "";
     const devUrl: string = process.env.DEV_CLIENT_URL || "";
     const prodUrl: string = process.env.PROD_CLIENT_URL || "";
@@ -17,6 +19,8 @@ export const bookingSessionService = async ({ doctorId, userId }: BookingInterfa
     const cancelUrl = `${clientUrl}/doctor/${doctorId}`;
 
     try {
+        const { currency, exchangeRate, countryCode, provider } = await detectPaymentProvider(ip);
+
         const [doctor, user] = await Promise.all([
             Doctor.findById(doctorId),
             User.findById(userId)
@@ -47,8 +51,8 @@ export const bookingSessionService = async ({ doctorId, userId }: BookingInterfa
             line_items: [
                 {
                     price_data: {
-                        currency: 'usd',
-                        unit_amount: doctor.ticketPrice * 100,
+                        currency: currency.toLowerCase(),
+                        unit_amount: Math.ceil(doctor.ticketPrice * exchangeRate * 100),
                         product_data: {
                             name: `Appointment with Dr. ${doctor.name}`,
                             description: doctor.bio || 'Medical consultation',
