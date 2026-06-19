@@ -87,7 +87,6 @@ var getDoctorService = function (search) { return __awaiter(void 0, void 0, void
             case 6:
                 error_1 = _a.sent();
                 logger_1.winston_logger.error(error_1.message, error_1.stack);
-                console.log('error message', error_1.message);
                 return [2 /*return*/, { error: error_1, message: error_1.message, data: [] }];
             case 7: return [2 /*return*/];
         }

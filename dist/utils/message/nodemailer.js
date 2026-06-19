@@ -108,7 +108,6 @@ var sendResetPasswordEmail = function (respData) { return __awaiter(void 0, void
                 sent = _a.sent();
                 if (!sent.messageId.length)
                     throw new Error('message not sent');
-                console.log('reset password messenger', sent);
                 return [2 /*return*/, { sent: sent }];
             case 3:
                 error_2 = _a.sent();

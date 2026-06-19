@@ -37,6 +37,7 @@ export const sanitizedUser = async (req: Request, res: Response, next: NextFunct
         ])
 
         const user_doctor = user || doctor;
+        console.log(!!user_doctor?.refreshedToken ? 'refreshedToken is alive' : 'no refrshedToken');
 
         if (!user_doctor?.refreshedToken) {
 

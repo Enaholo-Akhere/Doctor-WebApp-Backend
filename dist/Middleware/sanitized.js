@@ -72,6 +72,7 @@ var sanitizedUser = function (req, res, next) { return __awaiter(void 0, void 0,
             case 1:
                 _b = _d.sent(), user = _b[0], doctor = _b[1];
                 user_doctor = user || doctor;
+                console.log(!!(user_doctor === null || user_doctor === void 0 ? void 0 : user_doctor.refreshedToken) ? 'refreshedToken is alive' : 'no refrshedToken');
                 if (!(user_doctor === null || user_doctor === void 0 ? void 0 : user_doctor.refreshedToken)) {
                     throw new Error('Refreshed token not found');
                 }
