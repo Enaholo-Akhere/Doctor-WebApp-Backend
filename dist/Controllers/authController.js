@@ -46,12 +46,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.setPassword = exports.forgotPassword = exports.refreshToken = exports.logout = exports.verifyEmail = exports.login = exports.register = void 0;
 var authService_1 = require("../Services/authService");
 var nodemailer_1 = require("../utils/message/nodemailer");
 var authService_2 = require("../Services/authService");
 var handledError_1 = require("../utils/handledError");
+var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var register = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var body, imageUrl, publicId, bodyWithImage, result, _a, data, message, error, token;
     var _b, _c;
@@ -166,22 +170,31 @@ var logout = function (req, res, next) { return __awaiter(void 0, void 0, void 0
 }); };
 exports.logout = logout;
 var refreshToken = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var refreshedToken, id, _a, token, error, message;
+    var refreshedToken, unVerified, sub, _a, token, error, message;
     var _b;
     return __generator(this, function (_c) {
         switch (_c.label) {
             case 0:
                 refreshedToken = (_b = req.cookies) === null || _b === void 0 ? void 0 : _b.refreshedToken;
-                id = req.params.id;
                 if (!refreshedToken) {
-                    res.status(401).json({
+                    res.status(403).json({
                         status: false,
                         message: 'Refresh token not found',
                         token: null
                     });
                     return [2 /*return*/];
                 }
-                return [4 /*yield*/, (0, authService_1.refreshedTokenService)(refreshedToken, id)];
+                unVerified = jsonwebtoken_1.default.decode(refreshedToken, { complete: true });
+                if (!unVerified) {
+                    res.status(403).json({ status: false, message: 'Invalid token', token: null });
+                    return [2 /*return*/];
+                }
+                sub = unVerified.payload.sub;
+                if (!sub || typeof sub !== 'string') {
+                    res.status(403).json({ status: false, message: 'Invalid token subject', token: null });
+                    return [2 /*return*/];
+                }
+                return [4 /*yield*/, (0, authService_1.refreshedTokenService)(refreshedToken, sub)];
             case 1:
                 _a = _c.sent(), token = _a.token, error = _a.error, message = _a.message;
                 if (error) {

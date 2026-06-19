@@ -20,6 +20,6 @@ router.post('/set-password', validate(setPasswordSchema), setPassword);
 router.post('/verify-email', validate(verifyEmailSchema), verifyEmail);
 router.put('/logout', sanitizedUser, logout);
 router.get('/geolocation', geolocation);
-router.post('/refresh-token/:id', refreshToken);
+router.post('/refresh-token', refreshToken);
 
 export default router;

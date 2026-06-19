@@ -21,6 +21,6 @@ router.post('/set-password', (0, zod_validate_1.default)(zod_schemas_1.setPasswo
 router.post('/verify-email', (0, zod_validate_1.default)(zod_schemas_1.verifyEmailSchema), authController_1.verifyEmail);
 router.put('/logout', sanitized_1.sanitizedUser, authController_1.logout);
 router.get('/geolocation', geolocationController_1.geolocation);
-router.post('/refresh-token/:id', authController_1.refreshToken);
+router.post('/refresh-token', authController_1.refreshToken);
 exports.default = router;
 //# sourceMappingURL=auth.js.map

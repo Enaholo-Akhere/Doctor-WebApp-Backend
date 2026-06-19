@@ -189,7 +189,7 @@ export const refreshedTokenService = async (refreshedToken: string, id: string) 
         const { decoded, expired, message } = verifyToken(refreshedToken, audience);
 
         if (!decoded || expired) {
-            throw new Error(message ?? 'refresh token expired');
+            throw new Error('refresh token expired');
         }
 
         const { token, error } = generateAccessToken({ user: { id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions, audience });

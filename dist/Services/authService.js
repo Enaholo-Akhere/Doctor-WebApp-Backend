@@ -251,7 +251,7 @@ var refreshedTokenService = function (refreshedToken, id) { return __awaiter(voi
                     audience = constant_1.AUDIENCE.DOCTOR;
                 _b = (0, generateTokens_2.verifyToken)(refreshedToken, audience), decoded = _b.decoded, expired = _b.expired, message = _b.message;
                 if (!decoded || expired) {
-                    throw new Error(message !== null && message !== void 0 ? message : 'refresh token expired');
+                    throw new Error('refresh token expired');
                 }
                 _c = (0, generateTokens_1.generateAccessToken)({ user: { id: id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY }, audience: audience }), token = _c.token, error = _c.error;
                 if (error)
