@@ -63,16 +63,21 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
         next(handleError(error));
         return;
     }
-    const MAX_AGE = Number(process.env.MAX_AGE)
+    const MAX_AGE = Number(process.env.MAX_AGE);
 
-    res.cookie('refreshedToken', refreshedToken, {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'none',
-        maxAge: MAX_AGE
-    })
+    if (data) {
+        res.cookie('refreshedToken', refreshedToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none',
+            maxAge: MAX_AGE
+        })
 
-    res.status(200).json({ message, status: true, data, token })
+        res.status(200).json({ message, status: true, data, token });
+        return
+    }
+
+
 
 }
 
