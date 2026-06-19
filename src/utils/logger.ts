@@ -2,7 +2,6 @@ import { transports, format, createLogger } from 'winston';
 
 export const log = (message: string,) => {
     const newError = new globalThis.Error(`${message}`);
-    console.log({ LOG: newError.message });
 }
 
 export const winston_logger = createLogger({
