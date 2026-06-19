@@ -26,8 +26,6 @@ export const detectPaymentProvider = async (ip: string): Promise<detectPaymentIn
     if (flutterwaveCountries[countryCode]) {
         const currency = flutterwaveCountries[countryCode];
 
-        console.log('currency', currency)
-        console.log('rate', rates[countryCode])
         return {
             provider: 'flw',
             currency,
