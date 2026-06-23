@@ -45,29 +45,33 @@ var BookingSchema_1 = __importDefault(require("../models/BookingSchema"));
 var DoctorSchema_1 = __importDefault(require("../models/DoctorSchema"));
 var stripe_1 = __importDefault(require("stripe"));
 var logger_1 = require("../utils/logger");
+var paymentProvider_1 = require("../utils/paymentProvider");
 var bookingSessionService = function (_a) { return __awaiter(void 0, [_a], void 0, function (_b) {
-    var stripeKey, devUrl, prodUrl, clientUrl, cancelUrl, _c, doctor, user, userAppointments_1, hasBooked, stripe, session, booking, error_1;
-    var _d, _e, _f;
-    var doctorId = _b.doctorId, userId = _b.userId;
-    return __generator(this, function (_g) {
-        switch (_g.label) {
+    var stripeKey, devUrl, prodUrl, clientUrl, cancelUrl, _c, currency, exchangeRate, countryCode, provider, _d, doctor, user, userAppointments_1, hasBooked, stripe, session, booking, error_1;
+    var _e, _f, _g;
+    var doctorId = _b.doctorId, userId = _b.userId, ip = _b.ip;
+    return __generator(this, function (_h) {
+        switch (_h.label) {
             case 0:
                 stripeKey = process.env.STRIPE_SECRET_KEY || "";
                 devUrl = process.env.DEV_CLIENT_URL || "";
                 prodUrl = process.env.PROD_CLIENT_URL || "";
                 clientUrl = process.env.NODE_ENV === 'production' ? prodUrl : devUrl;
                 cancelUrl = "".concat(clientUrl, "/doctor/").concat(doctorId);
-                _g.label = 1;
+                _h.label = 1;
             case 1:
-                _g.trys.push([1, 5, , 6]);
+                _h.trys.push([1, 6, , 7]);
+                return [4 /*yield*/, (0, paymentProvider_1.detectPaymentProvider)(ip)];
+            case 2:
+                _c = _h.sent(), currency = _c.currency, exchangeRate = _c.exchangeRate, countryCode = _c.countryCode, provider = _c.provider;
                 return [4 /*yield*/, Promise.all([
                         DoctorSchema_1.default.findById(doctorId),
                         UserSchema_1.default.findById(userId)
                     ])];
-            case 2:
-                _c = _g.sent(), doctor = _c[0], user = _c[1];
-                userAppointments_1 = new Set((_d = user === null || user === void 0 ? void 0 : user.appointments) === null || _d === void 0 ? void 0 : _d.map(String));
-                hasBooked = (_e = doctor === null || doctor === void 0 ? void 0 : doctor.appointments) === null || _e === void 0 ? void 0 : _e.some(function (appt) { return userAppointments_1.has(String(appt)); });
+            case 3:
+                _d = _h.sent(), doctor = _d[0], user = _d[1];
+                userAppointments_1 = new Set((_e = user === null || user === void 0 ? void 0 : user.appointments) === null || _e === void 0 ? void 0 : _e.map(String));
+                hasBooked = (_f = doctor === null || doctor === void 0 ? void 0 : doctor.appointments) === null || _f === void 0 ? void 0 : _f.some(function (appt) { return userAppointments_1.has(String(appt)); });
                 if (hasBooked)
                     throw new Error('You have booked this doctor already');
                 if (!doctor || !user) {
@@ -88,20 +92,20 @@ var bookingSessionService = function (_a) { return __awaiter(void 0, [_a], void 
                         line_items: [
                             {
                                 price_data: {
-                                    currency: 'usd',
-                                    unit_amount: doctor.ticketPrice * 100,
+                                    currency: currency.toLowerCase(),
+                                    unit_amount: Math.ceil(doctor.ticketPrice * exchangeRate * 100),
                                     product_data: {
                                         name: "Appointment with Dr. ".concat(doctor.name),
                                         description: doctor.bio || 'Medical consultation',
-                                        images: ((_f = doctor.photo) === null || _f === void 0 ? void 0 : _f.imageUrl) ? [doctor.photo.imageUrl] : [],
+                                        images: ((_g = doctor.photo) === null || _g === void 0 ? void 0 : _g.imageUrl) ? [doctor.photo.imageUrl] : [],
                                     },
                                 },
                                 quantity: 1,
                             },
                         ],
                     })];
-            case 3:
-                session = _g.sent();
+            case 4:
+                session = _h.sent();
                 booking = new BookingSchema_1.default({
                     doctor: doctor._id,
                     user: user._id,
@@ -112,18 +116,18 @@ var bookingSessionService = function (_a) { return __awaiter(void 0, [_a], void 
                     paymentPlatform: 'stp'
                 });
                 return [4 /*yield*/, booking.save()];
-            case 4:
-                _g.sent();
+            case 5:
+                _h.sent();
                 return [2 /*return*/, {
                         message: 'Checkout session created',
                         url: session.url,
                         sessionId: session.id,
                     }];
-            case 5:
-                error_1 = _g.sent();
+            case 6:
+                error_1 = _h.sent();
                 logger_1.winston_logger.error(error_1.message, error_1.stack);
                 return [2 /*return*/, { message: error_1.message, error: error_1, url: null }];
-            case 6: return [2 /*return*/];
+            case 7: return [2 /*return*/];
         }
     });
 }); };

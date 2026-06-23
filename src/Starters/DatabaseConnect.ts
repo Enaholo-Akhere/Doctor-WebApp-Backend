@@ -1,4 +1,4 @@
-import { log } from "utils/logger";
+import { log, winston_logger } from "utils/logger";
 import mongoose from "mongoose";
 
 
@@ -11,11 +11,12 @@ export const connectDB = async () => {
             log(`Mongoose runtime error, ${err.message}`)
         })
 
-        await mongoose.connect(process.env.MONGO_URI as string)
+        const monCon = await mongoose.connect(process.env.MONGO_URI as string);
 
         log(`MongoDB: ${mongoose.connection.readyState === 1 ? true : false}`)
     }
     catch (error: any) {
-        throw new Error('DB Connection Failed');
+        winston_logger.error(error.message, error.stack);
+        process.exit(1);
     }
 }

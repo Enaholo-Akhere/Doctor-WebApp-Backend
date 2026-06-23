@@ -43,7 +43,7 @@ exports.connectDB = void 0;
 var logger_1 = require("../utils/logger");
 var mongoose_1 = __importDefault(require("mongoose"));
 var connectDB = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var error_1;
+    var monCon, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -54,12 +54,14 @@ var connectDB = function () { return __awaiter(void 0, void 0, void 0, function 
                 });
                 return [4 /*yield*/, mongoose_1.default.connect(process.env.MONGO_URI)];
             case 1:
-                _a.sent();
+                monCon = _a.sent();
                 (0, logger_1.log)("MongoDB: ".concat(mongoose_1.default.connection.readyState === 1 ? true : false));
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
-                throw new Error('DB Connection Failed');
+                logger_1.winston_logger.error(error_1.message, error_1.stack);
+                process.exit(1);
+                return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
     });

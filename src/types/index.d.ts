@@ -148,3 +148,13 @@ export interface BookingCompleteInterface {
     bookedOn: string;
     paymentDetail?: Partial<paymentDetailInterface>;
 }
+
+export interface IMessage extends Document {
+    roomId: string;
+    senderId: string;
+    senderName: string;
+    senderRole: 'patient' | 'doctor';
+    content: string;
+    readBy: string[];
+    createdAt: Date;
+}

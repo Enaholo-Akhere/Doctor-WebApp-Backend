@@ -35,30 +35,47 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.startServer = void 0;
+exports.startServer = exports.io = void 0;
 var DatabaseConnect_1 = require("./DatabaseConnect");
 var logger_1 = require("../utils/logger");
+var http_1 = __importDefault(require("http"));
+var socket_io_1 = require("socket.io");
+var app_1 = require("./app");
+var registerSocketHandlers_1 = require("./sockets/registerSocketHandlers");
 var PORT = Number(process.env.PORT) || 3000;
-var startServer = function (app) { return __awaiter(void 0, void 0, void 0, function () {
+var server = http_1.default.createServer(app_1.app);
+exports.io = new socket_io_1.Server(server, {
+    cors: {
+        origin: [process.env.DEV_CLIENT_URL || '', process.env.PROD_CLIENT_URL || ''],
+        methods: ['GET', 'POST']
+    }
+});
+var startServer = function () { return __awaiter(void 0, void 0, void 0, function () {
     var error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, DatabaseConnect_1.connectDB)()];
+                (0, registerSocketHandlers_1.registerSocketHandlers)(exports.io);
+                _a.label = 1;
             case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, (0, DatabaseConnect_1.connectDB)()];
+            case 2:
                 _a.sent();
-                app.listen(PORT, function () {
+                server.listen(PORT, function () {
                     (0, logger_1.log)("Server running on PORT ".concat(PORT));
                 });
-                return [3 /*break*/, 3];
-            case 2:
+                return [3 /*break*/, 4];
+            case 3:
                 error_1 = _a.sent();
                 (0, logger_1.log)("failed to load server, ".concat(error_1));
                 process.exit(1);
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
         }
     });
 }); };
