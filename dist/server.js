@@ -53,29 +53,30 @@ var errorHandler_1 = require("./Middleware/errorHandler");
 var StripeBookingController_1 = require("./Controllers/Bookings/StripeBookingController");
 var flutterwaveBookingController_1 = require("./Controllers/Bookings/flutterwaveBookingController");
 var helmet_1 = __importDefault(require("helmet"));
-var app = (0, express_1.default)();
-app.set('trust proxy', 1);
+var app_1 = require("./Starters/app");
+// const app = express();
+app_1.app.set('trust proxy', 1);
 var PORT = Number(process.env.PORT) || 3000;
 var corsOptions = {
-    origin: ['http://localhost:5173', 'https://care-connect-ena.netlify.app'],
+    origin: [process.env.DEV_CLIENT_URL || '', process.env.PROD_CLIENT_URL || ''],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };
 (0, error_handler_1.default)();
-app.use((0, helmet_1.default)());
-app.use((0, cors_1.default)(corsOptions));
-app.use((0, cookie_parser_1.default)());
-app.post('/api/v1/webhook', express_1.default.raw({ type: 'application/json' }), StripeBookingController_1.stripeWebhook);
-app.use(express_1.default.json());
-app.post('/api/v1/flutterwave-webhook', flutterwaveBookingController_1.flutterwaveWebhook);
-app.use('/api/v1', Routers_1.default);
-app.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+app_1.app.use((0, helmet_1.default)());
+app_1.app.use((0, cors_1.default)(corsOptions));
+app_1.app.use((0, cookie_parser_1.default)());
+app_1.app.post('/api/v1/webhook', express_1.default.raw({ type: 'application/json' }), StripeBookingController_1.stripeWebhook);
+app_1.app.use(express_1.default.json());
+app_1.app.post('/api/v1/flutterwave-webhook', flutterwaveBookingController_1.flutterwaveWebhook);
+app_1.app.use('/api/v1', Routers_1.default);
+app_1.app.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.status(200).json({ message: "Welcome to Care Connect API", '-V': "0.0.1" });
         return [2 /*return*/];
     });
 }); });
-(0, StartServer_1.startServer)(app);
-app.use(errorHandler_1.errorHandler);
+(0, StartServer_1.startServer)();
+app_1.app.use(errorHandler_1.errorHandler);
 //# sourceMappingURL=server.js.map

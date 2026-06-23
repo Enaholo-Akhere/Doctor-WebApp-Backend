@@ -12,14 +12,15 @@ import { errorHandler } from 'Middleware/errorHandler';
 import { stripeWebhook } from 'Controllers/Bookings/StripeBookingController';
 import { flutterwaveWebhook } from 'Controllers/Bookings/flutterwaveBookingController';
 import helmet from 'helmet';
+import { app } from 'Starters/app';
 
-const app = express();
+// const app = express();
 app.set('trust proxy', 1);
 
 const PORT: number = Number(process.env.PORT) || 3000
 
 const corsOptions = {
-    origin: ['http://localhost:5173', 'https://care-connect-ena.netlify.app'],
+    origin: [process.env.DEV_CLIENT_URL || '', process.env.PROD_CLIENT_URL || ''],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
@@ -27,7 +28,7 @@ const corsOptions = {
 
 uncaughtException();
 
-// app.use(helmet());
+app.use(helmet());
 app.use(cors(corsOptions));
 app.use(cookieParser());
 
@@ -47,6 +48,6 @@ app.get('/', async (req: Request, res: Response) => {
 })
 
 
-startServer(app);
+startServer();
 
 app.use(errorHandler);

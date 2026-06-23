@@ -23,6 +23,7 @@
     "@types/lodash": "^4.17.17",
     "@types/multer": "^2.0.0",
     "@types/node": "^22.15.19",
+    "@types/socket.io": "^3.0.1",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.17",
@@ -52,6 +53,7 @@
     "nodemailer": "^7.0.13",
     "nodemailer-brevo-transport": "^2.2.1",
     "resend": "^6.12.4",
+    "socket.io": "^4.8.3",
     "stripe": "^22.1.1",
     "winston": "^3.17.0",
     "zod": "^3.25.17"
