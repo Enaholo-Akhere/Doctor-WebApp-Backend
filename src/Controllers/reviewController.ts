@@ -18,7 +18,7 @@ export const getAllReviews = async (req: Request, res: Response) => {
 
 export const createReview = async (req: Request, res: Response) => {
     const doctorId = req.params.doctorId;
-    const { id } = res.locals.auth
+    const { id }: { id: string } = res.locals.auth
 
     if (id === doctorId) {
         res.status(403).json({ message: 'Doctors cannot review themselves', status: false })

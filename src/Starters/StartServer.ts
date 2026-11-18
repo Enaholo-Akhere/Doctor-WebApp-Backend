@@ -4,15 +4,17 @@ import http from 'http';
 import { Server } from 'socket.io';
 import { app } from './app';
 import { registerSocketHandlers } from './sockets/registerSocketHandlers';
+import { AppServer } from './sockets/types';
 const PORT: number = Number(process.env.PORT) || 3000;
 
 const server = http.createServer(app);
 
-export const io = new Server(server, {
+export const io: AppServer = new Server(server, {
     cors: {
-        origin: [process.env.DEV_CLIENT_URL || '', process.env.PROD_CLIENT_URL || ''],
-        methods: ['GET', 'POST']
-    }
+        origin: [process.env.DEV_CLIENT_URL, process.env.PROD_CLIENT_URL].filter((o): o is string => Boolean(o)),
+        methods: ['GET', 'POST'],
+        credentials: true,
+    },
 });
 
 
