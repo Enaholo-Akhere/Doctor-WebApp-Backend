@@ -7,7 +7,8 @@ import { reviewSchema } from "DTO_Validations/zod_schemas";
 
 const router = express.Router();
 
-router.get("/", [sanitizedUser], getAllReviews);
+// router.get("/", [sanitizedUser], getAllReviews);
+router.get("/", getAllReviews);
 router.post("/:doctorId/:id", [sanitizedUser, restrict(['patient', 'doctor']), validate(reviewSchema)], createReview);
 
 export default router;

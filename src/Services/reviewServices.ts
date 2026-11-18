@@ -6,8 +6,19 @@ import { ReviewBodyInterface } from 'types'
 export const getAllReviewServices = async () => {
 
     try {
-        const reviews = await Review.find()
-        if (!reviews) throw new Error('could not get reviews')
+        const sampledSize = await Review.aggregate([
+            { $sample: {size: 6}},
+            { $project: { doctor: 0 } },
+        ])
+
+        const reviews = await Review.populate(sampledSize, {
+        path: 'user',
+        select: 'name photo'
+    });
+
+        if (!reviews) throw new Error('could not get reviews');
+
+        console.log('reviews', reviews);
 
         return { data: reviews, message: 'review fetched successfully' }
     }
@@ -20,6 +31,10 @@ export const getAllReviewServices = async () => {
 export const createReviewServices = async (body: ReviewBodyInterface) => {
 
     try {
+        const existingReview = await Review.findOne({ user: body.user,  });
+        if (existingReview) {
+            throw new Error('You have already reviewed this doctor');
+        }
         const newReviews = new Review(body)
 
         const savedReview = await newReviews.save();
