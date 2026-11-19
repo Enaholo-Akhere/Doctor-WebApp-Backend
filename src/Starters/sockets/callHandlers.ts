@@ -15,9 +15,19 @@ import { AppServer, AppSocket, CallEndReason, SocketUser, fail, safeAck, userRoo
  *
  * Lifecycle: invite -> (ringing, 30s timeout) -> accept | reject | cancel
  *            accept -> caller sends offer -> callee answers -> ICE -> media
+ *
+ * Calls end only when a participant hangs up (button, closing the tab,
+ * logging out). Media doesn't depend on the signalling socket, so when a
+ * participant's socket drops mid-call (network blip, mobile handover) the call
+ * is held and the client re-binds with `call:resume`. RECONNECT_GRACE_MS is
+ * only a safety net for devices that vanish for good (crash, dead battery),
+ * so the other side isn't left on a dead call with a permanently busy line.
  */
 
 const RING_TIMEOUT_MS = 30_000;
+const RECONNECT_GRACE_MS = 120_000;
+
+type Side = 'caller' | 'callee';
 
 interface ActiveCall {
     id: string;
@@ -27,7 +37,17 @@ interface ActiveCall {
     callee: SocketUser & { socketId?: string };
     answeredAt?: number;
     ringTimer?: NodeJS.Timeout;
+    /** Pending hang-up per side while that side's socket is reconnecting. */
+    graceTimers: Partial<Record<Side, NodeJS.Timeout>>;
 }
+
+const clearGrace = (call: ActiveCall, side?: Side) => {
+    const sides: Side[] = side ? [side] : ['caller', 'callee'];
+    sides.forEach((s) => {
+        clearTimeout(call.graceTimers[s]);
+        delete call.graceTimers[s];
+    });
+};
 
 const calls = new Map<string, ActiveCall>();
 const callByUser = new Map<string, string>();
@@ -73,6 +93,7 @@ export const registerCallHandlers = (io: AppServer, socket: AppSocket) => {
     const endCall = async (call: ActiveCall, reason: CallEndReason) => {
         if (!calls.delete(call.id)) return; // already ended
         clearTimeout(call.ringTimer);
+        clearGrace(call);
         callByUser.delete(call.caller.id);
         callByUser.delete(call.callee.id);
 
@@ -112,6 +133,11 @@ export const registerCallHandlers = (io: AppServer, socket: AppSocket) => {
 
         try {
             if (!(await canAccessPeer(socket, otherUserId))) return reply(fail(NOT_ALLOWED));
+            // A call I dropped out of (e.g. reloaded mid-call) is abandoned once I start a new one.
+            const mine = calls.get(callByUser.get(me.id) ?? '');
+            if (mine && mine.graceTimers[mine.caller.id === me.id ? 'caller' : 'callee']) {
+                await endCall(mine, 'disconnected');
+            }
             if (callByUser.has(me.id)) return reply(fail('You are already in a call'));
             if (!presence.isOnline(otherUserId)) return reply(fail('They are offline right now'));
             if (callByUser.has(otherUserId)) return reply(fail('They are on another call'));
@@ -127,6 +153,7 @@ export const registerCallHandlers = (io: AppServer, socket: AppSocket) => {
                 status: 'ringing',
                 caller: { ...me, socketId: socket.id },
                 callee: { id: otherUserId, name: '', role: calleeRole },
+                graceTimers: {},
             };
             calls.set(call.id, call);
             callByUser.set(me.id, call.id);
@@ -197,13 +224,34 @@ export const registerCallHandlers = (io: AppServer, socket: AppSocket) => {
         if (target) io.to(target).emit('call:signal', parsed.data);
     });
 
+    socket.on('call:resume', (payload, ack) => {
+        const reply = safeAck(ack);
+        const parsed = callIdSchema.safeParse(payload);
+        if (!parsed.success) return reply(fail('Invalid request'));
+
+        const call = findCall(parsed.data.callId);
+        if (!call || call.status !== 'active') return reply(fail('This call has ended'));
+
+        const side: Side = call.caller.id === me.id ? 'caller' : 'callee';
+        clearGrace(call, side);
+        call[side].socketId = socket.id;
+        reply({ ok: true });
+    });
+
     socket.on('disconnect', () => {
         const callId = callByUser.get(me.id);
         const call = callId ? calls.get(callId) : undefined;
         if (!call) return;
-        // Only the socket actually in the call ends it; other tabs don't.
-        if (socket.id === call.caller.socketId || socket.id === call.callee.socketId) {
-            void endCall(call, 'disconnected');
-        }
+
+        // Only the socket actually in the call matters; other tabs don't.
+        const side: Side | null =
+            socket.id === call.caller.socketId ? 'caller' : socket.id === call.callee.socketId ? 'callee' : null;
+        if (!side) return;
+
+        // A ringing call can't be resumed meaningfully; end it straight away.
+        if (call.status !== 'active') return void endCall(call, 'disconnected');
+
+        clearGrace(call, side);
+        call.graceTimers[side] = setTimeout(() => void endCall(call, 'disconnected'), RECONNECT_GRACE_MS);
     });
 };
