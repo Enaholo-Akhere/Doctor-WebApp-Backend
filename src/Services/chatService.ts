@@ -1,7 +1,7 @@
 import Booking from 'models/BookingSchema';
 import User from 'models/UserSchema';
 import Doctor from 'models/DoctorSchema';
-import Message, { CallLog, ChatRole, IMessage, MessageType } from 'models/messages';
+import Message, { Attachment, CallLog, ChatRole, IMessage, MessageType } from 'models/messages';
 import Conversation from 'models/ConversationSchema';
 import { getRoomId } from 'utils/roomId';
 
@@ -136,6 +136,13 @@ export const getMessages = async (
     };
 };
 
+/** Text shown in the conversation list for a message. */
+const previewOf = (m: Pick<IMessage, 'type' | 'content' | 'attachment'>) => {
+    if (m.type === 'voice') return 'Voice message';
+    if (m.type === 'file') return m.content || m.attachment?.name || 'File';
+    return m.content;
+};
+
 /** Persists a message and updates the conversation summary atomically-ish. */
 export const saveMessage = async ({
     sender,
@@ -143,6 +150,7 @@ export const saveMessage = async ({
     content,
     type = 'text',
     call,
+    attachment,
     countAsUnread = true,
 }: {
     sender: ChatUser;
@@ -150,6 +158,7 @@ export const saveMessage = async ({
     content: string;
     type?: MessageType;
     call?: CallLog;
+    attachment?: Attachment;
     countAsUnread?: boolean;
 }): Promise<IMessage> => {
     const roomId = getRoomId(sender.id, recipientId);
@@ -164,6 +173,7 @@ export const saveMessage = async ({
         content,
         type,
         call,
+        attachment,
         readBy: [sender.id],
     });
 
@@ -173,7 +183,7 @@ export const saveMessage = async ({
             $setOnInsert: { patient: patientId, doctor: doctorId },
             $set: {
                 lastMessage: {
-                    content: message.content,
+                    content: previewOf(message),
                     type: message.type,
                     senderId: sender.id,
                     createdAt: message.createdAt,

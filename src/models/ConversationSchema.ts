@@ -30,7 +30,7 @@ const ConversationSchema = new Schema<IConversation>(
         doctor: { type: Schema.Types.ObjectId, ref: 'Doctor', required: true, index: true },
         lastMessage: {
             content: String,
-            type: { type: String, enum: ['text', 'call'] },
+            type: { type: String, enum: ['text', 'call', 'file', 'voice'] },
             senderId: String,
             createdAt: Date,
         },
