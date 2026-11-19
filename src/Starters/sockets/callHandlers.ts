@@ -2,7 +2,8 @@ import { randomUUID } from 'crypto';
 import { z } from 'zod';
 import { winston_logger } from '@utils/logger';
 import { CallLogStatus, CallType } from 'models/messages';
-import { getChatProfile, isObjectId, saveMessage } from 'Services/chatService';
+import { ChatPeer, getChatProfile, isObjectId, saveMessage } from 'Services/chatService';
+import { hasSubscriptions, sendToUser } from 'Services/pushService';
 import { canAccessPeer, NOT_ALLOWED } from './access';
 import { emitNewMessage } from './chatHandlers';
 import { presence } from './presence';
@@ -25,6 +26,8 @@ import { AppServer, AppSocket, CallEndReason, SocketUser, fail, safeAck, userRoo
  */
 
 const RING_TIMEOUT_MS = 30_000;
+/** Longer when the callee is woken by push: they need time to tap and load the site. */
+const PUSH_RING_TIMEOUT_MS = 45_000;
 const RECONNECT_GRACE_MS = 120_000;
 
 type Side = 'caller' | 'callee';
@@ -37,6 +40,10 @@ interface ActiveCall {
     callee: SocketUser & { socketId?: string };
     answeredAt?: number;
     ringTimer?: NodeJS.Timeout;
+    /** Caller profile, re-sent to callee sockets that connect while it rings. */
+    from: ChatPeer;
+    /** Callee was offline and woken via Web Push. */
+    pushed?: boolean;
     /** Pending hang-up per side while that side's socket is reconnecting. */
     graceTimers: Partial<Record<Side, NodeJS.Timeout>>;
 }
@@ -80,6 +87,20 @@ const CALL_LOG_TEXT: Record<CallLogStatus, Record<CallType, string>> = {
     rejected: { audio: 'Declined voice call', video: 'Declined video call' },
 };
 
+const chatUrlFor = (calleeRole: string, callerId: string) =>
+    `${calleeRole === 'doctor' ? '/dashboard/chat' : '/users/chat'}?with=${callerId}`;
+
+/**
+ * A callee socket that connects while a call is ringing (e.g. opened from the
+ * push notification, or a second tab) gets the incoming call too.
+ */
+export const resendRingingCall = (socket: AppSocket) => {
+    const call = calls.get(callByUser.get(socket.data.user.id) ?? '');
+    if (call?.status === 'ringing' && call.callee.id === socket.data.user.id) {
+        socket.emit('call:incoming', { callId: call.id, callType: call.callType, from: call.from });
+    }
+};
+
 const callLogFor = (call: ActiveCall, reason: CallEndReason) => {
     const wasAnswered = Boolean(call.answeredAt);
     const status: CallLogStatus = reason === 'rejected' ? 'rejected' : wasAnswered ? 'completed' : 'missed';
@@ -100,6 +121,20 @@ export const registerCallHandlers = (io: AppServer, socket: AppSocket) => {
         // Ringing callees may have several tabs ringing; reach them all.
         const calleeTarget = call.callee.socketId ?? userRoom(call.callee.id);
         io.to([call.caller.socketId, calleeTarget]).emit('call:ended', { callId: call.id, reason });
+
+        // Replace the "incoming call" push on the callee's devices with a missed-call notice.
+        if (call.pushed && !call.answeredAt && (reason === 'missed' || reason === 'cancelled')) {
+            const label = call.callType === 'video' ? 'video' : 'voice';
+            void sendToUser(call.callee.id, {
+                type: 'call-missed',
+                title: `Missed ${label} call`,
+                body: `${call.from.name} tried to call you`,
+                tag: `call-${call.id}`,
+                url: chatUrlFor(call.callee.role, call.caller.id),
+                icon: call.from.photo ?? undefined,
+                callId: call.id,
+            }, { ttl: 24 * 60 * 60, urgency: 'normal' }).catch(() => undefined);
+        }
 
         try {
             const log = callLogFor(call, reason);
@@ -126,7 +161,7 @@ export const registerCallHandlers = (io: AppServer, socket: AppSocket) => {
     };
 
     socket.on('call:invite', async (payload, ack) => {
-        const reply = safeAck<{ callId: string }>(ack);
+        const reply = safeAck<{ callId: string; notified?: boolean }>(ack);
         const parsed = inviteSchema.safeParse(payload);
         if (!parsed.success) return reply(fail('Invalid call request'));
         const { otherUserId, callType } = parsed.data;
@@ -139,10 +174,20 @@ export const registerCallHandlers = (io: AppServer, socket: AppSocket) => {
                 await endCall(mine, 'disconnected');
             }
             if (callByUser.has(me.id)) return reply(fail('You are already in a call'));
-            if (!presence.isOnline(otherUserId)) return reply(fail('They are offline right now'));
             if (callByUser.has(otherUserId)) return reply(fail('They are on another call'));
 
-            const callerProfile = await getChatProfile(me.id, me.role);
+            // Offline callees can still be reached if one of their devices accepted push.
+            const online = presence.isOnline(otherUserId);
+            if (!online && !(await hasSubscriptions(otherUserId))) {
+                return reply(fail('They are offline right now'));
+            }
+
+            const callerProfile: ChatPeer = (await getChatProfile(me.id, me.role)) ?? {
+                _id: me.id,
+                name: me.name,
+                photo: null,
+                role: me.role,
+            };
             const calleeRole = me.role === 'patient' ? 'doctor' : 'patient';
             // Re-check after the await: another invite may have raced us.
             if (callByUser.has(me.id) || callByUser.has(otherUserId)) return reply(fail('Line is busy, try again'));
@@ -154,18 +199,40 @@ export const registerCallHandlers = (io: AppServer, socket: AppSocket) => {
                 caller: { ...me, socketId: socket.id },
                 callee: { id: otherUserId, name: '', role: calleeRole },
                 graceTimers: {},
+                from: callerProfile,
+                pushed: !online,
             };
             calls.set(call.id, call);
             callByUser.set(me.id, call.id);
             callByUser.set(otherUserId, call.id);
-            call.ringTimer = setTimeout(() => void endCall(call, 'missed'), RING_TIMEOUT_MS);
+            call.ringTimer = setTimeout(() => void endCall(call, 'missed'), online ? RING_TIMEOUT_MS : PUSH_RING_TIMEOUT_MS);
 
-            io.to(userRoom(otherUserId)).emit('call:incoming', {
-                callId: call.id,
-                callType,
-                from: callerProfile ?? { _id: me.id, name: me.name, photo: null, role: me.role },
-            });
-            reply({ ok: true, callId: call.id });
+            if (online) {
+                io.to(userRoom(otherUserId)).emit('call:incoming', { callId: call.id, callType, from: callerProfile });
+            } else {
+                const delivered = await sendToUser(
+                    otherUserId,
+                    {
+                        type: 'call',
+                        title: `Incoming ${callType === 'video' ? 'video' : 'voice'} call`,
+                        body: `${callerProfile.name} is calling you on CareConnect`,
+                        tag: `call-${call.id}`,
+                        url: chatUrlFor(calleeRole, me.id),
+                        icon: callerProfile.photo ?? undefined,
+                        callId: call.id,
+                    },
+                    { ttl: Math.round(PUSH_RING_TIMEOUT_MS / 1000) }
+                );
+                // Every subscription was dead: they really are unreachable.
+                if (!delivered && calls.has(call.id)) {
+                    calls.delete(call.id);
+                    clearTimeout(call.ringTimer);
+                    callByUser.delete(me.id);
+                    callByUser.delete(otherUserId);
+                    return reply(fail('They are offline right now'));
+                }
+            }
+            reply({ ok: true, callId: call.id, notified: !online });
         } catch (error: any) {
             winston_logger.error(error.message, error.stack);
             reply(fail('Could not start the call'));

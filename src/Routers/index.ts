@@ -4,6 +4,7 @@ import doctorRoutes from 'Routers/doctors';
 import reviewRoutes from './review';
 import bookingRoutes from './booking';
 import chatRoutes from './chat';
+import pushRoutes from './push';
 
 import express from 'express'
 
@@ -15,5 +16,6 @@ router.use('/doctors', doctorRoutes);
 router.use('/reviews', reviewRoutes);
 router.use('/bookings', bookingRoutes);
 router.use('/chat', chatRoutes);
+router.use('/push', pushRoutes);
 
 export default router;
