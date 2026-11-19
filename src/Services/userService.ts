@@ -4,6 +4,7 @@ import { UserSchemaInterface, DoctorSchemaInterface } from "types"
 import Users from "models/UserSchema"
 import BookingSchema from "models/BookingSchema"
 import Doctors from "models/DoctorSchema"
+import PushSubscription from "models/PushSubscriptionSchema"
 
 interface GetUserServiceResult {
     data: UserSchemaInterface[] | UserSchemaInterface;
@@ -22,7 +23,7 @@ interface UpdateUser { id: string, body: UserSchemaInterface }
 
 export const getUserService = async () => {
     try {
-        const users = await Users.find().select(['-password', '-__v'])
+        const users = await Users.find().select(['-password', '-__v', '-refreshedToken'])
         if (!users) throw new Error('cannot get users')
 
         return { data: users, message: 'successful' }
@@ -38,7 +39,7 @@ export const getUserByIdService = async (id: string): Promise<Partial<GetUserSer
 
     try {
 
-        const user = await Users.findById(id).select(['-password', '-__v'])
+        const user = await Users.findById(id).select(['-password', '-__v', '-refreshedToken'])
 
         if (!user) throw new Error('user not found')
 
@@ -64,10 +65,52 @@ export const updateUserService = async ({ id, body }: UpdateUser): Promise<Parti
 
     try {
 
-        const updatedUser = await Users.findByIdAndUpdate(id, userData, { new: true, runValidators: true }).select(['-password', '-__v'])
+        const updatedUser = await Users.findByIdAndUpdate(id, userData, { new: true, runValidators: true }).select(['-password', '-__v', '-refreshedToken'])
         if (!updatedUser) throw new Error("user not found")
 
         return { data: updatedUser, message: 'user updated successfully' }
+    }
+    catch (error: any) {
+        winston_logger.error(error.message, error.stack)
+        return { error, message: error.message }
+    }
+}
+
+const HEALTH_FIELDS = [
+    "dateOfBirth",
+    "address",
+    "heightCm",
+    "weightKg",
+    "bloodType",
+    "genotype",
+    "allergies",
+    "chronicConditions",
+    "medications",
+    "emergencyContact",
+] as const;
+
+/** Updates only the health-profile fields; empty values clear the field. */
+export const updateHealthProfileService = async (id: string, body: Record<string, unknown>): Promise<Partial<GetUserServiceResult>> => {
+    const picked = _.pick(body, HEALTH_FIELDS);
+    const $set: Record<string, unknown> = {};
+    const $unset: Record<string, 1> = {};
+
+    for (const [key, value] of Object.entries(picked)) {
+        if (value === '' || value === null) $unset[key] = 1;
+        else if (Array.isArray(value)) $set[key] = _.uniqBy(value.map((v) => String(v).trim()).filter(Boolean), (v) => v.toLowerCase());
+        else $set[key] = value;
+    }
+
+    try {
+        const updatedUser = await Users.findByIdAndUpdate(
+            id,
+            { ...(Object.keys($set).length && { $set }), ...(Object.keys($unset).length && { $unset }) },
+            { new: true, runValidators: true }
+        ).select(['-password', '-__v', '-refreshedToken'])
+
+        if (!updatedUser) throw new Error("user not found")
+
+        return { data: updatedUser, message: 'health profile updated' }
     }
     catch (error: any) {
         winston_logger.error(error.message, error.stack)
@@ -81,6 +124,8 @@ export const deleteUserService = async (id: string): Promise<Partial<GetUserServ
 
         if (!deleteUser) throw new Error('user not found')
 
+        await PushSubscription.deleteMany({ userId: String(id) }).catch(() => undefined)
+
         return { message: 'user successfully deleted' }
     }
     catch (error: any) {
@@ -91,10 +136,10 @@ export const deleteUserService = async (id: string): Promise<Partial<GetUserServ
 
 export const getUserProfileService = async (id: string) => {
     try {
-        const user = await Users.findById(id).select(['-password', '-__v']).populate({
+        const user = await Users.findById(id).select(['-password', '-__v', '-refreshedToken']).populate({
             path: 'appointments',
             populate: [
-                { path: 'doctor', select: 'name photo specialization averageRating status timeSlots' },
+                { path: 'doctor', select: 'name photo specialization averageRating totalRating hospital status timeSlots' },
                 { path: 'user', select: 'name email photo' },
             ]
         });
@@ -114,7 +159,7 @@ export const getMyAppointmentsService = async (id: string): Promise<Partial<GetD
 
         const doctorIds = bookings.map(booking => booking.doctor.id);
 
-        const doctors = await Doctors.find({ _id: { $in: doctorIds } }).select(['-password', '-__v']);
+        const doctors = await Doctors.find({ _id: { $in: doctorIds } }).select(['-password', '-__v', '-refreshedToken']);
 
         return { data: doctors, message: 'successful' }
     }

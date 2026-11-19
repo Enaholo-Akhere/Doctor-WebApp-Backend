@@ -47,7 +47,7 @@ export const setPasswordSchema = z.object({
 
 export const updateUserSchema = z.object({
     body: z.object({
-        name: z.string({ required_error: "Name is required" }).max(20, "Name must be less than 20 characters").optional(),
+        name: z.string({ required_error: "Name is required" }).trim().min(3, "Name is too short").max(50, "Name must be less than 50 characters").optional(),
         phone: z.string()
             .refine((value) => {
 
@@ -61,6 +61,35 @@ export const updateUserSchema = z.object({
         gender: z.enum(['male', 'female', 'other']).optional(),
         bloodType: z.string().max(3, 'Invalid blood type').min(2, 'Invalid blood type').optional()
     })
+})
+
+
+const isValidPhone = (value: string) => parsePhoneNumberFromString(value)?.isValid() ?? false;
+const healthList = z.array(z.string().trim().min(1).max(60)).max(30, "Too many entries");
+
+export const healthProfileSchema = z.object({
+    body: z.object({
+        dateOfBirth: z.union([
+            z.literal(''),
+            z.string().refine((value) => {
+                const date = new Date(value);
+                return !Number.isNaN(date.getTime()) && date <= new Date() && date.getFullYear() >= 1900;
+            }, { message: "Invalid date of birth" }),
+        ]).optional(),
+        address: z.string().trim().max(200, "Address is too long").optional(),
+        heightCm: z.union([z.null(), z.number().min(30, "Invalid height").max(272, "Invalid height")]).optional(),
+        weightKg: z.union([z.null(), z.number().min(1, "Invalid weight").max(500, "Invalid weight")]).optional(),
+        bloodType: z.enum(["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]).optional(),
+        genotype: z.union([z.literal(''), z.enum(["AA", "AS", "AC", "SS", "SC", "CC"])]).optional(),
+        allergies: healthList.optional(),
+        chronicConditions: healthList.optional(),
+        medications: healthList.optional(),
+        emergencyContact: z.object({
+            name: z.string().trim().max(60).optional(),
+            relationship: z.string().trim().max(40).optional(),
+            phone: z.union([z.literal(''), z.string().refine(isValidPhone, { message: "Emergency contact phone needs a valid number with country code" })]).optional(),
+        }).optional(),
+    }).strict(),
 })
 
 
@@ -105,13 +134,13 @@ const timeSlotSchema = z.object({
 
 export const updateDoctorSchema = z.object({
     body: z.object({
-        name: z.string().min(3, 'Name too short').max(30, 'Name too long').optional(),
+        name: z.string().trim().min(3, 'Name too short').max(50, 'Name too long').optional(),
         email: z.string().email('Invalid email address').optional(),
         phone: z.string().min(11, 'Invalid phone number').max(15, 'Invalid phone number').optional(),
-        gender: z.enum(['male', 'female', 'others']).optional(),
+        gender: z.enum(['male', 'female', 'other']).optional(),
         specialization: z.string().min(3, 'Specialization too short').max(50, 'Specialization too long').optional(),
         bio: z.string().max(50, 'Bio exceeded max character limit').optional(),
-        about: z.string().max(500, 'About exceeded max character limit').optional(),
+        about: z.string().max(1500, 'About exceeded max character limit').optional(),
         ticketPrice: z
             .union([z.number(), z.string()])
             .transform((val) => Number(val))
@@ -122,7 +151,7 @@ export const updateDoctorSchema = z.object({
             .transform((val) => (typeof val === 'string' ? JSON.parse(val) : val))
             .pipe(z.array(qualificationSchema))
             .optional(),
-        experience: z
+        experiences: z
             .union([z.string(), z.array(experienceSchema)])
             .transform((val) => (typeof val === 'string' ? JSON.parse(val) : val))
             .pipe(z.array(experienceSchema))
@@ -136,3 +165,9 @@ export const updateDoctorSchema = z.object({
 });
 
 export type UpdateDoctorInput = z.infer<typeof updateDoctorSchema>;
+
+export const bookingStatusSchema = z.object({
+    body: z.object({
+        status: z.enum(['approved', 'cancelled'], { errorMap: () => ({ message: 'Status must be approved or cancelled' }) }),
+    }),
+})
