@@ -18,6 +18,9 @@ export const io: AppServer = new Server(server, {
 });
 
 
+// Lets REST controllers emit socket events (req.app.get('io')).
+app.set('io', io);
+
 export const startServer = async () => {
 
     registerSocketHandlers(io);
