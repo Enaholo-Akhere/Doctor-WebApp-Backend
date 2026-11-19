@@ -52,7 +52,7 @@ const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
     enum: ["pending", "approved", "cancelled"],
     default: "pending",
   },
-  gender: { type: String, enum: ['male', 'female'] },
+  gender: { type: String, enum: ['male', 'female', 'other'] },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Booking" }],
 }, { timestamps: true });
 

@@ -1,3 +1,4 @@
+import mongoose from "mongoose"
 import { log, winston_logger } from "@utils/logger"
 import _ from "lodash"
 import Doctor from "models/DoctorSchema"
@@ -62,11 +63,13 @@ export const getDoctorByIdService = async (id: string): Promise<Partial<GetDocto
 export const updateDoctorService = async ({ id, userData }: { id: string, userData: Partial<DoctorSchemaInterface> }): Promise<Partial<GetDoctorServiceResult>> => {
 
 
-    const allowedFields = {
-        ...userData,
-        qualifications: JSON.parse(userData.qualifications as any || '[]'),
-        experiences: JSON.parse(userData.experiences as any || '[]'),
-        timeSlots: JSON.parse(userData.timeSlots as any || '[]'),
+    // Only profile fields a doctor may edit; never role, email, password, approval or rating.
+    const parseList = (value: unknown) => (typeof value === 'string' ? JSON.parse(value || '[]') : value);
+    const allowedFields: Record<string, unknown> = _.pick(userData, [
+        'name', 'phone', 'gender', 'photo', 'specialization', 'bio', 'about', 'ticketPrice',
+    ]);
+    for (const key of ['qualifications', 'experiences', 'timeSlots'] as const) {
+        if (userData[key] !== undefined) allowedFields[key] = parseList(userData[key]);
     }
 
     try {
@@ -103,12 +106,36 @@ export const getDoctorProfileService = async (doctorId: string) => {
             path: 'appointments',
             populate: [
                 { path: 'doctor', select: 'name photo specialization averageRating status timeSlots' },
-                { path: 'user', select: 'name email photo' },
+                // The doctor's own patients: contact + health summary for care.
+                { path: 'user', select: 'name email photo phone gender bloodType genotype dateOfBirth heightCm weightKg allergies chronicConditions medications' },
             ]
-        });;
+        }).populate({ path: 'reviews', options: { sort: { createdAt: -1 } } });
 
         if (!doctor) throw new Error('doctor not found')
         return { data: doctor, message: 'successful' }
+    }
+    catch (error: any) {
+        winston_logger.error(error.message, error.stack)
+        return { error, message: error.message }
+    }
+}
+
+/** Doctor confirms or declines one of their own bookings. */
+export const updateBookingStatusService = async (doctorId: string, bookingId: string, status: 'approved' | 'cancelled') => {
+    try {
+        if (!mongoose.isValidObjectId(bookingId)) throw new Error('booking not found')
+
+        const booking = await Booking.findOneAndUpdate(
+            { _id: bookingId, doctor: doctorId },
+            { status },
+            { new: true, runValidators: true }
+        ).populate([
+            { path: 'doctor', select: 'name photo specialization averageRating status timeSlots' },
+            { path: 'user', select: 'name email photo phone gender bloodType genotype dateOfBirth heightCm weightKg allergies chronicConditions medications' },
+        ])
+
+        if (!booking) throw new Error('booking not found')
+        return { data: booking, message: status === 'approved' ? 'Appointment confirmed' : 'Appointment declined' }
     }
     catch (error: any) {
         winston_logger.error(error.message, error.stack)
