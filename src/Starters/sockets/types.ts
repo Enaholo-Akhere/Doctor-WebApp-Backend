@@ -54,6 +54,8 @@ export interface ClientToServerEvents {
     'call:reject': (p: { callId: string }) => void;
     'call:end': (p: { callId: string }) => void;
     'call:signal': (p: SignalPayload) => void;
+    /** Re-binds an active call to this socket after a reconnect. */
+    'call:resume': (p: { callId: string }, ack: Ack) => void;
 }
 
 export interface ServerToClientEvents {
