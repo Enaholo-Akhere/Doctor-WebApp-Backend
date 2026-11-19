@@ -27,6 +27,20 @@ const UserSchema = new mongoose.Schema<UserSchemaInterface>({
   },
   gender: { type: String, enum: ["male", "female", "other"] },
   bloodType: { type: String },
+  // Health profile (patient-maintained, shown to their doctors)
+  dateOfBirth: { type: Date },
+  address: { type: String, trim: true, maxlength: 200 },
+  heightCm: { type: Number, min: 30, max: 272 },
+  weightKg: { type: Number, min: 1, max: 500 },
+  genotype: { type: String, enum: ["AA", "AS", "AC", "SS", "SC", "CC"] },
+  allergies: { type: [String], default: [] },
+  chronicConditions: { type: [String], default: [] },
+  medications: { type: [String], default: [] },
+  emergencyContact: {
+    name: { type: String, trim: true },
+    relationship: { type: String, trim: true },
+    phone: { type: String, trim: true },
+  },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Booking" }],
 },
   { timestamps: true });

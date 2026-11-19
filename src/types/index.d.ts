@@ -10,6 +10,15 @@ export interface UserSchemaInterface {
     role: "patient" | "doctor";
     gender: "male" | "female" | "other";
     bloodType: string;
+    dateOfBirth?: Date;
+    address?: string;
+    heightCm?: number;
+    weightKg?: number;
+    genotype?: "AA" | "AS" | "AC" | "SS" | "SC" | "CC";
+    allergies?: string[];
+    chronicConditions?: string[];
+    medications?: string[];
+    emergencyContact?: { name?: string; relationship?: string; phone?: string };
     appointments: mongoose.ObjectId
     verified: boolean;
     id: mongoose.ObjectId;
@@ -47,7 +56,7 @@ export interface DoctorSchemaInterface {
     password: string;
     name: string;
     phone: string;
-    gender: "male" | "female";
+    gender: "male" | "female" | "other";
     photo?: { imageUrl: string | undefined, publicId: string | undefined };
     ticketPrice: number;
     role: string;
