@@ -19,7 +19,7 @@ if (isPushConfigured) webpush.setVapidDetails(subject, publicKey!, privateKey!);
 export const getPushPublicKey = () => (isPushConfigured ? publicKey! : null);
 
 export interface PushPayload {
-    type: 'call' | 'call-missed';
+    type: 'call' | 'call-missed' | 'booking';
     title: string;
     body: string;
     /** Same tag replaces the previous notification (ringing -> missed). */
