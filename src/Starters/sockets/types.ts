@@ -49,7 +49,10 @@ export interface ClientToServerEvents {
     'typing:start': (p: { otherUserId: string }) => void;
     'typing:stop': (p: { otherUserId: string }) => void;
 
-    'call:invite': (p: { otherUserId: string; callType: CallType }, ack: Ack<{ callId: string }>) => void;
+    'call:invite': (
+        p: { otherUserId: string; callType: CallType },
+        ack: Ack<{ callId: string; notified?: boolean }>
+    ) => void;
     'call:accept': (p: { callId: string }, ack: Ack) => void;
     'call:reject': (p: { callId: string }) => void;
     'call:end': (p: { callId: string }) => void;

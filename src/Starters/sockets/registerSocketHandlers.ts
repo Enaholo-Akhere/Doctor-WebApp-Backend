@@ -6,7 +6,7 @@ import Doctor from 'models/DoctorSchema';
 import { getContactIds, isChatRole } from 'Services/chatService';
 import { presence } from './presence';
 import { registerChatHandlers } from './chatHandlers';
-import { registerCallHandlers } from './callHandlers';
+import { registerCallHandlers, resendRingingCall } from './callHandlers';
 import { AppServer, AppSocket, userRoom } from './types';
 
 const broadcastPresence = (io: AppServer, socket: AppSocket, online: boolean) => {
@@ -56,6 +56,7 @@ export const registerSocketHandlers = (io: AppServer) => {
 
         registerChatHandlers(io, socket);
         registerCallHandlers(io, socket);
+        resendRingingCall(socket);
 
         if (presence.connect(id)) broadcastPresence(io, socket, true);
 
