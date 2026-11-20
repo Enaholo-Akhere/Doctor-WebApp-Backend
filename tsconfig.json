@@ -23,5 +23,5 @@
     "require": ["tsconfig-paths/register"] // Enable path aliases in ts-node
   },
   "include": ["src/**/*"], // Include all files in the `src` directory
-  "exclude": ["node_modules"] // Exclude `node_modules` from compilation
+  "exclude": ["node_modules", "src/**/*.test.ts"] // Exclude `node_modules` from compilation
 }
