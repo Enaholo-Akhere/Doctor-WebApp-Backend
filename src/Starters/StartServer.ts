@@ -5,6 +5,7 @@ import { Server } from 'socket.io';
 import { app } from './app';
 import { registerSocketHandlers } from './sockets/registerSocketHandlers';
 import { AppServer } from './sockets/types';
+import { startAiChatCleanupJob } from 'ai-chat/services/aiChatCleanup';
 const PORT: number = Number(process.env.PORT) || 3000;
 
 const server = http.createServer(app);
@@ -28,6 +29,7 @@ export const startServer = async () => {
     try {
 
         await connectDB()
+        startAiChatCleanupJob();
         server.listen(PORT, () => {
             log(`Server running on PORT ${PORT}`)
         })
