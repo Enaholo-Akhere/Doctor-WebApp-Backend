@@ -10,6 +10,7 @@ import {
     setApproval,
     VerificationError,
 } from 'Services/verificationService';
+import { getAdminOverview } from 'Services/adminStatsService';
 
 const authId = (res: Response) => String(res.locals.auth.id);
 
@@ -59,3 +60,7 @@ export const adminReviewDocument = (req: Request, res: Response, next: NextFunct
 
 export const adminSetApproval = (req: Request, res: Response, next: NextFunction) =>
     respond(res, next, () => setApproval(req.params.id, req.body, authId(res)));
+
+/** GET /admin/overview?days=7|30|90|365 */
+export const adminOverview = (req: Request, res: Response, next: NextFunction) =>
+    respond(res, next, () => getAdminOverview(Number(req.query.days) || 30));
