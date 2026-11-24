@@ -7,6 +7,7 @@ import chatRoutes from './chat';
 import pushRoutes from './push';
 import consultationRoutes from './consultations';
 import aiChatRoutes from 'ai-chat/aiChat.routes';
+import adminRoutes from './admin';
 
 import express from 'express'
 
@@ -21,5 +22,6 @@ router.use('/chat', chatRoutes);
 router.use('/push', pushRoutes);
 router.use('/consultations', consultationRoutes);
 router.use('/ai-chat', aiChatRoutes);
+router.use('/admin', adminRoutes);
 
 export default router;

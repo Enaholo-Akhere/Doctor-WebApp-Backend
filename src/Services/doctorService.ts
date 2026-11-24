@@ -12,7 +12,7 @@ import { isObjectIdString, uniqueDoctorSlug } from "@utils/doctorSlug"
  * and phone are contact details for the platform, not for anyone browsing.
  * Doctors still see their own via /doctors/profile/me.
  */
-const PUBLIC_DOCTOR_EXCLUDE = ['-password', '-__v', '-refreshedToken', '-email', '-phone'];
+const PUBLIC_DOCTOR_EXCLUDE = ['-password', '-__v', '-refreshedToken', '-email', '-phone', '-verificationDocuments', '-approvalReview', '-licenceReminderSentAt'];
 
 interface GetDoctorServiceResult {
     data: DoctorSchemaInterface[] | DoctorSchemaInterface;
@@ -31,18 +31,17 @@ export const getDoctorService = async (search?: string): Promise<Partial<GetDoct
         let doctor: DoctorSchemaInterface[];
 
         if (search) {
+            // Only verified doctors are listed or bookable.
             doctor = await Doctor.find({
-                isApproved: 'pending',
+                isApproved: 'approved',
                 $or: [
                     { name: { $regex: escapedName, $options: 'i' } },
                     { specialization: { $regex: escapedSpec, $options: 'i' } },
                 ]
             }).select(PUBLIC_DOCTOR_EXCLUDE);
         } else {
-            doctor = await Doctor.find().select(PUBLIC_DOCTOR_EXCLUDE);
+            doctor = await Doctor.find({ isApproved: 'approved' }).select(PUBLIC_DOCTOR_EXCLUDE);
         }
-
-        if (!doctor.length) throw new Error('doctor not found');
 
         return { data: doctor, message: 'successful' };
     }
@@ -56,7 +55,8 @@ export const getDoctorService = async (search?: string): Promise<Partial<GetDoct
 export const getDoctorByIdService = async (idOrSlug: string): Promise<Partial<GetDoctorServiceResult>> => {
 
     try {
-        const filter = isObjectIdString(idOrSlug) ? { _id: idOrSlug } : { slug: String(idOrSlug).toLowerCase() }
+        // Unverified doctors' profiles aren't public.
+        const filter = { isApproved: 'approved', ...(isObjectIdString(idOrSlug) ? { _id: idOrSlug } : { slug: String(idOrSlug).toLowerCase() }) }
         const doctor = await Doctor.findOne(filter).populate('reviews').select(PUBLIC_DOCTOR_EXCLUDE)
 
         if (!doctor) throw new Error('doctor not found')

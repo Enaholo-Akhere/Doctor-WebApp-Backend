@@ -124,4 +124,4 @@ const sendDoctorBookingEmail = async (respData: BookingCompleteInterface) => {
 }
 
 
-export { sendVerificationEmail, sendResetPasswordEmail, sendPatientBookingEmail, sendDoctorBookingEmail, sendResetPasswordSuccessfulEmail }
+export { transporter, sendVerificationEmail, sendResetPasswordEmail, sendPatientBookingEmail, sendDoctorBookingEmail, sendResetPasswordSuccessfulEmail }

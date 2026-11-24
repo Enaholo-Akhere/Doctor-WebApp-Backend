@@ -32,6 +32,7 @@ const createDoctor = (fields: Record<string, unknown> = {}) =>
         name: 'Ada Obi',
         specialization: 'cardiologist',
         photo: { imageUrl: 'https://example.com/a.jpg', publicId: 'a' },
+        isApproved: 'approved',
         ...fields,
     }).save();
 
@@ -105,6 +106,22 @@ describe('public doctor endpoints', () => {
         expect(asPlain((await getDoctorByIdService(String(doctor._id))).data)._id).toBe(String(doctor._id));
         expect(asPlain((await getDoctorByIdService('ada-obi-cardiologist')).data)._id).toBe(String(doctor._id));
         expect(asPlain((await getDoctorByIdService('ADA-OBI-CARDIOLOGIST')).data)._id).toBe(String(doctor._id));
+    });
+
+    it('hide doctors who are not approved', async () => {
+        const pending = await createDoctor({ isApproved: 'pending', name: 'Pending Doc' });
+        await createDoctor();
+        const list = asPlain((await getDoctorService()).data);
+        expect(list.map((d: { name: string }) => d.name)).toEqual(['Ada Obi']);
+        expect((await getDoctorByIdService(String(pending._id))).error?.message).toBe('doctor not found');
+        expect(asPlain((await getDoctorService('pending')).data)).toEqual([]);
+    });
+
+    it('never return verification documents', async () => {
+        await createDoctor({ verificationDocuments: [{ kind: 'cv', publicId: 'p', resourceType: 'raw' }] });
+        const d = asPlain((await getDoctorService()).data)[0];
+        expect(d).not.toHaveProperty('verificationDocuments');
+        expect(d).not.toHaveProperty('approvalReview');
     });
 
     it('responds 404 for an unknown id or slug', async () => {

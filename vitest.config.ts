@@ -17,5 +17,7 @@ export default defineConfig({
     test: {
         include: ['src/**/*.test.ts'],
         environment: 'node',
+        // Tests that start an in-memory MongoDB can exceed the 5s default when files run in parallel.
+        testTimeout: 20_000,
     },
 });

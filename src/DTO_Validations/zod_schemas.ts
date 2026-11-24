@@ -171,3 +171,22 @@ export const bookingStatusSchema = z.object({
         status: z.enum(['approved', 'cancelled'], { errorMap: () => ({ message: 'Status must be approved or cancelled' }) }),
     }),
 })
+
+// ── Doctor verification (admin) ─────────────────────────────────────
+const objectId = z.string().regex(/^[a-f0-9]{24}$/i, 'Invalid id');
+
+export const reviewDocumentSchema = z.object({
+    params: z.object({ id: objectId, documentId: objectId }),
+    body: z.object({
+        status: z.enum(['accepted', 'rejected'], { required_error: 'Status is required' }),
+        note: z.string().trim().max(500).optional(),
+    }),
+});
+
+export const setApprovalSchema = z.object({
+    params: z.object({ id: objectId }),
+    body: z.object({
+        status: z.enum(['approved', 'cancelled', 'pending'], { required_error: 'Status is required' }),
+        note: z.string().trim().max(500).optional(),
+    }),
+});

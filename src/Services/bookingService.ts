@@ -31,7 +31,7 @@ export const bookingSessionService = async ({ doctorId, userId, ip }: BookingInt
 
         if (hasBooked) throw new Error('You have booked this doctor already');
 
-        if (!doctor || !user) {
+        if (!doctor || !user || doctor.isApproved !== 'approved') {
             throw new Error('Doctor or user not found');
         }
 
