@@ -2,7 +2,7 @@
 dist
 /src/keys
 .env
-/distlogs/
+
+# Logs (written at runtime by src/utils/logger.ts)
 *.log
 logs/
-*.log
