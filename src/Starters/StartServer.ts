@@ -6,6 +6,7 @@ import { app } from './app';
 import { registerSocketHandlers } from './sockets/registerSocketHandlers';
 import { AppServer } from './sockets/types';
 import { startAiChatCleanupJob } from 'ai-chat/services/aiChatCleanup';
+import { ensureDoctorSlugs } from 'Services/doctorService';
 const PORT: number = Number(process.env.PORT) || 3000;
 
 const server = http.createServer(app);
@@ -30,6 +31,8 @@ export const startServer = async () => {
 
         await connectDB()
         startAiChatCleanupJob();
+        // Not awaited: the server shouldn't wait on this to start listening.
+        void ensureDoctorSlugs();
         server.listen(PORT, () => {
             log(`Server running on PORT ${PORT}`)
         })

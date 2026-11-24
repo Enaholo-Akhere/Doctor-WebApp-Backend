@@ -1,11 +1,14 @@
 import mongoose from "mongoose";
 import { DoctorSchemaInterface } from "types";
+import { uniqueDoctorSlug } from "@utils/doctorSlug";
 
 
 const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   name: { type: String, required: true },
+  // Public profile URL: /doctors/<slug>. Set on save; see uniqueDoctorSlug.
+  slug: { type: String, unique: true, sparse: true },
   verified: { type: Boolean, default: false },
   phone: { type: String },
   photo: {
@@ -55,5 +58,12 @@ const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
   gender: { type: String, enum: ['male', 'female', 'other'] },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Booking" }],
 }, { timestamps: true });
+
+// New doctors get a slug at sign-up. Profile edits go through
+// findByIdAndUpdate, which skips this hook, so updateDoctorService sets it there.
+DoctorSchema.pre("save", async function () {
+  if (this.slug && !this.isModified("name") && !this.isModified("specialization")) return;
+  this.slug = await uniqueDoctorSlug(this.constructor as mongoose.Model<any>, this.name, this.specialization, this._id);
+});
 
 export default mongoose.model("Doctor", DoctorSchema);

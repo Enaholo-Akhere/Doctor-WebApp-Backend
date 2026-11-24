@@ -55,6 +55,7 @@ export interface DoctorSchemaInterface {
     email: string;
     password: string;
     name: string;
+    slug?: string;
     phone: string;
     gender: "male" | "female" | "other";
     photo?: { imageUrl: string | undefined, publicId: string | undefined };

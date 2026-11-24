@@ -23,6 +23,12 @@ export const getDoctorById = async (req: Request, res: Response, next: NextFunct
 
     const { data, message, error } = await getDoctorByIdService(id)
 
+    // A missing doctor is a 404, so the frontend can show "not found" and
+    // search engines drop dead profile URLs.
+    if (error?.message === 'doctor not found') {
+        res.status(404).json({ message: 'doctor not found', status: false })
+        return
+    }
     if (error) {
         return next(handleError(error))
     }
