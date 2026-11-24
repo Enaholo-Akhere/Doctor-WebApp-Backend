@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { DoctorSchemaInterface } from "types";
 import { uniqueDoctorSlug } from "@utils/doctorSlug";
+import { DOCUMENT_KINDS } from "config/verification";
 
 
 const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
@@ -56,6 +57,31 @@ const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
     default: "pending",
   },
   gender: { type: String, enum: ['male', 'female', 'other'] },
+  // Verification documents, stored privately on Cloudinary ("authenticated"
+  // delivery). Never sent by public endpoints; admins view them via
+  // short-lived signed links.
+  verificationDocuments: {
+    type: [{
+      kind: { type: String, enum: DOCUMENT_KINDS, required: true },
+      publicId: { type: String, required: true },
+      resourceType: { type: String, enum: ["image", "raw"], required: true },
+      format: { type: String },
+      originalName: { type: String },
+      size: { type: Number },
+      expiresAt: { type: Date },
+      status: { type: String, enum: ["pending", "accepted", "rejected"], default: "pending" },
+      reviewNote: { type: String, maxLength: 500 },
+      uploadedAt: { type: Date, default: Date.now },
+    }],
+    default: [],
+  },
+  // Last admin decision on isApproved, shown to the doctor.
+  approvalReview: {
+    reviewedAt: { type: Date },
+    reviewedBy: { type: mongoose.Types.ObjectId, ref: "User" },
+    note: { type: String, maxLength: 500 },
+  },
+  licenceReminderSentAt: { type: Date },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Booking" }],
 }, { timestamps: true });
 

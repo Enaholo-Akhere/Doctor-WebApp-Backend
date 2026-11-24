@@ -50,12 +50,29 @@ export interface timeSlots {
     endingTime: string;
     day: string;
 }
+export interface VerificationDocument {
+    _id: mongoose.Types.ObjectId;
+    kind: import('config/verification').DocumentKind;
+    publicId: string;
+    resourceType: 'image' | 'raw';
+    format?: string;
+    originalName?: string;
+    size?: number;
+    expiresAt?: Date;
+    status: 'pending' | 'accepted' | 'rejected';
+    reviewNote?: string;
+    uploadedAt: Date;
+}
+
 export interface DoctorSchemaInterface {
     id: mongoose.ObjectId
     email: string;
     password: string;
     name: string;
     slug?: string;
+    verificationDocuments?: VerificationDocument[];
+    approvalReview?: { reviewedAt?: Date; reviewedBy?: mongoose.Types.ObjectId; note?: string };
+    licenceReminderSentAt?: Date;
     phone: string;
     gender: "male" | "female" | "other";
     photo?: { imageUrl: string | undefined, publicId: string | undefined };
