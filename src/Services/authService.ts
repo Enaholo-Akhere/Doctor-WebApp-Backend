@@ -107,6 +107,8 @@ export const loginServices = async ({ email, password }: { email: string, passwo
 
         if (!comPass) throw new Error('Invalid email or password');
 
+        if (updatedUserDoctor?.deletedAt) throw new Error('This account has been deactivated');
+
         if (!updatedUserDoctor || !updatedUserDoctor?.verified) {
             throw new Error('Please verify your email to login');
         }

@@ -48,7 +48,7 @@ const dailySeries = async (from: Date, days: number) => {
     const day = { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } };
     const [signups, bookings] = await Promise.all([
         User.aggregate<{ _id: string; n: number }>([
-            { $match: { role: 'patient', createdAt: { $gte: from } } },
+            { $match: { role: 'patient', deletedAt: null, createdAt: { $gte: from } } },
             { $group: { _id: day, n: { $sum: 1 } } },
         ]),
         Booking.aggregate<{ _id: string; n: number; revenue: number }>([
@@ -66,8 +66,8 @@ const dailySeries = async (from: Date, days: number) => {
 
 const needsAttention = async (now: Date) => {
     const [pendingDoctors, approvedDoctors, staleBookings, recentCancellations] = await Promise.all([
-        Doctor.find({ isApproved: 'pending' }).select('name specialization photo verificationDocuments createdAt').lean(),
-        Doctor.find({ isApproved: 'approved' }).select('name slug verificationDocuments').lean(),
+        Doctor.find({ isApproved: 'pending', deletedAt: null }).select('name specialization photo verificationDocuments createdAt').lean(),
+        Doctor.find({ isApproved: 'approved', deletedAt: null }).select('name slug verificationDocuments').lean(),
         // Paid but not confirmed by the doctor for 2+ days: the patient is waiting.
         Booking.find({ isPaid: true, status: 'pending', createdAt: { $lt: new Date(now.getTime() - 2 * DAY) } })
             .sort({ createdAt: 1 }).limit(10)
@@ -141,17 +141,17 @@ export const getAdminOverview = async (periodDays: number, now = new Date()) => 
         rating, reviewsNew, consultations,
         series, attention, top,
     ] = await Promise.all([
-        User.countDocuments({ role: 'patient' }),
-        User.countDocuments({ role: 'patient', createdAt: { $gte: from } }),
-        User.countDocuments({ role: 'patient', createdAt: { $gte: prevFrom, $lt: from } }),
-        Doctor.aggregate<{ _id: string; n: number }>([{ $group: { _id: '$isApproved', n: { $sum: 1 } } }]),
-        Doctor.countDocuments({ createdAt: { $gte: from } }),
+        User.countDocuments({ role: 'patient', deletedAt: null }),
+        User.countDocuments({ role: 'patient', deletedAt: null, createdAt: { $gte: from } }),
+        User.countDocuments({ role: 'patient', deletedAt: null, createdAt: { $gte: prevFrom, $lt: from } }),
+        Doctor.aggregate<{ _id: string; n: number }>([{ $match: { deletedAt: null } }, { $group: { _id: '$isApproved', n: { $sum: 1 } } }]),
+        Doctor.countDocuments({ createdAt: { $gte: from }, deletedAt: null }),
         bookingTotals(from, now),
         bookingTotals(prevFrom, from),
         Review.aggregate<{ avg: number; n: number }>([{ $group: { _id: null, avg: { $avg: '$rating' }, n: { $sum: 1 } } }]),
         Review.countDocuments({ createdAt: { $gte: from } }),
         Consultation.countDocuments({ createdAt: { $gte: from } }),
-        dailySeries(from, days),
+        Promise.all([dailySeries(from, days), dailySeries(prevFrom, days)]),
         needsAttention(now),
         topDoctors(from),
     ]);
@@ -190,7 +190,13 @@ export const getAdminOverview = async (periodDays: number, now = new Date()) => 
             newReviews: reviewsNew,
             consultationsRecorded: consultations,
         },
-        series,
+        // Each day also carries the same day of the previous period, for the comparison line.
+        series: series[0].map((d, i) => ({
+            ...d,
+            prevSignups: series[1][i]?.signups ?? 0,
+            prevBookings: series[1][i]?.bookings ?? 0,
+            prevRevenue: series[1][i]?.revenue ?? 0,
+        })),
         attention,
         topDoctors: top,
     };

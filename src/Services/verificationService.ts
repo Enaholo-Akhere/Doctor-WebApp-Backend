@@ -236,7 +236,7 @@ export const setApproval = async (
  * and unlist approved doctors whose licence has expired.
  */
 export const runLicenceExpiryCheck = async (now = new Date()) => {
-    const doctors = await Doctor.find({ isApproved: 'approved' });
+    const doctors = await Doctor.find({ isApproved: 'approved', deletedAt: null });
     let reminded = 0;
     let unlisted = 0;
     const soon = new Date(now.getTime() + LICENCE_REMINDER_DAYS * 86_400_000);

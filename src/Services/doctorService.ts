@@ -34,13 +34,14 @@ export const getDoctorService = async (search?: string): Promise<Partial<GetDoct
             // Only verified doctors are listed or bookable.
             doctor = await Doctor.find({
                 isApproved: 'approved',
+                deletedAt: null,
                 $or: [
                     { name: { $regex: escapedName, $options: 'i' } },
                     { specialization: { $regex: escapedSpec, $options: 'i' } },
                 ]
             }).select(PUBLIC_DOCTOR_EXCLUDE);
         } else {
-            doctor = await Doctor.find({ isApproved: 'approved' }).select(PUBLIC_DOCTOR_EXCLUDE);
+            doctor = await Doctor.find({ isApproved: 'approved', deletedAt: null }).select(PUBLIC_DOCTOR_EXCLUDE);
         }
 
         return { data: doctor, message: 'successful' };
@@ -56,7 +57,7 @@ export const getDoctorByIdService = async (idOrSlug: string): Promise<Partial<Ge
 
     try {
         // Unverified doctors' profiles aren't public.
-        const filter = { isApproved: 'approved', ...(isObjectIdString(idOrSlug) ? { _id: idOrSlug } : { slug: String(idOrSlug).toLowerCase() }) }
+        const filter = { isApproved: 'approved', deletedAt: null, ...(isObjectIdString(idOrSlug) ? { _id: idOrSlug } : { slug: String(idOrSlug).toLowerCase() }) }
         const doctor = await Doctor.findOne(filter).populate('reviews').select(PUBLIC_DOCTOR_EXCLUDE)
 
         if (!doctor) throw new Error('doctor not found')

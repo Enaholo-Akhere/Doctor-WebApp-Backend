@@ -15,7 +15,7 @@ import { getAdminOverview } from 'Services/adminStatsService';
 const authId = (res: Response) => String(res.locals.auth.id);
 
 /** Runs a service call and maps VerificationError to its status code. */
-const respond = async (res: Response, next: NextFunction, fn: () => Promise<unknown>) => {
+export const respond = async (res: Response, next: NextFunction, fn: () => Promise<unknown>) => {
     try {
         res.status(200).json({ status: true, data: await fn() });
     } catch (error) {

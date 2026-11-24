@@ -190,3 +190,29 @@ export const setApprovalSchema = z.object({
         note: z.string().trim().max(500).optional(),
     }),
 });
+
+// ── Admin accounts & messages ───────────────────────────────────────
+const accountRole = z.enum(['patient', 'doctor']);
+
+export const accountParamsSchema = z.object({ params: z.object({ role: accountRole, id: objectId.optional() }) });
+
+export const updateAccountSchema = z.object({
+    params: z.object({ role: accountRole, id: objectId }),
+    body: z.object({
+        name: z.string().trim().min(2, 'Name is too short').max(60).optional(),
+        phone: z.string().trim().max(30).optional(),
+        gender: z.enum(['male', 'female', 'other']).optional(),
+        specialization: z.string().trim().max(60).optional(),
+        ticketPrice: z.coerce.number().min(0).max(100000).optional(),
+        bio: z.string().trim().max(50, 'Bio must be 50 characters or fewer').optional(),
+    }).strict(),
+});
+
+export const sendMessageSchema = z.object({
+    body: z.object({
+        audience: z.enum(['all_patients', 'all_doctors', 'selected']),
+        recipients: z.array(z.object({ id: objectId, role: accountRole })).max(2000).optional(),
+        subject: z.string().trim().min(1, 'Add a subject').max(200),
+        html: z.string().min(1, 'Write a message').max(100_000),
+    }),
+});
