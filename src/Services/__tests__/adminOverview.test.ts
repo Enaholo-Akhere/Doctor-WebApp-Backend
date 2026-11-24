@@ -96,6 +96,12 @@ describe('admin overview', () => {
         expect(overview.series.reduce((s, d) => s + d.signups, 0)).toBe(2);
     });
 
+    it('pairs each day with the same day of the previous period', () => {
+        expect(overview.series.reduce((s, d) => s + d.prevRevenue, 0)).toBe(200);
+        expect(overview.series.reduce((s, d) => s + d.prevBookings, 0)).toBe(1);
+        expect(overview.series.reduce((s, d) => s + d.prevSignups, 0)).toBe(1);
+    });
+
     it('lists what needs attention', () => {
         const a = overview.attention;
         expect(a.readyForReview.map((d) => d.name)).toEqual(['Ready']);

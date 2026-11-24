@@ -151,7 +151,7 @@ export const getAdminOverview = async (periodDays: number, now = new Date()) => 
         Review.aggregate<{ avg: number; n: number }>([{ $group: { _id: null, avg: { $avg: '$rating' }, n: { $sum: 1 } } }]),
         Review.countDocuments({ createdAt: { $gte: from } }),
         Consultation.countDocuments({ createdAt: { $gte: from } }),
-        dailySeries(from, days),
+        Promise.all([dailySeries(from, days), dailySeries(prevFrom, days)]),
         needsAttention(now),
         topDoctors(from),
     ]);
@@ -190,7 +190,13 @@ export const getAdminOverview = async (periodDays: number, now = new Date()) => 
             newReviews: reviewsNew,
             consultationsRecorded: consultations,
         },
-        series,
+        // Each day also carries the same day of the previous period, for the comparison line.
+        series: series[0].map((d, i) => ({
+            ...d,
+            prevSignups: series[1][i]?.signups ?? 0,
+            prevBookings: series[1][i]?.bookings ?? 0,
+            prevRevenue: series[1][i]?.revenue ?? 0,
+        })),
         attention,
         topDoctors: top,
     };
