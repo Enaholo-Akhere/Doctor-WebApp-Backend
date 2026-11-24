@@ -31,7 +31,7 @@ export const initialBookingService = async ({ amount, userId, ip, doctorId }: { 
         // if (hasBooked) throw new Error('You have booked this doctor already')
 
         // Only verified doctors can be booked.
-        if (!user || !doctor || doctor.isApproved !== 'approved') throw new Error('Doctor or user not found');
+        if (!user || !doctor || doctor.isApproved !== 'approved' || doctor.deletedAt) throw new Error('Doctor or user not found');
 
         const price = exchangeRate * Number(doctor?.ticketPrice);
 

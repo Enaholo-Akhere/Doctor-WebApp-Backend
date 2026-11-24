@@ -34,6 +34,7 @@ export const getBookingLinkTool: AiChatTool = {
             const stem = specialty.toLowerCase().replace(/(ologist|ology|ist|ian|y)$/i, '');
             const doctors = await Doctor.find({
                 isApproved: 'approved',
+                deletedAt: null,
                 specialization: { $regex: escapeRegex(stem.length >= 4 ? stem : specialty), $options: 'i' },
             })
                 .sort({ averageRating: -1 })

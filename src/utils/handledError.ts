@@ -23,6 +23,11 @@ export const handleError = (err: any) => {
             message: "Unauthorized. Access token expired.",
             statusCode: 401
         });
+    } else if (err.message === 'This account has been deactivated') {
+        return appError({
+            message: "This account has been deactivated. Contact support if you think this is a mistake.",
+            statusCode: 401,
+        });
     } else if (err.message === 'Invalid email or password') {
         return appError({
             message: "Invalid email or password.",

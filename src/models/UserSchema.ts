@@ -26,6 +26,10 @@ const UserSchema = new mongoose.Schema<UserSchemaInterface>({
     default: "patient",
   },
   gender: { type: String, enum: ["male", "female", "other"] },
+  // Soft delete by an admin: the account can't log in, is hidden from the
+  // public site and admin lists by default, and can be restored.
+  deletedAt: { type: Date, default: null },
+  deletedBy: { type: mongoose.Types.ObjectId, ref: "User" },
   bloodType: { type: String },
   // Health profile (patient-maintained, shown to their doctors)
   dateOfBirth: { type: Date },

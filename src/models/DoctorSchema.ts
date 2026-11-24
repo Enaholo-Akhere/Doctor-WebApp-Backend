@@ -82,6 +82,10 @@ const DoctorSchema = new mongoose.Schema<DoctorSchemaInterface>({
     note: { type: String, maxLength: 500 },
   },
   licenceReminderSentAt: { type: Date },
+  // Soft delete by an admin: the account can't log in, is hidden from the
+  // public site and admin lists by default, and can be restored.
+  deletedAt: { type: Date, default: null },
+  deletedBy: { type: mongoose.Types.ObjectId, ref: "User" },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Booking" }],
 }, { timestamps: true });
 

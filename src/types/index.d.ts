@@ -2,6 +2,8 @@
 import { ReactNode } from 'react';
 
 export interface UserSchemaInterface {
+    deletedAt?: Date | null;
+    deletedBy?: mongoose.Types.ObjectId;
     email: string;
     password: string;
     name: string;
@@ -65,6 +67,8 @@ export interface VerificationDocument {
 }
 
 export interface DoctorSchemaInterface {
+    deletedAt?: Date | null;
+    deletedBy?: mongoose.Types.ObjectId;
     id: mongoose.ObjectId
     email: string;
     password: string;
