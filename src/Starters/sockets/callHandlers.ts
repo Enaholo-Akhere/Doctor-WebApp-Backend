@@ -4,6 +4,8 @@ import { winston_logger } from '@utils/logger';
 import { CallLogStatus, CallType } from 'models/messages';
 import { ChatPeer, getChatProfile, isObjectId, saveMessage } from 'Services/chatService';
 import { hasSubscriptions, sendToUser } from 'Services/pushService';
+import { isTranscriptionEnabled, RECORDING_NOTICE } from 'config/recording';
+import { createRecording, markRecordingEnded } from 'Services/consultationService';
 import { canAccessPeer, NOT_ALLOWED } from './access';
 import { emitNewMessage } from './chatHandlers';
 import { presence } from './presence';
@@ -46,6 +48,11 @@ interface ActiveCall {
     pushed?: boolean;
     /** Pending hang-up per side while that side's socket is reconnecting. */
     graceTimers: Partial<Record<Side, NodeJS.Timeout>>;
+    /**
+     * Consultation recording. 'requested': the doctor asked and the patient is
+     * being prompted. 'on': both consented and the doctor's browser records.
+     */
+    recording?: { state: 'requested' | 'on'; requestedAt: Date; consultationId?: string };
 }
 
 const clearGrace = (call: ActiveCall, side?: Side) => {
@@ -60,6 +67,7 @@ const calls = new Map<string, ActiveCall>();
 const callByUser = new Map<string, string>();
 
 const callIdSchema = z.object({ callId: z.string().uuid() });
+const consentSchema = z.object({ callId: z.string().uuid(), accept: z.boolean() });
 const inviteSchema = z.object({
     otherUserId: z.string().refine(isObjectId, 'Invalid user id'),
     callType: z.enum(['audio', 'video']),
@@ -101,6 +109,13 @@ export const resendRingingCall = (socket: AppSocket) => {
     }
 };
 
+/** Both participants' sockets (callee's only once they've answered). */
+const callSockets = (call: ActiveCall) =>
+    [call.caller.socketId, call.callee.socketId].filter((id): id is string => Boolean(id));
+
+const sideOf = (call: ActiveCall, role: 'doctor' | 'patient') =>
+    call.caller.role === role ? call.caller : call.callee.role === role ? call.callee : null;
+
 const callLogFor = (call: ActiveCall, reason: CallEndReason) => {
     const wasAnswered = Boolean(call.answeredAt);
     const status: CallLogStatus = reason === 'rejected' ? 'rejected' : wasAnswered ? 'completed' : 'missed';
@@ -117,6 +132,13 @@ export const registerCallHandlers = (io: AppServer, socket: AppSocket) => {
         clearGrace(call);
         callByUser.delete(call.caller.id);
         callByUser.delete(call.callee.id);
+
+        if (call.recording) {
+            const consultationId = call.recording.consultationId ?? null;
+            call.recording = undefined;
+            io.to(callSockets(call)).emit('call:record-stopped', { callId: call.id, consultationId, by: 'system' });
+            if (consultationId) void markRecordingEnded(consultationId).catch(() => undefined);
+        }
 
         // Ringing callees may have several tabs ringing; reach them all.
         const calleeTarget = call.callee.socketId ?? userRoom(call.callee.id);
@@ -303,6 +325,94 @@ export const registerCallHandlers = (io: AppServer, socket: AppSocket) => {
         clearGrace(call, side);
         call[side].socketId = socket.id;
         reply({ ok: true });
+    });
+
+    // ── Consultation recording ───────────────────────────────────────
+    // The server never receives call media: it brokers consent, creates the
+    // record, and tells the doctor's browser when to start/stop recording.
+
+    socket.on('call:record-request', (payload, ack) => {
+        const reply = safeAck(ack);
+        const parsed = callIdSchema.safeParse(payload);
+        if (!parsed.success) return reply(fail('Invalid request'));
+        if (!isTranscriptionEnabled()) return reply(fail('Call recording is turned off'));
+
+        const call = findCall(parsed.data.callId);
+        if (!call || call.status !== 'active') return reply(fail('This call has ended'));
+        if (me.role !== 'doctor') return reply(fail('Only the doctor can start a recording'));
+        if (call.recording) return reply(fail('Recording is already on or awaiting consent'));
+
+        const patient = sideOf(call, 'patient');
+        if (!patient?.socketId) return reply(fail('The patient is reconnecting, try again shortly'));
+
+        call.recording = { state: 'requested', requestedAt: new Date() };
+        io.to(patient.socketId).emit('call:record-consent-request', {
+            callId: call.id,
+            doctorName: me.name,
+            notice: RECORDING_NOTICE,
+        });
+        reply({ ok: true });
+    });
+
+    socket.on('call:record-consent', async (payload, ack) => {
+        const reply = safeAck(ack);
+        const parsed = consentSchema.safeParse(payload);
+        if (!parsed.success) return reply(fail('Invalid request'));
+
+        const call = findCall(parsed.data.callId);
+        if (!call || call.status !== 'active') return reply(fail('This call has ended'));
+        if (me.role !== 'patient') return reply(fail('Only the patient can answer'));
+        if (call.recording?.state !== 'requested') return reply(fail('There is no recording request to answer'));
+
+        const doctor = sideOf(call, 'doctor')!;
+        const { requestedAt } = call.recording;
+
+        if (!parsed.data.accept) {
+            call.recording = undefined;
+            if (doctor.socketId) io.to(doctor.socketId).emit('call:record-declined', { callId: call.id });
+            return reply({ ok: true });
+        }
+
+        try {
+            const record = await createRecording({
+                callId: call.id,
+                callType: call.callType,
+                doctorId: doctor.id,
+                patientId: me.id,
+                doctorConsentedAt: requestedAt,
+                patientConsentedAt: new Date(),
+            });
+            // The call may have ended, or the request been withdrawn, while saving.
+            if (!calls.has(call.id) || call.recording?.state !== 'requested') {
+                void markRecordingEnded(String(record._id)).catch(() => undefined);
+                return reply(fail('The recording request was withdrawn'));
+            }
+            const consultationId = String(record._id);
+            call.recording = { state: 'on', requestedAt, consultationId };
+            io.to(callSockets(call)).emit('call:record-started', { callId: call.id, consultationId });
+            reply({ ok: true });
+        } catch (error: any) {
+            winston_logger.error(error.message, error.stack);
+            call.recording = undefined;
+            if (doctor.socketId) io.to(doctor.socketId).emit('call:record-declined', { callId: call.id });
+            reply(fail('Could not start the recording'));
+        }
+    });
+
+    socket.on('call:record-stop', (payload) => {
+        const parsed = callIdSchema.safeParse(payload);
+        if (!parsed.success) return;
+        const call = findCall(parsed.data.callId);
+        if (!call?.recording) return;
+
+        const consultationId = call.recording.consultationId ?? null;
+        call.recording = undefined;
+        io.to(callSockets(call)).emit('call:record-stopped', {
+            callId: call.id,
+            consultationId,
+            by: me.role === 'doctor' ? 'doctor' : 'patient',
+        });
+        if (consultationId) void markRecordingEnded(consultationId).catch(() => undefined);
     });
 
     socket.on('disconnect', () => {

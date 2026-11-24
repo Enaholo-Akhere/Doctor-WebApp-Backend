@@ -59,6 +59,18 @@ export interface ClientToServerEvents {
     'call:signal': (p: SignalPayload) => void;
     /** Re-binds an active call to this socket after a reconnect. */
     'call:resume': (p: { callId: string }, ack: Ack) => void;
+
+    /** Doctor asks to record; the patient is prompted for consent. */
+    'call:record-request': (p: { callId: string }, ack: Ack) => void;
+    /** Patient's answer to a recording request. */
+    'call:record-consent': (p: { callId: string; accept: boolean }, ack: Ack) => void;
+    /** Either participant stops (or cancels) the recording. */
+    'call:record-stop': (p: { callId: string }) => void;
+}
+
+export interface RecordingNotice {
+    version: string;
+    text: string;
 }
 
 export interface ServerToClientEvents {
@@ -73,6 +85,11 @@ export interface ServerToClientEvents {
     'call:dismissed': (p: { callId: string }) => void;
     'call:ended': (p: { callId: string; reason: CallEndReason }) => void;
     'call:signal': (p: SignalPayload) => void;
+
+    'call:record-consent-request': (p: { callId: string; doctorName: string; notice: RecordingNotice }) => void;
+    'call:record-declined': (p: { callId: string }) => void;
+    'call:record-started': (p: { callId: string; consultationId: string }) => void;
+    'call:record-stopped': (p: { callId: string; consultationId: string | null; by: 'doctor' | 'patient' | 'system' }) => void;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
