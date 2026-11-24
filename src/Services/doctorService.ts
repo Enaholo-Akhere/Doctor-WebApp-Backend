@@ -5,6 +5,14 @@ import Doctor from "models/DoctorSchema"
 import { DoctorSchemaInterface } from "types"
 import Booking from "models/BookingSchema"
 import escapeStringRegexp from "escape-string-regexp"
+import { isObjectIdString, uniqueDoctorSlug } from "@utils/doctorSlug"
+
+/**
+ * Fields never sent by the public, unauthenticated doctor endpoints. Email
+ * and phone are contact details for the platform, not for anyone browsing.
+ * Doctors still see their own via /doctors/profile/me.
+ */
+const PUBLIC_DOCTOR_EXCLUDE = ['-password', '-__v', '-refreshedToken', '-email', '-phone'];
 
 interface GetDoctorServiceResult {
     data: DoctorSchemaInterface[] | DoctorSchemaInterface;
@@ -29,9 +37,9 @@ export const getDoctorService = async (search?: string): Promise<Partial<GetDoct
                     { name: { $regex: escapedName, $options: 'i' } },
                     { specialization: { $regex: escapedSpec, $options: 'i' } },
                 ]
-            }).select(['-password', '-__v', '-refreshedToken']);
+            }).select(PUBLIC_DOCTOR_EXCLUDE);
         } else {
-            doctor = await Doctor.find().select(['-password', '-__v', '-refreshedToken']);
+            doctor = await Doctor.find().select(PUBLIC_DOCTOR_EXCLUDE);
         }
 
         if (!doctor.length) throw new Error('doctor not found');
@@ -44,11 +52,12 @@ export const getDoctorService = async (search?: string): Promise<Partial<GetDoct
     }
 }
 
-export const getDoctorByIdService = async (id: string): Promise<Partial<GetDoctorServiceResult>> => {
+/** Public profile, looked up by id or by slug (/doctors/:idOrSlug). */
+export const getDoctorByIdService = async (idOrSlug: string): Promise<Partial<GetDoctorServiceResult>> => {
 
     try {
-
-        const doctor = await Doctor.findById(id).populate('reviews').select(['-password', '-__v', '-refreshedToken'])
+        const filter = isObjectIdString(idOrSlug) ? { _id: idOrSlug } : { slug: String(idOrSlug).toLowerCase() }
+        const doctor = await Doctor.findOne(filter).populate('reviews').select(PUBLIC_DOCTOR_EXCLUDE)
 
         if (!doctor) throw new Error('doctor not found')
 
@@ -73,6 +82,18 @@ export const updateDoctorService = async ({ id, userData }: { id: string, userDa
     }
 
     try {
+        // Keep the profile URL in step with the name and specialty.
+        if (allowedFields.name !== undefined || allowedFields.specialization !== undefined) {
+            const current = await Doctor.findById(id, { name: 1, specialization: 1 }).lean<{ name: string, specialization?: string }>()
+            if (current) {
+                allowedFields.slug = await uniqueDoctorSlug(
+                    Doctor,
+                    String(allowedFields.name ?? current.name),
+                    (allowedFields.specialization ?? current.specialization) as string | undefined,
+                    id,
+                )
+            }
+        }
 
         const updatedDoctor = await Doctor.findByIdAndUpdate(id, allowedFields, { new: true, runValidators: true }).select(['-password', '-__v', '-refreshedToken'])
 
@@ -140,5 +161,25 @@ export const updateBookingStatusService = async (doctorId: string, bookingId: st
     catch (error: any) {
         winston_logger.error(error.message, error.stack)
         return { error, message: error.message }
+    }
+}
+
+/**
+ * Gives every doctor without a slug one. Runs at startup; a no-op once all
+ * doctors have slugs. Never throws: a failure here mustn't stop the server.
+ */
+export const ensureDoctorSlugs = async (): Promise<number> => {
+    try {
+        const missing = await Doctor.find({ $or: [{ slug: { $exists: false } }, { slug: null }, { slug: '' }] }, { name: 1, specialization: 1 })
+        for (const doctor of missing) {
+            const slug = await uniqueDoctorSlug(Doctor, doctor.name, doctor.specialization, doctor._id)
+            await Doctor.updateOne({ _id: doctor._id }, { $set: { slug } })
+        }
+        if (missing.length) log(`Added profile slugs to ${missing.length} doctor(s)`)
+        return missing.length
+    }
+    catch (error: any) {
+        winston_logger.error(`ensureDoctorSlugs failed: ${error.message}`, { stack: error.stack })
+        return 0
     }
 }
