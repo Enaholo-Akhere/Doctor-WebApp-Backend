@@ -35,6 +35,7 @@ export const registerSocketHandlers = (io: AppServer) => {
             const { decoded, expired, message } = verifyToken(token, aud as string);
             if (message?.includes('jwt audience invalid')) return next(new Error('Invalid token'));
             if (!decoded || expired) return next(new Error(message ?? 'access token expired'));
+            if ((decoded as jwt.JwtPayload).sub !== sub) return next(new Error('Invalid token'));
 
             if (!isChatRole(account.role)) {
                 return next(new Error('Chat is only available to patients and doctors'));
