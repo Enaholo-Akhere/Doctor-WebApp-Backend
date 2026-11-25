@@ -79,33 +79,32 @@ export const loginServices = async ({ email, password }: { email: string, passwo
 
         if (!userExist) throw new Error('Invalid email or password');
 
+        // Every check happens before any token is issued or saved, so a failed attempt changes nothing.
+        const comPass = await bcrypt.compare(password, userExist.password);
+
+        if (!comPass) throw new Error('Invalid email or password');
+
+        if (userExist.deletedAt) throw new Error('This account has been deactivated');
+
+        if (!userExist.verified) throw new Error('Please verify your email to login');
+
         let audience: string | undefined;
 
         if (userPatient) audience = AUDIENCE.PATIENT;
         if (userDoctor) audience = AUDIENCE.DOCTOR;
 
-        const { token, error } = generateAccessToken({ user: { id: userExist?.toObject()._id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions, audience });
-        const { token: refreshedToken, error: RefTokenError } = generateAccessToken({ user: { id: userExist?.toObject()._id }, options: { expiresIn: process.env.REFRESH_TOKEN_EXPIRY } as jwt.SignOptions, audience })
+        const id = String(userExist._id);
+        const { token, error } = generateAccessToken({ user: { id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions, audience });
+        const { token: refreshedToken, error: RefTokenError } = generateAccessToken({ user: { id }, options: { expiresIn: process.env.REFRESH_TOKEN_EXPIRY } as jwt.SignOptions, audience })
 
-        const [updatedUser, updatedDoctor] = await Promise.all([
-            User.findByIdAndUpdate(userExist._id, { refreshedToken }, { new: true }).select('-password -__v -refreshedToken'),
-            Doctor.findByIdAndUpdate(userExist._id, { refreshedToken }, { new: true }).select('-password -__v -refreshedToken')
-        ])
-
-        const updatedUserDoctor = updatedUser || updatedDoctor;
         const tokenError = error || RefTokenError
 
-        if (error || RefTokenError) throw new Error(tokenError);
+        if (tokenError) throw new Error(tokenError);
 
-        const comPass = await bcrypt.compare(password, userExist.password);
-
-        if (!comPass) throw new Error('Invalid email or password');
-
-        if (updatedUserDoctor?.deletedAt) throw new Error('This account has been deactivated');
-
-        if (!updatedUserDoctor || !updatedUserDoctor?.verified) {
-            throw new Error('Please verify your email to login');
-        }
+        const select = '-password -__v -refreshedToken';
+        const updatedUserDoctor = userPatient
+            ? await User.findByIdAndUpdate(id, { refreshedToken }, { new: true }).select(select)
+            : await Doctor.findByIdAndUpdate(id, { refreshedToken }, { new: true }).select(select);
 
         return { data: updatedUserDoctor, message: 'Login Successful', token, refreshedToken }
     }
@@ -189,19 +188,23 @@ export const refreshedTokenService = async (refreshedToken: string, id: string) 
             Doctor.findById(id)
         ]);
 
-        let audience: string | undefined;
+        const account = user || doctor;
 
-        if (user?._id.toString() === id) audience = AUDIENCE.PATIENT;
-        if (doctor?._id.toString() === id) audience = AUDIENCE.DOCTOR;
+        // Logging out (or an admin deactivating the account) clears the stored token,
+        // which ends every session for the account.
+        if (!account?.refreshedToken) throw new Error('Refreshed token not found');
+        if (account.deletedAt) throw new Error('This account has been deactivated');
 
-        const { decoded, expired, message } = verifyToken(refreshedToken, audience);
+        const audience = doctor ? AUDIENCE.DOCTOR : AUDIENCE.PATIENT;
 
-        if (!decoded || expired) {
-            throw new Error('refresh token expired');
-        }
+        const { decoded, expired } = verifyToken(refreshedToken, audience);
+
+        if (expired) throw new Error('refresh token expired');
+
+        // Only a token we signed, for this same account, can mint a new access token.
+        if (!decoded || (decoded as jwt.JwtPayload).sub !== id) throw new Error('refresh token invalid');
 
         const { token, error } = generateAccessToken({ user: { id }, options: { expiresIn: process.env.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions, audience });
-
 
         if (error) throw new Error(error);
 

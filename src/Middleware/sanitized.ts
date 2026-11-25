@@ -66,6 +66,9 @@ export const sanitizedUser = async (req: Request, res: Response, next: NextFunct
             throw new Error(message ?? 'access token expired');
         }
 
+        // The account above was looked up from the unverified payload; make sure the signed token agrees.
+        if ((decoded as jwt.JwtPayload).sub !== sub) throw new Error('Invalid token');
+
         res.locals.auth = { id: sub, audience: aud as string, role: user_doctor?.role };
 
 

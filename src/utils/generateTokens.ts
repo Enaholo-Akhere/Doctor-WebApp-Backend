@@ -46,8 +46,10 @@ export const verifyToken = (token: string, audience?: string | undefined) => {
     }
     catch (error: any) {
         winston_logger.error(error.message, error.stack)
+        // null, not {}: callers check `!decoded`, and an empty object is truthy, which let
+        // forged or unsigned tokens through.
         return {
-            decoded: {},
+            decoded: null,
             message: error.message,
             expired: error.message === 'jwt expired'
         }

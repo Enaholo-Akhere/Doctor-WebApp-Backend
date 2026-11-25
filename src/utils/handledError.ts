@@ -1,5 +1,16 @@
 import { appError } from "./appError";
 
+// Token failures that aren't expiry: answer 401 rather than falling through to a 500.
+const INVALID_TOKEN_MESSAGES = new Set([
+    'Invalid token',
+    'invalid token',
+    'invalid signature',
+    'jwt signature is required',
+    'jwt must be provided',
+    'invalid algorithm',
+    'refresh token invalid',
+]);
+
 export const handleError = (err: any) => {
     if (
         err.name === "MongoNetworkError" ||
@@ -27,6 +38,11 @@ export const handleError = (err: any) => {
         return appError({
             message: "This account has been deactivated. Contact support if you think this is a mistake.",
             statusCode: 401,
+        });
+    } else if (INVALID_TOKEN_MESSAGES.has(err.message)) {
+        return appError({
+            message: "Unauthorized. Invalid token.",
+            statusCode: 401
         });
     } else if (err.message === 'Please verify your email to login') {
         return appError({
