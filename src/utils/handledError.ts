@@ -28,6 +28,11 @@ export const handleError = (err: any) => {
             message: "This account has been deactivated. Contact support if you think this is a mistake.",
             statusCode: 401,
         });
+    } else if (err.message === 'Please verify your email to login') {
+        return appError({
+            message: "Please verify your email to log in. Check your inbox for the link, or request a new one.",
+            statusCode: 403,
+        });
     } else if (err.message === 'Invalid email or password') {
         return appError({
             message: "Invalid email or password.",

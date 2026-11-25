@@ -44,7 +44,7 @@ export const verifyEmailTemplate = ({ name, _id }: decodedData, token: string) =
         <!-- CTA Button -->
         <p style="text-align:center; margin:30px 0;">
           <a 
-            href="${baseUrl}/?userId=${_id}&token=${token}&dialogue=${true}"
+            href="${baseUrl}/verify-email?userId=${encodeURIComponent(String(_id))}&token=${encodeURIComponent(token)}"
             style="
               display:inline-block;
               background-color:#0073e6;

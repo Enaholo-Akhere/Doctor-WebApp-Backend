@@ -101,6 +101,12 @@ export const reviewSchema = z.object({
 }).required()
 export type RegisterUserInput = TypeOf<typeof registerUserSchema>
 
+export const resendVerificationSchema = z.object({
+    body: z.object({
+        email: z.string({ required_error: "Email is required" }).email("Invalid email format"),
+    })
+})
+
 export const verifyEmailSchema = z.object({
     query: z.object({
         id: z.string({ required_error: "User ID is required" }),

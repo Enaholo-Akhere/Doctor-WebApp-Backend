@@ -11,6 +11,9 @@ import { verifyToken } from "@utils/generateTokens"
 import Users from "models/UserSchema"
 import { AUDIENCE } from 'config/constant';
 import PasswordSchema from "models/ResetPasswordSchema";
+import mongoose from 'mongoose';
+import { appError } from '@utils/appError';
+import { sendVerificationEmail } from '@utils/message/nodemailer';
 
 
 export const registerService = async (body: UserSchemaInterface) => {
@@ -19,58 +22,49 @@ export const registerService = async (body: UserSchemaInterface) => {
 
     try {
 
-        let user = null;
-        if (role === 'patient') {
-            user = await User.findOne({ email })
-        } else if (role === 'doctor') {
-            user = await Doctor.findOne({ email })
+        // Login looks an email up in both collections, so it must be unique across both.
+        const [existingPatient, existingDoctor] = await Promise.all([User.findOne({ email }), Doctor.findOne({ email })]);
+        if (existingPatient || existingDoctor) {
+            throw appError({ message: 'An account with this email already exists', statusCode: 409 });
         }
-        if (user) throw new Error('User with email already exits')
 
         const salt = await bcrypt.genSalt(10);
 
         const hashedPassword = await bcrypt.hash(password, salt)
 
-        if (role === 'patient') {
-            const newUser = new User({
-                email,
-                password: hashedPassword,
-                photo,
-                name,
-                role,
-                gender,
-                verified: false,
-                phone,
-                bloodType
-            })
-            await newUser.save()
+        const fields = { email, password: hashedPassword, photo, name, role, gender, verified: false, phone, bloodType };
+        const account = role === 'doctor' ? await new Doctor(fields).save() : await new User(fields).save();
 
-            return { data: newUser, message: 'User created successfully', }
+        const { token, error } = createVerificationToken(String(account._id), role);
+        if (error || !token) {
+            await deleteAccount(String(account._id));
+            throw new Error('Could not create a verification link');
         }
 
-        if (role === 'doctor') {
-            const newDoctor = new Doctor({
-                email,
-                password: hashedPassword,
-                photo,
-                name,
-                role,
-                gender,
-                verified: false,
-                phone,
-                bloodType
-            })
-            await newDoctor.save()
-
-            return { data: newDoctor, message: 'Doctor created successfully' }
-        }
-
+        return { data: account, token, message: role === 'doctor' ? 'Doctor created successfully' : 'User created successfully' }
     }
     catch (error: any) {
+        winston_logger.error(error.message, error.stack)
         return { error, message: error.message }
     }
 
 }
+
+/** Removes an account that was created but never got its verification email. */
+export const deleteAccount = async (id: string) => {
+    await Promise.all([User.findByIdAndDelete(id), Doctor.findByIdAndDelete(id)]);
+}
+
+/** Email links get their own audience so they can't be used as access tokens, and vice versa. */
+const verificationAudience = (role?: string) =>
+    `${role === 'doctor' ? AUDIENCE.DOCTOR : AUDIENCE.PATIENT}:email-verify`;
+
+export const createVerificationToken = (id: string, role?: string) =>
+    generateAccessToken({
+        user: { id },
+        options: { expiresIn: process.env.VERIFY_TOKEN_EXPIRY || '24h' } as jwt.SignOptions,
+        audience: verificationAudience(role),
+    });
 
 export const loginServices = async ({ email, password }: { email: string, password: string }) => {
 
@@ -121,52 +115,64 @@ export const loginServices = async ({ email, password }: { email: string, passwo
     }
 }
 
-export const verifyEmailService = async (id: string | QueryString.ParsedQs | (string | QueryString.ParsedQs)[] | undefined, token: string | QueryString.ParsedQs | (string | QueryString.ParsedQs)[] | undefined) => {
+const INVALID_LINK = 'This verification link is invalid. Request a new one below.';
 
+export const verifyEmailService = async (id: unknown, token: unknown) => {
     try {
-        let user: any;
-        let doctor: any;
-
-        [user, doctor] = await Promise.all([
-            Users.findById(id),
-            Doctor.findById(id)
-        ]);
-
-        if (!user && !doctor) {
-            throw new Error('user not found')
+        if (typeof id !== 'string' || !mongoose.isValidObjectId(id) || typeof token !== 'string' || !token) {
+            throw appError({ message: INVALID_LINK, statusCode: 400 });
         }
 
-        let audience;
+        const [user, doctor] = await Promise.all([User.findById(id), Doctor.findById(id)]);
+        const account = user || doctor;
 
-        if (user) audience = AUDIENCE.PATIENT;
-        if (doctor) audience = AUDIENCE.DOCTOR;
+        if (!account) throw appError({ message: 'We could not find this account. Please sign up again.', statusCode: 404 });
 
-        const { decoded, expired, message } = verifyToken(token as string, audience);
+        // Clicking the link twice (or React running the effect twice) is not an error.
+        if (account.verified) return { message: 'Your email is already verified. You can log in.' };
+
+        const { decoded, message } = verifyToken(token, verificationAudience(doctor ? 'doctor' : 'patient'));
 
         if (message === 'jwt expired') {
-            await Promise.all([
-                Users.findByIdAndDelete(id),
-                Doctor.findByIdAndDelete(id)
-            ]);
-            throw new Error('verification link expired')
+            throw appError({ message: 'This verification link has expired. Request a new one below.', statusCode: 410 });
+        }
+        if (message !== 'token active' || (decoded as jwt.JwtPayload).sub !== id) {
+            throw appError({ message: INVALID_LINK, statusCode: 400 });
         }
 
-        else {
-
-            if (message === 'jwt expired') {
-                await Promise.all([
-                    Users.findByIdAndDelete(id),
-                    Doctor.findByIdAndDelete(id)
-                ]);
-                throw new Error('verification link expired')
-            };
-            [user, doctor] = await Promise.all([
-                Users.findByIdAndUpdate(id, { verified: true }, { new: true }),
-                Doctor.findByIdAndUpdate(id, { verified: true }, { new: true })
-            ]);
-        }
+        if (doctor) await Doctor.updateOne({ _id: id }, { verified: true });
+        else await User.updateOne({ _id: id }, { verified: true });
 
         return { message: 'Email verified successfully' }
+    }
+    catch (error: any) {
+        winston_logger.error(error.message, error.stack)
+        return { error, message: error.message }
+    }
+}
+
+export const RESEND_MESSAGE = "If an unverified account exists for that email, we've sent a new verification link.";
+
+export const resendVerificationService = async (email: string) => {
+    try {
+        const [user, doctor] = await Promise.all([User.findOne({ email }), Doctor.findOne({ email })]);
+        const account = user || doctor;
+
+        // Same answer whether or not the account exists, so this can't be used to probe for emails.
+        if (!account || account.verified || account.deletedAt) return { message: RESEND_MESSAGE };
+
+        const { token, error } = createVerificationToken(String(account._id), doctor ? 'doctor' : 'patient');
+        if (error || !token) throw new Error('Could not create a verification link');
+
+        const { error: mailError } = await sendVerificationEmail(
+            { name: account.name, email: account.email, _id: String(account._id) },
+            token,
+        );
+        if (mailError) {
+            throw appError({ message: "We couldn't send the email right now. Please try again shortly.", statusCode: 502 });
+        }
+
+        return { message: RESEND_MESSAGE }
     }
     catch (error: any) {
         winston_logger.error(error.message, error.stack)
