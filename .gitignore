@@ -6,3 +6,5 @@ dist
 # Logs (written at runtime by src/utils/logger.ts)
 *.log
 logs/
+# Local MCP config (contains API tokens)
+.mcp.json
