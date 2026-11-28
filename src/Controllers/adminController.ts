@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { respond } from './verificationController';
 import { AccountRole, listAccounts, restoreAccount, softDeleteAccount, updateAccount } from 'Services/adminAccountsService';
 import { listAdminMessages, sendAdminMessage } from 'Services/adminMessageService';
+import { getAdminDocument, listAdminDocuments } from 'Services/adminDocumentService';
 
 const adminId = (res: Response) => String(res.locals.auth.id);
 
@@ -32,3 +33,9 @@ export const messagesList = (_req: Request, res: Response, next: NextFunction) =
 
 export const messagesSend = (req: Request, res: Response, next: NextFunction) =>
     respond(res, next, () => sendAdminMessage(req.body, adminId(res)));
+
+// ── Admin-only documents (PDFs) ────────────────────────────────────
+export const documentsList = (_req: Request, res: Response, next: NextFunction) => respond(res, next, () => listAdminDocuments());
+
+export const documentsGet = (req: Request, res: Response, next: NextFunction) =>
+    respond(res, next, () => getAdminDocument(String(req.params.id)));

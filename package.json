@@ -10,7 +10,8 @@
     "prestart": "npm run build",
     "start": "ts-node --project ./tsconfig.json -r tsconfig-paths/register dist/server.js",
     "test": "vitest run",
-    "make-admin": "ts-node -r tsconfig-paths/register src/scripts/makeAdmin.ts"
+    "make-admin": "ts-node -r tsconfig-paths/register src/scripts/makeAdmin.ts",
+    "add-admin-pdf": "ts-node -r tsconfig-paths/register src/scripts/addAdminPdf.ts"
   },
   "keywords": [],
   "author": "",
