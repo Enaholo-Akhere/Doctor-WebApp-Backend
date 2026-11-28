@@ -1,9 +1,9 @@
 import express from 'express';
 import { streamAdminDocument } from 'Controllers/adminDocumentFileController';
 
-/** File links that carry their own short-lived token instead of an auth header. */
+/** Permanent file links: a random key in the path instead of an auth header. */
 const router = express.Router();
 
-router.get('/admin-documents/:token/:fileName', streamAdminDocument);
+router.get('/admin-documents/:accessKey/:fileName', streamAdminDocument);
 
 export default router;

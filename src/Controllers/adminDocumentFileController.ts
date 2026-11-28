@@ -1,18 +1,19 @@
 import axios from 'axios';
 import { NextFunction, Request, Response } from 'express';
-import { cloudinaryDownloadUrl, documentForToken } from 'Services/adminDocumentService';
+import { cloudinaryDownloadUrl, documentForAccessKey } from 'Services/adminDocumentService';
 import { VerificationError } from 'Services/verificationService';
 
 const CLIENT_ORIGINS = [process.env.DEV_CLIENT_URL, process.env.PROD_CLIENT_URL].filter(Boolean).join(' ');
 
 /**
- * GET /api/v1/files/admin-documents/:token/:fileName(.pdf)
- * Streams an admin-only PDF. No auth header: the token in the path is the
- * permission, so <iframe src> and react-pdf work with the URL as is.
+ * GET /api/v1/files/admin-documents/:accessKey/:fileName(.pdf)
+ * Streams an admin document from its permanent link. No auth header: the
+ * random access key in the path is the permission, so <iframe src> and
+ * react-pdf work with the URL as is.
  */
 export const streamAdminDocument = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const doc = await documentForToken(String(req.params.token));
+        const doc = await documentForAccessKey(String(req.params.accessKey));
         const upstream = await axios.get(cloudinaryDownloadUrl(doc), { responseType: 'stream' });
 
         // Helmet blocks framing by default; let the CareConnect site embed this file.

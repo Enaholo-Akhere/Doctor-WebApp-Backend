@@ -30,7 +30,7 @@ const main = async () => {
         bytes: uploaded.bytes,
     });
     console.log(`Created AdminDocument ${doc._id}`);
-    console.log(`Link (valid 10 min, relative to /api/v1): ${pdfLinkPath(doc)}`);
+    console.log(`Permanent link (relative to /api/v1): ${pdfLinkPath(doc)}`);
 };
 
 main()

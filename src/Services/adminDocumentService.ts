@@ -1,8 +1,6 @@
-import jwt from 'jsonwebtoken';
 import { isValidObjectId } from 'mongoose';
-import { ISSUER } from 'config/constant';
 import cloudinary from 'config/cloudinaryConfig';
-import AdminDocument, { IAdminDocument } from 'models/AdminDocumentSchema';
+import AdminDocument, { IAdminDocument, newAccessKey } from 'models/AdminDocumentSchema';
 import { VerificationError } from 'Services/verificationService';
 
 export const ADMIN_DOCS_FOLDER = 'CareConnectAdminDocs';
@@ -25,42 +23,33 @@ export const uploadAdminPdf = (buffer: Buffer, fileName: string) => {
     });
 };
 
-/** How long a document link handed to an admin keeps working. */
-export const ADMIN_DOC_LINK_TTL_SECONDS = 10 * 60;
-const FILE_TOKEN_AUDIENCE = 'admin-document-file';
-
-const privateKey = () => process.env.PRIVATE_KEY?.replace(/\\n/g, '\n') as string;
-const publicKey = () => process.env.PUBLIC_KEY?.replace(/\\n/g, '\n') as string;
-
 /**
- * A link to the file that ends in .pdf and needs no auth header, so an
- * <iframe> or react-pdf can load it as is. The short-lived token in the path
- * is the permission: only the admin-only endpoints below hand one out, and
- * its audience is not a login audience, so it can't be used as an access token.
+ * The document's permanent link: it ends in .pdf, never expires and needs no
+ * auth header, so an <iframe> or react-pdf can load it as is, like a photo URL.
+ * Anyone holding it can open the file; the random accessKey in the path makes
+ * it unguessable, and only the admin-only endpoints below hand it out. To kill
+ * a leaked link, give the document a new accessKey.
  * The path is relative to the API root (/api/v1).
  */
-export const pdfLinkPath = (doc: { _id: unknown; fileName: string }) => {
-    const token = jwt.sign({ sub: String(doc._id) }, privateKey(), {
-        algorithm: 'RS256',
-        audience: FILE_TOKEN_AUDIENCE,
-        issuer: ISSUER,
-        expiresIn: ADMIN_DOC_LINK_TTL_SECONDS,
-    });
+export const pdfLinkPath = (doc: { accessKey: string; fileName: string }) => {
     const name = /\.pdf$/i.test(doc.fileName) ? doc.fileName : `${doc.fileName}.pdf`;
-    return `/files/admin-documents/${token}/${encodeURIComponent(name)}`;
+    return `/files/admin-documents/${doc.accessKey}/${encodeURIComponent(name)}`;
 };
 
-/** Checks a link token and returns the document it opens. */
-export const documentForToken = async (token: string) => {
-    let id: string | undefined;
-    try {
-        id = (jwt.verify(token, publicKey(), { algorithms: ['RS256'], audience: FILE_TOKEN_AUDIENCE, issuer: ISSUER }) as jwt.JwtPayload).sub;
-    } catch {
-        throw new VerificationError('This link has expired. Open the document again from the dashboard.', 403);
-    }
-    const doc = id && isValidObjectId(id) ? await AdminDocument.findById(id).lean() : null;
+/** The document a link's access key opens. */
+export const documentForAccessKey = async (accessKey: string) => {
+    const doc = /^[\w-]{32}$/.test(accessKey) ? await AdminDocument.findOne({ accessKey }).lean() : null;
     if (!doc) throw new VerificationError('Document not found', 404);
     return doc;
+};
+
+/** Gives records created before access keys existed a key of their own. */
+const withAccessKey = async <T extends { _id: unknown; accessKey?: string }>(doc: T) => {
+    if (doc.accessKey) return doc as T & { accessKey: string };
+    const accessKey = newAccessKey();
+    await AdminDocument.updateOne({ _id: doc._id, accessKey: { $exists: false } }, { accessKey });
+    const fresh = await AdminDocument.findById(doc._id).lean();
+    return { ...doc, accessKey: fresh?.accessKey ?? accessKey };
 };
 
 /** Short-lived Cloudinary API link to the stored file, used server side only. */
@@ -78,17 +67,16 @@ const toDto = (doc: IAdminDocument & { _id: unknown }) => ({
     bytes: doc.bytes,
     createdAt: doc.createdAt,
     url: pdfLinkPath(doc),
-    expiresInSeconds: ADMIN_DOC_LINK_TTL_SECONDS,
 });
 
 export const listAdminDocuments = async () => {
     const docs = await AdminDocument.find().sort({ createdAt: -1 }).lean();
-    return docs.map(toDto);
+    return Promise.all(docs.map(async (d) => toDto(await withAccessKey(d))));
 };
 
 export const getAdminDocument = async (id: string) => {
     if (!isValidObjectId(id)) throw new VerificationError('Document not found', 404);
     const doc = await AdminDocument.findById(id).lean();
     if (!doc) throw new VerificationError('Document not found', 404);
-    return toDto(doc);
+    return toDto(await withAccessKey(doc));
 };
