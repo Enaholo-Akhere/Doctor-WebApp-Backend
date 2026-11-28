@@ -1,10 +1,15 @@
+import crypto from 'crypto';
 import mongoose, { Schema } from 'mongoose';
 
 /**
  * Files only admins can open from the dashboard. The file itself lives in
  * Cloudinary as an "authenticated" raw upload (no public URL); this record
- * holds what's needed to build a signed link to it.
+ * holds what's needed to serve it. Its link never expires: the random
+ * `accessKey` in the URL is what makes it unguessable (see adminDocumentService).
  */
+
+/** A random, URL-safe key: 32 characters, 192 bits. */
+export const newAccessKey = () => crypto.randomBytes(24).toString('base64url');
 export interface IAdminDocument {
     title: string;
     fileName: string;
@@ -12,6 +17,7 @@ export interface IAdminDocument {
     version: number; // Cloudinary version, part of the signed URL
     mimeType: string;
     bytes: number;
+    accessKey: string; // the secret part of the permanent link
     createdAt: Date;
     updatedAt: Date;
 }
@@ -24,6 +30,7 @@ const adminDocumentSchema = new Schema<IAdminDocument>(
         version: { type: Number, required: true },
         mimeType: { type: String, default: 'application/pdf' },
         bytes: { type: Number, required: true },
+        accessKey: { type: String, required: true, unique: true, default: newAccessKey },
     },
     { timestamps: true, collection: 'admin_documents' },
 );
