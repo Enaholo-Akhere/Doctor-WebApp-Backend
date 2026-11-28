@@ -3,7 +3,7 @@ import { sanitizedUser } from 'Middleware/sanitized';
 import { restrict } from 'Middleware/auth';
 import validate from 'DTO_Validations/zod_validate';
 import { accountParamsSchema, reviewDocumentSchema, sendMessageSchema, setApprovalSchema, updateAccountSchema } from 'DTO_Validations/zod_schemas';
-import { accountsDelete, accountsList, accountsRestore, accountsUpdate, messagesList, messagesSend } from 'Controllers/adminController';
+import { accountsDelete, accountsList, accountsRestore, accountsUpdate, documentsGet, documentsList, messagesList, messagesSend } from 'Controllers/adminController';
 import { adminGetDoctor, adminListDoctors, adminOverview, adminReviewDocument, adminSetApproval } from 'Controllers/verificationController';
 
 /** Admin-only. Admin accounts are made with `npm run make-admin -- <email>`; nobody can sign up as one. */
@@ -25,5 +25,9 @@ router.post('/accounts/:role/:id/restore', validate(accountParamsSchema), accoun
 // Email to patients and doctors
 router.get('/messages', messagesList);
 router.post('/messages', validate(sendMessageSchema), messagesSend);
+
+// Admin-only PDFs: each comes back with a signed URL ending in .pdf
+router.get('/documents', documentsList);
+router.get('/documents/:id', documentsGet);
 
 export default router;
